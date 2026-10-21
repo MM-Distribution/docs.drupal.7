@@ -6,3 +6,5 @@
 # Distribution showcase pages (third-party distributions)
 /docs/7/distributions
 /docs/7/drupal-7-distributions
+# Comparisons of contributed (third-party) modules
+/docs/7/extend/comparison-of-contributed-modules
