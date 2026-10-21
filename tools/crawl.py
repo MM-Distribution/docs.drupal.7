@@ -70,11 +70,35 @@ def stop(reason):
 
 
 # ------------------------------------------------------------- rate limiting
+def manifest_stamps():
+    """Request times recorded in the committed manifest (survives a fresh clone)."""
+    out = []
+    if os.path.exists(MANIFEST):
+        for line in open(MANIFEST).read().splitlines()[1:]:
+            p = line.split("\t")
+            if len(p) >= 2:
+                try:
+                    out.append(datetime.strptime(p[1], "%Y-%m-%dT%H:%M:%SZ")
+                               .replace(tzinfo=timezone.utc).timestamp())
+                except ValueError:
+                    pass
+    return out
+
+
 def read_log():
+    """Recent request times: the local log, or the manifest if that knows more.
+
+    The local log also counts robots.txt requests; the manifest is committed,
+    so the caps still hold if the local log is lost (for example a fresh clone).
+    """
     try:
-        return [float(x) for x in open(LOG).read().split()]
-    except FileNotFoundError:
-        return []
+        local = [float(x) for x in open(LOG).read().split()]
+    except (FileNotFoundError, ValueError):
+        local = []
+    t = time.time()
+    recent_local = [s for s in local if t - s < 86400]
+    recent_manifest = [s for s in manifest_stamps() if t - s < 86400]
+    return recent_local if len(recent_local) >= len(recent_manifest) else recent_manifest
 
 
 def wait_turn():
@@ -92,7 +116,7 @@ def wait_turn():
     try:
         last = float(open(LAST).read().strip())
     except (FileNotFoundError, ValueError):
-        last = 0
+        last = max(manifest_stamps(), default=0)
     gap = DELAY + 0.5 - (time.time() - last)
     if gap > 0:
         time.sleep(gap)
