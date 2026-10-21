@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Theming for Drupal is not actually as hard as you may think. Certainly there are more advanced areas of theming possible with Drupal, which" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily" />
+<link rel="shortlink" href="https://www.drupal.org/node/313510" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily" />
+<meta property="og:title" content="Convert any website layout or template into a Drupal theme - easily!" />
+<meta property="og:description" content="Theming for Drupal is not actually as hard as you may think. Certainly there are more advanced areas of theming possible with Drupal, which may or may not be necessary depending on the needs of your site or whether there are subtle defaults which you wish to change (and which you can learn about if and when they become necessary for your site). Creating the &quot;overall theme&quot; for your site though is very simple." />
+<meta property="og:updated_time" content="2018-07-11T20:48:02+00:00" />
+<meta property="article:published_time" content="2008-09-25T19:45:41+00:00" />
+<meta property="article:modified_time" content="2018-07-11T20:48:02+00:00" />
+  <title>Convert any website layout or template into a Drupal theme - easily! | Theming HowTos | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-313510 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2797209" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-o2yqgWWfrMLOxu4MxtnRztBxFTrb8r2rIWf9hPfLWY0" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/313510" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/313510" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-xRJrAJv7gNGt51MfMycu-1CBiBmP9QmQJgWfOEwHE4A" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/theming">Theming Drupal 7</a></span><span><a href="/docs/7/theming/howto">Theming HowTos</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-313510">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#s-starting-your-page" class="toc-link toc-link-invalid-id active">Starting your page</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#s-the-head-section-of-your-site" class="toc-link toc-link-invalid-id active">The &lt;head&gt; section of your site</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#s-the-side-bars-or-columns-of-your-layout" class="toc-link toc-link-invalid-id active">The side bars or columns of your layout</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#s-menu-system-navigation" class="toc-link toc-link-invalid-id active">Menu system / navigation</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#s-the-main-dynamic-content-of-the-page" class="toc-link toc-link-invalid-id active">The main &quot;dynamic&quot; content of the page</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#s-footer-add-footer-and-footer-message" class="toc-link toc-link-invalid-id active">Footer: Add footer and footer message</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#s-add-a-final-tag-at-the-bottom-of-your-theme" class="toc-link toc-link-invalid-id active">Add a final tag at the bottom of your theme</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#info-files" class="toc-link active">For Drupal 6 and 7: Create a YourThemeName.info file</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#theming-resources" class="toc-link active">Learning more about Drupal theming</a></li>
+<li class="anchor-list__item h2-tag last"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily#framework-themes" class="toc-link active">Framework / Base / Starter themes</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="theming-howtos" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/theming/howto">Theming HowTos</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/theming/howto/change-the-favicon">Change the favicon</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/clearing-floats-with-classclearfix">Clearing floats with class=&quot;clear-block&quot;</a></li>
+<li class="leaf active-trail"><a href="/docs/7/theming/howto/convert-any-website-layout-or-template-into-a-drupal-theme-easily" class="active-trail active">Convert any website layout or template into a Drupal theme - easily!</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/create-a-views-event-list-grouped-by-month">Create a Views event list grouped by month</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/create-a-new-custom-theme-with-css-alone">Create a new custom theme with CSS alone</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/customize-drupal-user-profiles-with-civicrm-contact-fields">Customize Drupal User Profiles with CiviCRM Contact Fields</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/customize-the-user-edit-page-in-drupal-7-an-example">Customize the User Edit page in Drupal 7 - an example</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/customize-the-front-page-template">Customize the front page template</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/customizing-core-andor-contributed-themes">Customizing core and/or contributed themes</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/enable-submit-via-enter-key-on-ajax-forms">Enable submit via Enter key on Ajax forms</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/how-to-edit-alt-tag-on-your-site-logo">How to edit ALT tag on your site logo</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/overriding-theme-templates-in-drupal-7">Overriding Theme Templates in Drupal 6 and 7</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/put-an-html-non-breaking-space-%C2%A0-in-menu-items-titles">Put an HTML non breaking space (&amp;nbsp;) in menu items titles</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/rounded-corners-in-drupal-7-jquery-corner">Rounded Corners in Drupal 7 (jquery corner)</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/show-a-block-depending-on-node-type-and-node-id">Show a block depending on node type and node id</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/static-and-dynamic-thumbnails-for-facebook">Static and Dynamic Thumbnails for Facebook</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto/style-a-horizontal-login-block-in-the-footer">Style a horizontal login block in the footer</a></li>
+<li class="last leaf"><a href="/docs/7/theming/howto/theming-web-form">Theming Web-Form</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Convert any website layout or template into a Drupal theme - easily!</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/313510/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    11 July 2018  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Theming for Drupal is not actually as hard as you may think. Certainly there are more advanced areas of theming possible with Drupal, which may or may not be necessary depending on the needs of your site or whether there are subtle defaults which you wish to change (and which you can learn about if and when they become necessary for your site). Creating the "overall theme" for your site though is very simple.</p>
+<p>A Drupal theme is nothing more than a standard website layout, with a few bits of PHP code added in certain places, which you can simply copy/paste into place in order to call up Drupal's "dynamic" content and features in those spots.</p>
+<p>If you learn better visually, videos are available which cover much of the same information that will be illustrated here: <a href="http://acquia.com/community/resources/acquia-tv/tips-and-tricks-drupal-theming-90-minute-tutorial" rel="nofollow">Acquia Webinar</a>.</p>
+<p><strong>Contributed/downloaded themes are more complex than "your" theme needs to be</strong></p>
+<p>You may have looked at various pre-made themes that either come with Drupal core or are <a href="http://drupal.org/project/Themes" rel="nofollow">available for download</a>, and sighed with frustration upon seeing their code. To some, the code looks very confusing.</p>
+<p>Keep in mind that those themes have been created to address the needs of many people. The themes must be able to handle all kinds of scenarios, which means they have been designed to allow you to dynamically add various columns and other layout elements, and to support custom theming for features and modules which you might not even need. These themes usually include a large amount of PHP code that essentially says, <em>"If this setting is true, then show this part this way, or else show that."</em> This makes the theme very flexible, but also very complicated.</p>
+<p>However, your theme doesn't need to work for everyone. It only needs to do the things your site requires and nothing more. All that you need are a few bits of PHP, which you can simply copy and paste into your own HTML template. These PHP snippets tell Drupal to load its dynamic content in those spots.</p>
+<p>You might also find it useful to have a look at Drupal's "most basic" core template files (those used when a theme doesn't provide any alternative template files to override them). To view these basic templates, look in the <em>/modules/system</em> folder of your Drupal installation (in particular, look at <em>page.tpl.php</em> and <em>node.tpl.php</em>).</p>
+<p><strong>Just a few simple &amp; basic elements make up a Drupal theme</strong></p>
+<p>The "main" template file in Drupal is called <em>page.tpl.php</em>. Make a copy of your website layout/template and call it <em>page.tpl.php</em>. Then, simply paste the following bits of code into your layout, in the locations noted (all the code mentioned in this lesson goes in the <em>page.tpl.php</em> file).</p>
+<h2 id="s-starting-your-page"><a class="toc-anchor" title="Permalink to this headline" href="#s-starting-your-page"></a>Starting your page</h2>
+<p><strong>If you're using Drupal 5:</strong></p>
+<pre>
+<code class="language-php">&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="&lt;?php print $language ?&gt;" xml:lang="&lt;?php print $language ?&gt;"&gt;
+</code></pre><p><strong>If you're using Drupal 6:</strong></p>
+<pre>
+<code class="language-php">&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="&lt;?php print $language-&gt;language ?&gt;" xml:lang="&lt;?php print $language-&gt;language ?&gt;" dir="&lt;?php print $language-&gt;dir ?&gt;"&gt;
+</code></pre><p><strong>If you're using Drupal 7:</strong><br />
+If you are using Drupal 7, your page.tpl.php file starts after the &lt;body&gt; tag and ends before the &lt;/body&gt; tag, so you do not need to worry about the doctype, html, or head tags. If you'd like to override these, copy the html.tpl.php file from your modules/system folder and make whatever changes you'd like.</p>
+<p>This is the recommended way to start your page, rather than just using &lt;html&gt;. The extra definitions here aid in proper validation and language handling of the resulting HTML markup.</p>
+<h2 id="s-the-head-section-of-your-site"><a class="toc-anchor" title="Permalink to this headline" href="#s-the-head-section-of-your-site"></a>The &lt;head&gt; section of your site</h2>
+<pre>
+<code class="language-php">&lt;head&gt;
+  &lt;title&gt;&lt;?php print $head_title; ?&gt;&lt;/title&gt;
+  &lt;?php print $head; ?&gt;
+  &lt;?php print $styles; ?&gt;
+  &lt;?php print $scripts; ?&gt;
+&lt;/head&gt;
+</code></pre><h2 id="s-the-side-bars-or-columns-of-your-layout"><a class="toc-anchor" title="Permalink to this headline" href="#s-the-side-bars-or-columns-of-your-layout"></a>The side bars or columns of your layout</h2>
+<p>Most websites have a left and/or right column next to the "main" larger content area. These side bars usually contain various features and information (for instance a log-in form, navigation, recent comments, etc). In Drupal these features/information are called "Blocks", and you can customize where they show up on your page by going to <strong>Administer &gt; Site building &gt; Blocks</strong> <em>(admin/build/block)</em>. In order for Drupal to know <em>where</em> to put the Blocks though, you need to add some "placeholders" to your theme (Drupal calls these placeholders "Regions"). There are more of these placeholders available (and you can create your own custom ones too) but it's important to add the side bar one(s) at first, since the admin menu appears in them. Add the below Region(s) to your side bar:</p>
+<p><strong>If you're using Drupal 5:</strong></p>
+<pre>
+<code class="language-php">&lt;?php print $sidebar_left; ?&gt;
+
+...and/or...
+
+&lt;?php print $sidebar_right; ?&gt;
+</code></pre><p><strong>If you're using Drupal 6:</strong></p>
+<pre>
+<code class="language-php">&lt;?php print $left; ?&gt;
+
+...and/or...
+
+&lt;?php print $right; ?&gt;
+</code></pre><p><strong>If you're using Drupal 7:</strong></p>
+<pre>
+<code class="language-php">&lt;?php print render ($page['sidebar_first']); ?&gt;
+
+...and/or...
+
+&lt;?php print render ($page['sidebar_second']); ?&gt;
+</code></pre><h2 id="s-menu-system-navigation"><a class="toc-anchor" title="Permalink to this headline" href="#s-menu-system-navigation"></a>Menu system / navigation</h2>
+<p>Drupal's default menu for your site's content is called <strong>Primary Links</strong>. There is also a <strong>Secondary Links</strong> menu which can show related sub-pages under the Primary menu. When stripped of all images and styles, a menu in Drupal is nothing more than a nested unordered list, in plain HTML, with links for each list item. You can use CSS to style a menu in any way you want; changing how it looks, whether it is horizontal (like tabs) or vertical, etc.</p>
+<p>To make the Primary and Secondary Links menus appear on your site, paste the following into either the top area of your theme (for instance, if your menu is going to be styled as tabs or buttons), or in the sidebar area (for instance if you plan to have your menu show vertically in the sidebar).</p>
+<p><strong>Simple way:</strong></p>
+<p>Here's the simple version to use, if you're already sure you want to use "both" Primary and Secondary Links (or feel free to delete the Secondary Links portion if you don't need it):</p>
+<pre>
+<code class="language-php">&lt;div id="primary"&gt;
+  &lt;?php print theme('links', $primary_links); ?&gt;
+&lt;/div&gt; &lt;!-- /#primary --&gt;
+
+&lt;div id="secondary"&gt;
+  &lt;?php print theme('links', $secondary_links); ?&gt;
+&lt;/div&gt; &lt;!-- /#secondary --&gt;
+</code></pre><p><strong>More flexible way:</strong></p>
+<p>If you're not sure that you will have both Primary and Secondary Links, you could use the following code instead (it's the same, but just does a "check" to see if the menus are enabled, and only shows them if they are):</p>
+<pre>
+<code class="language-php">&lt;?php if ($primary_links): ?&gt;
+  &lt;div id="primary"&gt;
+    &lt;?php print theme('links', $primary_links); ?&gt;
+  &lt;/div&gt; &lt;!-- /#primary --&gt;
+&lt;?php endif; ?&gt;
+
+&lt;?php if ($secondary_links): ?&gt;
+  &lt;div id="secondary"&gt;
+    &lt;?php print theme('links', $secondary_links); ?&gt;
+  &lt;/div&gt; &lt;!-- /#secondary --&gt;
+&lt;?php endif; ?&gt;
+</code></pre><p><strong>For Drupal 7:</strong></p>
+<p>Primary and secondary links are now "main" and "secondary" menu.</p>
+<pre>
+<code class="language-php">&lt;div id="menu"&gt;
+    &lt;?php if (isset($secondary_menu)) { ?&gt;&lt;?php print theme('links', $secondary_menu, array('class' =&gt; 'links', 'id' =&gt; 'subnavlist')); ?&gt;&lt;?php } ?&gt;
+    &lt;?php if (isset($main_menu)) { ?&gt;&lt;?php print theme('links', $main_menu, array('class' =&gt; 'links', 'id' =&gt; 'navlist')) ?&gt;&lt;?php } ?&gt;
+  &lt;/div&gt;
+</code></pre><p>Note: the above code might be wrong. Try this:</p>
+<pre>
+<code class="language-php">print theme('links__system_main_menu', array('links' =&gt; $main_menu, 'attributes' =&gt; array('id' =&gt; 'main-menu', 'class' =&gt; array('links', 'inline', 'clearfix'))));
+</code></pre><p>One more method for D7 that seems to work:</p>
+<pre>
+<code class="language-php">&lt;?php print drupal_render(menu_tree('main-menu')); ?&gt;
+</code></pre><p>For Drupal 7 you also need to enable the main menu and secondary menu features in your theme's info file:</p>
+<pre>
+<code class="language-php">features[] = main_menu
+features[] = secondary_menu
+</code></pre><h2 id="s-the-main-dynamic-content-of-the-page"><a class="toc-anchor" title="Permalink to this headline" href="#s-the-main-dynamic-content-of-the-page"></a>The main "dynamic" content of the page</h2>
+<p>At this point, you've added all of the "framework" of your site's layout which surrounds every page, and is generally similar or the same throughout the entire site. Now though, it's time to include the area where actual <strong>Content</strong> will be displayed in the template (different content depending on the page being viewed, of course).</p>
+<p>Simply locate the spot in your template where the main content is to be displayed (usually the center of the page, after the header and between any sidebars), and paste the below code in that spot (if you'd like to re-order things feel free, but otherwise you can simply paste this as-is):</p>
+<pre>
+<code class="language-php">&lt;?php print $breadcrumb; ?&gt;
+&lt;?php if ($mission): ?&gt;&lt;div id="mission"&gt;&lt;?php print $mission; ?&gt;&lt;/div&gt;&lt;?php endif; ?&gt;
+
+&lt;div id="content"&gt;
+&lt;?php if ($title): ?&gt;&lt;h1 class="title"&gt;&lt;?php print $title; ?&gt;&lt;/h1&gt;&lt;?php endif; ?&gt;
+&lt;?php if ($tabs): ?&gt;&lt;div class="tabs"&gt;&lt;?php print $tabs; ?&gt;&lt;/div&gt;&lt;?php endif; ?&gt;
+&lt;?php if ($show_messages): print $messages; endif; ?&gt;
+&lt;?php print $help; ?&gt;
+
+&lt;?php print $content; ?&gt;
+&lt;/div&gt;
+</code></pre><p><strong>For Drupal 7:</strong></p>
+<pre>
+<code class="language-php">&lt;?php if ($breadcrumb || $title|| $messages || $tabs || $action_links): ?&gt;
+&lt;div id="content-header"&gt;
+
+            &lt;?php print $breadcrumb; ?&gt;
+
+            &lt;?php if ($page['highlight']): ?&gt;
+              &lt;div id="highlight"&gt;&lt;?php print render($page['highlight']) ?&gt;&lt;/div&gt;
+            &lt;?php endif; ?&gt;
+
+            &lt;?php if ($title): ?&gt;
+              &lt;h1 class="title"&gt;&lt;?php print $title; ?&gt;&lt;/h1&gt;
+            &lt;?php endif; ?&gt;
+
+            &lt;?php print $messages; ?&gt;
+            &lt;?php print render($page['help']); ?&gt;
+
+            &lt;?php if ($tabs): ?&gt;
+              &lt;div class="tabs"&gt;&lt;?php print render($tabs); ?&gt;&lt;/div&gt;
+            &lt;?php endif; ?&gt;
+
+            &lt;?php if ($action_links): ?&gt;
+              &lt;ul class="action-links"&gt;&lt;?php print render($action_links); ?&gt;&lt;/ul&gt;
+            &lt;?php endif; ?&gt;
+            
+          &lt;/div&gt; &lt;!-- /#content-header --&gt;
+        &lt;?php endif; ?&gt;
+
+        &lt;div id="content-area"&gt;
+          &lt;?php print render($page['content']) ?&gt;
+        &lt;/div&gt;
+</code></pre><h2 id="s-footer-add-footer-and-footer-message"><a class="toc-anchor" title="Permalink to this headline" href="#s-footer-add-footer-and-footer-message"></a>Footer: Add footer and footer message</h2>
+<p>To add a footer region and the footer message you have set in the administration backend you can use:</p>
+<pre>
+<code class="language-php">&lt;?php if ($footer_message || $footer) : ?&gt;
+&lt;div id="footer-message"&gt;
+    &lt;?php print $footer_message . $footer;?&gt;
+&lt;/div&gt;
+&lt;?php endif; ?&gt;
+</code></pre><p><strong>For Drupal 7:</strong></p>
+<pre>
+<code class="language-php">&lt;?php if ($page['footer']): ?&gt;
+    &lt;div id="footer"&gt;
+      &lt;?php print render($page['footer']); ?&gt;
+    &lt;/div&gt; &lt;!-- /footer --&gt;
+  &lt;?php endif; ?&gt;
+</code></pre><h2 id="s-add-a-final-tag-at-the-bottom-of-your-theme"><a class="toc-anchor" title="Permalink to this headline" href="#s-add-a-final-tag-at-the-bottom-of-your-theme"></a>Add a final tag at the bottom of your theme</h2>
+<p>Paste the following at the end of your <em>page.tpl.php</em> file. You <em>must</em> have this tag at the bottom, which will dynamically include any scripts that need to appear at the bottom of the page, as well as close up any loose ends and tags that might have been left open:</p>
+<pre>
+<code class="language-php">&lt;?php print $closure; ?&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p><strong>For Drupal 7:</strong><br />
+Good news! You don't need to worry about adding this tag to your D7 theme. It's all been taken care of.</p>
+<h2 id="info-files"><a class="toc-anchor" title="Permalink to this headline" href="#info-files"></a>For Drupal 6 and 7: Create a YourThemeName.info file</h2>
+<p>Lastly, in Drupal 6 and 7, the one final element is to create a <em>YourThemeName.info</em> file (where <em>YourThemeName</em> is the name of your theme, with no spaces). Simply make a blank file and paste the following code into it, customize it with the appropriate name/description, and save it in the same directory along with the rest of your theme's template files:</p>
+<pre>
+<code class="language-php">name = YourThemeName
+description = Description of YourTheme
+core = 6.x
+engine = phptemplate
+stylesheets[all][] = style.css
+regions[left] = Left sidebar
+regions[right] = Right sidebar
+regions[content] = Content
+regions[header] = Header
+regions[footer] = Footer
+</code></pre><p><strong>For Drupal 7:</strong></p>
+<pre>
+<code class="language-php">name = System
+description = Handles general site configuration for administrators.
+package = Core
+version = VERSION
+core = 7.x
+stylesheets[all][] = styles.css
+regions[page_top] = Page top
+regions[header] = Header
+regions[highlight] = Highlight
+regions[help] = Help
+regions[content] = Content
+regions[sidebar_first] = First sidebar
+regions[sidebar_second] = Second sidebar
+regions[footer] = Footer
+regions[page_bottom] = Page bottom
+</code></pre><p>I think the page_top and page_bottom regions are required by the default html.tpl.php, so leave them in there.</p>
+<p>In Drupal 7, regions are printed out a bit differently, as noted above, but here are some examples:</p>
+<pre>
+<code class="language-php">&lt;?php if ($page['header']): ?&gt;
+      &lt;div id="header-region"&gt;
+        &lt;?php print render($page['header']); ?&gt;
+      &lt;/div&gt;
+&lt;?php endif; ?&gt;
+
+...
+
+&lt;?php if ($page['highlight']): ?&gt;
+              &lt;div id="highlight"&gt;&lt;?php print render($page['highlight']) ?&gt;&lt;/div&gt;
+&lt;?php endif; ?&gt;
+
+...
+
+&lt;?php print render($page['sidebar_first']); ?&gt;
+
+...
+
+etc.
+
+</code></pre><p>The "regions" portion after <em>style.css</em> includes all of Drupal's "standard" regions, and is recommended so that you can easily remove regions you don't want to use, or add custom regions. If you want to add custom regions, you must manually include any of the default ones you wish to keep as well or the defaults will disappear from your theme (simply copy/paste them from this page or another theme). If you want to add a custom region, simply copy one of the <em>region</em> lines and rename it.</p>
+<p><strong>That's all - Paste the above bits of code into ANY site layout or template, and you have a basic, functional Drupal theme.</strong></p>
+<h2 id="theming-resources"><a class="toc-anchor" title="Permalink to this headline" href="#theming-resources"></a>Learning more about Drupal theming</h2>
+<p>There are quite a few more elements you could use in your theme if you want to. Here are a number of excellent resources for learning the more detailed aspects of theming in Drupal:</p>
+<ul>
+<li><a href="http://drupal.org/node/171194" rel="nofollow">Anatomy of a Drupal theme</a></li>
+<li>Full listing of available <a href="http://drupal.org/node/11812" rel="nofollow">Drupal 5 theme variables</a> to choose from for page.tpl.php.</li>
+<li>Full listing of available <a href="http://api.drupal.org/api/file/modules/system/page.tpl.php/6" rel="nofollow">Drupal 6 theme variables</a> to choose from for page.tpl.php.</li>
+<li><a href="http://neemtree.com.au/drupal-theming-designers" rel="nofollow">Drupal theming for designers</a> - this is a fantastic article, including screenshots and diagrams to help you clearly understand how Drupal's theming system works.</li>
+<li><a href="https://www.drupal.org/docs/7/theming" rel="nofollow">Drupal 7 Theme Guide</a>, <a href="https://www.drupal.org/docs/8/theming" rel="nofollow">Drupal 8 Theme Guide</a> - Official theming guides on Drupal.org</li>
+</ul>
+<h2 id="framework-themes"><a class="toc-anchor" title="Permalink to this headline" href="#framework-themes"></a>Framework / Base / Starter themes</h2>
+<p>There are a variety of <em>Framework</em> themes (also known as <em>Base</em> or <em>Starter</em> themes), the purpose of which is to serve as a "blank slate" Drupal theme which you can build your own custom theme on top of. Many of these themes are stripped of all unnecessary styling so that they are just the core of a layout, paired with all the basic <em>tpl.php</em> template files for Drupal without any special customizations. Many also include a variety of helpful adjustments in their template.php files to add in commonly sought fixes and tweaks, so you'll have them before you even realize you need them. Several also add "extra" functionality that does not come by default in Drupal.</p>
+<p>You can use these themes as a clean and simple basis for your own custom theme, or if you prefer, study them (and copy/paste from them) to see how to get Drupal's functionality into your own completely custom theme from scratch. Since these themes are clean and very lightly styled, it will be easier to work with versus other themes that are already highly customized.</p>
+<p>Here is a list of many framework themes (though there may be more):</p>
+<ul>
+<li><a href="http://drupal.org/project/adaptivetheme" rel="nofollow">Adaptive Theme</a></li>
+<li><a href="http://drupal.org/project/atck" rel="nofollow">Advanced Theme Construction Kit</a></li>
+<li><a href="http://drupal.org/project/basic" rel="nofollow">Basic</a></li>
+<li><a href="http://drupal.org/project/beginningW2" rel="nofollow">beginningW2</a></li>
+<li><a href="http://drupal.org/project/blueprint" rel="nofollow">Blueprint</a></li>
+<li><a href="http://drupal.org/project/bootstrap" rel="nofollow">Bootstrap</a></li>
+<li><a href="http://drupal.org/project/circle" rel="nofollow">Circle</a></li>
+<li><a href="http://drupal.org/project/clean" rel="nofollow">Clean</a></li>
+<li><a href="http://drupal.org/project/framework" rel="nofollow">Framework</a></li>
+<li><a href="http://drupal.org/project/fusion" rel="nofollow">Fusion</a></li>
+<li><a href="http://drupal.org/project/genesis" rel="nofollow">Genesis</a></li>
+<li><a href="http://drupal.org/project/zen" rel="nofollow">Zen</a></li>
+</ul>
+<p><strong>Additional note:</strong></p>
+<p>When converting an existing webpage that uses HTML references to conventional images, the <code class="language-php"> &lt;img src="myimage.jpg"/&gt; </code> references must be changed to avoid Drupal's tendency to append "node/" to the front of relative paths.</p>
+<p>Without any change, the new theme would change a <code class="language-php"> &lt;img src="myimage.jpg"/&gt; </code> reference into a <code class="language-php"> &lt;img src="node/myimage.jpg"/&gt; </code> reference.</p>
+<p>Copy all of your original template's images into an images folder within the new theme's folder, and add the code <code class="language-php">&lt;?php print $base_path ?&gt;</code> to the front of the path to eliminate the "node/" appendage.</p>
+<p>So an original HTML reference in the page being converted <code class="language-php"> &lt;img src="myimage.jpg"/&gt; </code> would now become <code class="language-php"> &lt;img src="&lt;?php print base_path() . path_to_theme(); ?&gt;/images/myimage.jpg"/&gt; </code> where /images/ is a folder that you have created in the new theme for your new theme's images.</p>
+<p>Thanks to idWorld for this solution</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-5dc538ac7d207b5b8674966864157b8d">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/313510/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/313510/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28313510%29%20Convert%20any%20website%20layout%20or%20template%20into%20a%20Drupal%20theme%20-%20easily%21">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"NfNAKAE5A4Dnx6RBW3ueM-6ut-4mzMKrcb6_8mLsDe8"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/theming\/howto\/convert-any-website-layout-or-template-into-a-drupal-theme-easily":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2797209"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

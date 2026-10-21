@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Skip navigation links are one of the easiest ways to quickly improve the accessibility of your site. Skip links allow site visitors to jump" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation" />
+<link rel="shortlink" href="https://www.drupal.org/node/467976" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation" />
+<meta property="og:title" content="Providing a way to skip navigation" />
+<meta property="og:description" content="Skip navigation links are one of the easiest ways to quickly improve the accessibility of your site. Skip links allow site visitors to jump or &quot;skip&quot; over repetitive page elements and are most useful to users confined to using their keyboard for navigating web pages. There are a couple of important points to know when implementing skip navigation: Skip links should be the first thing on the page, right below the body element. You can use more than one. Do not use display: none to hide the link. Use the pseudo :focus and :active classes to highlight links for tabbed navigation." />
+<meta property="og:updated_time" content="2017-12-28T08:19:30+00:00" />
+<meta property="article:published_time" content="2009-05-20T12:14:19+00:00" />
+<meta property="article:modified_time" content="2017-12-28T08:19:30+00:00" />
+  <title>Providing a way to skip navigation | Creating accessible themes | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-467976 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2797175" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-cxai2U64D4LSSqcuIAr_kM9AQ40kLdDQidwSzD7gP84" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/467976" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/467976" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-iT63okmQSjLURWbxNQpfkk1v_PzLNh2bhKY6CuNvokg" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/theming">Theming Drupal 7</a></span><span><a href="/docs/7/theming/creating-accessible-themes">Creating accessible themes</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-467976">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation#s-how-to-code-skip-navigation" class="toc-link toc-link-invalid-id active">How to code skip navigation</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation#s-static-skip-links" class="toc-link toc-link-invalid-id active">Static skip links</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation#s-dynamic-skip-links" class="toc-link toc-link-invalid-id active">Dynamic skip links</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation#s-hiding-skip-navigation" class="toc-link toc-link-invalid-id active">Hiding skip navigation</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation#s-hiding-the-skip-navigation-completely" class="toc-link toc-link-invalid-id active">Hiding the skip navigation completely</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation#s-hide-skip-links-until-they-come-into-focus" class="toc-link toc-link-invalid-id active">Hide skip links until they come into focus</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="creating-accessible-themes" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/theming/creating-accessible-themes">Creating accessible themes</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/creating-accessible-themes/accessibility-principles">Accessibility principles</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/building-accessible-forms">Building accessible forms</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/contributed-modules-to-help-with-accessibility">Contributed modules to help with accessibility</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/creating-accessible-site-and-page-navigation">Creating accessible site and page navigation</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/creating-accessible-structure-and-markup">Creating accessible structure and markup</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/getting-started-with-accessibility">Getting started with accessibility</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/hide-content-properly">Hide content properly</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/improving-readability-with-fonts-and-typography">Improving readability with fonts and typography</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/maintaining-accessibility-in-rich-internet-applications-and">Maintaining accessibility in rich Internet applications and Javascript/Ajax features</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/managing-images-and-media-for-accessibility">Managing images and media for accessibility</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/providing-useful-alternative-text-for-images">Providing Useful Alternative Text for Images</a></li>
+<li class="leaf active-trail"><a href="/docs/7/creating-accessible-themes/providing-a-way-to-skip-navigation" class="active-trail active">Providing a way to skip navigation</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/specifying-colors-and-contrast-for-accessibility">Specifying colors and contrast for accessibility</a></li>
+<li class="leaf"><a href="/docs/7/creating-accessible-themes/tools-for-validating-accessibility">Tools for validating accessibility</a></li>
+<li class="last leaf"><a href="/docs/7/creating-accessible-themes/using-headings-to-improve-accessibility">Using headings to improve accessibility</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Providing a way to skip navigation</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/467976/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    28 December 2017  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Skip navigation links are one of the easiest ways to quickly improve the accessibility of your site. Skip links allow site visitors to jump or "skip" over repetitive page elements and are most useful to users confined to using their keyboard for navigating web pages.</p>
+<p>There are a couple of important points to know when implementing skip navigation:</p>
+<ul>
+<li>Skip links should be the first thing on the page, right below the body element.</li>
+<li>You can use more than one.</li>
+<li>Do not use <code class="language-php">display: none</code> to hide the link.</li>
+<li>Use the pseudo :focus and :active classes to highlight links for tabbed navigation.</li>
+</ul>
+<!--break--><h2 id="s-how-to-code-skip-navigation"><a class="toc-anchor" title="Permalink to this headline" href="#s-how-to-code-skip-navigation"></a>How to code skip navigation</h2>
+<p>Depending on your site you will need to consider which method is best suited.</p>
+<p>For example, some sites will not show elements such as menus and search forms on every page, therefore you do not want redundant skip links to be included in those pages. If your site does this you will need to consider one of the more advanced techniques detailed further on in this article under <em>Dynamic Skip Links</em>.</p>
+<p>If you just want to include one "Skip to main content," link then a simple static link will do the job.</p>
+<h3 id="s-static-skip-links"><a class="toc-anchor" title="Permalink to this headline" href="#s-static-skip-links"></a>Static skip links</h3>
+<p>Skip links are really just <a href="http://www.w3schools.com/HTML/html_links.asp" rel="nofollow">named anchor links</a>. There are two parts to a named anchor.</p>
+<ol>
+<li>A normal link that uses the <code class="language-php">href</code> attribute with the <code class="language-php">#</code> (hash) symbol.</li>
+<li>A hidden anchor that uses the <code class="language-php">name</code> attribute.</li>
+</ol>
+<p>The code examples use Drupal's <a href="http://api.drupal.org/api/function/t" rel="nofollow">t() function</a> to allow for translation of the link text.</p>
+<p>Note that the <code class="language-php">name</code> attribute is the same as the <code class="language-php">href</code> attribute, only without the # (hash) symbol:</p>
+<p>Place the following code in your page.tpl.php file (html.tpl.php file in Drupal 7).<br />
+This is the actual link. Place this at the top of your template file, just below the body element:</p>
+<pre class="codeblock"><code class="language-php">&lt;div id="skip-nav"&gt;
+  &lt;a href="#main-content"&gt;&lt;?php print t('Skip to main content'); ?&gt;&lt;/a&gt;
+&lt;/div&gt;
+</code></pre><p>Next, place the hidden anchor where you want the skip link to jump to. This is usually to the first H1 heading on the page (being the main heading for the page's content):</p>
+<pre class="codeblock"><code class="language-php">&lt;a name="main-content" tabindex="-1"&gt;&lt;/a&gt;
+&lt;h1&gt;Title&lt;/h1&gt;
+</code></pre><p>
+Note the <code class="language-php">tabindex="-1"</code> attribute - this is needed to make the skip-link work in WebKit-based browsers such as Chrome.</p>
+<p>You can use more than one link, for example, if you want to add skip links to the navigation menus or the search form:</p>
+<pre class="codeblock"><code class="language-php">&lt;ul id="skip-nav"&gt;
+  &lt;li&gt;&lt;a href="#main-content"&gt;&lt;?php print t('Skip to main content'); ?&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#nav"&gt;&lt;?php print t('Skip to navigation'); ?&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href="#search"&gt;&lt;?php print t('Skip to search'); ?&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;a name="main-content" tabindex="-1"&gt;&lt;/a&gt;
+&lt;a name="nav" tabindex="-1"&gt;&lt;/a&gt;
+&lt;a name="search" tabindex="-1"&gt;&lt;/a&gt;
+</code></pre><h3 id="s-dynamic-skip-links"><a class="toc-anchor" title="Permalink to this headline" href="#s-dynamic-skip-links"></a>Dynamic skip links</h3>
+<p>A more sophisticated approach is to use PHP to conditionally show skip links depending on what elements are showing in your page. For example, if your main navigation is at the bottom of the source order you may want to include a "Skip to navigation" link, however if that navigation does not show on every page, then you do not want to include a link that does nothing and potentially confuses users.</p>
+<p>In this example we are going to use conditional statements to show "Skip to navigation" and "Skip to search". The dynamic skip links will only show if their respective elements (primary menu or search box) are enabled. We'll also include a static "Skip to main content" link for completeness.</p>
+<p><strong>Tip:</strong> Instead of using the <code class="language-php">name</code> attribute, we will use the <code class="language-php">id</code> attribute on the wrapper divs to link to. This is the more modern method and is supported by all major browsers.</p>
+<p>Note that in Drupal 7 the <a href="/update/theme/6/7#menus" rel="nofollow">$primary_links variable has been renamed to $main_menu</a>. Additionally the <a href="/update/theme/6/7#search_box" rel="nofollow">$search_box variable has been removed from Drupal 7</a> and you will need to use #search-block-form (the ID on the search blocks form). </p>
+<p>This example is for Drupal 6.</p>
+<pre class="codeblock"><code class="language-php">// Conditionally print skip links:
+&lt;ul id="skip-nav"&gt;
+  &lt;!-- assumes id="main-content" on the content wrapper --&gt;
+  &lt;li&gt;&lt;a href="#main-content"&gt;&lt;?php print t('Skip to main content'); ?&gt;&lt;/a&gt;&lt;/li&gt;
+
+  &lt;?php if ($primary_links): ?&gt;
+    &lt;!-- assumes id="nav" on the primary links wrapper --&gt;
+    &lt;li&gt;&lt;a href="#nav"&gt;&lt;?php print t('Skip to navigation'); ?&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;?php endif; ?&gt;
+
+  &lt;?php if ($search_box): ?&gt;
+    &lt;!-- assumes id="search-box" on the search box wrapper --&gt;
+    &lt;li&gt;&lt;a href="#search-box"&gt;&lt;?php print t('Skip to search'); ?&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;?php endif; ?&gt;
+&lt;/ul&gt;
+</code></pre><p>For these to work you must be sure the id attributes are included in the respective elements when they print. For example, the code in page.tpl.php would be along the lines of:</p>
+<pre class="codeblock"><code class="language-php">&lt;?php if ($primary_links): ?&gt;
+  &lt;div id="nav"&gt;
+     // print primary link here...
+  &lt;/div&gt;
+&lt;?php endif; ?&gt;
+
+&lt;?php if ($search_box): ?&gt;
+  &lt;div id="search-box"&gt;
+    &lt;?php print $search_box; ?&gt;
+  &lt;/div&gt;
+&lt;?php endif; ?&gt;
+
+&lt;div id="main-content"&gt;
+  // main content goes here...
+&lt;/div&gt;
+</code></pre><p>If you would like to study a theme that implements conditional skip navigation links, see the <a href="/project/flexible" rel="nofollow">Flexible</a> theme.</p>
+<h2 id="s-hiding-skip-navigation"><a class="toc-anchor" title="Permalink to this headline" href="#s-hiding-skip-navigation"></a>Hiding skip navigation</h2>
+<p>See also: <a href="/update/theme/6/7#element-hidden" rel="nofollow">Accessible Techniques for Hiding Content</a>.</p>
+<p><strong>Many sites prefer to hide the skip links from normal view. I would encourage you not to. Skip navigation is not just for screen reader users but also for those who cannot use a mouse for navigation.</strong></p>
+<p>Many disabled people can only use the keyboard and are thus forced to use repetitive tab keystrokes to navigate your pages. Skip links can help these visitors by allowing them to jump over repetitive page elements.</p>
+<p>If you really must hide the skip links you can either:</p>
+<ul>
+<li>Hide it completely</li>
+<li>Hide it until it comes into focus (when the user tabs onto it)</li>
+</ul>
+<h3 id="s-hiding-the-skip-navigation-completely"><a class="toc-anchor" title="Permalink to this headline" href="#s-hiding-the-skip-navigation-completely"></a>Hiding the skip navigation completely</h3>
+<p><strong>Never use <code class="language-php">display: none</code> in your CSS to hide skip links.</strong> This will hide it from screen readers!</p>
+<p>There are at least two accessibility friendly methods of hiding content—setting a height of 0 and hiding any overflow, and the other is to position the content off the screen using position absolute.</p>
+<p>You can include either of the following classes in your theme's CSS file and use them whenever you need an accessible way to hide content:</p>
+<pre class="codeblock"><code class="language-php">.invisible {
+  height: 0;
+  overflow: hidden;
+}
+
+.offscreen {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow:hidden;
+}
+
+// For example, in the HTML you would include the class like this:
+&lt;div id="skip-nav" class="invisible"&gt;
+  &lt;a href="#main-content"&gt;&lt;?php print t('Skip to main content'); ?&gt;&lt;/a&gt;
+&lt;/div&gt;
+</code></pre><p>
+Note that using the alternative technique of <code class="language-php">position: absolute; top: -1000px;</code> may cause the browser to scroll unexpectedly when the link comes into focus.</p>
+<h3 id="s-hide-skip-links-until-they-come-into-focus"><a class="toc-anchor" title="Permalink to this headline" href="#s-hide-skip-links-until-they-come-into-focus"></a>Hide skip links until they come into focus</h3>
+<p>This is the best method, because it preserves the focus for sighted keyboard users.</p>
+<p>You can achieve this by simple making the skip links the same color as the background, and then adding :focus and :active styles, so when the user tabs to the link it becomes highlighted. We need to use :active to support Internet Explorer 7. Note that :focus styles are not supported by all browsers.</p>
+<p>For example, let's imagine the background is black. We can set styles to reveal the link using the <a href="http://www.w3schools.com/CSS/pr_pseudo_focus.asp" rel="nofollow">pseudo :focus class</a>.</p>
+<pre class="codeblock"><code class="language-php">.reveal a:link {
+  color: black;
+}
+
+.reveal a:active,
+.reveal a:focus {
+  background: yellow;
+}
+
+// For example, in the HTML you would include the class like this:
+&lt;div id="skip-nav" class="reveal"&gt;
+  &lt;a href="#main-content"&gt;&lt;?php print t('Skip to main content'); ?&gt;&lt;/a&gt;
+&lt;/div&gt;
+</code></pre><p>
+See <a href="http://www.webstandards.org/" rel="nofollow">The Web Standards Project</a> website for an example of using :focus to reveal skip navigation links.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-074615fadf45d5a18ca7ad813c33a8ec">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/467976/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/467976/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28467976%29%20Providing%20a%20way%20to%20skip%20navigation">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"yWsqA1h48Jc60vf41E92Nf5RoRgB6QHYzhrnWXI4nKE"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/creating-accessible-themes\/providing-a-way-to-skip-navigation":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2797175"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
