@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Migrating Drupal site if you change hosts, or if you maintain separate development and live sites." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/backing-up-and-migrating-a-site/migrating-a-site" />
+<link rel="shortlink" href="https://www.drupal.org/node/776864" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/backing-up-and-migrating-a-site/migrating-a-site" />
+<meta property="og:title" content="Migrating a site" />
+<meta property="og:description" content="You need to migrate your Drupal site if you change hosts, or if you maintain separate development and live sites. This is an outline of the process – perhaps only a check list – but it includes some steps that are not well described elsewhere. You need to adjust these steps depending on the modules you use and your server environments. This procedure covers single sites. Multi-site migration (on Windows/Apache and on Linux ) is covered elsewhere. Before You Start Document any differences in your PHP installation on the two servers - Bugs, features, modules, configurations, versions." />
+<meta property="og:updated_time" content="2018-09-28T14:26:53+00:00" />
+<meta property="article:published_time" content="2010-04-20T21:21:00+00:00" />
+<meta property="article:modified_time" content="2018-09-28T14:26:53+00:00" />
+  <title>Migrating a site | Backing up and migrating a Drupal 7 site | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-776864 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2764175" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/backing-up-and-migrating-a-site/migrating-a-site" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-DHWukiph1dVCgy8bE1jzhZ5R2kFEQyAKp7VPfVzWNdM" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/776864" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/776864" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/backing-up-and-migrating-a-site/migrating-a-site" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-ftwlW18HkR_u7MvQ5BYKTrOeVknbt2MAMCvmn_StMrY" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/backing-up-and-migrating-a-drupal-7-site">Backing up and migrating a Drupal 7 site</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-776864">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h3-tag first"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-before-you-start" class="toc-link toc-link-invalid-id active">Before You Start</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-on-the-old-site" class="toc-link toc-link-invalid-id active">On the old site</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-in-between" class="toc-link toc-link-invalid-id active">In between</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-on-the-new-site" class="toc-link toc-link-invalid-id active">On the new site</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-troubleshooting" class="toc-link toc-link-invalid-id active">Troubleshooting</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-in-case-you-cannot-export-your-database" class="toc-link toc-link-invalid-id active">In case you cannot export your database</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-blank-page" class="toc-link toc-link-invalid-id active">Blank page</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-no-user-login" class="toc-link toc-link-invalid-id active">No user login</a></li>
+<li class="anchor-list__item h4-tag last"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site#s-error-messages" class="toc-link toc-link-invalid-id active">Error messages</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="backing-up-and-migrating-a-drupal-7-site" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/backing-up-and-migrating-a-drupal-7-site">Backing up and migrating a Drupal 7 site</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/backing-up-and-migrating-a-site/back-up-your-drupal-7-site-using-the-command-line">Back up your site using the command line</a></li>
+<li class="leaf"><a href="/docs/7/backing-up-and-migrating-a-site/backing-up-a-site">Backing up a site</a></li>
+<li class="leaf"><a href="/docs/7/backing-up-and-migrating-a-site/backing-up-your-site-gui">Backing up your site (GUI)</a></li>
+<li class="leaf active-trail"><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site" class="active-trail active">Migrating a site</a></li>
+<li class="leaf"><a href="/docs/7/backing-up-and-migrating-a-site/multisite-backup-script">Multisite Backup Script</a></li>
+<li class="last leaf"><a href="/docs/7/backing-up-and-migrating-a-site/restoring-a-database-backup-command-line">Restoring a database backup (command line)</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Migrating a site</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/776864/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    28 September 2018  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>You need to migrate your Drupal site if you change hosts, or if you maintain separate development and live sites. This is an outline of the process – perhaps only a check list – but it includes some steps that are not well described elsewhere. You need to adjust these steps depending on the modules you use and your server environments.</p>
+<!--break--><p>This procedure covers single sites. Multi-site migration (on <a href="http://drupal.org/node/547860" rel="nofollow">Windows/Apache</a> and on <a href="http://drupal.org/node/290768" rel="nofollow">Linux</a> ) is covered elsewhere.</p>
+<h3 id="s-before-you-start"><a class="toc-anchor" title="Permalink to this headline" href="#s-before-you-start"></a>Before You Start</h3>
+<p><strong>Document</strong> any differences in your PHP installation on the two servers - Bugs, features, modules, configurations, versions.<br />
+… and for MySQL<br />
+… and for Apache<br />
+or your alternatives, of course.</p>
+<p>Get a decent tool set and understand how to use it to upload and download files, manage compressed files, change permissions and ownerships, work with MySQL etc. On both machines. There are Drupal tools that cover some of these steps, for instance backing up and restoring the data, but they do not cover everything. Clearly you should use a tool if it helps in your case,or do it the hard way otherwise! The <a href="/project/backup_migrate" rel="nofollow">Backup &amp; Migrate module</a> is usually a good choice for easily creating file and database archives.</p>
+<p><a href="http://drupal.org/node/333675" rel="nofollow">Checklist for migrating to a new site</a> - you must ensure that the target site supports all the features (mod_rewrite, AllowOverride) that Drupal requires. If you move from a good host to a less-good host and things stop working, it might not be that your migration failed, but just that the destination wasn't set up right.</p>
+<h3 id="s-on-the-old-site"><a class="toc-anchor" title="Permalink to this headline" href="#s-on-the-old-site"></a>On the old site</h3>
+<ol>
+<li>Consider <strong>updating</strong> Drupal core and modules before the migration</li>
+<li><strong>Document</strong> the modules used, their versions and paths etc. For Drupal 6, the contributed module <a href="/project/sitedoc" title="Site Documentation Project" rel="nofollow">Site Documentation</a> can ease this task.</li>
+<li>Document the temporary directory folder to be used in admin/settings/file-system and either prepare to edit this after restoring the database or make sure the same path exists on both sites.</li>
+<li>Set site in maintenance mode: in Administer → Site maintenance, choose "<strong>Off line</strong>".</li>
+<li><strong>Turn off clean URLs</strong> (Administer → "Clean URLs") Remember that, from now on, you'll enter the administrator part through <code class="language-php">www.example.com/?q=user</code> ("user" should <em>not</em> be replaced by any user name.)</li>
+<li>Clear data from the <strong>cache tables</strong>. These are unnecessary for transfer and cause confusion when tidying up the data. The devel module and admin menu module contain links to do this easily, otherwise visit <code class="language-php">www.example.com/admin/settings/performance</code> and click the "Clear cached data" button at the bottom of the page.</li>
+<li><strong>Export your database</strong>. You can use MySQL Administrator, phpMyAdmin or MySQL command line tool mysqldump for exporting, which produces a text file with a .sql extension. You don't need to download explicitly because the file will be created on the computer your interface (MySQL Administrator, or your browser if you use phpMyAdmin) is running.
+<ul>
+<li>In MySQL Administrator, first connect giving your password, then choose "Backup" on the left, choose the database you want to save from the "Databases" list, click on the big arrow. This will move the database name into the "Backup content" rectangle on the right. Then click on the "Start backup" button in the right bottom corner. Choose the folder you want to save it in, playing with the path bar on the top and the "Folders" list on the left. Then click the "OK" button.</li>
+</ul>
+</li>
+<li>If your old site is public (on the web), consider setting your site on line: Administer → Site maintenance, choose "<strong>On line</strong>". Of course, all the modifications made on the old server from now on (readers' comments, forums posts, etc.) will be lost. Therefore, if you set back your old website on line and if it's public (on the web), consider blocking new comments to avoid users frustrations: Administer → Permissions.</li>
+<li>Copy the whole <strong>Drupal</strong> code – core, modules, themes, and download them if necessary or, better, transfer them directly to the new server. You could choose to use new copies instead of the new site.</li>
+<li>Copy the <strong>files</strong> directory and any similar directories (such as image galleries) and download them if necessary, or, better, transfer them directly to the new server.</li>
+</ol>
+<h3 id="s-in-between"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-between"></a>In between</h3>
+<p>These steps can be performed on your own computer, which can be different from both the old and the new servers. Nevertheless, if you can perform these tasks easily either on the old or on the new server, you don't need to have the files pass in transit through a third computer.</p>
+<p>The data in the database may contain some hard coded links which will not necessarily work on the new site ( it depends on what you are doing ). You can use SQL queries on the reconstructed database to change these, or you can edit at this intermediate stage with a text editor - the .sql file is human readable text. Using a text search has the benefit that you may find unexpected areas to change in the fields and tables you were not aware of. It can be slow. Consider:</p>
+<ol>
+<li>The files list (field "filepath" in table "files")</li>
+<li>The site URL itself - many of the node links and references refer to the full site URL. There are also references in many log files. It is not always appropriate to change to the new site name, so you need to think about this for each table</li>
+<li>Variations on the above. For instance the messaging module stores the site URL for each message in the messaging store. I believe the imagefield module has a list like the filelist.</li>
+<li>What facilities you have to create new databases (see Import Your SQL data, below)</li>
+<li>The database name. Your hosting company may require that all your database names begin with "yourName_". Moreover, they may limit the numbers of characters.</li>
+<li>This command can strip data out of a database dump,which generally shouldn’t be migrated when moving a Drupal database from one site to another.<br />
+	<code class="language-php">sed -E -e "/^INSERT INTO \`(cache|watchdog|sessions)/d" &lt; /path/to/dump.sql &gt; /path/to/dump-stripped.sql</code><br />
+	You will need to tweak the regular expression a bit if your database uses a table prefix.</li>
+</ol>
+<p>If you are moving a live site from one host or server to another you will need to adjust your DNS settings to point to the new server.</p>
+<h3 id="s-on-the-new-site"><a class="toc-anchor" title="Permalink to this headline" href="#s-on-the-new-site"></a>On the new site</h3>
+<p>Now you need to reverse the process on the new site.</p>
+<ol>
+<li>Upload or copy the whole <strong>Drupal</strong> code – core, modules, themes – to the new site. Or reconstruct from fresh copies if you prefer. Some people install a new Drupal core first to test the server environment</li>
+<li>Upload or copy the <strong>files directory</strong> and any similar directories (such as image galleries) to the location you chose when editing the .sql file</li>
+<li>Create the empty database Drupal will use. Your hosting company may require that all your database user begin with "yourName_". In some configuration, the database manager provided in CPanel has (stupidly) enable to manage databases created directly with phpMyAdmin, so you won't be able to give any user the right to use it. If you're sure you are not concerned with this problem, you can of course create and fill the database at the same time (See below).</li>
+<li>Upload and import your <strong>SQL data</strong>. If you cannot create databases yourself, you may have to use some other tool on your host's control panel or get someone to do this for you. If this is the case, remove any “create database” lines from the .sql file (but a "create database if not exists" line doesn't matter). You will probably find that the database is too big to upload using phpMyAdmin. Some hosting providers give access to MySQL Administrator, which accepts big files. If you have an SSH access, a 3rd solution is to use MySQL from a text console: "mysql --user=user_name --password=your_password database_name" and inside the “source” command: "source database_backup.sql".</li>
+<li>Create the database user Drupal will use. Your hosting company may require that all your database users begin with "yourName_". Moreover, they may limit the numbers of characters. Grant this user the SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, CREATE_TMP_TABLE and LOCK_TABLES privileges for the said database.</li>
+<li>Make changes to the “Database settings” section of the <strong>settings.php</strong> file, to ensure that they are pointing to the new database, with the right user (which may be different that the one you used on the old computer) and the right password. You may also have to adjust the “base URL” if you are moving between a sub-domain and a domain level. If you are moving the site to a new domain, or to localhost, also check that "$cookie_domain" is not set to your old domain.</li>
+<li>Some people will need to make changes to the rewrite rules and<strong>.</strong> <strong>htaccess</strong> files</li>
+<li>Attempt to <strong>log on</strong> to the new site. You will probably find that you are locked out by a combination of site maintenance mode and the non-clean URLs. In that case navigate to newsite/?q=user to login, then turn on clean URLs. (Should the Clean URL test fail at this stage, try to go online first - step 14 - and then run the Clean URL test again).</li>
+<li>You will need to make adjustments to the <strong>site information</strong> (Administer → Site configuration → Site information), which contains an email address, and change the <strong>files</strong> directory (<code class="language-php">www.example.com/admin/settings/file-system</code>) to the location where the files now reside. Also change the temp folder to the correct location on the new server, if it is different.</li>
+<li>Adjust <strong>modules</strong> as necessary for different versions. For example, I had an unintended upgrade from PHP 5.2.8 to 5.3.0 and some modules stopped working. This produced large swathes of error messages at odd points. I searched for all the error messages online to see whether each was known, which helped solve most problems. I had to make the following changes:
+<ul>
+<li>Set date.timezone = UTC in the php.ini file (and note that there may be two of these files, one for command line use and one for Apache use – you need the Apache one)</li>
+<li>Apply patch 6.x-2.x-549884-30.patch to the date module</li>
+<li>Use 6.x-3.x-dev instead of 6.x-3.0-alpha3 for the admin_menu module</li>
+<li>Delete the coder module, which would not work with Drush (but I am not sure that this was part of the same problem)</li>
+</ul>
+</li>
+<li>Check the <strong>status report</strong>: Administer → Reports → Status report. And run Cron manually by clicking if suggested by Drupal.</li>
+<li>Your new site will now look and function virtually identically to the old one – you might consider changing the <strong>theme</strong> or theme color on one of them as a strong visual reminder of which is which</li>
+<li>Adjust the <strong>performance</strong> parameters according to your needs: Administer → Site configuration → Performance.</li>
+<li>After checking everything you can turn off site-maintenance mode: in Administer → Site configuration → Site maintenance, choose "<strong>On line</strong>".</li>
+<li>Set up the <strong>cron</strong> job, as explained <a href="http://drupal.org/cron" title=" configure cron jobs" rel="nofollow">there</a>. Note that this cron can run on any computer online, including your personal computer, not necessarily the server where your Drupal is running. Just check the chosen computer is usually turned on and online at the time(s) you programmed the cron job. If your hosting provider doesn't allow you to use cron and you don't have any computer to do the job, use <a href="http://drupal.org/project/poormanscron" title=" Poormanscron" rel="nofollow">Poormanscron</a> module or <a href="https://drupal.org/project/EasyCron" title=" WebCron" rel="nofollow">EasyCron</a> module.</li>
+<li>If your new Drupal site is intended to be public, i.e. To be on the world wide web, it's now time to set the <strong>DNS</strong> (domain name server) to the IP (internet protocol number) of your new server. For this, contact your domain name registrar. If your new hosting provider manages it for you, contact them instead. If your Drupal site was already on the web and you're migrating from a public server to another one, then you may want or have to change registrar too. In this case, first read carefully the contract with the new registrar. Then it's recommended to update the DNS in the old registrar's database (so that it points towards the new server) <em>before</em> changing registrar. Depending on the TLD (top level domain), it's probable you'll then need a code called "EPP code", "authorization code", or "Auth code". Ask it to your old registrar, or to your old hosting service if the latter used to manage the DNS for you. Then give this code to the new registrar (possibly via the new hosting provider) and wait, usually 5 d (five days). If you're sure you can do it within the transfer delay, you can launch the registrar changing process before all the other steps, but if it happens the transfer is done before you've finished, your website will be unavailable to the public during that time.</li>
+</ol>
+<h3 id="s-troubleshooting"><a class="toc-anchor" title="Permalink to this headline" href="#s-troubleshooting"></a>Troubleshooting</h3>
+<h4 id="s-in-case-you-cannot-export-your-database"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-case-you-cannot-export-your-database"></a>In case you cannot export your database</h4>
+<p>In case you cannot export your database (for instance, your hard disk crashed and you cannot boot on it any longer), the you can copy the databases directory (in Mageia 4, it is /var/lib/mysql/mysql ) and the configuration file (in Mageia 4, it is /etc/my.cnf) and copy them at the right place on the new computer, with the same ownership and rights: the Linux/Unix user of Apache (In Mageia 4, it is called mysql.) should have read and write access to the databases, and read access to the configuration file. For Mageia, see <a href="https://wiki.mageia.org/en/MariaDB" title="Mageia wiki" rel="nofollow">MariaDB</a>.</p>
+<h4 id="s-blank-page"><a class="toc-anchor" title="Permalink to this headline" href="#s-blank-page"></a>Blank page</h4>
+<p>If you get a blank page, it may be that you didn't copy the theme needed by the site at the right place. In case of a sub-theme, you need both the main theme and the sub-theme.<br />
+You can see <a href="https://drupal.org/node/158043" title="Drupal.org" rel="nofollow">Blank pages or "white screen of death" (WSOD)</a> and the next page.</p>
+<h4 id="s-no-user-login"><a class="toc-anchor" title="Permalink to this headline" href="#s-no-user-login"></a>No user login</h4>
+<p>If you cannot log in, try <a href="http://example.com/?q=user/login" rel="nofollow">http://example.com/?q=user/login</a> . Then go to <a href="http://example.com/?q=admin/config/search/clean-urls" rel="nofollow">http://example.com/?q=admin/config/search/clean-urls</a> , check the "Enable clean URLs" box and click on the "Save configuration" button. But if you get a message saying that clean URLs cannot be enabled, it may be that you didn't copy the .htaccess file at the root of your Drupal installation (at the same time, check if .gitignore file is there too). If you have full control on Apache, you should check if Apache module called mod_rewrite is loaded (for this, go with your browser to a php file containing just the line<code class="language-php">&lt;?</code> <code class="language-php">php phpinfo(); ?&gt;</code>) and if Apache configuration file contains the directive<br />
+<code class="language-php">RewriteEngine on</code>.<br />
+In Mageia 4, it is in /etc/httpd/conf/sites.d/drupal.conf .</p>
+<h4 id="s-error-messages"><a class="toc-anchor" title="Permalink to this headline" href="#s-error-messages"></a>Error messages</h4>
+<p>If you get error messages, read them carefully. If you are sure all the needed modules are at the right place and are not older than the ones of the first installation, going with your browser to <a href="http://example.com/update.php" rel="nofollow">http://example.com/update.php</a> may help. If you couldn't log in as administrator, then you will be denied the right to <strong>update the modules</strong>. In this case, in sites/example.com/settings.php , look for the line<br />
+<code class="language-php">$update_free_access = FALSE;</code>,<br />
+replace "FALSE" by "TRUE" and you will be able to update the modules without being the site administrator: go to <a href="http://example.com/update.php" rel="nofollow">http://example.com/update.php</a> again. Since letting anybody run update.php is dangerous, don't forget to restore the<br />
+<code class="language-php">$update_free_access = FALSE;</code><br />
+line once the problem is solved.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-2302666f25e356a21d350083456bbe46">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/776864/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/776864/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28776864%29%20Migrating%20a%20site">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"CWzrTTY9o2J5zETfhIiiQpkLylZbdiAIbUea3gSguyQ"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/backing-up-and-migrating-a-site\/migrating-a-site":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2764175"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
