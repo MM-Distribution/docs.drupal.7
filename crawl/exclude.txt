@@ -1,0 +1,8 @@
+# URL path prefixes never crawled (not core documentation).
+# Contributed modules for Drupal 7
+/docs/7/modules
+# Drupal 7 contributed themes
+/docs/7/themes
+# Distribution showcase pages (third-party distributions)
+/docs/7/distributions
+/docs/7/drupal-7-distributions

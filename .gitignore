@@ -1,1 +1,4 @@
 crawl/.last_fetch
+crawl/.request_log
+crawl/.lock
+crawl/.body.tmp

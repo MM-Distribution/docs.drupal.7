@@ -7,11 +7,17 @@ drupal.org, www.drupal.org, api.drupal.org or any other *.drupal.org host. The
 goal is to never look abusive and never get blocked. When in doubt, fetch less.
 
 ### How to fetch
-- Fetch only with the WebFetch tool. The workspace shell cannot reach
-  drupal.org (the egress proxy refuses it). Do not try to work around that with
-  curl, wget, scripts, mirrors, caches, archive.org or a browser.
+- Fetch only with `tools/crawl.py`, which enforces every rule below in code.
+  It saves each server response exactly as received. Do not fetch drupal.org
+  any other way (ad-hoc curl or wget, other scripts, the WebFetch tool, mirrors,
+  caches, archive.org or a browser). The WebFetch tool also cannot make exact
+  copies, as the pilot showed.
+- The crawler identifies itself as
+  `mm-distribution-docs-archiver/1.0 (+https://github.com/mm-distribution)`.
+  It sends no personal email address.
 - Fetch one page at a time. No parallel fetches, and no subagents fetching
-  drupal.org at the same time as each other or as the main session.
+  drupal.org at the same time as each other or as the main session. Never run
+  two copies of the crawler at once.
 
 ### Rate limits
 - Wait at least **15 seconds** between any two requests to any *.drupal.org
