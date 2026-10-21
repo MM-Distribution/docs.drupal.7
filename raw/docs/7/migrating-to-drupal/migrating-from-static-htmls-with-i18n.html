@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Migrating static HTML pages to Drupal 7 with incorporated i18n features" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n" />
+<link rel="shortlink" href="https://www.drupal.org/node/2354755" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n" />
+<meta property="og:title" content="Migrating from static HTMLs with i18n" />
+<meta property="og:description" content="Some key points in migrating static HTML pages to Drupal 7 with the full i18n (Internationalization) features incorporated are described. Drupal&#039;s i18n feature is powerful and has great flexibility. However the flip-side of the coin is it is not that easy to understand how it works, partly because it heavily depends on your configuration. Also, it may not match well the suffix-based language negotiation by the Apache server for the static HTML pages, and so the migration of such static HTML sites to Drupal is not quite straightforward." />
+<meta property="og:updated_time" content="2016-11-21T20:40:14+00:00" />
+<meta property="article:published_time" content="2014-10-11T15:03:04+00:00" />
+<meta property="article:modified_time" content="2016-11-21T20:40:14+00:00" />
+  <title>Migrating from static HTMLs with i18n | Migrating to Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-2354755 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2764167" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-x6LDqLj-h5D5LR0QX9OveMeeqO_sxBjwGhrPGfE0chs" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/2354755" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/2354755" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-NC78XMcfIojeMOOxgzN6UTz-Jhd-ckJu8cJjZMqPB0Q" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/migrating-to-drupal-7">Migrating to Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-2354755">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-which-module-should-i-use-to-migrate-static-htmls-to-drupal" class="toc-link toc-link-invalid-id active">Which module should I use to migrate static HTMLs to Drupal?</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-features-to-import-from-the-static-htmls" class="toc-link toc-link-invalid-id active">Features to import from the static HTMLs</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-modules-required-to-be-enabled" class="toc-link toc-link-invalid-id active">Modules required to be enabled</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-other-set-ups-required-before-the-migration" class="toc-link toc-link-invalid-id active">Other set-ups required before the migration</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-taxonomy" class="toc-link toc-link-invalid-id active">Taxonomy</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-content-type" class="toc-link toc-link-invalid-id active">Content type</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-i18n" class="toc-link toc-link-invalid-id active">i18n</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-permissions" class="toc-link toc-link-invalid-id active">Permissions</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-clean-up-of-the-importing-htmls" class="toc-link toc-link-invalid-id active">Clean-up of the importing HTMLs</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-the-i18n-feature-before-and-after" class="toc-link toc-link-invalid-id active">The i18n feature before and after</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-before-the-static-html-files" class="toc-link toc-link-invalid-id active">Before (the static HTML-files)</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-after-in-the-drupal-powered-site" class="toc-link toc-link-invalid-id active">After (in the Drupal-powered site)</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-technical-flow-chart" class="toc-link toc-link-invalid-id active">Technical flow-chart</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-drupal-path-module" class="toc-link toc-link-invalid-id active">Drupal path module</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-drupal-i18n-features-with-the-path-module" class="toc-link toc-link-invalid-id active">Drupal i18n features with the path module</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-what-is-the-language-of-a-website" class="toc-link toc-link-invalid-id active">What is the &quot;language&quot; of a website?</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-language-neutral-in-drupal" class="toc-link toc-link-invalid-id active">Language Neutral in Drupal</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-language-dependent-access" class="toc-link toc-link-invalid-id active">Language-dependent access</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-access-via-a-node-type-path" class="toc-link toc-link-invalid-id active">Access via a node-type path</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-access-to-a-language-neutral-node" class="toc-link toc-link-invalid-id active">Access to a language-neutral node</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-access-to-a-specific-language-node-via-the-primary-path" class="toc-link toc-link-invalid-id active">Access to a specific-language node via the primary-path</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-access-to-a-translated-specific-language-node-via-the-unique-primary-path" class="toc-link toc-link-invalid-id active">Access to a translated specific-language node via the unique primary-path</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-access-to-a-primary-path-shared-with-more-than-one-language" class="toc-link toc-link-invalid-id active">Access to a primary-path shared with more than one language</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-how-drupal-holds-the-information-about-the-translation-of-each-node" class="toc-link toc-link-invalid-id active">How Drupal holds the information about the &quot;translation&quot; of each node</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-note-for-the-different-i18n-configurations" class="toc-link toc-link-invalid-id active">Note for the different i18n configurations</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-no-language-code-for-the-default-language" class="toc-link toc-link-invalid-id active">No language code for the default language</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-disabling-the-url-based-language-determination" class="toc-link toc-link-invalid-id active">Disabling the URL-based language determination</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-drupal-i18n-and-migration-of-htmls" class="toc-link toc-link-invalid-id active">Drupal i18n and migration of HTMLs</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-which-language-to-be-set-for-nodes" class="toc-link toc-link-invalid-id active">Which language to be set for nodes?</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-how-to-set-tnid-during-migration-from-the-static-htmls" class="toc-link toc-link-invalid-id active">How to set tnid during migration from the static HTMLs</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-drupal-default-language-switcher" class="toc-link toc-link-invalid-id active">(Drupal default) Language-switcher</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-language-switcher-anchors-hard-coded-in-htmls" class="toc-link toc-link-invalid-id active">Language-switcher anchors hard-coded in HTMLs</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-redirection-and-i18n" class="toc-link toc-link-invalid-id active">Redirection and i18n</a></li>
+<li class="anchor-list__item h4-tag last"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n#s-summary-of-how-the-uri-request-works" class="toc-link toc-link-invalid-id active">Summary of how the URI request works</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="migrating-to-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/migrating-to-drupal-7">Migrating to Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/migrating-to-drupal-7/drupal-modules-equivalent-to-phpbb-features">Drupal modules equivalent to phpBB features</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/get-started-by-creating-a-list" title="Create a list of of the things that should be migrated.">Get started by creating a list</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/how-to-migrate-from-many-different-forum-systems">How to migrate from many different forum systems</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/migrating-from-discus">Migrating from Discus</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/migrating-from-invision-power-board">Migrating from Invision Power Board</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/migrating-from-joomlamambo">Migrating from Joomla/Mambo</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal-7/migrating-from-wordpress">Migrating from Wordpress</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/migrating-from-phpbb">Migrating from phpBB</a></li>
+<li class="leaf active-trail"><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n" class="active-trail active">Migrating from static HTMLs with i18n</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/migrating-from-vbulletin">Migrating from vBulletin</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/migrating-to-drupal">Migrating to Drupal</a></li>
+<li class="leaf"><a href="/docs/7/migrating-to-drupal/phpbb-integration-solution">phpBB integration solution</a></li>
+<li class="last leaf"><a href="/docs/7/migrating-to-drupal/phpbb-migration-solution">phpBB migration solution</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Migrating from static HTMLs with i18n</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/2354755/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    21 November 2016  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Some key points in migrating static HTML pages to Drupal 7 with the full i18n (Internationalization) features incorporated are described.</p>
+<p>Drupal's i18n feature is powerful and has great flexibility. However the flip-side of the coin is it is not that easy to understand how it works, partly because it heavily depends on your configuration. Also, it may not match well the suffix-based language negotiation by the Apache server for the static HTML pages, and so the migration of such static HTML sites to Drupal is not quite straightforward.</p>
+<!--break--><p>This document describes the general concepts and points to be aware of for building the i18n site on the emphasis of migration from the static HTMLs to Drupal.</p>
+<p>Having said that, this is not a general description about the topic — the i18n features in Drupal vary greatly, depending on the configuration and preferences of site builders. Above all, I am rather a qualified novice of Drupal! On the other hand, some points beginners may often find hard to understand are likely to be explained, because, well, I have experienced a bucket load of those and banged wall countless times out of frustration, before making it right.</p>
+<p>First, the migration module, <code class="language-php">migrate_goo</code>, I have used is available from<br />
+<a href="https://github.com/masasakano/migrate_goo" rel="nofollow">https://github.com/masasakano/migrate_goo</a><br />
+<code class="language-php">README.txt</code> in the repository explains all about it. Also, there are extensive comments written in the codes, particularly in the main code <code class="language-php">allbutbook.inc.php</code></p>
+<p>It is by no means the generic module — or, there is no generic module for migration, nor generic i18n feature, after all, given how varied developers' demands are… But if migration to Drupal or i18n in Drupal is new to you as was to me, you can use it as a template and it may help you! At least I had experienced great difficulties, before I finally made it about right…</p>
+<p>This document does not contain any code. Instead, it describes the points to be aware of, and the strategy to tackle with the problems on migration of HTMLs with i18n. For a specific example code, please have a look at <a href="https://github.com/masasakano/migrate_goo" rel="nofollow">my code in Github</a>.</p>
+<h2 id="s-which-module-should-i-use-to-migrate-static-htmls-to-drupal"><a class="toc-anchor" title="Permalink to this headline" href="#s-which-module-should-i-use-to-migrate-static-htmls-to-drupal"></a>Which module should I use to migrate static HTMLs to Drupal?</h2>
+<p>In a word, anything that works for you!</p>
+<p>As I understand, there are 3 major modules for migration:</p>
+<ul>
+<li><a href="https://www.drupal.org/project/import_html" title="import_html" rel="nofollow">import_html</a></li>
+<li><a href="https://www.drupal.org/project/feeds" title="Feeds" rel="nofollow">Feeds</a></li>
+<li><a href="https://www.drupal.org/project/migrate" title="Migrate" rel="nofollow">Migrate</a></li>
+</ul>
+<p><a href="https://www.drupal.org/project/import_html" title="import_html" rel="nofollow">import_html</a> is specialized for importing HTMLs, and is quite simple. <a href="https://www.drupal.org/project/migrate" title="Migrate" rel="nofollow">Migrate</a> is the other end of the spectrum and offers a greatest flexibility, but with the price of somewhat complicated setup — in short you have to write your own child module, inherited from Migrate.</p>
+<p>However, as I found out, the <a href="https://www.drupal.org/project/import_html" title="import_html" rel="nofollow">import_html</a> module does not work well for the nodes that contain UTF-8 characters, hence for those international sites, it is not an option; See<br />
+<a href="https://www.drupal.org/node/2339097" rel="nofollow">https://www.drupal.org/node/2339097</a></p>
+<p>Besides, if you want to deal with the i18n properly, I am afraid there is no short-cut, you have to bite a bullet and tackle with the Migrate module. But don't worry, it is still a lot easier than the fully manual import! Among many features in Migrate, the rollback capability stands out; basically you can undo what you have done any time in just a few key-strokes. I suppose it is pretty common to repeat perhaps many trial-and-errors in developing/migrating the i18n-featured site. This rollback feature is what I found a blessing.</p>
+<p>This document explains how to deal with it, using <a href="https://www.drupal.org/project/migrate" title="Migrate" rel="nofollow">Migrate</a>, for one sample case. During my migration, I have inevitably tried out many other choices; even though they didn't work out well for me, some of them may suit your need, so I will describe about them whenever I can.</p>
+<h2 id="s-features-to-import-from-the-static-htmls"><a class="toc-anchor" title="Permalink to this headline" href="#s-features-to-import-from-the-static-htmls"></a><a id="What_features_import_static" name="What_features_import_static" rel="nofollow">Features to import from the static HTMLs</a></h2>
+<p>The following is the list I have aimed and achieved.</p>
+<ul>
+<li>Import the main body. (Of course!)</li>
+<li>Preserve the creation/modification times.</li>
+<li>Preserve all the legacy URIs.</li>
+<li>Natural-language paths, as opposed to the node number, should be displayed as the URI.</li>
+<li>All the internal links between the imported files should work.</li>
+<li>Reproduce the i18n (internationalization) structure the original had, so the imported ones have a proper language code, as well as the Drupal language switcher incorporated.</li>
+<li>Make more modern-style URIs as default, while keeping the legacy ones with redirections.</li>
+<li>Preserve most Meta-tags and Link-tags information written in the header.</li>
+<li>Introduce an taxonomy, based on the top directory name.</li>
+<li>The original &lt;h1&gt; tag is deleted, with the element imported as the page title.</li>
+<li>Email addresses in the body are truncated.</li>
+</ul>
+<h2 id="s-modules-required-to-be-enabled"><a class="toc-anchor" title="Permalink to this headline" href="#s-modules-required-to-be-enabled"></a>Modules required to be enabled</h2>
+<p>The following modules were essential to achieve the above-mentioned goals <em>for me</em>:</p>
+<ul>
+<li>path (core in Drupal 7)</li>
+<li>i18n (core; Internationalization, Field translation, Translation redirect)</li>
+<li>Taxonomy (core)</li>
+<li><a href="https://www.drupal.org/project/querypath" title="querypath module" rel="nofollow">QueryPath</a> module (A PHP Library to deal with the HTML tags)</li>
+<li><a href="https://www.drupal.org/project/redirect" title="redirect module" rel="nofollow">Redirect</a>: Essential to preserve the legacy URIs</li>
+<li><a href="https://www.drupal.org/project/metatag" title="metatag module" rel="nofollow">Metatag</a>: To hold the Meta-tag information</li>
+<li><a href="https://www.drupal.org/project/link" title="link module" rel="nofollow">Link</a>: To hold the Link-tag information</li>
+<li><a href="https://www.drupal.org/project/context" title="context module" rel="nofollow">Context</a>: To control the language-switcher for i18n</li>
+<li><a href="https://github.com/masasakano/langnonecontext" title="langnonecontext module" rel="nofollow">langnonecontext</a>: To add a custom context related to the language-switcher for the Context module, which I have ended up developing for this purpose.</li>
+</ul>
+<p>What you need is entirely up to your demand! You may need a lot more or lot less or lot different.</p>
+<h2 id="s-other-set-ups-required-before-the-migration"><a class="toc-anchor" title="Permalink to this headline" href="#s-other-set-ups-required-before-the-migration"></a>Other set-ups required before the migration</h2>
+<p>I set up as follows. In particular the i18n setting can vary a lot, depending on your demands. And I am afraid, if your setting is quite different from mine, my way of the migration may not work for you. But my template code is up for grabs anyway, so you can adjust as you like!</p>
+<h3 id="s-taxonomy"><a class="toc-anchor" title="Permalink to this headline" href="#s-taxonomy"></a>Taxonomy</h3>
+<p>I prepared a new taxonomy for the imported HTMLs, so that it will be easy for me to categorize those nodes of HTML-files in Drupal after they are imported. The path of each HTML-file is anyway preserved, so this can be just redundant.</p>
+<h3 id="s-content-type"><a class="toc-anchor" title="Permalink to this headline" href="#s-content-type"></a>Content type</h3>
+<p>I set up a new content type for the imported HTMLs. Obviously you can use an existing one, be it your custom one or standard one like Basic Page.</p>
+<p>I can think of two major advantages to create the new content types.</p>
+<ol>
+<li>You can distinguish and handle those imported-HTMLs, based on the content type, separated from other contents in your Drupal site, when you need any post-migration adjustment or development,</li>
+<li>You can add any custom field. In my case, I added four:
+<ul>
+<li>Taxonomy field</li>
+<li>Original Title: I set the node title with the original H1 header element, so I store the original title element here. I may use it in the future or not, but I think I had better keep it for now than lose it entirely, as I can delete them any time if needed, whereas it would be hard to regain once lost.</li>
+<li>Original Filename: partially for debugging purpose,</li>
+<li>Editor's Note: Comment and message during import, for debugging.</li>
+</ul>
+</li>
+</ol>
+<p>Whether you use a custom content type or existing one, make sure the language you are trying to import is defined and allowed for the content type. In particular if the language-neutral is set to be not allowed for the content type, you must set a language for every single node you are importing.</p>
+<h3 id="s-i18n"><a class="toc-anchor" title="Permalink to this headline" href="#s-i18n"></a><a id="Any_setup_need_before__i18n" name="Any_setup_need_before__i18n" rel="nofollow">i18n</a></h3>
+<p>In <code class="language-php">/admin/config/regional/language/configure</code> for the detection methods of languages, I have done the followings:</p>
+<ol>
+<li>Tick "URL" at least, or preferably all of them,</li>
+<li>For the "URL", set it as the path (directory), and not the domain,</li>
+<li>The weight (priority) for the "URL" must be the highest,</li>
+<li>For all the languages, including the default language, explicitly set the language code for the path, <em>e.g.</em>, "en" for English.</li>
+</ol>
+<p>This is where people's preference vary… But my module is written on the basis of these settings.</p>
+<h3 id="s-permissions"><a class="toc-anchor" title="Permalink to this headline" href="#s-permissions"></a><a id="Any_setup_need_before__Permissions" name="Any_setup_need_before__Permissions" rel="nofollow">Permissions</a></h3>
+<p>Which user are you going to assign for the newly imported HTML-based nodes? The administrator (uid=1) is the easiest (as I chose), as whatever you do, none of your actions will be prevented due to the permission, though to be fair, it would be a double-edged sword. In my case, I needed a small piece of PHP code (to achieve one of the i18n features in Drupal) to be embedded in some HTMLs; that is not permitted to any user but the administrator in default.</p>
+<p>If you assign any other user for creating the new node, make sure the user have a right permission for your job. Or, alternatively you can complete the job of migration as the administrator and later change the ownership of those imported nodes to a particular user, if you wish.</p>
+<h3 id="s-clean-up-of-the-importing-htmls"><a class="toc-anchor" title="Permalink to this headline" href="#s-clean-up-of-the-importing-htmls"></a>Clean-up of the importing HTMLs</h3>
+<p>This is quite important.</p>
+<p>Legacy HTMLs could have all sorts of cock-ups, particularly if they were hand-written, or edited by more than one person or software. Also, it is not uncommon they have a dirty rendering with the table tag etc or they have hard-coded navigation-bar type stuffs or even adverts. Another important point is the character code. Contents, particularly those in non US-English language, can have all sorts of character code, and they may not be even self-consistent, that is, the character code its HTML header declares may be different from the actual one. Even US-English contents could easily have some Windows-specific characters, which could break down the things in importing/migrating.</p>
+<p>Personally I have preprocessed all the HTML-files with a separate script, and at the end of the script I ran the handy command-line tool <code class="language-php">tidy</code> to guarantee the input HTMLs are legitimate, while converting the character code into UTF-8 and preserving the modification times of the files.</p>
+<p>During migration/import you can do the clean-up job to some extent, or maybe to a great extent, in the php code of your migration module. But at least you may as well be aware if the character code is different from what you assumed, PHP may not behave as you expect.</p>
+<p>The detail is beyond the scope of this document. I hope your files are not too evil…</p>
+<h2 id="s-the-i18n-feature-before-and-after"><a class="toc-anchor" title="Permalink to this headline" href="#s-the-i18n-feature-before-and-after"></a>The i18n feature before and after</h2>
+<p>In my case, the following is the situation of i18n for the static HTML, which is basically based on the suffix-based language-negotiation of the Apache server. My aim is to reproduce the i18n feature in the Drupal-powered site after migration.</p>
+<h3 id="s-before-the-static-html-files"><a class="toc-anchor" title="Permalink to this headline" href="#s-before-the-static-html-files"></a>Before (the static HTML-files)</h3>
+<ul>
+<li>The main language of the site is Japanese.</li>
+<li>All the files are HTMLs.</li>
+<li>Most files are in Japanese only, but some have an English counterpart.</li>
+<li>There is no <em>orphan</em> English file, that is, English file without Japanese counterpart.</li>
+<li>The <code class="language-php">lang</code> attribute of the <code class="language-php">html</code> tag may or may not exist.</li>
+<li>English HTMLs have a suffix of either <code class="language-php">.en.html</code> or <code class="language-php">.en.us.html</code> without exception.</li>
+<li>Japanese HTMLs have a suffix of either <code class="language-php">.jis.html</code> or <code class="language-php">.jp.jis.html</code> or simply <code class="language-php">.html</code> without exception.</li>
+<li>Index files may have in both Japanese and English, or Japanese only. There is no duplication of the filenames or directory names for the index files, that is, when there is a directory of <code class="language-php">./info/</code>, there is no <code class="language-php">./info.html</code> etc.</li>
+<li>Some files contain hard-coded language-switchers, namely hyper-link anchors, to another (internal) file in the other language.</li>
+</ul>
+<h3 id="s-after-in-the-drupal-powered-site"><a class="toc-anchor" title="Permalink to this headline" href="#s-after-in-the-drupal-powered-site"></a><a id="i18n_feature_before_after__After_Drupal_powered" name="i18n_feature_before_after__After_Drupal_powered" rel="nofollow">After (in the Drupal-powered site)</a></h3>
+<ul>
+<li>The main language of the site is English, though have some Japanese contents.</li>
+<li>Imported HTMLs will consist of the main Japanese sections in the site, which are mostly independent of the English sections, but will merge into the English one gradually in the future. In other words, Japanese and English sections are not completely independent, and visitors can switch to view the versions in either language or section easily via the built-in language-switcher.</li>
+<li>The path aliases are enabled. Hence the nominal path is not a <code class="language-php">/node/12345</code> type, but like <code class="language-php">/info/foobaa.html</code>.</li>
+<li>The language-related suffix in the original HTML path is eliminated from the default path: <em>e.g.</em>, <code class="language-php">info/foo.en.html</code> → <code class="language-php">info/foo.html</code>.<br />
+	The original path is redirected to the new one, if they differ.</li>
+<li>The defined (primary) paths for Japanese and English HTML files for the same content are identical, <em>e.g.</em>, both <code class="language-php">info/foo.jis.html</code> and <code class="language-php">info/foo.en.html</code> have the same path name of <code class="language-php">info/foo.html</code>.</li>
+<li>The above means when a user accesses <code class="language-php">/info/foo.html</code> in Japanese or English environment, the path s/he sees on the browser's address bar will be <code class="language-php">/ja/info/foo.html</code> and <code class="language-php">/en/info/foo.html</code>, respectively (the standard i18n behavior in Drupal, in the path-prefix preferred language-detection configuration).</li>
+<li>The directory is redirected to its index file: <em>e.g.</em>, <code class="language-php">info</code> → <code class="language-php">info/index.html</code>.</li>
+<li>The top directory in the legacy HTML-page site is transferred to the top directory in the new (Drupal) site. For example, <code class="language-php">http://old.example.com/info/baa.en.html</code> will become <code class="language-php">http://new.example.com/info/baa.html</code>. There is no crash of the names between the imported and existing top directories.</li>
+<li>The legacy home page for the HTML-page site is discarded, and a new one is created.</li>
+<li>The language of the imported node is set to be Neutral in default. However, if the node (of a Japanese page) has an English counterpart, the language is set to be <em>ja</em>, accordingly. The same goes for English pages (<em>en</em>).</li>
+<li>The language for the body is always set appropriately (<em>ja</em> or <em>en</em>), regardless of the language of the node.</li>
+<li>The (default Drupal) language-switcher is shown on a block (side-bar) whenever the node has a counterpart in the other language. If not, the language-switcher must not be shown. So, viewers can tell straightaway if the other language is available for the content or not.</li>
+<li>The hard-coded language switchers must work properly as they used to.</li>
+</ul>
+<h2 id="s-technical-flow-chart"><a class="toc-anchor" title="Permalink to this headline" href="#s-technical-flow-chart"></a><a id="Technical_flow_chart" name="Technical_flow_chart" rel="nofollow">Technical flow-chart</a></h2>
+<p>Here is the outline (flow-chart) of the migration (importing) of the static HTML-files to Drupal 7 with the i18n feature, while preserving the legacy paths. I am sure there are other ways, and maybe ever better ways, but the following works (or worked for me).</p>
+<p>I assume you have a basic understanding how the process of migration with the <a href="https://www.drupal.org/project/migrate" title="Migrate" rel="nofollow">Migrate</a> module works.</p>
+<ol>
+<li>The migration is done in 2 steps (necessary to construct the i18n structure):
+<ol>
+<li>Process Japanese HTMLs class first, then</li>
+<li>English ones class.</li>
+</ol>
+</li>
+<li>Use <code class="language-php">MigrateSourceList</code> class to define the HTML files to import.</li>
+<li>In <code class="language-php">prepareRow()</code> the path of each file (aka row) is passed. With this:
+<ul>
+<li>gets all the required information from the header (manually coded, using <code class="language-php">QueryPath</code> library),</li>
+<li>gets the &lt;body&gt; element (again manually coded — easy one line with <code class="language-php">QueryPath</code>!),</li>
+<li>At the same time the hard-coded language-switchers in the HTMLs are replaced with the appropriate PHP code (that is I think the best way to achieve it).</li>
+<li>also checks if the translation is available, based on the filename.</li>
+<li><code class="language-php">tnid</code> (Translation Node-ID) is left undefined, aka language-neutral, in Japanese HTMLs at the time of processing of the Japanese HTMLs class.</li>
+<li><code class="language-php">tnid</code> of Japanese nodes is set in <code class="language-php">prepare()</code> while processing the English HTMLs class, where the relation between translation and source nodes is set.</li>
+</ul>
+</li>
+<li>In <code class="language-php">complete()</code> at the stage of processing each of the Japanese and English HTMLs classes, the redirection of the legacy URIs is set.</li>
+</ol>
+<h2 id="s-drupal-path-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-path-module"></a><a id="Drupal_path_module" name="Drupal_path_module" rel="nofollow">Drupal path module</a></h2>
+<p>The path and i18n features, both of which are a part the core modules in Drupal 7, are heavily related to each other. First, let me recap how the Drupal path module works. If you already understand it well, skip this section to <a href="#Drupal_i18n_features_path" rel="nofollow">the next one</a>.</p>
+<p>The default path to access a content in Drupal is via its unique node-ID with the URI like<br />
+<code class="language-php">http://example.com/node/12345</code><br />
+(hereafter referred to this type of the path as "<strong>node-type path</strong>", usually written without the domain part).</p>
+<p>The node-type paths are very machine-like. Also, it is bad for the SEO (Search-Engine Optimization), which is not surprising, given this type of paths can well be one of a horde of machine-generated pages. Another potential downside is, it is less portable, because potential migration to any (CMS) system, including another Drupal system, can be problematic.</p>
+<p>For the nodes of imported HTMLs, the node-type paths are even worse, because most internal hyper-links to a relative path hard-coded in the anchor tag in the HTML would not work if the node is called with the node-type paths like <code class="language-php">/node/12345</code> . For example, when the hard-coded relative path is <code class="language-php">./baa.html</code>, the browser interpret it as <code class="language-php">/node/baa.html</code>. However, obviously there is no node with the path <code class="language-php">/node/baa.html</code>, as any node-ID is by definition a number. Hence those links break (dead links).<br />
+(There are exceptional cases where the relative path can work. Can you guess? — a little, if pointless, quiz for you.)</p>
+<p>That is where the path module comes in handy. If the path module is enabled, you can set a more human-readable path of your preference for each node, such as, <code class="language-php">/doc/about/about_myself</code> and open the node with the path. In this case,<br />
+<code class="language-php">http://example.com/doc/about/about_myself</code><br />
+(I hereafter refer to this type of paths as "<strong>primary-path</strong>", usually written without the domain part. The standard term for it in Drupal is "URL Alias", but in this case, where we also use <code class="language-php">redirect</code> module, I thought this term might be a little confusing).</p>
+<p>Note in setting the primary-path (aka URL Alias in the editing panel of a node), you should not insert the forward-slash at the beginning; for example, input<br />
+<code class="language-php">info/foo</code><br />
+as opposed to<br />
+<code class="language-php">/info/foo</code><br />
+The latter doesn't do any harm practically, apart from the fact the path will have a duplicated forward-slash. More importantly, do not include a trailing forward-slash at the end, as the path would not work.</p>
+<p>I should note the original way of the node-type path like <code class="language-php">/node/12345</code> is still valid, even after you set the primary-path, and is sometimes even useful for debugging purposes. Although the existence of multiple URIs for the same content can be penalised by search-engines, unless you make a hyperlink to those node-type paths from one of the public pages, the rest of the world, including search-engines, would not know its existence, so it has no impact for the rating by search-engines.</p>
+<p>For your general information, the <code class="language-php">pathauto</code> module is recommended, if you haven't installed and enabled it. It automatically generates a human-readable primary-path, when a new node is created, unless you specify your own. Hence, in many cases it saves a bit of your work. In our migration, you don't need it, as the primary-path for each node must be set, based on the directory and filename of its original HTML file.</p>
+<h2 id="s-drupal-i18n-features-with-the-path-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-i18n-features-with-the-path-module"></a><a id="Drupal_i18n_features_path" name="Drupal_i18n_features_path" rel="nofollow">Drupal i18n features with the path module</a></h2>
+<p>Now, let's move on to a more complicated one, the i18n module.</p>
+<p>I think the complication is not because Drupal's i18n feature is designed badly or something, but simply because the i18n is inherently complicated, as the site builders' preferences vary so widely! In particular, the i18n feature in Drupal may not well match the traditional suffix-based language negotiation system in the Apache server. So, if you are used to the Apache server's way for the static HTML-files, it may not be straightforward to grasp what Drupal does, and can be frustrating (as I experienced…). I am not knowledgeable enough to judge whether the Drupal's i18n feature is the best design or not. However I do understand why it is designed so as the generic module to satisfy the wide-range demands by different site builders.</p>
+<p>To understand how the Drupal i18n module works is essential to make your site right, then to consider how you migrate the HTMLs to Drupal. In this section I explain it and how to work around in our migration.</p>
+<p>Throughout this section, <a id="Drupal_path_i18n_features__Basic_i18n_module" name="Drupal_path_i18n_features__Basic_i18n_module" rel="nofollow">I assume node-ID of 111 and 222</a> have the contents of English and Japanese, respectively. In Drupal, the node-ID is unique for each content page, and a translation of a node has always a separate ID from the original one (<strong>source-language</strong>; explained in detail in <a href="#Drupal_path_i18n_features___information_translation" rel="nofollow">the later section</a>). So, to use a node-ID is the least confusing way to refer as to what content/node I am talking about.</p>
+<h3 id="s-what-is-the-language-of-a-website"><a class="toc-anchor" title="Permalink to this headline" href="#s-what-is-the-language-of-a-website"></a><a id="Drupal_i18n_features_path__What_language_website" name="Drupal_i18n_features_path__What_language_website" rel="nofollow">What is the "language" of a website?</a></h3>
+<p>The language of a page in a website has 2 meanings (at least):</p>
+<ul>
+<li>Language for the interface, like a menu bar,</li>
+<li>Language of the main content and information directly related to it, such as, the title.</li>
+</ul>
+<p>In Drupal, the default language switcher changes both of the above, as long as the translation of the node is available.</p>
+<h3 id="s-language-neutral-in-drupal"><a class="toc-anchor" title="Permalink to this headline" href="#s-language-neutral-in-drupal"></a>Language Neutral in Drupal</h3>
+<p>ISO 639 defines all the official language codes, which consist of the family part and optional sub-code. For example, the code for English is <code class="language-php">en</code> and it can have a sub-code like <code class="language-php">en-GB</code> and <code class="language-php">en-US</code>. Drupal seems (at least from a user's point of view) not to distinguish the family but treats each of those language-codes as a different one; <em>e.g.</em>, <code class="language-php">en-US</code> and <code class="language-php">en-GB</code> are treated as entirely different languages, rather than varieties in the same family.</p>
+<p>In addition to all those language codes, Drupal accepts the <em>language neutral</em>. In fact it is usually a default language, unless explicitly banned in the configurations, such as one in Content-Type. In practice, the <em>language neutral</em> in Drupal means all the languages or any language (though its constant variable name is <code class="language-php">LANGUAGE_NONE</code>, which would in literal sense imply no language, as opposed to any language!).</p>
+<p>In Drupal, every node has a property of a single language, which can be Neutral. Optionally (by enabling it in the i18n configuration), each field in a node can also have its own translation (I think...). But it is basically unrelated with the language of the node.</p>
+<p>Also note the language of the node has nothing to do with the character set of the content, and can be set arbitrarily. It is possible (if confusing to any one) to set the language of a node as English, where the main content uses only Japanese characters, and vice versa.</p>
+<h3 id="s-language-dependent-access"><a class="toc-anchor" title="Permalink to this headline" href="#s-language-dependent-access"></a>Language-dependent access</h3>
+<p>Here I assume the detection methods of languages (in <code class="language-php">/admin/config/regional/language/configure</code>) is configured as described <a href="#Any_setup_need_before__i18n" rel="nofollow">in a previous section</a>. What you see when you access a path depends on what the Drupal server determines as the language to show, and it depends on the configuration, hence the following description may not be applicable partially or almost entirely, if the i18n configuration of your site is different.</p>
+<h4 id="s-access-via-a-node-type-path"><a class="toc-anchor" title="Permalink to this headline" href="#s-access-via-a-node-type-path"></a>Access via a node-type path</h4>
+<p>First, a node is always viewable via the node-type path like <code class="language-php">/node/222</code> (Japanese, <a href="#Drupal_path_i18n_features__Basic_i18n_module" rel="nofollow">as assumed above</a>). The language for the interface can be different, determined with the configurations and environments of both the site and visitors. If the node is accessed with the language-code prefix like <code class="language-php">/ja/node/222</code>, the language of the interface will follow the prefix — Japanese (ja) in this example (again, providing the configuration is <a href="#Any_setup_need_before__i18n" rel="nofollow">set as described</a>).</p>
+<h4 id="s-access-to-a-language-neutral-node"><a class="toc-anchor" title="Permalink to this headline" href="#s-access-to-a-language-neutral-node"></a><a id="Drupal_i18n_features_path___Access_language_neutral" name="Drupal_i18n_features_path___Access_language_neutral" rel="nofollow">Access to a language-neutral node</a></h4>
+<p>Now, if the language of a node is set to be neutral, the node can be accessed and viewed with the primary-path (say, <code class="language-php">/info/foo_neutral.html</code>) in any (language) environment. When a user accesses a language-netural node like <code class="language-php">/info/foo_neutral.html</code>, the (Drupal default) language-switcher, if provided, shows the following characteristics:</p>
+<ul>
+<li>hyperlinks to any other language except for the current one look active (though you can click even the current language),</li>
+<li>by clicking a language link, the language-prefix is added to the head of the path, and</li>
+<li>the language of the interface like a menu bar changes accordingly.</li>
+</ul>
+<h4 id="s-access-to-a-specific-language-node-via-the-primary-path"><a class="toc-anchor" title="Permalink to this headline" href="#s-access-to-a-specific-language-node-via-the-primary-path"></a><a id="Drupal_i18n_features_path___Access_specific" name="Drupal_i18n_features_path___Access_specific" rel="nofollow">Access to a specific-language node via the primary-path</a></h4>
+<p>On the other hand, if the language of a node is set to be a specific one, like English or Japanese, how does it behave? When you access such a node with the primary-path, <strong>HTTP 404 ("Page not found") will be returned</strong> if the language of the node does not match what the Drupal server determines as your language (and if the node does not have the translations as explained in the following subsections).</p>
+<p>This is one of the essential points in the Drupal i18n, and may surprise the uninitiated. If a visitor has been navigated to that page by following the internal links in your site, then as long as you have carefully constructed your website, taking care of the consistency of the language across the site, s/he either sees the page without trouble (as the language setting is right), or would not come to the page in the first place (due to the different language). No problem.</p>
+<p>However, if some one visits the same page directly from outside, maybe from a search engine, or through the URI you have advertised somewhere, they may encounter the HTTP 404, depending on their language setting (which they themselves may not be even aware of!). Site-builders of Drupal i18n websites had better be careful on this point.</p>
+<p>Now, if such a node is opened successfully, the entire language-setting will be the language of the node, including the interface (<em>n.b.</em>, in contrast, in the case of language-neutral, the language of the content can be different from that of the interface). If the default language-switcher is provided, the hyperlinks to the other languages are <em>struck</em> down, and are not available (to click).</p>
+<h4 id="s-access-to-a-translated-specific-language-node-via-the-unique-primary-path"><a class="toc-anchor" title="Permalink to this headline" href="#s-access-to-a-translated-specific-language-node-via-the-unique-primary-path"></a><a id="Drupal_i18n_features_path___Access_translated" name="Drupal_i18n_features_path___Access_translated" rel="nofollow">Access to a translated specific-language node via the unique primary-path</a></h4>
+<p>Next, a story is getting a little more complicated, though this is unavoidable given you have the same contents in more than one language…</p>
+<p>In Drupal, each node can have its counterparts in another language(s) registered (the detailed internal mechanism explained in <a href="#Drupal_path_i18n_features___information_translation" rel="nofollow">the later section</a>). Those counterparts are called <em>translation(s)</em> in Drupal. Note the Drupal of course does not check whether the contents are a valid <em>translation</em> or not — it is up to you (or any <em>eligible</em> user) who decides which node is the translation of which. The <em>translation</em> can be a completely unrelated article, if you want.</p>
+<p>Suppose you have two nodes in English and Japanese, each of which is the translation of the other, as registered to your Drupal server, and suppose they have their own primary-path set as,</p>
+<ul>
+<li>Node 111 (English): <code class="language-php">/info/foo_en.html</code></li>
+<li>Node 222 (Japanese): <code class="language-php">/info/baa_ja.html</code></li>
+</ul>
+<p>When you access a node via its primary-path (say, <code class="language-php">/info/baa_ja.html</code>), if the language of the node (Japanese in this case) agrees with what Drupal determines as your language, the node is shown as expected. If a default language-switcher is provided, and if the translation of the node is available, visitors can switch to the translation of the node, which also changes the language of the interface, the same as in <a href="#Drupal_i18n_features_path___Access_specific" rel="nofollow">the previous section</a>.</p>
+<p>However, if the language of the node (Japanese in the case above) does not agree with what Drupal determines as your language, <strong>HTTP 404 ("Page not found") will be returned</strong>, because the node is not available in the language. If a default language-switcher is provided, it does show the hyperlink to the translation, so it is possible for the user to navigate to the translation, if s/he wants so and notices(!) the switcher.</p>
+<p>If the hyperlink is embedded (hard-coded) in the body of the node, how it works may surprise you, though it is perfectly consistent, if you think how Drupal and browsers work. In short, it depends how the hyperlink is written, namely whether absolute or relative path, in the HTML source.</p>
+<p>Suppose you are viewing a page at <code class="language-php">/ja/other/index_ja.html</code>, the language of the node of which is Japanese. If the hard-coded anchor points to <code class="language-php">/info/baa_ja.html</code>, it is the same as the above — it can return HTTP 404, depending what Drupal determines as your language. However, if the hard-coded anchor points to <code class="language-php">../info/baa_ja.html</code> (remember the page you are viewing is under <code class="language-php">/ja/other/</code> path), you will be guided to <code class="language-php">/ja/info/baa_ja.html</code>, hence you are guaranteed to be able to view the page!</p>
+<p>I should note one would never see the same (Japanese) page at the path of <code class="language-php">/other/index_ja.html</code>, unless the site-default language is Japanese and the language-code prefix for the path for the default language is set to be null. It is different from the configuration I assume here, so I will skip that (you can guess what would happen, if interested — I leave it to you).</p>
+<h4 id="s-access-to-a-primary-path-shared-with-more-than-one-language"><a class="toc-anchor" title="Permalink to this headline" href="#s-access-to-a-primary-path-shared-with-more-than-one-language"></a><a id="Drupal_path_i18n_features___Access_primary" name="Drupal_path_i18n_features___Access_primary" rel="nofollow">Access to a primary-path shared with more than one language</a></h4>
+<p>The next case to look at is that a primary-path is shared with multiple nodes, each of which has a different language and is registered as the <em>translation</em> in the Drupal server. This is actually very realistic to encounter in the migration of i18n static HTML sites.</p>
+<p>In a word, it works exactly as the case in the <a href="#Drupal_i18n_features_path___Access_translated" rel="nofollow">previous subsection</a>, providing all the (default) options to detect the language with the default priority are set as <a href="#Any_setup_need_before__i18n" rel="nofollow">mentioned above</a>.</p>
+<p>As an example, suppose the primary-path is set to be <code class="language-php">/info/foo.html</code> for the nodes Node=111 and Node=222, and both of them are registered as the <em>translation</em> to each other. Then, each of them can be respectively accessed via,</p>
+<ul>
+<li><code class="language-php">/en/info/foo.html</code> (for English)</li>
+<li><code class="language-php">/ja/info/foo.html</code> (for Japanese)</li>
+</ul>
+<p>When an user accesses <code class="language-php">/info/foo.html</code>, which language-version is shown depends what Drupal determines about your language. Whether Drupal determines your language to be English or Japanese, it will not return HTTP 404. Also, the language-switcher, if shown, provides the way to navigate around the different language versions.</p>
+<p>As a note, when setting the primary-path, the path should not include the language-code prefix; <em>e.g.</em>, <strong>not</strong> <code class="language-php">ja/info/foo.html</code> but <code class="language-php">info/foo.html</code> (for a Japanese node). If the former is set, it will break down in some cases, particularly when it is called from a hard-coded hyperlink in a node — the language-code can be duplicated in the path like <code class="language-php">/ja/ja/info/foo.html</code> and accordingly <strong>HTTP 404</strong> will be returned in some cases.</p>
+<h3 id="s-how-drupal-holds-the-information-about-the-translation-of-each-node"><a class="toc-anchor" title="Permalink to this headline" href="#s-how-drupal-holds-the-information-about-the-translation-of-each-node"></a><a id="Drupal_path_i18n_features___information_translation" name="Drupal_path_i18n_features___information_translation" rel="nofollow">How Drupal holds the information about the "translation" of each node</a></h3>
+<p>It actually depends on the context, for example, the mechanism for the translation of a node is different from that of a taxonomy. Here I explain only the former.</p>
+<p>Whenever a node has a translation(s), one of them is defined as the source node for any translation. You can choose any language for the source-node among those registered in your Drupal site; it does not have to match the default language of the site (the node may not be available in the site-default language anyway!).</p>
+<p>The single parameter to hold the relation of translation between the nodes is <code class="language-php">tnid</code> (Translation Node ID?). It can be either 0, the node number <code class="language-php">nid</code> of itself or of another node, as follows:</p>
+<ul>
+<li><strong>tnid=0</strong> (<code class="language-php">LANGUAGE_NONE</code>): Language-neutral (<em>und</em>).</li>
+<li><strong>tnid=nid (of itself)</strong>: It is the source-node for the translation.</li>
+<li><strong>tnid=nid (of the source-node)</strong>: It is a child-node for the translation.</li>
+</ul>
+<h3 id="s-note-for-the-different-i18n-configurations"><a class="toc-anchor" title="Permalink to this headline" href="#s-note-for-the-different-i18n-configurations"></a>Note for the different i18n configurations</h3>
+<p>I have repeatedly mentioned the description is applied only when the i18n environment is configured as <a href="#Any_setup_need_before__i18n" rel="nofollow">mentioned above</a>. My choice of the i18n configuration was of course not a priori even for me, and there is a justification for me to have chosen it. Here I am describing some of the points for the different i18n configurations I understand. Which configuration suits you the best is entirely up to you and your preference/objective. I am just providing some selected information, which may be of some help for you in choosing the configuration.</p>
+<h4 id="s-no-language-code-for-the-default-language"><a class="toc-anchor" title="Permalink to this headline" href="#s-no-language-code-for-the-default-language"></a>No language code for the default language</h4>
+<p>In default, English is the default language of Drupal, and the language code for the path is undefined. It is understandable, because when visitors view those default-setting sites in the site-default language, there is no language-prefix at the head of the path, which you might feel is ugly. Indeed, for those who do not need the i18n feature, the language-code is of course unnecessary, and if they in the future enable the i18n module as the site develops, the null string for the default language-code will guarantee no breakage in the existing contents and features of the site.</p>
+<p>However, this default setting with the null-string for the site-default language can lead to a confusing situation for developers (it took a long time for me to figure it out…). Here I explain why, and why I chose to set it explicitly in the end, that is, setting "en" for my site-default language, English.</p>
+<p>Suppose the same situation as the subsection "<a href="#Drupal_path_i18n_features___Access_primary" rel="nofollow">Access to a primary-path shared with more than one language</a>", that is, the primary-path is set to be <code class="language-php">/info/foo.html</code> for the nodes Node=111 (English) and Node=222 (Japanese), and both of them are registered as the translation to each other. Then, they are respectively accessed via,</p>
+<ul>
+<li><code class="language-php">/info/foo.html</code> (for English)</li>
+<li><code class="language-php">/ja/info/foo.html</code> (for Japanese)</li>
+</ul>
+<p>when the language-code for the path for the former (English) is undefined.</p>
+<p>The Japanese version is exactly the same as the case that the language-code for the site-default language is defined. However, the case for English is different. In other words, there is an asymmetry between the languages. When a user accesses <code class="language-php">/info/foo.html</code>, it will be always the English version and no HTTP 404, no matter what her/his preferred language in the browser preference is, because <code class="language-php">/info/foo.html</code> is the proper (and sole, apart from the node-type) path for the English version.</p>
+<p>Any other trick to try to display the Japanese version with the path of <code class="language-php">/info/foo.html</code>, such as, adding the session parameter of <code class="language-php">?language=ja</code>, would not work, either, because the URI-based method is set to be given the highest priority in determining the user's language.</p>
+<p>If the hyperlink to that path is included in one of the Japanese pages as a relative path, the hyperlink works well, because the user must have opened the page with the path prefixed with <code class="language-php">/ja/</code>, hence the hyperlink to that path naturally follows that with the top directory of <code class="language-php">/ja/</code>, hence clicking the hyperlink will bring up <code class="language-php">/ja/info/foo.html</code>, which is probably the expected behaviour (Go back and read the subsection "<a href="#Drupal_i18n_features_path___Access_translated" rel="nofollow">Access to a translated specific-language node via the unique primary-path</a>" if you are unsure why).</p>
+<p>In particular, this can cause a serious trouble in migrating the legacy HTMLs, which depended on the Apache language-negotiation, as explained below.</p>
+<p>Suppose the legacy static HTML site is configured to use the standard suffix-based language negotiation of the Apache server; when a user requests a path (file), the server will return the version of the file in what the server guesses is the user's preferred language, providing there are more than one version of the languages available for the path. For example, when a user requests <code class="language-php">/info/foo.html</code>, whereas there are both <code class="language-php">/info/foo.html.en</code> (English) and <code class="language-php">/info/foo.html.ja</code> (Japanese) in the server, either of English or Japanese version of the page will appear, depending on the environment. Now you have imported those two files to Drupal, and defined the relation between the two files as the translations. If the language-code for the site-default language (English in this case) is null, <code class="language-php">/info/foo.html</code> will never bring up the Japanese version. In other words, the migration fails to reproduce the feature in the original legacy site.</p>
+<p>You can perhaps set the site-default language as Japanese and nullify its language-code for the path, ignoring the potential effect for the rest of your (English) site. Then, the visitors, whose preferred language of their browser is Japanese, will see the Japanese version of the page when they access <code class="language-php">/info/foo.html</code>. But of course, English-preferring visitors would not get the English page, when they access <code class="language-php">/info/foo.html</code>, which used to work fine in the legacy HTML site.</p>
+<p>In short, if you want to reproduce the i18n structure of the legacy HTML sites as described above, you should not leave asymmetry between the languages in the Drupal site, but had better set the language-code path prefix for all the languages.</p>
+<p>Then, <code class="language-php">/info/foo.html</code> does not belong to the particular language any more, and so when a user accesses it, the language will be determined with the subsequent parameters set in the i18n configuration, that is, Session, User, Browser in this order in default.</p>
+<h4 id="s-disabling-the-url-based-language-determination"><a class="toc-anchor" title="Permalink to this headline" href="#s-disabling-the-url-based-language-determination"></a>Disabling the URL-based language determination</h4>
+<p>You can disable the language selection by Drupal based on the URL prefix entirely. For example, Google.com seems to decide the language of the page, depending on the user's browser's preference and where the accessed IP is located geographically (the latter is not included in the default Drupal i18n functionality). That is another way for sure.</p>
+<p>Note that showing different contents for the same URI, just depending on user's setting or session parameters, can be bad for SEO, and be penalised in the rating by search engines, allegedly (though that is exactly what Google.com is doing!).</p>
+<p>There is a bug in Drupal i18n reported at drupal.org:<br />
+"<a href="https://www.drupal.org/node/1294946" rel="nofollow">Language detection based on session doesn't work with URL aliases</a>".<br />
+If you access a path with the session parameter, the URL aliases of the path module do not work as of October 2014. For example, if you access to <code class="language-php">/info/foo.html?language=ja</code> it will bring up a path like <code class="language-php">/node/222</code> .</p>
+<h2 id="s-drupal-i18n-and-migration-of-htmls"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-i18n-and-migration-of-htmls"></a><a id="Drupal_i18n_migration_HTMLs" name="Drupal_i18n_migration_HTMLs" rel="nofollow">Drupal i18n and migration of HTMLs</a></h2>
+<p>Finally!</p>
+<p>Here I am describing how I have done that. There must be countless preferences for the i18n settings and how you migrate. So, this is just an example.</p>
+<h3 id="s-which-language-to-be-set-for-nodes"><a class="toc-anchor" title="Permalink to this headline" href="#s-which-language-to-be-set-for-nodes"></a>Which language to be set for nodes?</h3>
+<p>As summarised in the list in a <a href="#i18n_feature_before_after__After_Drupal_powered" rel="nofollow">previous section</a>, I set the language of the imported node as Neutral in default, but if the node has the translation, the language of the node is set to be so accordingly.</p>
+<p>To set the language appropriately for the nodes with translation, as well as to register their relation as translation, is mandatory to activate the i18n feature in Drupal. However if the language of a node is set to be something specific (like Japanese), and if the node does not have a translation to another language (say, English), the page will not show up and return HTTP 404, when English-preferring visitors access the generic URI of the Japanese node without the language-code path prefix. I have no reason to prevent (or make awkeard) those English-preferring visitors from viewing my Japanese contents, particularly given they are anyway very likely to know the contents will be in Japanese before accessing the node (as that is how the legacy HTML site was built).</p>
+<p>The way to prevent those annoying HTTP 404 is to make the node language-neutral.</p>
+<p>This means the code in my migration module must set the language of each node, judging whether the translation exists or not.</p>
+<h3 id="s-how-to-set-tnid-during-migration-from-the-static-htmls"><a class="toc-anchor" title="Permalink to this headline" href="#s-how-to-set-tnid-during-migration-from-the-static-htmls"></a>How to set tnid during migration from the static HTMLs</h3>
+<p>The most important thing in i18n is to register the translations between the created nodes, imported from the HTML files, to Drupal, that is, to set <code class="language-php">tnid</code> of each node appropriately.</p>
+<p>It is not quite straightforward, because you don't know the node-ID of each node (HTML-file) before importing. It is possible to assign a specific node-number to each HTML-file in migration and to have a total control over node-ID and <code class="language-php">tnid</code>, if you want. But if you do that, you must be aware of potential crash of node-numbers with existing nodes, and moreover, your code must somehow remember the relation between each node-number and HTML-file. A fairly complicated stuff.</p>
+<p>Unlike migration from a database (for a CMS), one thing the migration from the static HTML does not care is a node-ID number. Then you may as well leave the job of numbering of node-IDs to Drupal, unless you are planning some post-migration processing based on the node-IDs.</p>
+<p>One of the ways to assign <code class="language-php">tnid</code> is,</p>
+<ol>
+<li>Migrate the HTMLs in the source language first, Drupal assigning a node-ID to each of them,</li>
+<li>Migrate the translation HTMLs then, where
+<ul>
+<li>setting the <code class="language-php">tnid</code> of those, referring to the node-ID of the source-language HTMLs in your Drupal database,</li>
+<li>modifying the <code class="language-php">tnid</code> of the source-language nodes that have a translation, to point to its own node-ID.</li>
+</ul>
+</li>
+</ol>
+<p>More detail is explained in the <a href="#Technical_flow_chart" rel="nofollow">Technical flow-chart</a> section, and the <a href="https://github.com/masasakano/migrate_goo" rel="nofollow">full-source code of my case</a> is available at GitHub.</p>
+<h3 id="s-drupal-default-language-switcher"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-default-language-switcher"></a>(Drupal default) Language-switcher</h3>
+<p>A language-switcher block is available in default in Drupal (or, there are other user-contributing modules for it as well). The default one is fairly basic, but does I think a good job. It provides the hyperlink to the translation of the node to another language(s), if available. If not, the word of the unavailable language is struck so the users know there is no translation available. Nice.</p>
+<p>So I decided to show the language-switcher in the imported pages (in a side-bar). The legacy HTML pages have some hard-coded anchors to the translation when available. But the default language-switcher block would give more unified taste and convenience across the site. Nice.</p>
+<p>A thing is, the language in the website has at least two meanings, as explained in the <a href="#Drupal_i18n_features_path__What_language_website" rel="nofollow">previous section</a>, namely that of the interface and of main body of the node.</p>
+<p>In my case of migration, the language of all the imported nodes that have no translation is set to be neutral. That means practically, in all the imported pages, both the languages (English and Japanese) look available in the language-switcher. Because, when the language of the node is neutral, the hyperlink to the other language merely changes the language of the interface (see <a href="#Drupal_i18n_features_path___Access_language_neutral" rel="nofollow">a previous section</a> for detail), whereas when the node has a translation, the hyperlink to the other language is the link to the translation. It is no good. The language-switcher has a double meaning in this case. And, users could not tell if the translation is available or not before they click the hyperlink to the other language in the language switcher (and most likely find no success, as a vast majority of the imported nodes have no translation).</p>
+<p>A solution would be to find a, or develop my own, language-switcher, which clearly distinguishes the two meanings of the languages of the site. Another (easier) way is simply to disable (not show) the language-switcher in those language-neutral nodes; then users can tell if the translation (or strictly speaking, the content of the same context in the other language) is available or not for the node they are browsing.</p>
+<p>I took the latter approach; I used the two-tier system to implement the feature, configuring as follows (I am using the default Block module of Drupal 7):</p>
+<ol>
+<li><strong>Block</strong>: Language-switcher is enabled in default except for the paths for the nodes of the imported HTMLs,</li>
+<li><strong>Context</strong>: Language-switcher block is added, when the language of the node is <strong>not</strong> neutral.</li>
+</ol>
+<p>Unfortunately, the context for "not language-neutral" is unavailable in default (See <a href="http://www.drupal.org/node/2351335" rel="nofollow">https://www.drupal.org/node/2351335</a>). So I have developed the little module (<code class="language-php">langnonecontext</code>) for it, and used the implemented context in the <a href="https://www.drupal.org/project/context" title="context module" rel="nofollow">context</a> module:<br />
+<a href="http://github.com/masasakano/langnonecontext" title="module to implement the language-neutral context" rel="nofollow">http://github.com/masasakano/langnonecontext</a></p>
+<h3 id="s-language-switcher-anchors-hard-coded-in-htmls"><a class="toc-anchor" title="Permalink to this headline" href="#s-language-switcher-anchors-hard-coded-in-htmls"></a><a id="Drupal_i18n_migration_HTMLs__Language_switcher_anchors" name="Drupal_i18n_migration_HTMLs__Language_switcher_anchors" rel="nofollow">Language-switcher anchors hard-coded in HTMLs</a></h3>
+<p>In the suffix-based language-negotiation system in the Apache server, when a user request a full filename, like <code class="language-php">index.html.en</code>, the web server returns the node in the language specified. This path (filename) can be used as an anchor from any of the HTML files.</p>
+<p>The default Drupal i18n configuration (as <a href="#Any_setup_need_before__i18n" rel="nofollow">mentioned above</a>) is similar, except the language-code is the prefix as the root path.</p>
+<p>Unfortunately they don't match well. Think of the case the anchor points to the translation as the relative path in a HTML; <em>e.g.</em>, the anchor to <code class="language-php">./index.html.en</code> embedded in the file <code class="language-php">/info/uk/index.html.ja</code>. If the anchor is in the form of an absolute path, it is simpler, but still needs rewriting of the path to switch the language in Drupal.</p>
+<p>To make the long story short, I have solved this problem by replacing all those anchor tags that points to a relative URI of a file in the different language with a small PHP code, which on the fly create the absolute path with the language-code prefix. For the absolute path, the language-code prefix is added at the head of the hard-coded path. My migration script does these during the processing, when it reads each HTML and extracts the required information from it.</p>
+<p>Note the user (author) assigned to those imported nodes must be <a href="#Any_setup_need_before__Permissions" rel="nofollow">given a permission</a> to include the PHP code in the body of the node.</p>
+<p>See my code in <a href="https://github.com/masasakano/migrate_goo" rel="nofollow">my module</a> for detail; the corresponding part is commented well.</p>
+<h3 id="s-redirection-and-i18n"><a class="toc-anchor" title="Permalink to this headline" href="#s-redirection-and-i18n"></a><a id="Drupal_i18n_migration_HTMLs__Redirection_i18n" name="Drupal_i18n_migration_HTMLs__Redirection_i18n" rel="nofollow">Redirection and i18n</a></h3>
+<p>To keep some legacy URIs in the Drupal site, I use the <a href="https://www.drupal.org/project/redirect" title="redirect module" rel="nofollow">Redirect</a> module to redirect those legacy URIs to the corresnpoinding primary-path. I have introduced the more modern style URI as the primary-path. In short, the language-related suffix in the original HTML path (<em>e.g.</em>, <code class="language-php">/ja</code>) should be eliminated and the directory-type paths be redirected to their corresponding index file, as summarised in <a href="#i18n_feature_before_after__After_Drupal_powered" rel="nofollow">a previous section</a>.</p>
+<p>An example of the latter is, <code class="language-php">/info</code> → <code class="language-php">/info/index.html</code>. I should note the other way around (<em>e.g.</em>, <code class="language-php">/info/index.html</code> → <code class="language-php">/info</code>) would not work well. The following explains why.</p>
+<p>Suppose the primary-path is defined as <code class="language-php">info/uk</code> (for the original filename of <code class="language-php">/info/uk/index.html</code>). Note a trailing forward-slash must not be included as the primary-path. Then, a hyperlink anchored from <code class="language-php">/info/uk</code> (<em>i.e.</em>, <code class="language-php">/info/uk/index.html</code> in the legacy site) with a relative path of, say, <code class="language-php">./baa.html</code>, is recognised by the users' browsers as <code class="language-php">/info/baa.html</code>, as opposed to the correct <code class="language-php">/info/uk/baa.html</code>. Therefore if a user tries to open the link by clicking the anchor, the browser sends a request of <code class="language-php">/info/baa.html</code>, which will cause HTTP 404 — dead link. It is the correct interpretation for the browser. If the original path was <code class="language-php">/info/uk/</code>, it would work as expected, but it is not the case in Drupal (path module).</p>
+<p>To summarise the settings of the (primary-)path and redirections, the file like <code class="language-php">/info/index.jis.html</code> (Japanese) requires the following three settings:</p>
+<ol>
+<li><strong>Primary-path</strong>: <code class="language-php">info/index.html</code></li>
+<li><strong>Redirect 1</strong>: <code class="language-php">info/index.jis.html</code> → <code class="language-php">info/index.html</code></li>
+<li><strong>Redirect 2</strong>: <code class="language-php">info</code> → <code class="language-php">info/index.html</code></li>
+</ol>
+<p>It is the same for the file <code class="language-php">/info/index.en.html</code> (English), except in practice "Redirect 2" is not set while processing the file, because it would have been already set while processing <code class="language-php">/info/index.jis.html</code>.</p>
+<p>The other files than index files do not need the "Redirect 2". If the original file does not contain the language-related suffix, like <code class="language-php">/info/france.html</code>, the "Redirect 1" is not needed, either, and the primary-path is all it needs.</p>
+<p><a href="#Drupal_path_i18n_features___Access_primary" rel="nofollow">As discussed</a>, the primary-path should never include the language-code prefix, and so should not the redirection. Also, the node-type path should not be used anywhere, including the redirection, <a href="#Drupal_path_module" rel="nofollow">as discussed separately</a>. That is why <code class="language-php">info/index.jis.html</code> can not be set as a direct redirection to the Japanese version of the node like <code class="language-php">/ja/info/index.html</code> or <code class="language-php">/node/222</code>.</p>
+<h4 id="s-summary-of-how-the-uri-request-works"><a class="toc-anchor" title="Permalink to this headline" href="#s-summary-of-how-the-uri-request-works"></a>Summary of how the URI request works</h4>
+<p>A request to the URI of <code class="language-php">info/index.jis.html</code> (Japanese index), where <code class="language-php">info/index.en.html</code> (English index) also existed in the legacy HTMLs, works as follows:</p>
+<ol>
+<li><a id="Drupal_i18n_migration_HTMLs__Redirection_i18n___summary__List1_1" name="Drupal_i18n_migration_HTMLs__Redirection_i18n___summary__List1_1" rel="nofollow">If it is a direct request of the URI</a>,<br />
+	<em>i.e.</em>, <code class="language-php">http://example.com/info/index.jis.html</code>
+<ol>
+<li>Redirected to <code class="language-php">http://example.com/info/index.html</code></li>
+<li>Redirected to either of the following two, depending on other factors, such as user's preference of the language,
+<ul>
+<li><code class="language-php">http://example.com/en/info/index.html</code> (English)</li>
+<li><code class="language-php">http://example.com/ja/info/index.html</code> (Japanese)</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>If it is an embedded anchor as a relative path in the body of the node,
+<ol>
+<li><a id="Drupal_i18n_migration_HTMLs__Redirection_i18n___summary__List2_1" name="Drupal_i18n_migration_HTMLs__Redirection_i18n___summary__List2_1" rel="nofollow">If the language of the current node is Japanese</a><br />
+		(<em>e.g.</em>, <code class="language-php">http://example.com/ja/doc/gear.html</code>)
+<ol>
+<li>Interpreted by the browser as<br />
+			<code class="language-php">http://example.com/ja/info/index.jis.html</code></li>
+<li>Redirected to <code class="language-php">http://example.com/ja/info/index.html</code> (Japanese)</li>
+</ol>
+</li>
+<li>If the language of the current node is English<br />
+		(<em>e.g.</em>, <code class="language-php">http://example.com/en/doc/gear.html</code>)
+<ul>
+<li>The anchor in the body must have been <a href="#Drupal_i18n_migration_HTMLs__Language_switcher_anchors" rel="nofollow">replaced with a PHP code</a>, which produces the hyperlink of the absolute path, <code class="language-php">http://example.com/ja/info/index.jis.html</code></li>
+<li>Redirected to <code class="language-php">http://example.com/ja/info/index.html</code> (Japanese)</li>
+</ul>
+</li>
+<li>If the language of the current node is language-neutral and
+<ol>
+<li>if the current path contains the language-code prefix, which must be <code class="language-php">/ja/</code>, such as, <code class="language-php">http://example.com/ja/doc/links.html</code>, (<em>n.b.</em>, this is expected, as long as the user has followed the internal links to come to the current path),
+<ul>
+<li>The same as <a href="#Drupal_i18n_migration_HTMLs__Redirection_i18n___summary__List2_1" rel="nofollow">the case of a Japanese node</a>, namely, the Japanese page is returned.</li>
+</ul>
+</li>
+<li>if the current path does not contain the language-code prefix (<em>e.g.</em>, <code class="language-php">http://example.com/doc/links.html</code>),
+<ul>
+<li>The same as <a href="#Drupal_i18n_migration_HTMLs__Redirection_i18n___summary__1" rel="nofollow">the first item</a>, namely, either English or Japanese.</li>
+</ul>
+<p><em>n.b.</em>, this is a fairly unlikely situation — the user must have somehow directly opened the URI of the current path, or jumped here directly from an external site.</p>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-69fb68ea83a9b09b86e6c134067037ad">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/2354755/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/2354755/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%282354755%29%20Migrating%20from%20static%20HTMLs%20with%20i18n">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"Lo7Foj4ARAXmwFy05LccLVTPO1vGPBteBKESGp78y0o"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/migrating-to-drupal\/migrating-from-static-htmls-with-i18n":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2764167"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
