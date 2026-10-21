@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="The Color module allows to change the theme color scheme." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/theming/integration-with-the-color-module" />
+<link rel="shortlink" href="https://www.drupal.org/node/108459" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/theming/integration-with-the-color-module" />
+<meta property="og:title" content="Integration with the Color module" />
+<meta property="og:description" content="Color.module allows the admin to change the color scheme of a theme. By selecting a palette of colors (either from a set or by hand), you can change the colors of an entire theme. The module can alter the stylesheet and re-render images. However, the theme must provide specific hooks to allow this, and the design must be created specifically to accommodate this. This document explains the basics of making a colorizable theme. Design It is important to realize that due to the way color.module works, not every design can be colorized." />
+<meta property="og:updated_time" content="2023-05-21T11:19:17+00:00" />
+<meta property="article:published_time" content="2007-01-11T04:36:18+00:00" />
+<meta property="article:modified_time" content="2023-05-21T11:19:17+00:00" />
+  <title>Integration with the Color module | Theming Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-108459 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2792973" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/theming/integration-with-the-color-module" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-360MQbPo9kCj8ODpNrnHTPPdRo2eDERdKfdp4azXby0" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/108459" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/108459" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/theming/integration-with-the-color-module" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-PbF__Q2jarl1pGTZmpBa2YCy25Q5YbA1GMVjPvBpj18" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/theming">Theming Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-108459">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/theming/integration-with-the-color-module#s-design" class="toc-link toc-link-invalid-id active">Design</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/integration-with-the-color-module#s-in-practice" class="toc-link toc-link-invalid-id active">In practice</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/integration-with-the-color-module#s-schemes" class="toc-link toc-link-invalid-id active">Schemes</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/integration-with-the-color-module#s-images-to-copy" class="toc-link toc-link-invalid-id active">Images to copy</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/integration-with-the-color-module#s-fill-areas-and-gradients" class="toc-link toc-link-invalid-id active">Fill areas and gradients</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/integration-with-the-color-module#s-image-slices" class="toc-link toc-link-invalid-id active">Image slices</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/integration-with-the-color-module#s-files" class="toc-link toc-link-invalid-id active">Files</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/integration-with-the-color-module#s-stylesheets-css" class="toc-link toc-link-invalid-id active">Stylesheets (CSS)</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/integration-with-the-color-module#s-making-colors-match" class="toc-link toc-link-invalid-id active">Making colors match</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/theming/integration-with-the-color-module#s-phptemplate-changes" class="toc-link toc-link-invalid-id active">PHPTemplate changes</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="theming-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/theming">Theming Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/theming/overview-of-theme-files">Overview of theme files</a></li>
+<li class="leaf"><a href="/docs/7/theming/writing-theme-info-files">Writing theme .info files</a></li>
+<li class="leaf"><a href="/docs/7/theming/default-info-values">Default .info values</a></li>
+<li class="leaf"><a href="/docs/7/theming/assigning-content-to-regions">Assigning content to regions</a></li>
+<li class="leaf"><a href="/docs/7/theming/checking-if-a-region-is-occupied">Checking if a region is occupied</a></li>
+<li class="leaf"><a href="/docs/7/theming/theme-settings">Theme settings</a></li>
+<li class="leaf"><a href="/docs/7/theming/global-settings">Global settings</a></li>
+<li class="leaf active-trail"><a href="/docs/7/theming/integration-with-the-color-module" class="active-trail active">Integration with the Color module</a></li>
+<li class="leaf"><a href="/docs/7/theming/creating-a-sub-theme">Creating a sub-theme</a></li>
+<li class="leaf"><a href="/docs/7/theming/clearing-the-theme-cache">Clearing the theme cache</a></li>
+<li class="leaf"><a href="/docs/7/theming/sub-theme-inheritance-summary">Sub Theme - Inheritance Summary</a></li>
+<li class="leaf"><a href="/docs/7/theming/example-creating-a-garland-sub-theme-that-utilizes-the-color-module">Example: creating a Garland sub-theme that utilizes the Color module</a></li>
+<li class="leaf"><a href="/docs/7/theming/working-with-css">Working with CSS</a></li>
+<li class="leaf"><a href="/docs/7/theming/working-with-javascript-and-jquery">Working with JavaScript and jQuery</a></li>
+<li class="leaf"><a href="/docs/7/theming/using-newer-versions-of-jquery">Using Newer Versions of jQuery</a></li>
+<li class="leaf"><a href="/docs/7/theming/core-templates">Core templates</a></li>
+<li class="leaf"><a href="/docs/7/theming/template-theme-hook-suggestions">Template (theme hook) suggestions</a></li>
+<li class="leaf"><a href="/docs/7/theming/theming-blocks">Theming blocks</a></li>
+<li class="leaf"><a href="/docs/7/theming/advanced">Advanced theming</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output">Overriding themable output</a></li>
+<li class="leaf"><a href="/docs/7/theming/creating-accessible-themes">Creating accessible themes</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto">Theming HowTos</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices">Tools and best practices</a></li>
+<li class="last leaf"><a href="/docs/7/theming/upgrading-6x-themes-to-7x">Upgrading 6.x themes to 7.x</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Integration with the Color module</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/108459/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    21 May 2023  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Color.module allows the admin to change the color scheme of a theme. By selecting a palette of colors (either from a set or by hand), you can change the colors of an entire theme.</p>
+<!--break--><p>The module can alter the stylesheet and re-render images. However, the theme must provide specific hooks to allow this, and the design must be created specifically to accommodate this.</p>
+<p>This document explains the basics of making a colorizable theme.</p>
+<h2 id="s-design"><a class="toc-anchor" title="Permalink to this headline" href="#s-design"></a>Design</h2>
+<p><img alt="" class="right" src="/files/color.module.png" />It is important to realize that due to the way color.module works, not every design can be colorized.</p>
+<p>We take a transparent image of the design (the base), which includes everything except the background. We then compose this image on top of a colored background, to get the colored versions. Finally, we slice up this composite image into smaller images and save them to separate image files.</p>
+<p>We also process the stylesheet and change all the colors based on the ones you defined. The module smoothly changes the colors using the palette as a reference. Colors that don't appear literally in the palette are adjusted relative to the closest matching palette color (whether it is a link, text or background color).</p>
+<p>So, the Photoshop mockup of the design should consist of a layered file that has one or more colored layers at the bottom of the layer stack, with everything else blended on top. When you save the base image, you have to merge all layers together, while keeping the colored layers invisible. Take a look at Garland's <a href="http://drupal.org/themes/garland/color/base.png" rel="nofollow">base.png</a> file to see an example (open it in an image editor to see the transparencies). There is a <a href="http://drupal.org/node/287911" rel="nofollow">video</a> showing how to create your own base.png file using Photoshop.</p>
+<p>All the files generated in this process are written to <code class="language-php">/files/css</code> and used instead of the default images. This means that a colorizable theme should still work out of the box without color.module, in the default color scheme.</p>
+<h2 id="s-in-practice"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-practice"></a>In practice</h2>
+<p>Let's use Garland as an example. The most important files are in the <code class="language-php">themes/garland/color</code> subdirectory:</p>
+<dl>
+<dt>base.png</dt>
+<dd>This contains the base design of the theme, which is composed and sliced into the images.</dd>
+<dt>color.inc</dt>
+<dd>This file contains all the necessary parameters to color the theme. See below.</dd>
+<dt>preview.css</dt>
+<dd>This stylesheet is used to generate the preview on the color changer.</dd>
+<dt>preview.png</dt>
+<dd>This image is used to generate the preview on the color changer.</dd>
+</dl>
+<p>The presence of <code class="language-php">color/color.inc</code> makes the color picker appear on the theme's settings. It is a regular PHP file which contains an $info array with the following values:</p>
+<h3 id="s-schemes"><a class="toc-anchor" title="Permalink to this headline" href="#s-schemes"></a>Schemes</h3>
+<pre>
+<code class="language-php">array('schemes' =&gt; array(
+    '#0072b9,#027ac6,#2385c2,#5ab5ee,#494949' =&gt; t('Blue Lagoon (Default)'),
+    '#464849,#2f416f,#2a2b2d,#5d6779,#494949' =&gt; t('Ash'),
+    '#55c0e2,#000000,#085360,#007e94,#696969' =&gt; t('Aquamarine'),
+    '#d5b048,#6c420e,#331900,#971702,#494949' =&gt; t('Belgian Chocolate'),
+    '#3f3f3f,#336699,#6598cb,#6598cb,#000000' =&gt; t('Bluemarine'),
+    '#d0cb9a,#917803,#efde01,#e6fb2d,#494949' =&gt; t('Citrus Blast'),
+    '#0f005c,#434f8c,#4d91ff,#1a1575,#000000' =&gt; t('Cold Day'),
+    '#c9c497,#0c7a00,#03961e,#7be000,#494949' =&gt; t('Greenbeam'),
+    '#ffe23d,#a9290a,#fc6d1d,#a30f42,#494949' =&gt; t('Mediterrano'),
+    '#788597,#3f728d,#a9adbc,#d4d4d4,#707070' =&gt; t('Mercury'),
+    '#5b5fa9,#5b5faa,#0a2352,#9fa8d5,#494949' =&gt; t('Nocturnal'),
+    '#7db323,#6a9915,#b5d52a,#7db323,#191a19' =&gt; t('Olivia'),
+    '#12020b,#1b1a13,#f391c6,#f41063,#898080' =&gt; t('Pink Plastic'),
+    '#b7a0ba,#c70000,#a1443a,#f21107,#515d52' =&gt; t('Shiny Tomato'),
+    '#18583d,#1b5f42,#34775a,#52bf90,#2d2d2d' =&gt; t('Teal Top'),
+  ));
+</code></pre><p>This entry contains a straightforward array of pre-defined color schemes. Each entry must have 5 colors (which, in order, are base color, link color, top header, bottom header, and text color) formatted as above, and a title.</p>
+<p>The first scheme is used as a reference and must match the colors used in the theme's default images and stylesheet closely. Otherwise, the final colors might not be what the user intended. See the 'stylesheets' section for more information about how the colors are calculated.</p>
+<h3 id="s-images-to-copy"><a class="toc-anchor" title="Permalink to this headline" href="#s-images-to-copy"></a>Images to copy</h3>
+<pre>
+<code class="language-php">  array('copy' =&gt; array(
+    'images/menu-collapsed.gif',
+    'images/menu-expanded.gif',
+    'images/menu-leaf.gif',
+  ));
+</code></pre><p>This array contains a list of images which should not be altered. They are copied to the location of the generated images and stylesheet.</p>
+<h3 id="s-fill-areas-and-gradients"><a class="toc-anchor" title="Permalink to this headline" href="#s-fill-areas-and-gradients"></a>Fill areas and gradients</h3>
+<p>To color the image, we create a target image that is the same size as the base image, and draw colored areas and a gradient. For full flexibility, the location of these areas is defined by specifying their coordinates using (x, y, width, height):</p>
+<pre>
+<code class="language-php">  array('gradient' =&gt; array(0, 37, 760, 121));
+</code></pre><p>You can specify one vertical two-color gradient.</p>
+<pre>
+<code class="language-php">  array('fill' =&gt; array(
+    'base' =&gt; array(0, 0, 760, 568),
+    'link' =&gt; array(107, 533, 41, 23),
+  ));
+</code></pre><p>You can specify regions for each of the palette colors. The region will be filled in with the selected color. Available colors are 'base', 'link', 'top', 'bottom' and 'text'.</p>
+<h3 id="s-image-slices"><a class="toc-anchor" title="Permalink to this headline" href="#s-image-slices"></a>Image slices</h3>
+<p>Next, you need to define the areas of the base image to slice out for each of the images. Again, you specify coordinates as (x, y, width, height) along with the filename of the image, as used in the stylesheet. The logo and screenshot slices are special and always take the same filename. The screenshot will be resized to 150x90 pixels.</p>
+<pre>
+<code class="language-php">  array('slices' =&gt; array(
+    'images/body.png'                      =&gt; array(0, 37, 1, 280),
+    'images/bg-bar.png'                    =&gt; array(202, 530, 76, 14),
+    'images/bg-bar-white.png'              =&gt; array(202, 506, 76, 14),
+    'images/bg-tab.png'                    =&gt; array(107, 533, 41, 23),
+    'images/bg-navigation.png'             =&gt; array(0, 0, 7, 37),
+    'images/bg-content-left.png'           =&gt; array(40, 117, 50, 352),
+    'images/bg-content-right.png'          =&gt; array(510, 117, 50, 352),
+    'images/bg-content.png'                =&gt; array(299, 117, 7, 200),
+    'images/bg-navigation-item.png'        =&gt; array(32, 37, 17, 12),
+    'images/bg-navigation-item-hover.png'  =&gt; array(54, 37, 17, 12),
+    'images/gradient-inner.png'            =&gt; array(646, 307, 112, 42),
+
+    'logo.png'                             =&gt; array(622, 51, 64, 73),
+    'screenshot.png'                       =&gt; array(0, 37, 400, 240),
+  ));
+</code></pre><h3 id="s-files"><a class="toc-anchor" title="Permalink to this headline" href="#s-files"></a>Files</h3>
+<p>Finally you need to specify the location of the files for your theme. You need an image and a stylesheet for the preview, as well as the base image*:</p>
+<pre>
+<code class="language-php"> array(
+  'preview_image' =&gt; 'color/preview.png',
+  'preview_css' =&gt; 'color/preview.css',
+  'base_image' =&gt; 'color/base.png',
+ );
+</code></pre><p>* As of Drupal 6, Color.module <a href="http://drupal.org/node/213172" rel="nofollow">no longer requires base_image</a>, meaning it is possible to utilize the module without images.</p>
+<h3 id="s-stylesheets-css"><a class="toc-anchor" title="Permalink to this headline" href="#s-stylesheets-css"></a>Stylesheets (CSS)</h3>
+<p>The color.module will read in a theme's specified style.css file(s) as well as any other styles that are imported with <code class="language-php">@import</code> statements and create a new style.css file. It will change the colors in the CSS. It uses (in Drupal 7, the 'default' scheme's colors) one of the chosen palette colors as a reference. This depends on context:</p>
+<ul>
+<li><strong>Links</strong>: the 'link' color is used, for rules that apply to <code class="language-php">a</code> elements.</li>
+<li><strong>Text</strong>: the 'text' color is used, for rules that appear in <code class="language-php">color:</code> styles.</li>
+<li><strong>Base</strong>: the 'base' color is used for everything else.</li>
+</ul>
+<p>However, if a color in the stylesheet matches one of the reference colors exactly, the context will be ignored, and the matching replacement color will be used instead.</p>
+<p><img alt="" class="left" src="/files/color-shift.png" />For example, suppose your reference color is <em>dark blue</em> by default, but you change it to <em>red</em>. Your default stylesheet contains both <em>light blue</em> and <em>gray purple</em>, both relative to this reference color.</p>
+<p>The resulting colors (mauve and brown) are similarly different from red as the original colors were from blue. In technical terms: the relative difference in hue, saturation and luminance are preserved.</p>
+<p>If you find color.module is using the wrong reference color, try separating the different pieces into separate CSS rules, each in their own <code class="language-php">selector { ... }</code> section, so there is no confusion about the context.</p>
+<p>Note that if you edit your stylesheet after changing the color scheme, you must resubmit the color scheme to regenerate the color-shifted version.</p>
+<p>If you wish for certain colors in the stylesheet not to be altered, you should place their CSS below the following marker:</p>
+<pre>
+<code class="language-php">/*******************************************************************
+ * Color Module: Don't touch                                       *
+ *******************************************************************/
+</code></pre><p>You can only use this marker once in your style.css file. It applies globally, so if you use it inside an imported stylesheet, all colors below the @import statement will be left alone too.</p>
+<h3 id="s-making-colors-match"><a class="toc-anchor" title="Permalink to this headline" href="#s-making-colors-match"></a>Making colors match</h3>
+<p>It is important that the generated images match with the shifted colors in the generated stylesheet. Otherwise, ugly edges might appear.</p>
+<p>To make this work, pixels in the base image must all be a simple color in areas where they have to match with CSS-defined colors. Because we don't know where CSS-defined colors appear in the base image, we use a global blending color which must be the same in the whole design. Garland uses white. Note that the Garland base does include e.g. gray and black pixels, but only in areas where only images are used as backgrounds (e.g. the header). Other than white, black or gray are good candidates too.</p>
+<pre>
+<code class="language-php">  array('blend_target' =&gt; '#ffffff');
+</code></pre><p>Masochists can take a peek at color.module's innards, particularly the _color_shift() function if you're interested in the how and why of this.</p>
+<h3 id="s-phptemplate-changes"><a class="toc-anchor" title="Permalink to this headline" href="#s-phptemplate-changes"></a>PHPTemplate changes</h3>
+<p>Finally, you need to hook color.module into your theme. We'll use a PHPTemplate theme as an example, but this applies to other engines as well.</p>
+<p>In your theme's <code class="language-php">template.php</code> file, add the following snippet (for Drupal 6.x):</p>
+<pre>
+<code class="language-php">/**
+ * Override or insert PHPTemplate variables into the templates.
+ */
+function phptemplate_preprocess_page(&amp;$vars) {
+  // Hook into color.module
+  if (module_exists('color')) {
+    _color_page_alter($vars);
+  }
+}
+</code></pre><p>This will allow the module to override your theme's logo, stylesheet and screenshot. If you perform other changes in _phptemplate_variables, you need to merge in this snippet.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-666d8b19176f4bde0b7372416c3f4f57">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/108459/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/108459/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28108459%29%20Integration%20with%20the%20Color%20module">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"aPcX_qMmiVPw-LwUIVMpsPTwSbA5z4-UiaJEHlUMIuo"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/theming\/integration-with-the-color-module":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2792973"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
