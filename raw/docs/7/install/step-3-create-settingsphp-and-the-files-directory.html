@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Drupal Config File &quot;settings.php&quot; Overview" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/install/step-3-create-settingsphp-and-the-files-directory" />
+<link rel="shortlink" href="https://www.drupal.org/node/540242" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/install/step-3-create-settingsphp-and-the-files-directory" />
+<meta property="og:title" content="Step 3: Create settings.php and the files directory" />
+<meta property="og:description" content="In order for Drupal to work, you have to tell Drupal where the database is, what the database is called, and the database credentials to access the database. This information is collected when you run the installer and is stored in the settings.php file which is located in: sites/default When you first extract Drupal, it doesn&#039;t come with a settings.php file, instead it comes with default.settings.php. When you first install Drupal, it will attempt to copy and rename default.settings.php to settings.php for you." />
+<meta property="og:updated_time" content="2018-08-19T16:53:24+00:00" />
+<meta property="article:published_time" content="2009-08-04T23:36:25+00:00" />
+<meta property="article:modified_time" content="2018-08-19T16:53:24+00:00" />
+  <title>Step 3: Create settings.php and the files directory | Installing Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-540242 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2764151" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/install/step-3-create-settingsphp-and-the-files-directory" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-U8rW5knzhbGghAxFEI-ZHEKs6ICYzjWOpsZ8BLlCxoc" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/540242" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/540242" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/install/step-3-create-settingsphp-and-the-files-directory" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-YXHyuVJ3ksBJxbyl2kMuIoxLX-rpJWPIzQ6IfcWbGNs" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/install">Installing Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-540242">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-automatic-settingsphp-overview" class="toc-link toc-link-invalid-id active">Automatic settings.php Overview</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-manual-settingsphp-overview" class="toc-link toc-link-invalid-id active">Manual settings.php Overview</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-manual-settingsphp-detailed-instructions" class="toc-link toc-link-invalid-id active">Manual settings.php Detailed Instructions</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-step-1-navigation-creation" class="toc-link toc-link-invalid-id active">Step 1 - Navigation &amp; Creation</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-step-2-check-the-permissions-are-writeable" class="toc-link toc-link-invalid-id active">Step 2 - Check the Permissions Are Writeable</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-step-3-try-the-install" class="toc-link toc-link-invalid-id active">Step 3 - Try the Install</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-step-4-create-the-files-directory" class="toc-link toc-link-invalid-id active">Step 4 - Create the Files Directory</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-step-5-post-install-permission-check" class="toc-link toc-link-invalid-id active">Step 5 - Post Install Permission Check</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-os-specific-instructions" class="toc-link toc-link-invalid-id active">OS specific instructions</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-fedora-linuxsettingsphp-notes" class="toc-link toc-link-invalid-id active">Fedora Linux settings.php notes</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory#s-windows-iis-settingsphp-notes" class="toc-link toc-link-invalid-id active">Windows (IIS) settings.php notes</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="installing-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/install">Installing Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/install/before-installation">Before installation</a></li>
+<li class="leaf"><a href="/docs/7/install/step-1-download-and-extract-drupal">Step 1: Download and extract Drupal</a></li>
+<li class="leaf"><a href="/docs/7/install/step-2-create-the-database">Step 2: Create the database</a></li>
+<li class="leaf active-trail"><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory" class="active-trail active">Step 3: Create settings.php and the files directory</a></li>
+<li class="leaf"><a href="/docs/7/install/step-4-run-the-installation-script">Step 4: Run the installation script</a></li>
+<li class="leaf"><a href="/docs/7/install/setting-up-the-files-directory">Setting up the files directory</a></li>
+<li class="leaf"><a href="/docs/7/install/install-drupal-in-another-language">Install Drupal in another language</a></li>
+<li class="leaf"><a href="/docs/7/install/built-in-installation-profiles-drupal-7">Built-in Installation Profiles</a></li>
+<li class="leaf"><a href="/docs/7/install/os-specific-download-notes">OS specific download notes</a></li>
+<li class="last leaf"><a href="/docs/7/install/using-an-installation-profile">Using an installation profile</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Step 3: Create settings.php and the files directory</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/540242/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    19 August 2018  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>In order for Drupal to work, you have to tell Drupal where the database is, what the database is called, and the database credentials to access the database. This information is collected when you run the installer and is stored in the <strong>settings.php</strong> file which is located in:</p>
+<p><code class="language-php">sites/default</code></p>
+<p>When you first extract Drupal, it doesn't come with a settings.php file, instead it comes with default.settings.php. When you first install Drupal, it will attempt to copy and rename default.settings.php to settings.php for you. There are some rare instances where you will need to do this manually which are covered in detail further down on this page.</p>
+<p>Finally, the purpose of having default.[config-file].php is so you can easily update Drupal, without overwriting the entire configuration that runs your site. Yes, there was a time when that happened...</p>
+<h2 id="s-automatic-settingsphp-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-automatic-settingsphp-overview"></a>Automatic settings.php Overview</h2>
+<p>By default, Drupal will attempt to create and populate the settings.php file automatically when you use install.php to setup the site. The script also changes the permission on the file to secure it once it is finished and then creates a sites/default/files directory for housing all of your non-core files. Unfortunately, some types of shared/local hosting are configured so PHP and Apache run as the same user. This might result in the install script failing to execute the creation and population of the settings.php file, along with setting permissions and creating the files directory. If you get errors referring to the <em>Settings file</em> during installation, you will have to manually create the settings.php file and do a few more tasks before you can run install.php. Once it is created with write permissions, the installation script will automatically populate the proper information for your site config. Afterwards, you will have to re-secure the settings.php file.</p>
+<p>At this point, jump to the next page step: <a href="/docs/7/install/step-4-run-the-installation-script" rel="nofollow">Step 4: Run the installation script</a>. If you run into problems with the installation due to the <em>Settings</em>, come back here and follow the Manual steps outlined below.</p>
+<h2 id="s-manual-settingsphp-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-manual-settingsphp-overview"></a>Manual settings.php Overview</h2>
+<p>Drupal comes with a sample settings.php configuration file located at: <code class="language-php">sites/default/default.settings.php</code><br />
+Before you run the installation script (install.php), you need to copy default.settings.php file as a new file called <code class="language-php">settings.php</code> and change its permissions to be writeable. After the installation, you will need to restrict the permissions again.</p>
+<h2 id="s-manual-settingsphp-detailed-instructions"><a class="toc-anchor" title="Permalink to this headline" href="#s-manual-settingsphp-detailed-instructions"></a>Manual settings.php Detailed Instructions</h2>
+<h3 id="s-step-1-navigation-creation"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-1-navigation-creation"></a>Step 1 - Navigation &amp; Creation</h3>
+<p>Navigate to <code class="language-php">sites/default</code> of your root Drupal install.</p>
+<p>Copy the <code class="language-php">default.settings.php</code> file and save the new file as <code class="language-php">settings.php</code> in the same directory (see note below about renaming). If you have shell access (command line) run the following command from the directory that contains your Drupal installation files:</p>
+<pre>
+<code class="language-php">cp sites/default/default.settings.php sites/default/settings.php </code></pre><p><em><strong>Note:</strong> Do not simply rename the file. The Drupal installer needs both files.</em></p>
+<p>If you only have FTP access, you will have to download the file to your computer, rename it, then upload it. Some hosting providers have a file manager on the dashboard where the file can be copied and renamed.</p>
+<h3 id="s-step-2-check-the-permissions-are-writeable"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-2-check-the-permissions-are-writeable"></a>Step 2 - Check the Permissions Are Writeable</h3>
+<p>By default, the <strong>sites/default</strong> directory and the <strong>settings.php</strong> file should be writeable. You can check that the permissions of <strong>sites/default</strong> and <strong>settings.php</strong> are writeable by issuing the following commands:</p>
+<pre>
+<code class="language-php">ls -l sites/ </code></pre><p>Permission on <strong>sites/default</strong> should be 755 [drwxr-xr-x]:</p>
+<pre>
+<code class="language-php">ls -l sites/default/settings.php </code></pre><p>Permission on <strong>settings.php</strong> should be 644 [-rw-r--r--]:</p>
+<p>If they are anything but writeable, you can issue the following commands:</p>
+<pre>
+<code class="language-php">chmod 644 sites/default/settings.php </code></pre><p><em><strong>Note:</strong> If you are in the same group as the web user, then changing the permissions to <code class="language-php">664</code> will be sufficient.</em></p>
+<p>Several FTP tools like <a href="http://filezilla-project.org" title="Filezilla" rel="nofollow">Filezilla</a>, <a href="https://panic.com/transmit/" target="_blank" rel="nofollow">Transmit</a>, and <a href="http://fetchsoftworks.com/" target="_blank" rel="nofollow">Fetch</a> etc. allow you to change file permissions, using a 'file attribute' or 'get info' command. In this case the file permission should be set to 644. If your FTP client has checkboxes for setting permissions, check both the Read and Write boxes for "Owner", "Group", and "Others" (but leave the Execute boxes unchecked). For some situations, you may need a permission of 664. Some hosting providers allow a similar operation through the dashboard file manager.</p>
+<h3 id="s-step-3-try-the-install"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-3-try-the-install"></a>Step 3 - Try the Install</h3>
+<p>At this point, give the install a go. See if you can get through the installation by running http://[yoursite]/install.php. If you are successful, the first page you will want to visit is <strong>Reports</strong> -&gt; <strong>Status report</strong> (admin/reports/status)</p>
+<p>On the reports page, look for a line that says: <strong>File system</strong>. If it says anything other than "Writeable", you will need to follow Step 4 below.</p>
+<p>Next, look for a line that says: <strong>Configuration file</strong>. If it says anything other than "Protected", then you will need to re-secure the configuration files as described in <strong>Step 5</strong> below.</p>
+<h3 id="s-step-4-create-the-files-directory"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-4-create-the-files-directory"></a>Step 4 - Create the Files Directory</h3>
+<p>The installation should have created the sites/default/files directory for you, but in the off chance it didn't, you will need to create it manually and set the right permissions on it.</p>
+<pre>
+<code class="language-php">mkdir sites/default/files </code></pre><p><em>Note:On most linux systems, a newly created directory is already setup with the 755 permission.</em> In case it isn't, you can issue the command:</p>
+<pre>
+<code class="language-php">chmod 755 sites/default/files </code></pre><p>This sets the files directory to 755 [drwxr-xr-x].</p>
+<p>If your site is hosted with an Apache web server, you may need to also give the Apache user write permissions to this folder, so that the web server can save file uploads and regenerate aggregated CSS and JavaScript in this directory. While you may be tempted to use <code class="language-php">chmod 777</code> to achieve this, that allows any user on the server to write to this directory.</p>
+<p>To avoid that security vulnerability, it is better to allow the user Apache runs as to write to this directory. You can achieve this by giving the Apache group write permissions to the folder. Typically this is the <code class="language-php">apache</code> or <code class="language-php">www-data</code> user group, though it varies based on your web server's operating system or distribution.</p>
+<p>Once you have determined with group your Apache web server uses, change the group assigned to the files directory and give that group write permissions to the directory and all files beneath it. For example, if the Apache user group is <code class="language-php">www-data</code>, you'd run the following:</p>
+<pre>
+<code class="language-php">chgrp -R www-data sites/default/files
+chmod -R g+w sites/default/files</code></pre><p>Now, the <code class="language-php">www-data</code> group can write to the files directory. You need to make one more change to the directory to ensure our changes above persist. We will use the <a href="https://en.wikipedia.org/wiki/Setuid" target="_blank" rel="nofollow">setgid</a> bit to ensure any new files created in this directory are also given the correct group.</p>
+<pre>
+<code class="language-php">chmod 2775 sites/default/files</code></pre><p>The 2 is the setgid bit, which means that the group id will be preserved for any new files created in this directory. What that means is that <code class="language-php">www-data</code> will always be the group on any files added to this directory, thereby ensuring that web server and the user will both always have write permissions to any new files that are placed in this directory.</p>
+<p>Using the above steps ensures that your files directory is writable by the web server, but secure from writes from unauthorized users.</p>
+<h3 id="s-step-5-post-install-permission-check"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-5-post-install-permission-check"></a>Step 5 - Post Install Permission Check</h3>
+<p>After the installation script has run, Drupal tries to set the permissions automatically to:</p>
+<p>555 (read-execute) [dr-xr-xr-x] for the sites/default folder.<br />
+and<br />
+444 (read-only) [-r--r--r--] for the settings.php</p>
+<p>If not, you will need to manually set them:</p>
+<pre>
+<code class="language-php">chmod 555 sites/default </code></pre><pre>
+<code class="language-php">chmod 444 sites/default/settings.php </code></pre><p>These permissions are correct, and should not be changed, because changing these opens up a security risk.</p>
+<h2 id="s-os-specific-instructions"><a class="toc-anchor" title="Permalink to this headline" href="#s-os-specific-instructions"></a>OS specific instructions</h2>
+<h3 id="s-fedora-linuxsettingsphp-notes"><a class="toc-anchor" title="Permalink to this headline" href="#s-fedora-linuxsettingsphp-notes"></a>Fedora Linux settings.php notes</h3>
+<p>If you have clean Fedora (or RHEL, CentOS, Scientific Linux) you have SELinux enabled by default after clean installation. There are few more steps to be done to be able to finish Drupal installation on SELinux enabled site to gain more security by SELinux.</p>
+<p>If you don't want to use SELinux you may simply disable it, but this is not recommended as SELinux is able to block some exploits. Also you may turn SELinux into permissive mode to go through creating the <code class="language-php">settings.php</code> file (because even if you have set the permissions for writing to <code class="language-php">settings.php</code>, the install script will think you don't because SELinux is active and is blocking writing to <code class="language-php">settings.php</code> file).</p>
+<p>To go through installation, do this (as root):</p>
+<ol>
+<li>Enable allow_httpd_anon_write boolean:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">setsebool allow_httpd_anon_write=1 </code></pre></li>
+<li>Change type of default directory and settings.php to public_content_rw_t (whole command is in one line):<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">chcon -t public_content_rw_t sites/default sites/default/settings.php sites/default/files </code></pre></li>
+</ol>
+<p>After the installation finishes, revert previous settings to benefit from SELinux:</p>
+<ol>
+<li>Disable allow_httpd_anon_write boolean:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">setsebool allow_httpd_anon_write=0 </code></pre></li>
+<li>Reset security context:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">chcon -R -t httpd_sys_content_t sites/default </code></pre></li>
+</ol>
+<h3 id="s-windows-iis-settingsphp-notes"><a class="toc-anchor" title="Permalink to this headline" href="#s-windows-iis-settingsphp-notes"></a>Windows (IIS) settings.php notes</h3>
+<p>On a Windows computer using Internet Information Server (IIS), complete the following steps:</p>
+<ol>
+<li>Right-click <code class="language-php">sites\default\settings.php</code>.</li>
+<li>Grant <strong>Write</strong> permissions to IUSR_MachineName (IIS6) or IUSR (IIS7).</li>
+</ol>
+<p><em><strong>Note:</strong> On Windows Server 2008, you can also do this from the command line by running the following command from your <code class="language-php">sites\default</code> directory:</em></p>
+<pre>
+<code class="language-php">icacls settings.php /grant IUSR:W </code></pre><p>The installer will change the file back to <strong>Read Only</strong> after installation, but you should verify this after installation.</p>
+<p>For more information about modifying Windows file permissions, see the <a href="/node/202491" rel="nofollow">Troubleshooting FAQ</a>.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-8bfbf4100700be486cf53ea73b5b8889">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/540242/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/540242/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28540242%29%20Step%203%3A%20Create%20settings.php%20and%20the%20files%20directory">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"CCY506uvvnHGpZQvl9tvvDs8MxythL7TK4HNbfBtgNQ"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/install\/step-3-create-settingsphp-and-the-files-directory":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2764151"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
