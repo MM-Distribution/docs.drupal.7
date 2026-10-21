@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="All Drupal 7 documentation." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7" />
+<link rel="shortlink" href="https://www.drupal.org/node/2743405" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7" />
+<meta property="og:title" content="Drupal 7" />
+<meta property="og:description" content="All Drupal 7 documentation." />
+<meta property="og:updated_time" content="2023-11-29T02:54:56+00:00" />
+<meta property="article:published_time" content="2016-06-06T13:54:51+00:00" />
+<meta property="article:modified_time" content="2023-11-29T02:54:56+00:00" />
+  <title>Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-2743405 node-type-guide drupalorg-site-main panels-layout og-context og-context-node og-context-node-2743405" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-5x8sCc7pdJSRt7txkIk42My4iMZdvqg_YBbkSS9W8Cw" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/2743405" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/2743405" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-rYMH9ipzGrewpbbw_VMX6ZCYsVM9en6sEUKnEdnF_gE" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-guide node-2743405">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-custom pane-2 documentation-section-menu"  >
+  
+      
+  
+  <div class="pane-content">
+    <h4>Curated Guides</h4>
+<ul>
+<li><a href="/docs/user_guide/en/index.html" rel="nofollow">Drupal User Guide</a></li>
+<li><a href="/docs/official_docs/en/_evaluator_guide.html" rel="nofollow">Evaluator Guide</a></li>
+<li><a href="/docs/official_docs/en/_local_development_guide.html" rel="nofollow">Local Development Guide</a></li>
+</ul>
+<h4>Drupal Wiki</h4>
+<ul>
+<li><a href="/docs" rel="nofollow">Drupal</a></li>
+<li><a href="/docs/develop" rel="nofollow">Develop</a></li>
+<li><a href="/docs/7" rel="nofollow">Drupal 7</a></li>
+</ul>
+<h4>API Info</h4>
+<ul>
+<li><a href="https://api.drupal.org/api/drupal" rel="nofollow">Complete API Reference</a></li>
+<li><a href="/docs/drupal-apis" rel="nofollow">Drupal APIs</a></li>
+</ul>
+<h4><a href="/books" rel="nofollow">Drupal books</a></h4>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="drupal-wiki" >
+  
+        <h2 class="pane-title">
+      <a href="/drupal-wiki">Drupal Wiki</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs">Drupal</a></li>
+<li class="leaf"><a href="/docs/develop">Develop</a></li>
+<li class="last leaf active-trail"><a href="/docs/7" class="active-trail active">Drupal 7</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-page-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Drupal 7</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>All Drupal 7 documentation.</p></div></div></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-section-contents"  >
+  
+      
+  
+  <div class="pane-content">
+    <section><h2><a href="/docs/7/understanding-drupal-7">Understanding Drupal 7</a></h2><p>This guide gives you a big picture overview of Drupal 7 concepts, helping you to understand the framework behind Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/understanding-drupal/overview">Overview</a></li>
+<li><a href="/docs/7/understanding-drupal/general-concepts">General concepts</a></li>
+<li><a href="/docs/7/understanding-drupal/users-permissions-and-roles">Users, permissions, and roles</a></li>
+<li><a href="/docs/7/understanding-drupal/content-types">Content types</a></li>
+<li><a href="/docs/7/understanding-drupal/url-paths">URL paths</a></li>
+<li><a href="/docs/7/understanding-drupal/technology-stack">Technology stack</a></li>
+</ul></section><section><h2><a href="/docs/7/drupal-7-system-requirements">Drupal 7 system requirements</a></h2><p>Detailed system requirements for a Drupal 7 installation.</p><ul class="guide-contents"><li><a href="/docs/7/system-requirements/overview">Overview</a></li>
+<li><a href="/docs/7/system-requirements/web-server">Web server</a></li>
+<li><a href="/docs/7/system-requirements/database-server">Database server</a></li>
+<li><a href="/docs/7/system-requirements/php-requirements-for-drupal-7">PHP</a></li>
+<li><a href="/docs/7/system-requirements/what-is-pdo">What is PDO?</a></li>
+<li><a href="/docs/7/system-requirements/browser-requirements">Browser requirements</a></li>
+</ul></section><section><h2><a href="/docs/7/install">Installing Drupal 7</a></h2><p>How to install Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/install/before-installation">Before installation</a></li>
+<li><a href="/docs/7/install/step-1-download-and-extract-drupal">Step 1: Download and extract Drupal</a></li>
+<li><a href="/docs/7/install/step-2-create-the-database">Step 2: Create the database</a></li>
+<li><a href="/docs/7/install/step-3-create-settingsphp-and-the-files-directory">Step 3: Create settings.php and the files directory</a></li>
+<li><a href="/docs/7/install/step-4-run-the-installation-script">Step 4: Run the installation script</a></li>
+<li><a href="/docs/7/install/setting-up-the-files-directory">Setting up the files directory</a></li>
+<li><a href="/docs/7/install/install-drupal-in-another-language">Install Drupal in another language</a></li>
+<li><a href="/docs/7/install/built-in-installation-profiles-drupal-7">Built-in Installation Profiles</a></li>
+<li><a href="/docs/7/install/os-specific-download-notes">OS specific download notes</a></li>
+<li><a href="/docs/7/install/using-an-installation-profile">Using an installation profile</a></li>
+</ul></section><section><h2><a href="/docs/7/update">Updating Drupal 7</a></h2><p>How to update your Drupal 7 site</p><ul class="guide-contents"><li><a href="/docs/7/update/introduction">Introduction</a></li>
+<li><a href="/docs/7/update/automatic-updates">Automatic Updates</a></li>
+<li><a href="/docs/7/update/core-option-1">Update core (option 1)</a></li>
+<li><a href="/docs/7/update/core-option-2">Update core (option 2)</a></li>
+<li><a href="/docs/7/update/core-option-3">Update core (option 3)</a></li>
+<li><a href="/docs/7/update/updating-drupal-using-drush">Update core using Drush</a></li>
+<li><a href="/docs/7/update/updating-modules" title="Clarified which Drupal version this page is referring to">Update modules</a></li>
+</ul></section><section><h2><a href="/docs/7/administering-drupal-7-site">Administering Drupal 7 site</a></h2><p>Administering Drupal 7 site</p><ul class="guide-contents"><li><a href="/docs/7/administering-drupal-7-site/getting-started-with-drupal-7-administration">Getting started with Drupal 7 administration</a></li>
+<li><a href="/docs/7/administering-drupal-7-site/managing-content">Managing content</a></li>
+<li><a href="/docs/7/administering-drupal-7-site/working-with-contextual-links">Working with contextual links</a></li>
+<li><a href="/docs/7/core/modules/dashboard/working-with-the-dashboard">Working with the dashboard</a></li>
+<li><a href="/docs/7/administering-drupal-7-site/working-with-the-overlay">Working with the overlay</a></li>
+<li><a href="/docs/7/administering-drupal-7-site/working-with-the-shortcut-bar">Working with the shortcut bar</a></li>
+<li><a href="/docs/7/administering-drupal-7-site/working-with-the-toolbar">Working with the toolbar</a></li>
+<li><a href="/docs/7/administering-drupal-7-site/clearing-or-rebuilding-drupals-cache">Clearing or rebuilding Drupal&#039;s cache</a></li>
+</ul></section><section><h2><a href="/docs/7/modules">Contributed modules for Drupal 7</a></h2><p>Documentation for contributed modules for Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/modules/api-module">API module</a></li>
+<li><a href="/docs/7/modules/accelerated-mobile-pages-amp">Accelerated Mobile Pages (AMP)</a></li>
+<li><a href="/docs/7/modules/accessibility">Accessibility</a></li>
+<li><a href="/docs/7/modules/accounting-modules">Accounting distribution</a></li>
+<li><a href="/docs/7/modules/administration-views">Administration Views</a></li>
+<li><a href="/docs/7/modules/advanced-views-rss-feed">Advanced Views RSS Feed</a></li>
+<li><a href="/docs/7/modules/advanced-help" title="">Advanced help</a></li>
+<li><a href="/docs/7/modules/advanced-help-hint" title="">Advanced help hint</a></li>
+<li><a href="/docs/7/modules/affiliate-ng">Affiliate-NG</a></li>
+<li><a href="/docs/7/modules/agenda">Agenda</a></li>
+<li><a href="/docs/7/modules/album-photos">Album Photos</a></li>
+<li><a href="/docs/7/modules/amazon-product-advertising-affiliate" title="Drupal module for creating affiliate links to amazon on a drupal page.">Amazon Product Advertising API</a></li>
+<li><a href="/docs/7/modules/amazon-wysiwyg">Amazon Wysiwyg</a></li>
+<li><a href="/docs/7/modules/anonymous-publishing" title="">Anonymous publishing</a></li>
+<li><a href="/docs/7/modules/answers" title="Answers &amp; Questions like Stack Overflow">Answers</a></li>
+<li><a href="/docs/7/modules/apache-solr-popularity">Apache Solr Popularity</a></li>
+<li><a href="/docs/7/modules/attributions" title="">Attributions</a></li>
+<li><a href="/docs/7/modules/bacnet">BACnet</a></li>
+<li><a href="/docs/7/modules/backup-and-migrate" title="">Backup and Migrate</a></li>
+<li><a href="/docs/7/modules/bassets">Bassets</a></li>
+<li><a href="/docs/7/modules/bean">Bean</a></li>
+<li><a href="/docs/7/modules/block-in-block" title="Block in Block module documentation">Block in Block</a></li>
+<li><a href="/docs/7/modules/brand" title="Handbook for the Brand module">Brand</a></li>
+<li><a href="/docs/7/modules/brapi" title="Breeding API implementation for Drupal 7 (requires Tripal module).">Breeding API</a></li>
+<li><a href="/docs/7/modules/brightcove">Brightcove Video Connect</a></li>
+<li><a href="/docs/7/modules/bulk-migrate-taxonomy-terms">Bulk migrate taxonomy terms</a></li>
+<li><a href="/docs/7/modules/bynder">Bynder</a></li>
+<li><a href="/docs/7/modules/bynder-orbit">Bynder Orbit</a></li>
+<li><a href="/docs/7/modules/cdek-api" title="">CDEK API</a></li>
+<li><a href="/docs/7/modules/ckeditor">CKEditor</a></li>
+<li><a href="/docs/7/modules/ckeditor-lts">CKEditor LTS</a></li>
+<li><a href="/docs/7/modules/crm-core">CRM Core</a></li>
+<li><a href="/docs/7/modules/changed-fields-api">Changed Fields API</a></li>
+<li><a href="/docs/7/modules/charts" title="">Charts</a></li>
+<li><a href="/docs/7/modules/civicrm-entity">CiviCRM Entity</a></li>
+<li><a href="/docs/7/modules/civicrm-starter-kit">CiviCRM Starter Kit</a></li>
+<li><a href="/docs/7/modules/cleaner">Cleaner</a></li>
+<li><a href="/docs/7/modules/collapsiblock">Collapsiblock</a></li>
+<li><a href="/docs/7/modules/comment-mover">Comment mover</a></li>
+<li><a href="/docs/7/modules/commerce-affirm-credit-payment-gateway">Commerce Affirm Credit Payment Gateway</a></li>
+<li><a href="/docs/7/modules/commerce-coupon-d7">Commerce Coupon (D7)</a></li>
+<li><a href="/docs/7/modules/commerce-discount">Commerce Discount</a></li>
+<li><a href="/node/3020841" title="The guide described how to use the module">Commerce ECPay AllInOne</a></li>
+<li><a href="/docs/7/modules/commerce-google-tag-manager">Commerce Google Tag Manager</a></li>
+<li><a href="/docs/7/modules/commerce-license-cancel">Commerce License Cancel</a></li>
+<li><a href="/docs/7/modules/commerce-amazon-pay">Commerce Login and Pay with Amazon</a></li>
+<li><a href="/docs/7/modules/commerce-order-cleanup">Commerce Order Cleanup</a></li>
+<li><a href="/docs/7/modules/commerce-point-of-sale-pos">Commerce Point of Sale (POS)</a></li>
+<li><a href="/docs/7/modules/commerce-square-connect">Commerce Square Connect</a></li>
+<li><a href="/docs/7/modules/commerce-taxjar">Commerce TaxJar</a></li>
+<li><a href="/docs/7/modules/conditional-fields">Conditional Fields</a></li>
+<li><a href="/docs/contributed-modules/conditional-message">Conditional Message</a></li>
+<li><a href="/docs/7/modules/confident-captcha">Confident CAPTCHA</a></li>
+<li><a href="/docs/7/modules/crowdriff">CrowdRiff</a></li>
+<li><a href="/docs/7/modules/customerror" title="">Customerror</a></li>
+<li><a href="/docs/7/modules/dan-polaroid">DAN Polaroid</a></li>
+<li><a href="/docs/7/modules/devel">Devel</a></li>
+<li><a href="/docs/7/modules/domain-access" title="A suite of modules that provide tools for running a group of affiliated sites">Domain Access</a></li>
+<li><a href="/docs/7/modules/drafty">Drafty</a></li>
+<li><a href="/docs/7/modules/drip-marketing-automation">Drip Marketing Automation</a></li>
+<li><a href="/docs/7/modules/drupal-8-upgrade-evaluation">Drupal 8 upgrade evaluation</a></li>
+<li><a href="/docs/7/modules/drupoint" title="Drupoint installation guide">Drupoint</a></li>
+<li><a href="/docs/7/modules/eu-cookie-compliance">EU Cookie Compliance</a></li>
+<li><a href="/docs/7/modules/email-field">Email Field</a></li>
+<li><a href="/docs/7/modules/entity-list-field">Entity List Field</a></li>
+<li><a href="/docs/7/modules/entity-lister">Entity Lister</a></li>
+<li><a href="/docs/7/modules/entity-print">Entity Print</a></li>
+<li><a href="/docs/7/modules/entity-share" title="">Entity Share</a></li>
+<li><a href="/docs/7/modules/entity-translation">Entity Translation</a></li>
+<li><a href="/docs/7/modules/entity-translation-copy">Entity Translation Copy</a></li>
+<li><a href="/docs/7/modules/entity-reference">Entity reference</a></li>
+<li><a href="/docs/7/modules/epsilon-harmony-connector">Epsilon Harmony Connector</a></li>
+<li><a href="/docs/7/modules/extensions-api">Extensions API</a></li>
+<li><a href="/docs/7/modules/extra-siteinfo">Extra SiteInfo</a></li>
+<li><a href="/docs/7/modules/features">Features</a></li>
+<li><a href="/docs/7/modules/feeds">Feeds</a></li>
+<li><a href="/docs/7/modules/feeds-td-fetcher">Feeds TD Fetcher</a></li>
+<li><a href="/docs/7/modules/filebrowser">Filebrowser</a></li>
+<li><a href="/docs/7/modules/fillpdf">FillPDF</a></li>
+<li><a href="/docs/7/modules/fivestar" title="">Fivestar</a></li>
+<li><a href="/docs/7/modules/flag-notify">Flag Notify</a></li>
+<li><a href="/docs/7/modules/flexi-access" title="">Flexi access</a></li>
+<li><a href="/docs/7/modules/freelinking">Freelinking</a></li>
+<li><a href="/docs/7/modules/general-data-protection-regulation">General Data Protection Regulation</a></li>
+<li><a href="/docs/7/modules/glossary">Glossary</a></li>
+<li><a href="/docs/7/modules/govcms">GovCMS</a></li>
+<li><a href="/docs/7/modules/html2book" title="">HTML2book</a></li>
+<li><a href="/docs/7/modules/help-scouts-beacon">Help Scout&#039;s Beacon</a></li>
+<li><a href="/docs/7/modules/hiecor-secure-payment-ubercart">Hiecor Secure Payment - Ubercart</a></li>
+<li><a href="/docs/7/modules/human-presence-form-protection">Human Presence Form Protection</a></li>
+<li><a href="/docs/7/modules/image-replace">Image Replace</a></li>
+<li><a href="/docs/7/modules/important-information-block" title="Basic introduction to the block capabilities and more">Important Information block</a></li>
+<li><a href="/docs/7/modules/instagram-block">Instagram Block</a></li>
+<li><a href="/docs/7/modules/invite">Invite</a></li>
+<li><a href="/docs/7/modules/isotopia-documentation">Isotopia Documentation</a></li>
+<li><a href="/docs/7/modules/journal">Journal</a></li>
+<li><a href="/docs/7/modules/key">Key</a></li>
+<li><a href="/docs/7/modules/lazy-load">Lazy-load</a></li>
+<li><a href="/docs/7/modules/libraries-api-7x">Libraries API</a></li>
+<li><a href="/docs/7/modules/liftigniter" title="Integrates LiftIgniter in Drupal to personalize the content of the Drupal website">LiftIgniter</a></li>
+<li><a href="/docs/7/modules/ldap">Lightweight Directory Access Protocol (LDAP)</a></li>
+<li><a href="/docs/7/modules/link">Link</a></li>
+<li><a href="/docs/7/modules/block-title-link">Link block titles</a></li>
+<li><a href="/docs/7/modules/linkit">Linkit</a></li>
+<li><a href="/docs/7/modules/logintoboggan">LoginToboggan</a></li>
+<li><a href="/docs/7/modules/mandrill">Mandrill</a></li>
+<li><a href="/docs/7/modules/markdown-exporter" title="">Markdown Exporter</a></li>
+<li><a href="/docs/7/modules/maxlength" title="">Maxlength</a></li>
+<li><a href="/docs/7/modules/media" title="">Media</a></li>
+<li><a href="/docs/7/modules/media-fotoweb">Media Fotoweb</a></li>
+<li><a href="/docs/7/modules/media-panopto">Media: Panopto</a></li>
+<li><a href="/docs/7/modules/metatag">Metatag</a></li>
+<li><a href="/docs/7/modules/mime-mail" title="">Mime Mail</a></li>
+<li><a href="/docs/7/modules/mobile-app-updater">Mobile App Updater</a></li>
+<li><a href="/docs/7/modules/mobile-number">Mobile Number</a></li>
+<li><a href="/docs/7/modules/mother-may-i" title="">Mother May I</a></li>
+<li><a href="/docs/7/modules/multipage-navigation">Multipage Navigation</a></li>
+<li><a href="/docs/7/modules/name-redactor">Name redactor</a></li>
+<li><a href="/docs/7/modules/node-noindex">Node noindex</a></li>
+<li><a href="/docs/7/modules/notify" title="">Notify</a></li>
+<li><a href="/docs/7/modules/numeric-field-filter">Numeric Field Filter</a></li>
+<li><a href="/docs/7/modules/og-tasks">OG Tasks</a></li>
+<li><a href="/docs/7/modules/olark-chat">Olark Chat</a></li>
+<li><a href="/docs/7/modules/openedu">OpenEDU</a></li>
+<li><a href="/docs/7/modules/openlayers">Openlayers</a></li>
+<li><a href="/docs/7/modules/organic-groups">Organic Groups</a></li>
+<li><a href="/docs/7/modules/php-native-password_hash-for-drupal">PHP Native password_hash for Drupal</a></li>
+<li><a href="/docs/7/modules/panels-ajax-tabs">Panels Ajax Tabs</a></li>
+<li><a href="/docs/7/modules/panels-ajax-tabs-0">Panels Ajax Tabs</a></li>
+<li><a href="/docs/7/modules/panels-responsive-tabs">Panels Responsive Tabs</a></li>
+<li><a href="/docs/7/modules/password-policy">Password Policy</a></li>
+<li><a href="/docs/7/modules/payfast">Payfast</a></li>
+<li><a href="/docs/7/modules/phone-field" title="">Phone field</a></li>
+<li><a href="/docs/7/modules/progressive-web-app-pwa" title="Provides basic PWA functionality to existing Drupal sites.">Progressive Web App (PWA)</a></li>
+<li><a href="/docs/7/modules/protected-node">Protected node</a></li>
+<li><a href="/docs/7/modules/quiz">Quiz</a></li>
+<li><a href="/docs/7/modules/quotes" title="">Quotes</a></li>
+<li><a href="/docs/7/modules/rbkmoney-checkout-for-ubercart">RBKmoney Checkout for Ubercart</a></li>
+<li><a href="/docs/7/modules/rabbitmq">RabbitMQ</a></li>
+<li><a href="/docs/7/modules/radioactivity" title="">Radioactivity</a></li>
+<li><a href="/docs/7/modules/realname-registration">Realname registration</a></li>
+<li><a href="/docs/7/modules/reference-field-option-limit">Reference field option limit</a></li>
+<li><a href="/docs/7/modules/regex-field-validation">RegEx Field Validation</a></li>
+<li><a href="/docs/7/modules/registration-date">Registration Date</a></li>
+<li><a href="/docs/7/modules/renderkit">Renderkit</a></li>
+<li><a href="/docs/7/modules/revision-field-views" title="Provides documentation for the Revision Field Views module.">Revision Field Views</a></li>
+<li><a href="/docs/7/modules/rotating-banner">Rotating Banner</a></li>
+<li><a href="/docs/7/modules/rules" title="">Rules</a></li>
+<li><a href="/docs/7/modules/sms-framework">SMS Framework</a></li>
+<li><a href="/docs/7/modules/sailthru-api-module">Sailthru API Module</a></li>
+<li><a href="/docs/7/modules/salesforce-suite">Salesforce Suite</a></li>
+<li><a href="/docs/7/modules/salsify" title="">Salsify</a></li>
+<li><a href="/docs/7/modules/schemaorg-metatag">Schema.org Metatag</a></li>
+<li><a href="/docs/7/modules/scrambler">Scrambler</a></li>
+<li><a href="/docs/7/modules/search-api">Search API</a></li>
+<li><a href="/docs/7/modules/search-api-federated-solr">Search API Federated Solr</a></li>
+<li><a href="/docs/7/modules/search-api-pages" title="">Search API Pages</a></li>
+<li><a href="/docs/7/modules/secure-site">Secure Site</a></li>
+<li><a href="/docs/7/modules/semantic-connector-modules">Semantic Connector modules</a></li>
+<li><a href="/docs/7/modules/sharerich">Sharerich</a></li>
+<li><a href="/docs/7/modules/sherpa-webform">Sherpa Webform</a></li>
+<li><a href="/docs/7/modules/shrinktheweb-screenshot-thumbnails" title="">ShrinkTheWeb</a></li>
+<li><a href="/docs/7/modules/simple-fb-connect-7x">Simple FB Connect</a></li>
+<li><a href="/docs/7/modules/simple-instagram-feed" title="">Simple Instagram feed</a></li>
+<li><a href="/docs/7/modules/simple-linkedin-autopost">Simple LinkedIn Autopost</a></li>
+<li><a href="/docs/7/modules/single-page-apps-documentation">Single Page Apps documentation</a></li>
+<li><a href="/docs/7/modules/siteimprove" title="">Siteimprove</a></li>
+<li><a href="/docs/7/modules/snippets">Snippets</a></li>
+<li><a href="/docs/7/modules/soundslides">Soundslides</a></li>
+<li><a href="/docs/7/modules/spam-detect">Spam Detect</a></li>
+<li><a href="/docs/7/modules/style-switcher">Style Switcher</a></li>
+<li><a href="/docs/7/modules/swift-mailer">Swift Mailer</a></li>
+<li><a href="/docs/7/modules/taxonomy-list">Taxonomy List</a></li>
+<li><a href="/docs/7/modules/the-better-mega-menu">The Better Mega Menu</a></li>
+<li><a href="/docs/7/modules/todoist-api">ToDoist API</a></li>
+<li><a href="/docs/7/modules/two-factor-authentication-tfa">Two-factor Authentication (TFA)</a></li>
+<li><a href="/docs/7/modules/ubercart">Ubercart</a></li>
+<li><a href="/docs/7/modules/ubercart-addresses">Ubercart Addresses</a></li>
+<li><a href="/docs/7/modules/ultimate-cron">Ultimate Cron</a></li>
+<li><a href="/docs/7/modules/units">Units</a></li>
+<li><a href="/docs/7/modules/update-rules">Update Rules</a></li>
+<li><a href="/docs/7/modules/user-data-connector">User Data Connector</a></li>
+<li><a href="/docs/7/modules/video">Video</a></li>
+<li><a href="/docs/7/modules/views-bootstrap" title="Views Bootstrap allows you to style your views output with Bootstrap components">Views Bootstrap</a></li>
+<li><a href="/docs/7/modules/views-exposed-filters-summary">Views Exposed Filters Summary</a></li>
+<li><a href="/docs/7/modules/views-fractionslider">Views FractionSlider</a></li>
+<li><a href="/docs/7/modules/views-natural-sort">Views Natural Sort</a></li>
+<li><a href="/docs/7/modules/views-pdf">Views PDF</a></li>
+<li><a href="/docs/7/modules/views-php">Views PHP</a></li>
+<li><a href="/docs/7/modules/views-rules">Views Rules</a></li>
+<li><a href="/docs/7/modules/views-save">Views Save</a></li>
+<li><a href="/docs/7/modules/views-send">Views Send</a></li>
+<li><a href="/docs/7/modules/views-slideshow">Views Slideshow</a></li>
+<li><a href="/docs/7/modules/visitors">Visitors</a></li>
+<li><a href="/docs/7/modules/voting-rules">Voting Rules</a></li>
+<li><a href="/docs/7/modules/web-service-data">Web Service Data</a></li>
+<li><a href="/docs/7/modules/webform-default-fields">Webform Default Fields</a></li>
+<li><a href="/docs/7/modules/willibald-panelstyle">Willibald Panelstyle</a></li>
+<li><a href="/docs/7/modules/wordfilter">Wordfilter</a></li>
+<li><a href="/docs/7/modules/workbench-access" title="Overview for the Workbench Access module in Drupal 7.">Workbench Access</a></li>
+<li><a href="/docs/7/modules/workflow">Workflow</a></li>
+<li><a href="/docs/7/modules/wysiwyg">Wysiwyg</a></li>
+<li><a href="/docs/7/modules/wysiwyg-boxout">Wysiwyg Boxout</a></li>
+<li><a href="/docs/7/modules/wysiwyg-smart-paging-seo">Wysiwyg Smart Paging SEO</a></li>
+<li><a href="/docs/7/modules/yaml-configuration" title="">YAML Configuration</a></li>
+<li><a href="/docs/7/modules/drupal-7-views">[Drupal 7] Views</a></li>
+<li><a href="/docs/7/modules/bootstrap-4-based-subtheme" title="Druapl 7">bootstrap 4 based subtheme</a></li>
+<li><a href="/docs/7/modules/miniorange-openid-connect-rest-api">miniOrange OpenID Connect Rest API</a></li>
+</ul></section><section><h2><a href="/docs/7/theming">Theming Drupal 7</a></h2><p>Theming guide for Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/theming/overview-of-theme-files">Overview of theme files</a></li>
+<li><a href="/docs/7/theming/writing-theme-info-files">Writing theme .info files</a></li>
+<li><a href="/docs/7/theming/default-info-values">Default .info values</a></li>
+<li><a href="/docs/7/theming/assigning-content-to-regions">Assigning content to regions</a></li>
+<li><a href="/docs/7/theming/checking-if-a-region-is-occupied">Checking if a region is occupied</a></li>
+<li><a href="/docs/7/theming/theme-settings">Theme settings</a></li>
+<li><a href="/docs/7/theming/global-settings">Global settings</a></li>
+<li><a href="/docs/7/theming/integration-with-the-color-module">Integration with the Color module</a></li>
+<li><a href="/docs/7/theming/creating-a-sub-theme">Creating a sub-theme</a></li>
+<li><a href="/docs/7/theming/clearing-the-theme-cache">Clearing the theme cache</a></li>
+<li><a href="/docs/7/theming/sub-theme-inheritance-summary">Sub Theme - Inheritance Summary</a></li>
+<li><a href="/docs/7/theming/example-creating-a-garland-sub-theme-that-utilizes-the-color-module">Example: creating a Garland sub-theme that utilizes the Color module</a></li>
+<li><a href="/docs/7/theming/working-with-css">Working with CSS</a></li>
+<li><a href="/docs/7/theming/working-with-javascript-and-jquery">Working with JavaScript and jQuery</a></li>
+<li><a href="/docs/7/theming/using-newer-versions-of-jquery">Using Newer Versions of jQuery</a></li>
+<li><a href="/docs/7/theming/core-templates">Core templates</a></li>
+<li><a href="/docs/7/theming/template-theme-hook-suggestions">Template (theme hook) suggestions</a></li>
+<li><a href="/docs/7/theming/theming-blocks">Theming blocks</a></li>
+<li><a href="/docs/7/theming/advanced">Advanced theming</a></li>
+<li><a href="/docs/7/theming/overriding-themable-output">Overriding themable output</a></li>
+<li><a href="/docs/7/theming/creating-accessible-themes">Creating accessible themes</a></li>
+<li><a href="/docs/7/theming/howto">Theming HowTos</a></li>
+<li><a href="/docs/7/theming/tools-and-best-practices">Tools and best practices</a></li>
+<li><a href="/docs/7/theming/upgrading-6x-themes-to-7x">Upgrading 6.x themes to 7.x</a></li>
+</ul></section><section><h2><a href="/docs/7/extend">Extending Drupal 7</a></h2><p>Extend your Drupal 7 site&#039;s functionality with contributed modules, or alter its appearance with contributed themes. </p><ul class="guide-contents"><li><a href="/docs/7/extend/overview">Overview</a></li>
+<li><a href="/docs/7/extend/installing-modules" title="">Installing modules</a></li>
+<li><a href="/docs/7/extend/installing-themes">Installing themes</a></li>
+<li><a href="/docs/7/extend/moving-modules-and-themes">Moving modules and themes</a></li>
+<li><a href="/docs/7/extend/uninstalling-modules">Uninstalling modules</a></li>
+<li><a href="/docs/7/extend/directory-precedence">Directory precedence and multi-site considerations</a></li>
+<li><a href="/docs/7/extend/comparison-of-contributed-modules">Comparison of contributed modules</a></li>
+</ul></section><section><h2><a href="/docs/7/multilingual">Multilingual guide for Drupal 7</a></h2><p>Multilingual guide for Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/multilingual/translating-content">Translating content</a></li>
+<li><a href="/docs/7/multilingual/translating-site-interfaces">Translating site interfaces</a></li>
+<li><a href="/docs/7/multilingual/cookbook-build-a-non-english-d7-website">Cookbook: Build a non-English D7 website</a></li>
+</ul></section><section><h2><a href="/docs/7/multisite">Multisite Drupal 7</a></h2><p>Drupal can serve many sites from a single codebase.</p><ul class="guide-contents"><li><a href="/docs/7/multisite/multi-site-sharing-the-same-code-base">Multi-site - Sharing the same code base</a></li>
+<li><a href="/docs/7/multisite/configuring-a-basic-multi-site-development-environment-in-linux">Configuring a basic multi-site development environment in Linux</a></li>
+<li><a href="/docs/7/multisite-drupal/local-multi-site-installation-of-drupal-7-on-linux">Local multi-site installation of Drupal 7 on Linux</a></li>
+<li><a href="/docs/7/multisite-drupal/multi-site-in-subdirectories">Multi-site in subdirectories</a></li>
+<li><a href="/docs/7/multisite-drupal/multi-site-on-linux-configuring-multi-site-for-a-local-user-userdir">Multi-site on Linux - Configuring multi-site for a local user (UserDir)</a></li>
+<li><a href="/docs/7/multisite-drupal/multi-site-on-linux">Multi-site on Linux</a></li>
+<li><a href="/docs/7/multisite-drupal/multi-site-on-mac">Multi-site on Mac</a></li>
+<li><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-iis">Multi-site on Windows - using IIS</a></li>
+<li><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver">Multi-site on Windows - using WampServer</a></li>
+<li><a href="/docs/7/multisite/multi-site-on-windows-using-xampp">Multi-site on Windows - using XAMPP</a></li>
+<li><a href="/docs/7/multisite-drupal/multi-site-on-windows">Multi-site on Windows</a></li>
+<li><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal">Multisite Mapping with Drupal</a></li>
+<li><a href="/docs/7/multisite-drupal/secure-multi-site-setup-using-shared-code-base">Secure multi-site setup using shared code-base</a></li>
+<li><a href="/docs/7/multisite-drupal/some-multi-site-considerations">Some multi-site considerations</a></li>
+<li><a href="/docs/7/multisite-drupal/step-1-mono-site-installation-of-drupal-7">Step 1: mono-site installation of Drupal 7</a></li>
+<li><a href="/docs/7/multisite-drupal/step-2-setting-the-databases">Step 2: setting the databases</a></li>
+<li><a href="/docs/7/multisite-drupal/step-3-setting-the-subdirectories">Step 3: setting the subdirectories</a></li>
+<li><a href="/docs/7/multisite-drupal/step-4-setting-the-hostnames">Step 4: setting the hostnames</a></li>
+<li><a href="/docs/7/multisite-drupal/step-5-troubleshooting">Step 5: troubleshooting</a></li>
+<li><a href="/docs/7/multisite-drupal/step-6-making-your-websites">Step 6: making your websites</a></li>
+<li><a href="/docs/7/multisite-drupal/step-7-backing-up-and-restoring">Step 7: backing up and restoring</a></li>
+<li><a href="/docs/7/multisite/move-single-site-to-multisite-in-drupal-7">Move single site to multisite in Drupal 7</a></li>
+</ul></section><section><h2><a href="/docs/7/version-numbering-scheme-for-drupal-7-core-and-contributed-modules">Version numbering scheme for Drupal 7 core and contributed modules</a></h2><p>This guide explains Drupal’s version numbering scheme for both Drupal 7 core and contributed modules.</p><ul class="guide-contents"><li><a href="/docs/7/choosing-a-drupal-version/overview">Overview</a></li>
+<li><a href="/docs/7/choosing-drupal-version/version-numbers">Version numbers</a></li>
+<li><a href="/docs/7/choosing-a-drupal-version/release-types">Release types</a></li>
+</ul></section><section><h2><a href="/docs/7/upgrade-to-drupal-7">Upgrade to Drupal 7</a></h2><p>Upgrade to Drupal 7 from previous major versions of Drupal.</p><ul class="guide-contents"><li><a href="/docs/7/upgrade-to-drupal-7/upgrade-procedure-major-version-change">Upgrade procedure (major version change)</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/version-upgrade-considerations">Version upgrade considerations</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/before-you-begin">Before you begin</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/make-a-test-site">Make a test site</a></li>
+<li><a href="/copy-your-live-site-to-a-test-site-gui">Copy your live site to a test site (GUI)</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/copying-your-live-site-to-a-test-site-command-line">Copying your live site to a test site (command line)</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/upgrading-drupal-core-to-drupal-7">Upgrading Drupal core</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/read-upgradetxt">Read UPGRADE.txt</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/make-an-upgrade-plan">Make an Upgrade Plan</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/current-site-preparation">Current Site Preparation</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/new-site-preparation">New Site Preparation</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/upgrade-process-to-drupal-7">Upgrade process</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/test-the-site">Test the site</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/copy-the-test-site-to-a-live-site">Copy the test site to a live site</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/copy-your-test-site-to-a-live-site-gui">Copy your test site to a live site (GUI)</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/copying-your-test-site-to-your-live-site-command-line">Copying your test site to your live site (command line)</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/after-upgrade-checklist">After Upgrade Checklist</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/upgrading-to-drupal-7-rapidly-using-sshshell-commands">Upgrading Drupal rapidly using SSH/Shell commands</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/upgrading-to-drupal-7-using-a-patch-file">Upgrading Drupal using a patch file</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/upgrading-contributed-modules-and-themes-from-drupal-6-to-drupal-7">Upgrading contributed modules and themes from Drupal 6 to Drupal 7</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/drupal-6-contributed-modules-that-are-in-drupal-7-core">Drupal 6 contributed modules that are in Drupal 7 core</a></li>
+<li><a href="/docs/7/upgrade-to-drupal-7/migrating-d6-content-construction-kit-cck-to-d7-fields">Migrating D6 Content Construction Kit (CCK) to D7 Fields</a></li>
+<li><a href="/updating-and-upgrading-drupal-core">Updating and upgrading Drupal core</a></li>
+</ul></section><section><h2><a href="/docs/7/setting-up-cron-for-drupal-7">Setting up cron for Drupal 7</a></h2><p>Setting up cron for Drupal 7</p><ul class="guide-contents"><li><a href="/docs/7/setting-up-cron/overview">Overview</a></li>
+<li><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command">Configuring cron jobs using the cron command</a></li>
+<li><a href="/docs/7/setting-up-cron/running-cron-manually">Running cron manually</a></li>
+<li><a href="/docs/7/setting-up-cron/multisite-cron">Multisite cron</a></li>
+<li><a href="/docs/7/setting-up-cron/troubleshooting-cron">Troubleshooting cron</a></li>
+<li><a href="/docs/7/setting-up-cron/configuring-cron-without-wget-lynx-or-curl-commands">Configuring cron without wget, lynx, or curl commands</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-dreamhost">Configuring cron jobs with DreamHost</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-mamp-localhost">Configuring cron jobs with MAMP localhost</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-mac-os-x-server-105x-and-later">Configuring cron jobs with Mac OS X Server 10.5.x and later</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-media-temple-grid-gs-and-dv-servers">Configuring cron jobs with Media Temple Grid (gs) and DV servers</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-network-solutions">Configuring cron jobs with Network Solutions</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-rackspace-cloud-sites">Configuring cron jobs with Rackspace Cloud Sites</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-virtualmin-and-webmin">Configuring cron jobs with Virtualmin and Webmin</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-windows">Configuring cron jobs with Windows</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-cpanel">Configuring cron jobs with cPanel</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-hosteurope">Configuring cron jobs with hosteurope</a></li>
+<li><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-ixwebhosting">Configuring cron jobs with ixWebHosting</a></li>
+</ul></section><section><h2><a href="/docs/7/configuring-clean-urls-in-drupal-7">Configuring clean URLs in Drupal 7</a></h2><p>The guidelines for clean URLs  in Drupal 7</p><ul class="guide-contents"><li><a href="/docs/7/configuring-clean-urls/enable-clean-urls">Configure clean URLs</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-apache-2-for-performance">Clean URLs with Apache 2 for performance</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-apache-2-on-debian">Clean URLs with Apache 2 on Debian</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-apache-2-on-ubuntu">Clean URLs with Apache 2 on Ubuntu</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-apache-2-above-documentroot-on-virtual-private-servers">Clean URLs with Apache 2 - above DocumentRoot on virtual private servers</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-hiawatha">Clean URLs with Hiawatha</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-iis">Clean URLs with IIS</a></li>
+<li><a href="/docs/7/configuring-clean-urls/iis-cleanurls-using-some-of-the-available-isapi-filters">IIS CleanURLs using some of the available ISAPI filters.</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-lighttpd">Clean URLs with Lighttpd</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-mac-os-x-server">Clean URLs with Mac OS X Server</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-wamp">Clean URLs with WAMP</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-xampp">Clean URLs with XAMPP</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-in-wampserver-2">Clean URLs in Wampserver 2</a></li>
+<li><a href="/docs/7/configuring-clean-urls/clean-urls-with-https-for-the-backend-and-http-for-the-front-end">Clean URLs with https for the backend and http for the front end</a></li>
+</ul></section><section><h2><a href="/docs/7/migrating-to-drupal-7">Migrating to Drupal 7</a></h2><p>Migrating to Drupal</p><ul class="guide-contents"><li><a href="/docs/7/migrating-to-drupal-7/drupal-modules-equivalent-to-phpbb-features">Drupal modules equivalent to phpBB features</a></li>
+<li><a href="/docs/7/migrating-to-drupal/get-started-by-creating-a-list" title="Create a list of of the things that should be migrated.">Get started by creating a list</a></li>
+<li><a href="/docs/7/migrating-to-drupal/how-to-migrate-from-many-different-forum-systems">How to migrate from many different forum systems</a></li>
+<li><a href="/docs/7/migrating-to-drupal/migrating-from-discus">Migrating from Discus</a></li>
+<li><a href="/docs/7/migrating-to-drupal/migrating-from-invision-power-board">Migrating from Invision Power Board</a></li>
+<li><a href="/docs/7/migrating-to-drupal/migrating-from-joomlamambo">Migrating from Joomla/Mambo</a></li>
+<li><a href="/docs/7/migrating-to-drupal-7/migrating-from-wordpress">Migrating from Wordpress</a></li>
+<li><a href="/docs/7/migrating-to-drupal/migrating-from-phpbb">Migrating from phpBB</a></li>
+<li><a href="/docs/7/migrating-to-drupal/migrating-from-static-htmls-with-i18n">Migrating from static HTMLs with i18n</a></li>
+<li><a href="/docs/7/migrating-to-drupal/migrating-from-vbulletin">Migrating from vBulletin</a></li>
+<li><a href="/docs/7/migrating-to-drupal/migrating-to-drupal">Migrating to Drupal</a></li>
+<li><a href="/docs/7/migrating-to-drupal/phpbb-integration-solution">phpBB integration solution</a></li>
+<li><a href="/docs/7/migrating-to-drupal/phpbb-migration-solution">phpBB migration solution</a></li>
+</ul></section><section><h2><a href="/docs/7/security">Security in Drupal 7</a></h2><p>Securing Drupal 7 site</p><ul class="guide-contents"><li><a href="/docs/7/security/writing-secure-code">Writing secure code</a></li>
+</ul></section><section><h2><a href="/docs/7/backing-up-and-migrating-a-drupal-7-site">Backing up and migrating a Drupal 7 site</a></h2><p>Backing up and migrating a Drupal 7 site (for example, from one host to another).</p><ul class="guide-contents"><li><a href="/docs/7/backing-up-and-migrating-a-site/back-up-your-drupal-7-site-using-the-command-line">Back up your site using the command line</a></li>
+<li><a href="/docs/7/backing-up-and-migrating-a-site/backing-up-a-site">Backing up a site</a></li>
+<li><a href="/docs/7/backing-up-and-migrating-a-site/backing-up-your-site-gui">Backing up your site (GUI)</a></li>
+<li><a href="/docs/7/backing-up-and-migrating-a-site/migrating-a-site">Migrating a site</a></li>
+<li><a href="/docs/7/backing-up-and-migrating-a-site/multisite-backup-script">Multisite Backup Script</a></li>
+<li><a href="/docs/7/backing-up-and-migrating-a-site/restoring-a-database-backup-command-line">Restoring a database backup (command line)</a></li>
+</ul></section><section><h2><a href="/docs/7/managing-drupal-7-site-performance-and-scalability">Managing Drupal 7 site performance and scalability</a></h2><p>Managing Drupal 7 site performance requires a mix of code optimisation, configuration, and server tuning.</p><ul class="guide-contents"><li><a href="/docs/7/managing-site-performance-and-scalability/planning-for-performance">Planning for Performance</a></li>
+<li><a href="/docs/7/managing-site-performance-and-scalability/caching-to-improve-performance">Caching to improve performance</a></li>
+<li><a href="/docs/7/managing-site-performance-and-scalability/changing-php-memory-limits">Changing PHP memory limits</a></li>
+<li><a href="/docs/7/managing-site-performance/cdn-%E2%80%94-content-delivery-network">Content Delivery Network [CDN]</a></li>
+<li><a href="/docs/7/managing-site-performance/design-for-low-bandwidth">Design for Low Bandwidth</a></li>
+<li><a href="/docs/7/managing-site-performance-and-scalability/increase-upload-size-in-your-phpini">Increase upload size in your php.ini</a></li>
+<li><a href="/docs/7/managing-site-performance-and-scalability/optimizing-drupal-to-load-faster-server-mysql-caching-theming-html">Optimizing Drupal to load faster (Server, MySQL, caching, theming, HTML)</a></li>
+<li><a href="/docs/7/managing-site-performance/optimizing-mysql">Optimizing MySQL</a></li>
+<li><a href="/docs/7/managing-site-performance/randomizing-mysql-users-for-exceeded-max_questions-error">Randomizing MySQL Users For Exceeded max_questions Error</a></li>
+<li><a href="/docs/7/managing-site-performance/server-tuning-considerations">Server tuning considerations</a></li>
+<li><a href="/docs/7/managing-site-performance/tuning-phpini-for-drupal">Tuning php.ini for Drupal</a></li>
+</ul></section><section><h2><a href="/docs/7/managing-users-in-drupal-7">Managing users in Drupal 7</a></h2><p>How to add and remove Drupal 7 users and manage other user related functionality like roles, permissions, and fields.</p><ul class="guide-contents"><li><a href="/docs/7/managing-users/user-roles">User Roles</a></li>
+<li><a href="/docs/7/managing-users/managing-access-control-with-permissions-and-user-roles">Managing access control with permissions and user roles</a></li>
+<li><a href="/docs/7/managing-users/assigning-permissions-and-users-to-roles">Assigning permissions and users to roles</a></li>
+<li><a href="/docs/7/managing-users/ban-an-ip-address">Ban an IP address</a></li>
+<li><a href="/docs/7/managing-users/enabling-user-pictures-avatars">Enabling user pictures (avatars)</a></li>
+<li><a href="/docs/7/managing-users/editing-user-profiles">Extending user profiles</a></li>
+<li><a href="/docs/7/managing-users/hide-user-login">Hide user login</a></li>
+<li><a href="/docs/7/managing-users/howto-create-a-country-profile-field">HowTo Create a &#039;country&#039; profile field</a></li>
+<li><a href="/docs/7/managing-users/viewing-unpublished-content">Viewing unpublished content</a></li>
+<li><a href="/docs/7/managing-users/working-with-user-profile-information">Working with user profile information</a></li>
+</ul></section><section><h2><a href="/docs/7/monitoring-a-drupal-7-site">Monitoring a Drupal 7 site</a></h2><p>Monitoring a Drupal 7 site</p><ul class="guide-contents"><li><a href="/docs/7/monitoring-a-site/file-system-changes">File system changes</a></li>
+<li><a href="/docs/7/monitoring-a-site/reports">Reports</a></li>
+</ul></section><section><h2><a href="/docs/7/drupal-7-nodes-content-types-and-fields">Drupal 7 nodes, content types, and fields</a></h2><p>Drupal 7 nodes, content types, and fields</p><ul class="guide-contents"><li><a href="/docs/7/nodes-content-types-and-fields/about-nodes">About nodes</a></li>
+<li><a href="/docs/7/nodes-content-types-and-fields/working-with-content-types-and-fields-drupal-7-and-later">Working with content types and fields (Drupal 7 and later)</a></li>
+<li><a href="/docs/7/nodes-content-types-and-fields/create-a-custom-content-type">Create a custom content type</a></li>
+<li><a href="/docs/7/nodes-content-types-and-fields/add-a-field-to-a-content-type">Add a field to a content type</a></li>
+<li><a href="/docs/7/nodes-content-types-and-fields/rearrange-the-order-of-fields">Rearrange the order of fields</a></li>
+<li><a href="/docs/7/nodes-content-types-and-fields/specify-how-fields-are-displayed">Specify how fields are displayed</a></li>
+<li><a href="/docs/7/nodes-content-types-and-fields/import-and-export-of-content-types-fields-panel-or-views">Import and Export of content-types, fields, panel or views-structure</a></li>
+</ul></section><section><h2><a href="/docs/7/organizing-content-with-taxonomy-in-drupal-7">Organizing content with taxonomy in Drupal 7</a></h2><p>Organizing content with taxonomy in Drupal 7</p><ul class="guide-contents"><li><a href="/docs/7/organizing-content-with-taxonomies/about-taxonomies">About taxonomies</a></li>
+<li><a href="/docs/7/organizing-content-with-taxonomies/add-a-field-to-a-taxonomy-term-drupal-7-and-later">Add a field to a taxonomy term (Drupal 7 and later)</a></li>
+<li><a href="/docs/7/organizing-content-with-taxonomies/add-a-term-to-a-vocabulary">Add a term to a vocabulary</a></li>
+<li><a href="/docs/7/organizing-content-with-taxonomies/add-a-vocabulary-to-a-content-type">Add a vocabulary to a content type</a></li>
+<li><a href="/docs/7/organizing-content-with-taxonomies/create-a-vocabulary">Create a vocabulary</a></li>
+<li><a href="/docs/7/organizing-content-with-taxonomies/guidelines-for-taxonomy-design">Guidelines for taxonomy design</a></li>
+<li><a href="/docs/7/organizing-content-with-taxonomy/organizing-content-with-taxonomy">Organizing content with taxonomies</a></li>
+<li><a href="/docs/7/organizing-content-with-taxonomies/using-taxonomy-urls-to-display-sets-of-content">Using taxonomy URLs to display sets of content</a></li>
+</ul></section><section><h2><a href="/docs/7/drupal-7-site-building-best-practices">Drupal 7 site building best practices</a></h2><p>Drupal 7 site building best practices</p><ul class="guide-contents"><li><a href="/docs/7/site-building-best-practices/best-practices">Best practices</a></li>
+<li><a href="/docs/7/site-building-best-practices/backup-your-database-and-files">Backup your database and files</a></li>
+<li><a href="/docs/7/site-building-best-practices/never-hack-core">Never hack core</a></li>
+<li><a href="/docs/7/site-building-best-practices/avoid-hardcoding">Avoid hardcoding</a></li>
+<li><a href="/docs/7/site-building-best-practices/building-drupal-7-with-drupal-8-in-mind">Building Drupal 7 with Drupal 8 in mind</a></li>
+<li><a href="/docs/7/site-building-best-practices/ensure-that-your-site-is-secure">Ensure that your site is secure</a></li>
+<li><a href="/docs/7/site-building-best-practices/use-test-sites">Use test sites</a></li>
+<li><a href="/docs/7/site-building-best-practices/taking-your-site-live">Taking your site live</a></li>
+<li><a href="/docs/7/site-building-best-practices/avoid-too-many-modules">Avoiding too many modules</a></li>
+<li><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between">Contributed versus custom code and everything in between</a></li>
+</ul></section><section><h2><a href="/docs/7/accessibility-tools-and-best-practices-for-drupal-7">Accessibility tools and best practices for Drupal 7</a></h2><p>Accessibility tools and best practices for Drupal 7</p><ul class="guide-contents"><li><a href="/docs/7/accessibility-tools-and-best-practices-for-drupal-7/tools-techniques-resources">Tools and best practices</a></li>
+<li><a href="/docs/7/accessibility/issues-in-contributed-modules">Issues in Contributed Modules</a></li>
+<li><a href="/docs/7/accessibility/best-practices">Accessibility best practices</a></li>
+</ul></section><section><h2><a href="/docs/7/drupal-7-sql-guidelines">Drupal 7 SQL guidelines</a></h2><p>These guidelines provide some tips for writing efficient SQL code for Drupal 7. Guidelines apply to MySQL and PostgreSQL.</p><ul class="guide-contents"><li><a href="/docs/7/guidelines-for-sql/install-tools-to-measure-performance-of-sql-queries">Install tools to measure performance of SQL queries</a></li>
+<li><a href="/docs/7/guidelines-for-sql/logging-slow-sql-queries-server-side-in-postgresql">Logging slow SQL queries server-side in PostgreSQL</a></li>
+<li><a href="/docs/7/guidelines-for-sql/the-benefits-of-indexing-large-mysql-tables">The Benefits of Indexing Large MySQL Tables</a></li>
+<li><a href="/docs/7/guidelines-for-sql/run-explain-on-slow-queries-to-find-sequential-scans">Run EXPLAIN on slow queries to find sequential scans</a></li>
+<li><a href="/docs/7/guidelines-for-sql/using-mysql-explain">Using MySQL EXPLAIN</a></li>
+<li><a href="/docs/7/guidelines-for-sql/using-postgresql-explain">Using PostgreSQL EXPLAIN</a></li>
+<li><a href="/docs/7/guidelines-for-sql/understanding-the-logic-behind-explain-analyse">Understanding the logic behind EXPLAIN ANALYSE</a></li>
+<li><a href="/docs/7/guidelines-for-sql/indexes-are-not-symmetric">Indexes are not symmetric</a></li>
+<li><a href="/docs/7/guidelines-for-sql/make-sure-that-join-columns-both-carry-indexes-of-the-same-type">Make sure that JOIN columns both carry indexes of the same type</a></li>
+<li><a href="/docs/7/guidelines-for-sql/conclusion-and-summary-of-the-guidelines">Conclusion and summary of the guidelines</a></li>
+<li><a href="/docs/7/guidelines-for-sql/writing-code-compliant-with-both-mysql-and-postgresql">Writing code compliant with both MySQL and PostgreSQL</a></li>
+</ul></section><section><h2><a href="/docs/7/mobile">Mobile guide for Drupal 7</a></h2><p>Mobile guide for Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/mobile/native-mobile-apps">Native mobile apps</a></li>
+<li><a href="/docs/7/mobile/mobile-specific-website">Mobile-specific website</a></li>
+<li><a href="/docs/7/mobile/web-based-mobile-apps">Web-based mobile apps</a></li>
+<li><a href="/docs/7/mobile/responsive-web-design">Responsive web design</a></li>
+<li><a href="/docs/7/mobile/responsive-design-server-side-components-ress">Responsive Design + Server-side Components (RESS)</a></li>
+<li><a href="/docs/7/mobile/related-mobile-technologies">Related mobile technologies</a></li>
+<li><a href="/docs/7/mobile/configurations-that-work-with-the-mobile-codes-module">Configurations that work with the Mobile Codes module.</a></li>
+<li><a href="/docs/7/mobile/mobile-testing-tools">Mobile Testing Tools</a></li>
+<li><a href="/docs/7/mobile/front-end-performance">Front-end performance</a></li>
+</ul></section><section><h2><a href="/docs/7/working-with-menus-in-drupal-7">Working with menus in Drupal 7</a></h2><p>Managing Drupal 7 menus, menu links, and custom menu settings and options.</p><ul class="guide-contents"><li><a href="/docs/7/working-with-menus/overview">Overview</a></li>
+<li><a href="/docs/7/working-with-menus/adding-a-link-to-a-menu">Adding a link to a menu</a></li>
+<li><a href="/docs/7/working-with-menus/drop-down-menus">Drop Down menus</a></li>
+<li><a href="/docs/7/working-with-menus/named-anchors-in-menus">Named anchors in menus</a></li>
+</ul></section><section><h2><a href="/docs/7/creating-custom-modules-in-drupal-7">Creating custom modules in Drupal 7</a></h2><p>Module developer&#039;s guide for Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/creating-custom-modules/getting-started">Getting started</a></li>
+<li><a href="/docs/7/creating-custom-modules/telling-drupal-about-your-module">Telling Drupal about your module</a></li>
+<li><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x">Writing module .info files (Drupal 7.x)</a></li>
+<li><a href="/docs/7/creating-custom-modules/creating-drupal-7-hooks">Creating Drupal 7 hooks</a></li>
+<li><a href="/docs/7/creating-custom-modules/writing-comments-and-implementing-your-first-hook">Writing comments and implementing your first hook</a></li>
+<li><a href="/docs/7/creating-custom-modules/writing-install-files-drupal-7x">Writing .install files (Drupal 7.x)</a></li>
+<li><a href="/docs/7/creating-custom-modules/declaring-the-block">Declaring the block</a></li>
+<li><a href="/docs/7/creating-custom-modules/retrieving-data">Retrieving data</a></li>
+<li><a href="/docs/7/creating-custom-modules/generating-block-content">Generating block content</a></li>
+<li><a href="/docs/7/creating-custom-modules/testing-and-troubleshooting-the-module">Testing and troubleshooting the module</a></li>
+<li><a href="/docs/7/creating-custom-modules/preparing-for-a-module-configuration-form">Preparing for a module configuration form</a></li>
+<li><a href="/docs/7/creating-custom-modules/creating-the-configuration-form">Creating the configuration form</a></li>
+<li><a href="/docs/7/creating-custom-modules/validating-the-data">Validating the data</a></li>
+<li><a href="/docs/7/creating-custom-modules/specifying-a-custom-permission-for-a-new-page">Specifying a custom permission for a new page</a></li>
+<li><a href="/docs/7/creating-custom-modules/adapting-the-query">Adapting the query</a></li>
+<li><a href="/docs/7/creating-custom-modules/theming-the-page">Theming the page</a></li>
+<li><a href="/docs/7/creating-custom-modules/adding-a-more-link">Adding a &#039;More&#039; link</a></li>
+<li><a href="/docs/7/creating-custom-modules/testing-with-simpletest">Testing with SimpleTest</a></li>
+<li><a href="/docs/7/creating-custom-modules/practicing-patches">Practicing patches</a></li>
+<li><a href="/docs/7/creating-custom-modules/show-all-errors-while-developing">Show all errors while developing</a></li>
+<li><a href="/docs/7/creating-custom-modules/drupal-7s-code-registry">Drupal 7&#039;s code registry</a></li>
+<li><a href="/docs/7/creating-custom-modules/exportable-configuration">Exportable configuration</a></li>
+<li><a href="/docs/7/creating-custom-modules/suppress-caching-for-development-or-to-use-an-external-page-cache">Suppress caching (for development) or to use an external page cache</a></li>
+<li><a href="/docs/7/creating-custom-modules/using-the-theme-layer-drupal-7x">Using the theme layer (Drupal 7.x)</a></li>
+<li><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective">Drupal 6/7 programming from an object-oriented perspective</a></li>
+<li><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable">Making your custom data translatable</a></li>
+<li><a href="/docs/7/creating-custom-modules/howtos">Module development HowTos</a></li>
+<li><a href="/docs/7/creating-custom-modules/understanding-the-hook-system-for-drupal-modules">Understanding the hook system for Drupal modules</a></li>
+<li><a href="/docs/7/creating-custom-modules/working-with-multilingual-content">Working with multilingual content</a></li>
+</ul></section><section><h2><a href="/docs/7/themes">Drupal 7 contributed themes</a></h2><p>Documentation for Drupal 7 contributed themes.</p><ul class="guide-contents"><li><a href="/docs/7/themes/0-zilch">0 Zilch</a></li>
+<li><a href="/docs/7/themes/adaptivetheme">Adaptivetheme</a></li>
+<li><a href="/docs/7/themes/andromeda">Andromeda</a></li>
+<li><a href="/docs/7/themes/business">Business</a></li>
+<li><a href="/docs/7/themes/circle">Circle</a></li>
+<li><a href="/docs/7/themes/corp">Corp</a></li>
+<li><a href="/docs/7/themes/danland-theme-handbook">Danland Theme Handbook</a></li>
+<li><a href="/docs/7/themes/daycare">Daycare</a></li>
+<li><a href="/docs/7/themes/elimai">Elimai</a></li>
+<li><a href="/docs/7/themes/fontfolio">FontFolio</a></li>
+<li><a href="/docs/7/themes/fusion">Fusion</a></li>
+<li><a href="/docs/7/themes/groundwork">Groundwork</a></li>
+<li><a href="/docs/7/themes/insurance">Insurance</a></li>
+<li><a href="/docs/7/themes/law">Law</a></li>
+<li><a href="/docs/7/themes/layoutstudio">LayoutStudio</a></li>
+<li><a href="/docs/7/themes/marinelli">Marinelli</a></li>
+<li><a href="/docs/7/themes/mayo">Mayo</a></li>
+<li><a href="/docs/7/themes/mix-and-match">Mix and Match</a></li>
+<li><a href="/docs/7/themes/mothership">Mothership</a></li>
+<li><a href="/docs/7/themes/neptune">Neptune</a></li>
+<li><a href="/docs/7/themes/newswire">Newswire</a></li>
+<li><a href="/docs/7/themes/nucleus">Nucleus</a></li>
+<li><a href="/docs/7/themes/omega">Omega</a></li>
+<li><a href="/docs/7/themes/pets">Pets</a></li>
+<li><a href="/docs/7/themes/photo">Photo</a></li>
+<li><a href="/docs/7/themes/professional">Pro</a></li>
+<li><a href="/docs/7/themes/rootcandy">RootCandy</a></li>
+<li><a href="/docs/7/themes/sasson">Sasson</a></li>
+<li><a href="/docs/7/themes/splendio">Splendio</a></li>
+<li><a href="/docs/7/themes/square-grid">Square Grid</a></li>
+<li><a href="/docs/7/themes/uikit">UIkit</a></li>
+<li><a href="/docs/7/themes/whitebull">Whitebull</a></li>
+<li><a href="/docs/7/themes/willibald">Willibald</a></li>
+<li><a href="/docs/7/themes/zen">Zen</a></li>
+<li><a href="/docs/7/themes/zentropy">Zentropy</a></li>
+<li><a href="/docs/7/themes/zero-point-black-hole">Zero Point &amp; Black Hole</a></li>
+<li><a href="/docs/7/themes/zurb-foundation">Zurb Foundation</a></li>
+</ul></section><section><h2><a href="/docs/7/converting-drupal-6-modules-to-drupal-7">Converting Drupal 6 modules to Drupal 7</a></h2><p>Converting Drupal 6 modules to Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/converting-6x-modules-to-7x">Converting 6.x modules to 7.x</a></li>
+<li><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/converting-6x-modules-to-7x-categorical">Converting 6.x modules to 7.x - Categorical</a></li>
+<li><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/converting-node-access-queries-to-73">Converting node access queries to 7.3</a></li>
+<li><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/creating-html-formatted-emails-in-drupal-7">Creating HTML formatted emails in Drupal 7</a></li>
+<li><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/menu-path-changes-from-6x-to-7x">Menu path changes from 6.x to 7.x</a></li>
+<li><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/new-ajaxprevent-property-added-in-75">New #ajax[&#039;prevent&#039;] property added in 7.5</a></li>
+<li><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7">Updating CCK Field Modules from D6 to D7</a></li>
+</ul></section><section><h2><a href="/docs/7/creating-drupal-7-distributions">Creating Drupal 7 distributions</a></h2><p>Developing installation profiles and distributions for Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/creating-distributions/distribution-developers-guide">Distribution developers guide</a></li>
+<li><a href="/docs/7/creating-distributions/how-to-write-a-drupal-7-installation-profile">How to Write a Drupal 7 Installation Profile</a></li>
+<li><a href="/docs/7/creating-distributions/installation-profile-utilities">Installation Profile Utilities</a></li>
+<li><a href="/docs/7/creating-distributions/managing-drush-make-files-for-an-installation-profile">Managing Drush make files for an installation profile</a></li>
+<li><a href="/docs/7/creating-distributions/usage-statistics-for-distributions">Usage statistics for distributions</a></li>
+</ul></section><section><h2><a href="/docs/7/drupal-7-distributions">Drupal 7 distributions</a></h2><p>Documentation for various Drupal 7 distributions.</p><ul class="guide-contents"><li><a href="/docs/7/distributions/introduction-to-distributions">Introduction to distributions</a></li>
+<li><a href="/docs/7/distributions/additional-distribution-documentation">Additional distribution documentation</a></li>
+<li><a href="/docs/7/distributions/maintaining-sites-built-with-distributions">Maintaining sites built with distributions</a></li>
+<li><a href="/docs/7/distributions/comparison-of-magazine-and-newspaper-distributions">Comparison of magazine and newspaper distributions</a></li>
+<li><a href="/docs/7/distributions/comparison-of-nonprofit-distributions">Comparison of nonprofit distributions</a></li>
+<li><a href="/docs/7/distributions/comparison-of-social-and-community-distributions">Comparison of social and community distributions</a></li>
+<li><a href="/docs/7/distributions/conference-organizing-distribution">Conference Organizing Distribution</a></li>
+</ul></section><section><h2><a href="/docs/7/api">Drupal 7 APIs</a></h2><p>How to use built-in Drupal core APIs like caching, javascript, entity, form as well as others.</p><ul class="guide-contents"><li><a href="/docs/7/api/batch-api">Batch API</a></li>
+<li><a href="/docs/7/api/cache-api">Cache API</a></li>
+<li><a href="/docs/7/api/database-api">Database API</a></li>
+<li><a href="/docs/7/api/entity-api">Entity API</a></li>
+<li><a href="/docs/7/api/field-api">Field API</a></li>
+<li><a href="/docs/7/api/file-api">File API</a></li>
+<li><a href="/docs/7/api/javascript-api">JavaScript API</a></li>
+<li><a href="/docs/7/api/localization-api">Localization API</a></li>
+<li><a href="/docs/7/api/rdf-mapping-api">RDF Mapping API</a></li>
+<li><a href="/docs/7/api/render-arrays">Render Arrays</a></li>
+<li><a href="/docs/7/api/schema-api">Schema API</a></li>
+<li><a href="/docs/7/api/theme-api">Theme API</a></li>
+<li><a href="/docs/7/api/xml-rpc-api">XML-RPC API</a></li>
+<li><a href="/docs/7/api/drupal-7-form-api">[Drupal 7] Form API</a></li>
+</ul></section><section><h2><a href="/docs/7/core">Drupal 7 core</a></h2><p>Drupal 7 core structure and components.</p><ul class="guide-contents"><li><a href="/docs/7/core/modules">Core modules</a></li>
+<li><a href="/docs/7/core/themes">Core themes</a></li>
+</ul></section><section><h2><a href="/docs/7/site-building-and-development-howtos-for-drupal-7">Site building and development HowTos for Drupal 7</a></h2><p>Site building and development HowTos for Drupal 7.</p><ul class="guide-contents"><li><a href="/docs/7/howtos/howtos">HowTos</a></li>
+<li><a href="/docs/7/howtos/add-php-code-to-the-body-of-a-drupal-7-block">Add PHP code to the body of a Drupal 7 Block</a></li>
+<li><a href="/docs/7/howtos/accessing-commerce-order-data-from-the-send-mail-rules-action">Accessing commerce order data from the send mail Rules action</a></li>
+<li><a href="/docs/7/howtos/add-google-webmasters-tools-verification-meta-tag-via-the-themes-templatephp-file">Add Google Webmasters Tools verification meta tag via the themes template.php file.</a></li>
+<li><a href="/docs/7/howtos/add-a-markup-element-to-a-views-exposed-filter-form">Add a markup element to a Views Exposed Filter form</a></li>
+<li><a href="/docs/7/howtos/adding-file-encryption-to-existing-drupal-7-site">Adding File Encryption to existing Drupal 7 site</a></li>
+<li><a href="/docs/7/howtos/book-drupal-7-the-essentials">Book: Drupal 7 the Essentials</a></li>
+<li><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system">Build a Drupal 7 HTML5 Video Subtitling/Closed-captioning System</a></li>
+<li><a href="/docs/7/howtos/build-a-simple-conditional-field-in-views-7x-3x">Build a simple conditional field in Views 7.x-3.x</a></li>
+<li><a href="/docs/7/howtos/ctools-plugins-without-panels-step-by-step">CTools Plugins without Panels, step by step</a></li>
+<li><a href="/docs/7/howtos/cascading-select-using-views">Cascading select using views</a></li>
+<li><a href="/docs/7/howtos/change-default-strings-text-without-using-full-translation-system">Change default strings (text) without using full translation system</a></li>
+<li><a href="/docs/7/howtos/controlmodify-display-settings-author-and-date-on-posts">Control/modify display settings (author and date) on posts</a></li>
+<li><a href="/docs/7/howtos/copy-the-form-buttons-on-node-creation-pages-to-the-top">Copy the form buttons on node creation pages to the top</a></li>
+<li><a href="/docs/7/howtos/create-a-node-in-code">Create a Node in Code</a></li>
+<li><a href="/docs/7/howtos/create-a-rule-to-evaluate-if-a-logged-in-user-has-created-content-of-type-x">Create a Rule to Evaluate If a Logged-in User Has Created Content of Type X</a></li>
+<li><a href="/docs/7/howtos/create-a-custom-user-registration-form-with-fapi-d7">Create a custom User Registration form with FAPI D7</a></li>
+<li><a href="/docs/7/howtos/create-a-fixed-position-customized-information-box">Create a fixed position customized information box</a></li>
+<li><a href="/docs/7/howtos/creating-an-activity-newspaper-website-using-d7">Creating an activity newspaper website using D7</a></li>
+<li><a href="/docs/7/howtos/creating-iframe-ready-widgets-with-views-and-templates">Creating iFrame-ready Widgets with Views and Templates</a></li>
+<li><a href="/docs/7/howtos/customize-the-default-user-registration-form">Customize the default user registration form</a></li>
+<li><a href="/docs/7/howtos/display-users-points-of-specific-category-in-a-block-on-content-profile">Display User&#039;s Points of Specific Category in a Block on Content Profile</a></li>
+<li><a href="/docs/7/howtos/embed-a-date-specific-event-calendar">Embed a date-specific event calendar</a></li>
+<li><a href="/docs/7/howtos/faq-using-views">FAQ using Views</a></li>
+<li><a href="/docs/7/howtos/flot-usage-example">Flot Usage Example</a></li>
+<li><a href="/docs/7/howtos/future-proof-your-drupal-7-site">Future-proof your Drupal 7 site</a></li>
+<li><a href="/docs/7/howtos/how-to-create-an-image-gallery-in-drupal">How to Create an Image Gallery in Drupal</a></li>
+<li><a href="/docs/7/howtos/how-to-make-a-simple-module-with-a-form-and-menu-link">How to Make a Simple Module with a Form and Menu Link</a></li>
+<li><a href="/docs/7/howtos/how-to-reset-the-administrator-user-1-password-in-drupal-7">How to reset the administrator (user 1) password in Drupal 7</a></li>
+<li><a href="/docs/7/howtos/how-to-set-up-google-adsense-for-search-without-using-a-custom-module">How to Set up Google AdSense for Search without using a custom module</a></li>
+<li><a href="/docs/7/howtos/how-to-add-jquery-ui-libraries-to-a-page">How to add jQuery UI libraries to a page</a></li>
+<li><a href="/docs/7/howtos/image-gallery-with-imagefield-and-taxonomy">Image gallery with Imagefield and Taxonomy</a></li>
+<li><a href="/docs/7/howtos/making-a-guestbook-a-gallery-a-status-wall-chat-room">Making a Guestbook, a Gallery, a Status Wall, Chat Room ...</a></li>
+<li><a href="/docs/7/howtos/move-fields-help-text-description-between-the-label-and-input-elements">Move field&#039;s help text (description) between the label and input element(s)</a></li>
+<li><a href="/docs/7/howtos/moving-node-settings-on-the-edit-form">Moving node settings on the edit form</a></li>
+<li><a href="/docs/7/howtos/subscribe-a-user-to-specific-og-group-using-rules">Subscribe a user to specific OG group using Rules</a></li>
+<li><a href="/docs/develop/drupal-apis/writing-a-module-that-handles-node-access">Writing a module that handles node access</a></li>
+<li><a href="/docs/7/howtos/yinyang-multisite-staging">Yin/Yang Multisite Staging</a></li>
+</ul></section><section><h2><a href="/docs/7/automated-testing-for-drupal-7">Automated testing for Drupal 7</a></h2><p>The testing framework in Drupal 7 (Testing module, previously SimpleTest).</p><ul class="guide-contents"><li><a href="/docs/7/testing/simpletest-testing-overview-drupal-7">Testing overview</a></li>
+<li><a href="/docs/7/testing/testing-module">Testing module</a></li>
+<li><a href="/docs/7/testing/simpletest-testing-tutorial-drupal-7">Testing tutorial</a></li>
+<li><a href="/docs/7/testing/unit-testing-with-simpletest">Unit Testing with SimpleTest</a></li>
+<li><a href="/docs/7/testing/organizing-your-test-cases">Organizing your test cases</a></li>
+<li><a href="/docs/7/automated-testing-for-drupal-7/selenium-testing">Selenium testing</a></li>
+<li><a href="/docs/7/automated-testing-for-drupal-7/testing-setup-and-configuration">Testing setup and configuration</a></li>
+<li><a href="/docs/7/testing/writing-upgrade-path-tests">Writing upgrade path tests</a></li>
+<li><a href="/docs/7/testing/run-tests">Run tests</a></li>
+<li><a href="/docs/automated-testing/phpunit-in-drupal/running-tests-through-command-line-with-run-testssh">Running tests through command-line</a></li>
+<li><a href="/docs/7/testing/troubleshooting-tests">Troubleshooting tests</a></li>
+<li><a href="/docs/7/testing/simpletest-upload-tests-hanging">SimpleTest upload tests hanging</a></li>
+<li><a href="/docs/7/testing/simpletest-browser-on-vista">SimpleTest [Browser] on Vista</a></li>
+<li><a href="/docs/7/testing/improving-simpletest-performance">Improving SimpleTest performance</a></li>
+<li><a href="/docs/7/testing/testing-reference">Testing Reference</a></li>
+<li><a href="/docs/7/testing/api-functions">API functions</a></li>
+<li><a href="/docs/7/testing/assertions">Assertions</a></li>
+<li><a href="/docs/7/testing/why-test">Why test</a></li>
+<li><a href="/docs/7/testing/core-tests">Core tests</a></li>
+<li><a href="/docs/7/testing/hidden-modules-and-themes">Hidden modules and themes</a></li>
+<li><a href="/docs/7/testing/comprehensive-example">Comprehensive example</a></li>
+<li><a href="/docs/7/testing/miscellaneous-simpletest-tips">Miscellaneous SimpleTest tips</a></li>
+</ul></section>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-custom pane-1"  id="contribute" >
+  
+        <h2 class="pane-title">
+      Contribute    </h2>
+    
+  
+  <div class="pane-content">
+    <p>Read the <a href="/contribute/documentation" rel="nofollow">contribution guidelines</a> and consider joining the <a href="/about/strategic-initiatives/documentation" rel="nofollow">documentation initiative</a>.</p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-views-panes pane-group-maintainers-panel-pane-1"  id="guide-maintainers" >
+  
+        <h2 class="pane-title">
+      Guide maintainers    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-group-maintainers view-id-group_maintainers view-display-id-panel_pane_1 view-dom-id-ea81a6b102bdc24fb46369341dff6fdf">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1">
+      
+          <a href="/user/79230" title="View eojthebrave&#039;s profile"><img src="https://www.drupal.org/files/styles/drupalorg_user_picture/public/user-pictures/picture-79230-1571363757.jpg?itok=531mCwbR" width="80" height="80" alt="eojthebrave&#039;s picture" /></a>    </div>
+  <div class="views-row views-row-2">
+      
+          <a href="/user/999848" title="View tvn&#039;s profile"><img src="https://www.drupal.org/files/styles/drupalorg_user_picture/public/user-pictures/picture-999848-1465421309.png?itok=zhKlAw3z" width="80" height="80" alt="tvn&#039;s picture" /></a>    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"5tgDqc9BeFtPcJlMgG_Iw2NuSD_a70UNLrwBEFd_qS0"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"group_maintainers":{"displays":{"panel_pane_1":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2743405"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
