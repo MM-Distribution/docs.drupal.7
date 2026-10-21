@@ -6,5 +6,7 @@
 # Distribution showcase pages (third-party distributions)
 /docs/7/distributions
 /docs/7/drupal-7-distributions
-# Comparisons of contributed (third-party) modules
+# Comparisons of contributed (third-party) modules. 21 pages were fetched on
+# 2026-10-21 before this exclusion and later removed; their manifest rows remain
+# as the record of those requests.
 /docs/7/extend/comparison-of-contributed-modules
