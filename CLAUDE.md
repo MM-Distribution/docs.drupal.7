@@ -54,5 +54,10 @@ Do not retry automatically after any of these. A human decides when to resume.
 drupal.org documentation is © its individual contributors and licensed
 **CC BY-SA 2.0**. PHP code on the site is GPL. Content copied from drupal.org
 keeps that license and needs attribution: keep the source URL with every page.
-The MIT `LICENSE` in this repo covers only original work in this repo, not
-mirrored drupal.org text.
+In this repo, `LICENSE` (CC BY-SA 2.0) covers the mirrored drupal.org content,
+and `LICENSE-MIT` covers only original work (tools, notes, examples).
+
+## Archive rules
+- Mirrored pages are exact copies: do not add, remove or reword anything.
+- Notes, examples and commentary go in separate files (never inside a mirrored
+  page) and are clearly marked as not part of the original.

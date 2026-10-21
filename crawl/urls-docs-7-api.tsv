@@ -1,0 +1,109 @@
+title	url
+Batch API	https://www.drupal.org/docs/7/api/batch-api
+Batch API overview	https://www.drupal.org/docs/7/api/batch-api/overview
+Cache API	https://www.drupal.org/docs/7/api/cache-api
+Cache API overview	https://www.drupal.org/docs/7/api/cache-api/cache-api-overview
+Database API	https://www.drupal.org/docs/7/api/database-api
+Database API overview	https://www.drupal.org/docs/7/api/database-api/database-api-overview
+General concepts	https://www.drupal.org/docs/7/api/database-api/general-concepts
+Database configuration	https://www.drupal.org/docs/7/api/database-api/database-configuration
+Static queries	https://www.drupal.org/docs/7/api/database-api/static-queries
+Fetching into a custom class	https://www.drupal.org/docs/7/api/database-api/fetching-into-a-custom-class
+Dynamic queries	https://www.drupal.org/docs/7/api/database-api/dynamic-queries
+Result sets	https://www.drupal.org/docs/7/api/database-api/result-sets
+Insert queries	https://www.drupal.org/docs/7/api/database-api/insert-queries
+Update queries	https://www.drupal.org/docs/7/api/database-api/update-queries
+Delete queries	https://www.drupal.org/docs/7/api/database-api/delete-queries
+Merge queries using db_merge	https://www.drupal.org/docs/7/api/database-api/merge-queries-using-db_merge
+Writing database drivers	https://www.drupal.org/docs/7/api/database-api/writing-database-drivers
+Error handling	https://www.drupal.org/docs/7/api/database-api/error-handling
+Transactions	https://www.drupal.org/docs/7/api/database-api/transactions
+Chaining	https://www.drupal.org/docs/7/api/database-api/chaining
+Functions and operators	https://www.drupal.org/docs/7/api/database-api/functions-and-operators
+SQL Views	https://www.drupal.org/docs/7/api/database-api/sql-views
+Entity API	https://www.drupal.org/docs/7/api/entity-api
+An Introduction to Entities	https://www.drupal.org/docs/7/api/entity-api/an-introduction-to-entities
+Entity API Tutorial	https://www.drupal.org/docs/7/api/entity-api/entity-api-tutorial
+Entity Token Support	https://www.drupal.org/docs/7/api/entity-api/entity-token-support
+Providing a new entity type	https://www.drupal.org/docs/7/api/entity-api/providing-a-new-entity-type
+Make an entity type exportable	https://www.drupal.org/docs/7/api/entity-api/make-an-entity-type-exportable
+Making an entity revisionable	https://www.drupal.org/docs/7/api/entity-api/making-an-entity-revisionable
+Enabling Revisions on a Table With Existing Data	https://www.drupal.org/docs/7/api/entity-api/enabling-revisions-on-a-table-with-existing-data
+Viewing entities	https://www.drupal.org/docs/7/api/entity-api/viewing-entities
+Module integration helpers	https://www.drupal.org/docs/7/api/entity-api/module-integration-helpers
+i18n module integration	https://www.drupal.org/docs/7/api/entity-api/i18n-module-integration
+Making use of the admin UI	https://www.drupal.org/docs/7/api/entity-api/making-use-of-the-admin-ui
+Documentation template for provided hooks	https://www.drupal.org/docs/7/api/entity-api/documentation-template-for-provided-hooks
+Basic file skeleton + CRUD hooks	https://www.drupal.org/docs/7/api/entity-api/basic-file-skeleton-crud-hooks
+View-related hooks.	https://www.drupal.org/docs/7/api/entity-api/view-related-hooks
+Additional hooks for exportable entities	https://www.drupal.org/docs/7/api/entity-api/additional-hooks-for-exportable-entities
+Misc hooks	https://www.drupal.org/docs/7/api/entity-api/misc-hooks
+Providing metadata for additional entity types	https://www.drupal.org/docs/7/api/entity-api/providing-metadata-for-additional-entity-types
+Views integration	https://www.drupal.org/docs/7/api/entity-api/views-integration
+Entity property information	https://www.drupal.org/docs/7/api/entity-api/entity-property-information
+Data types	https://www.drupal.org/docs/7/api/entity-api/data-types
+Entity metadata wrappers	https://www.drupal.org/docs/7/api/entity-api/entity-metadata-wrappers
+Property info for fields	https://www.drupal.org/docs/7/api/entity-api/property-info-for-fields
+Displaying properties when viewing entities	https://www.drupal.org/docs/7/api/entity-api/displaying-properties-when-viewing-entities
+Field API	https://www.drupal.org/docs/7/api/field-api
+Field API glossary	https://www.drupal.org/docs/7/api/field-api/field-api-glossary
+Adding and reusing a field	https://www.drupal.org/docs/7/api/field-api/adding-and-reusing-a-field
+Field API tutorial	https://www.drupal.org/docs/7/api/field-api/field-api-tutorial
+Field Types and Settings	https://www.drupal.org/docs/7/api/field-api/field-types-and-settings
+Implementing entity revisioning	https://www.drupal.org/docs/7/api/field-api/implementing-entity-revisioning
+Making an entity fieldable	https://www.drupal.org/docs/7/api/field-api/making-an-entity-fieldable
+Implementing the field management UI	https://www.drupal.org/docs/7/api/field-api/implementing-the-field-management-ui
+Language support for entity fields	https://www.drupal.org/docs/7/api/field-api/language-support-for-entity-fields
+File API	https://www.drupal.org/docs/7/api/file-api
+File API overview	https://www.drupal.org/docs/7/api/file-api/file-api-overview
+File usage functions	https://www.drupal.org/docs/7/api/file-api/file-usage-functions
+General concepts	https://www.drupal.org/docs/7/api/file-api/general-concepts
+Important Drupal 7 File API Functions	https://www.drupal.org/docs/7/api/file-api/important-drupal-7-file-api-functions
+Writing stream wrappers	https://www.drupal.org/docs/7/api/file-api/writing-stream-wrappers
+File API changes from Drupal 6 to Drupal 7	https://www.drupal.org/docs/7/api/file-api/file-api-changes-from-drupal-6-to-drupal-7
+JavaScript API	https://www.drupal.org/docs/7/api/javascript-api
+Adding JavaScript to your theme or module	https://www.drupal.org/docs/7/api/javascript-api/adding-javascript-to-your-theme-or-module
+JavaScript API overview	https://www.drupal.org/docs/7/api/javascript-api/javascript-api-overview
+Introducing jQuery	https://www.drupal.org/docs/7/api/javascript-api/introducing-jquery
+Managing JavaScript	https://www.drupal.org/docs/7/api/javascript-api/managing-javascript
+Debugging JavaScript	https://www.drupal.org/docs/7/api/javascript-api/debugging-javascript
+Ajax Forms in Drupal 7	https://www.drupal.org/docs/7/api/javascript-api/ajax-forms-in-drupal-7
+Ajax in Drupal using jQuery	https://www.drupal.org/docs/7/api/javascript-api/ajax-in-drupal-using-jquery
+Multiple different versions of jQuery co-existing	https://www.drupal.org/docs/7/api/javascript-api/multiple-different-versions-of-jquery-co-existing
+Creating custom Drupal.ajax object 'on the fly' and attach it to any DOM element on the page (div, td, span etc.)	https://www.drupal.org/docs/7/api/javascript-api/creating-custom-drupalajax-object-on-the-fly-and-attach-it-to-any-dom
+Add More Button for Text field /file field using AHAH with drupal 7 form API	https://www.drupal.org/docs/7/api/javascript-api/add-more-button-for-text-field-file-field-using-ahah-with-drupal-7-form
+Simple Drupal AJAX load with jQuery and delivery callback	https://www.drupal.org/docs/7/api/javascript-api/simple-drupal-ajax-load-with-jquery-and-delivery-callback
+Localization API	https://www.drupal.org/docs/7/api/localization-api
+Localization API overview	https://www.drupal.org/docs/7/api/localization-api/localization-api-overview
+When to use st(), t() and get_t() in install and update functions	https://www.drupal.org/docs/7/api/localization-api/when-to-use-st-t-and-get_t-in-install-and-update-functions
+Dynamic strings with placeholders	https://www.drupal.org/docs/7/api/localization-api/dynamic-strings-with-placeholders
+Dynamic or static links and HTML in translatable strings	https://www.drupal.org/docs/7/api/localization-api/dynamic-or-static-links-and-html-in-translatable-strings
+Formatting numbers, dates/times, sizes and intervals with localization	https://www.drupal.org/docs/7/api/localization-api/formatting-numbers-datestimes-sizes-and-intervals-with-localization
+Strings at well-known places: built-in menus, permissions, log messages and .info files	https://www.drupal.org/docs/7/api/localization-api/strings-at-well-known-places-built-in-menus-permissions-log-messages-and
+Translating strings in JavaScript	https://www.drupal.org/docs/7/api/localization-api/translating-strings-in-javascript
+Language Negotiation API	https://www.drupal.org/docs/7/api/localization-api/language-negotiation-api
+String context	https://www.drupal.org/docs/7/api/localization-api/string-context
+RDF Mapping API	https://www.drupal.org/docs/7/api/rdf-mapping-api
+Altering an existing RDF mapping	https://www.drupal.org/docs/7/api/rdf-mapping-api/altering-an-existing-rdf-mapping
+Creating mappings for taxonomies	https://www.drupal.org/docs/7/api/rdf-mapping-api/creating-mappings-for-taxonomies
+Defining a new RDF mapping	https://www.drupal.org/docs/7/api/rdf-mapping-api/defining-a-new-rdf-mapping
+RDF namespaces registry	https://www.drupal.org/docs/7/api/rdf-mapping-api/rdf-namespaces-registry
+Render Arrays	https://www.drupal.org/docs/7/api/render-arrays
+Render arrays overview	https://www.drupal.org/docs/7/api/render-arrays/render-arrays-overview
+Schema API	https://www.drupal.org/docs/7/api/schema-api
+Introduction to Schema API	https://www.drupal.org/docs/7/api/schema-api/introduction-to-schema-api
+Quick start guide	https://www.drupal.org/docs/7/api/schema-api/schema-api-quick-start-guide
+Schema Reference	https://www.drupal.org/docs/7/api/schema-api/schema-reference
+Schema API functions	https://www.drupal.org/docs/7/api/schema-api/schema-api-functions
+Updating tables: hook_update_N() functions	https://www.drupal.org/docs/7/api/schema-api/updating-tables-hook_update_n-functions
+Data types	https://www.drupal.org/docs/7/api/schema-api/data-types
+Theme API	https://www.drupal.org/docs/7/api/theme-api
+Theme API overview	https://www.drupal.org/docs/7/api/theme-api/overview
+XML-RPC API	https://www.drupal.org/docs/7/api/xml-rpc-api
+XML-RPC api overview	https://www.drupal.org/docs/7/api/xml-rpc-api/overview
+[Drupal 7] Form API	https://www.drupal.org/docs/7/api/drupal-7-form-api
+Form API - Creating a builder function	https://www.drupal.org/docs/7/api/form-api/creating-a-builder-function-to-generate-a-form
+Form API - Internal Workflow Illustration	https://www.drupal.org/docs/7/api/form-api/form-api-internal-workflow-illustration
+Form API - Modify Form widgets with hook_field_widget_form_alter()	https://www.drupal.org/docs/7/api/form-api/forms-api-modify-form-widgets-with-hook_field_widget_form_alter
+Form API - Modify Forms with hook_form_alter()	https://www.drupal.org/docs/7/api/form-api/forms-api-modify-forms-with-hook_form_alter
+Form API - #tree and #parents	https://www.drupal.org/docs/7/api/form-api/tree-and-parents
