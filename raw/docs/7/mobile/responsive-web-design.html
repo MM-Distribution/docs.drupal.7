@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="This page lists resources for Responsive Web Design, a strategy for optimizing the display of a web site using CSS and JavaScript to respond" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/mobile/responsive-web-design" />
+<link rel="shortlink" href="https://www.drupal.org/node/1388492" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/mobile/responsive-web-design" />
+<meta property="og:title" content="Responsive web design" />
+<meta property="og:description" content="This page lists resources for Responsive Web Design, a strategy for optimizing the display of a web site using CSS and JavaScript to respond to different device capabilities. Background information A List Apart: Responsive Web Design - Ethan Marcotte Drupal Responsive Design &amp; Mobile First Design Strategy Mobile First - Luke Wroblewski Why Design Mobile First? Head First Mobile Web Detection tutorial Terms Browser detection: determining the identity of the user agent (web browser) being used to visit that page. Device detection: determining the hardware that user agent is running on." />
+<meta property="og:updated_time" content="2024-01-10T05:39:13+00:00" />
+<meta property="article:published_time" content="2011-12-29T15:09:51+00:00" />
+<meta property="article:modified_time" content="2024-01-10T05:39:13+00:00" />
+  <title>Responsive web design | Mobile guide for Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1388492 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2789177" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/mobile/responsive-web-design" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-1VaS_0heLFbvFLjW7wFZW5Aqyu8vt_FO4Q8ZH-saCJc" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/1388492" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/1388492" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/mobile/responsive-web-design" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-vRFzWq6pXtdIvqCYIClwV59PiQpNpeYYh7znYEuRhww" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/mobile">Mobile guide for Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-1388492">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/mobile/responsive-web-design#s-background-information" class="toc-link toc-link-invalid-id active">Background information</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-terms" class="toc-link toc-link-invalid-id active">Terms</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-current-preferred-approach" class="toc-link toc-link-invalid-id active">Current Preferred Approach</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-solutions" class="toc-link toc-link-invalid-id active">Solutions</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-testing-tools-for-desktop-laptop-mobile" class="toc-link toc-link-invalid-id active">Testing Tools for desktop, laptop &amp; mobile</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-grid-systems" class="toc-link toc-link-invalid-id active">Responsive grid systems</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#responsive-themes" class="toc-link active">Responsive themes</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-drupal-6-7" class="toc-link toc-link-invalid-id active">Drupal 6 &amp; 7</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-drupal-7" class="toc-link toc-link-invalid-id active">Drupal 7</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-theme-generators" class="toc-link toc-link-invalid-id active">Responsive theme generators</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-tables" class="toc-link toc-link-invalid-id active">Responsive tables</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-images" class="toc-link toc-link-invalid-id active">Responsive images</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-possible-solutions" class="toc-link toc-link-invalid-id active">Possible solutions</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-drupal-modules" class="toc-link toc-link-invalid-id active">Drupal modules</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-thumbnail-galleries" class="toc-link toc-link-invalid-id active">Responsive thumbnail galleries</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-background-images" class="toc-link toc-link-invalid-id active">Responsive background images</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-slideshows" class="toc-link toc-link-invalid-id active">Responsive slideshows</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-videos" class="toc-link toc-link-invalid-id active">Responsive videos</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-text" class="toc-link toc-link-invalid-id active">Responsive text</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/mobile/responsive-web-design#s-responsive-navigation-menus" class="toc-link toc-link-invalid-id active">Responsive navigation menus</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/mobile/responsive-web-design#s-possible-solutions--2" class="toc-link toc-link-invalid-id active">Possible Solutions</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/mobile/responsive-web-design#s-drupal-modules--2" class="toc-link toc-link-invalid-id active">Drupal Modules</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="mobile-guide-for-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/mobile">Mobile guide for Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/mobile/native-mobile-apps">Native mobile apps</a></li>
+<li class="leaf"><a href="/docs/7/mobile/mobile-specific-website">Mobile-specific website</a></li>
+<li class="leaf"><a href="/docs/7/mobile/web-based-mobile-apps">Web-based mobile apps</a></li>
+<li class="leaf active-trail"><a href="/docs/7/mobile/responsive-web-design" class="active-trail active">Responsive web design</a></li>
+<li class="leaf"><a href="/docs/7/mobile/responsive-design-server-side-components-ress">Responsive Design + Server-side Components (RESS)</a></li>
+<li class="leaf"><a href="/docs/7/mobile/related-mobile-technologies">Related mobile technologies</a></li>
+<li class="leaf"><a href="/docs/7/mobile/configurations-that-work-with-the-mobile-codes-module">Configurations that work with the Mobile Codes module.</a></li>
+<li class="leaf"><a href="/docs/7/mobile/mobile-testing-tools">Mobile Testing Tools</a></li>
+<li class="last leaf"><a href="/docs/7/mobile/front-end-performance">Front-end performance</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Responsive web design</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/1388492/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    10 January 2024  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>This page lists resources for Responsive Web Design, a strategy for optimizing the display of a web site using CSS and JavaScript to respond to different device capabilities.</p>
+<h2 id="s-background-information"><a class="toc-anchor" title="Permalink to this headline" href="#s-background-information"></a>Background information</h2>
+<ul>
+<li><a href="https://www.alistapart.com/articles/responsive-web-design/" rel="nofollow">A List Apart: Responsive Web Design - Ethan Marcotte</a></li>
+<li><a href="https://www.daymuse.com/blogs/mobile-first-design-drupal" rel="nofollow">Drupal Responsive Design &amp; Mobile First Design Strategy</a></li>
+<li><a href="https://www.lukew.com/ff/entry.asp?933" rel="nofollow">Mobile First - Luke Wroblewski</a></li>
+<li><a href="https://needmoredesigns.com/blog/why-design-mobile-first" rel="nofollow">Why Design Mobile First?</a></li>
+<li><a href="https://www.oreilly.com/library/view/head-first-mobile/9781449324773/" rel="nofollow">Head First Mobile Web</a></li>
+<li><a href="https://www.html5rocks.com/en/tutorials/detection" rel="nofollow">Detection tutorial</a></li>
+</ul>
+<h3 id="s-terms"><a class="toc-anchor" title="Permalink to this headline" href="#s-terms"></a>Terms</h3>
+<ul>
+<li>Browser detection: determining the identity of the user agent (web browser) being used to visit that page.</li>
+<li>Device detection: determining the hardware that user agent is running on.</li>
+<li>Feature detection: determining the capabilities of the user agent in question</li>
+<li>Capability detection: combining aspects of feature, device and bandwidth detection, to test the overall capabilities of the viewport in question.</li>
+</ul>
+<h3 id="s-current-preferred-approach"><a class="toc-anchor" title="Permalink to this headline" href="#s-current-preferred-approach"></a>Current Preferred Approach</h3>
+<p>Feature detection is currently considered best practice and most <a href="http://futurefriend.ly" rel="nofollow">Future Friendly</a></p>
+<p>Browser detection is less used due to browsers being able to “pretend” to be another browser by editing their User Agent string.</p>
+<p>Device detection becomes unmanageable as the number of devices grows.</p>
+<p>The features of the viewports (what it can actually do) are more important for adjusting the display of information than the name of the viewport of the platform it runs on.</p>
+<h3 id="s-solutions"><a class="toc-anchor" title="Permalink to this headline" href="#s-solutions"></a>Solutions</h3>
+<ul>
+<li><a href="http://www.modernizr.com/" rel="nofollow">Modernizr</a> combines feature detection with conditional resource loading.</li>
+<li><a href="http://drupal.org/project/modernizr" rel="nofollow">Modernizr 7.x-3.x</a> supports Modernizr.load() — any theme or module can use it.</li>
+<li><a href="http://www.brettjankord.com/2012/01/16/categorizr-a-modern-device-detection-script/" rel="nofollow">Categorizr</a> – A server-side device detection script</li>
+<li><a href="http://www.agent-iq.com" rel="nofollow">Agent IQ</a> - A server-side device detection script</li>
+<li><a href="http://detector.dmolsen.com/" rel="nofollow">Detector</a> - A server-side device detection script</li>
+<li><a href="https://www.drupal.org/project/mobile_tools" rel="nofollow">Mobile Tools</a>, to assist in making adjustments to your site based on the visitor's device</li>
+<li><a href="https://www.drupal.org/project/mobile_switch" rel="nofollow">Mobile Switch</a></li>
+<li><a href="https://www.drupal.org/project/mobile_theme" rel="nofollow">Mobile Theme</a></li>
+</ul>
+<h2 id="s-testing-tools-for-desktop-laptop-mobile"><a class="toc-anchor" title="Permalink to this headline" href="#s-testing-tools-for-desktop-laptop-mobile"></a>Testing Tools for desktop, laptop &amp; mobile</h2>
+<ul>
+<li><a href="http://quirktools.com/screenfly" rel="nofollow">http://quirktools.com/screenfly</a></li>
+<li><a href="http://ipadpeek.com/" rel="nofollow">http://ipadpeek.com/</a></li>
+<li>Responsive Design Testing Tool - <a href="http://mattkersley.com/responsive/" rel="nofollow">http://mattkersley.com/responsive/</a></li>
+<li>Opera Mobile Emulator - <a href="http://www.opera.com/developer/tools/mobile/" rel="nofollow">http://www.opera.com/developer/tools/mobile/</a></li>
+<li>Responsinator: <a href="http://www.responsinator.com" rel="nofollow">http://www.responsinator.com</a></li>
+</ul>
+<h2 id="s-responsive-grid-systems"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-grid-systems"></a>Responsive grid systems</h2>
+<ul>
+<li>1140 CSS Grid <a href="http://cssgrid.net" rel="nofollow">http://cssgrid.net</a></li>
+<li>Bootstrap <a href="http://getbootstrap.com" rel="nofollow">http://getbootstrap.com</a></li>
+<li>Tailwindcss <a href="https://tailwindcss.com/" rel="nofollow">https://tailwindcss.com/</a></li>
+<li>Columnal <a href="http://www.columnal.com" rel="nofollow">http://www.columnal.com</a></li>
+<li>Fluid Baseline Grid <a href="http://fluidbaselinegrid.com" rel="nofollow">http://fluidbaselinegrid.com</a></li>
+<li>Foundation <a href="http://foundation.zurb.com" rel="nofollow">http://foundation.zurb.com</a></li>
+<li>Golden Grid System <a href="http://goldengridsystem.com" rel="nofollow">http://goldengridsystem.com</a></li>
+<li>Gridset <a href="http://www.gridsetapp.com/" rel="nofollow">http://www.gridsetapp.com/</a></li>
+<li>Skeleton <a href="http://www.getskeleton.com" rel="nofollow">http://www.getskeleton.com</a></li>
+<li>Susy <a href="http://susy.oddbird.net" rel="nofollow">http://susy.oddbird.net</a></li>
+<li>Singularity <a href="http://singularity.gs" rel="nofollow">http://singularity.gs</a></li>
+<li>Zen Grids <a href="http://zengrids.com" rel="nofollow">http://zengrids.com</a></li>
+<li>Yahoo Pure.CSS <a href="http://purecss.io/" rel="nofollow">http://purecss.io/</a></li>
+</ul>
+<h2 id="responsive-themes"><a class="toc-anchor" title="Permalink to this headline" href="#responsive-themes"></a>Responsive themes</h2>
+<h3 id="s-drupal-6-7"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-6-7"></a>Drupal 6 &amp; 7</h3>
+<ul>
+<li>AdaptiveTheme <a href="http://drupal.org/project/adaptivetheme" rel="nofollow">http://drupal.org/project/adaptivetheme</a></li>
+<li>Omega <a href="http://drupal.org/project/omega" rel="nofollow">http://drupal.org/project/omega</a></li>
+<li>Zen (7.x-5.x) <a href="http://drupal.org/project/zen" rel="nofollow">http://drupal.org/project/zen</a></li>
+<li>Zero Point <a href="https://www.drupal.org/project/zeropoint" rel="nofollow">https://www.drupal.org/project/zeropoint</a></li>
+</ul>
+<h3 id="s-drupal-7"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-7"></a>Drupal 7</h3>
+<ul>
+<li>ABC <a href="https://www.drupal.org/project/abc" rel="nofollow">https://www.drupal.org/project/abc</a></li>
+<li>Arctica <a href="http://drupal.org/project/arctica" rel="nofollow">http://drupal.org/project/arctica</a></li>
+<li>Aurora <a href="http://drupal.org/project/aurora" rel="nofollow">http://drupal.org/project/aurora</a></li>
+<li>Boilerplate <a href="http://drupal.org/project/boilerplate" rel="nofollow">http://drupal.org/project/boilerplate</a></li>
+<li>Bootstrap <a href="http://drupal.org/project/bootstrap" rel="nofollow">http://drupal.org/project/bootstrap</a></li>
+<li>Corked Screwer <a href="http://drupal.org/project/corkedscrewer" rel="nofollow">http://drupal.org/project/corkedscrewer</a></li>
+<li>Foundation <a href="http://drupal.org/project/zurb-foundation" rel="nofollow">http://drupal.org/project/zurb-foundation</a></li>
+<li>Mojo <a href="http://drupal.org/project/mojo" rel="nofollow">http://drupal.org/project/mojo</a></li>
+<li>Sasson <a href="http://drupal.org/project/sasson" rel="nofollow">http://drupal.org/project/sasson</a></li>
+<li>Square Grid <a href="http://drupal.org/project/squaregrid" rel="nofollow">http://drupal.org/project/squaregrid</a></li>
+<li>Groundwork <a href="http://drupal.org/project/groundwork" rel="nofollow">http://drupal.org/project/groundwork</a></li>
+<li>Corporate Clean <a href="http://drupal.org/project/corporateclean" rel="nofollow">http://drupal.org/project/corporateclean</a></li>
+<li>Mayo <a href="http://drupal.org/project/mayo" rel="nofollow">http://drupal.org/project/mayo</a></li>
+<li>Professional Theme <a href="http://drupal.org/project/professional_theme" rel="nofollow">http://drupal.org/project/professional_theme</a></li>
+<li>Mix and Match <a href="http://drupal.org/project/mix_and_match" rel="nofollow">http://drupal.org/project/mix_and_match</a></li>
+<li>Premium Responsive <a href="http://drupal.org/project/responsive" rel="nofollow">http://drupal.org/project/responsive</a></li>
+<li>Yahoo Pure.CSS Framework <a href="https://www.drupal.org/project/pure_css" rel="nofollow">https://www.drupal.org/project/pure_css</a></li>
+<li><strong>Drupal 7 Responsive Theme Search</strong>: <a href="https://www.drupal.org/project/project_theme?f%5B0%5D=&amp;f%5B1%5D=&amp;f%5B2%5D=drupal_core%3A103&amp;f%5B3%5D=sm_field_project_type%3Afull&amp;text=responsive&amp;solrsort=iss_project_release_usage+desc&amp;op=Search" rel="nofollow">https://www.drupal.org/project/project_theme?f%5B0%5D=&amp;f%5B1%5D=&amp;f%5B2%5...</a></li>
+</ul>
+<h2 id="s-responsive-theme-generators"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-theme-generators"></a>Responsive theme generators</h2>
+<ul>
+<li><a href="http://responsify.it/" rel="nofollow">http://responsify.it/</a></li>
+</ul>
+<h2 id="s-responsive-tables"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-tables"></a>Responsive tables</h2>
+<ul>
+<li><a href="http://www.zurb.com/playground/responsive-tables" rel="nofollow">Responsive tables - ZURB</a></li>
+<li><a href="http://css-tricks.com/responsive-data-tables" rel="nofollow">Responsive Data Tables - Chris Coyier</a></li>
+<li><a href="http://filamentgroup.com/lab/responsive_design_approach_for_complex_multicolumn_data_tables" rel="nofollow">A Responsive Design Approach for Complex, Multicolumn Data Tables</a></li>
+</ul>
+<h2 id="s-responsive-images"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-images"></a>Responsive images</h2>
+<p>Jason Grisby has an excellent series of posts on the problems of responsive images: <a href="http://blog.cloudfour.com/responsive-imgs/" rel="nofollow">http://blog.cloudfour.com/responsive-imgs/</a></p>
+<p>Jeremy Keith’s <a href="http://adactio.com/journal/4997" rel="nofollow">two golden rules</a> for dealing with responsive images:</p>
+<ol>
+<li>The small image should be default.</li>
+<li>Don’t load multiple images.</li>
+</ol>
+<h3 id="s-possible-solutions"><a class="toc-anchor" title="Permalink to this headline" href="#s-possible-solutions"></a>Possible solutions</h3>
+<ul>
+<li><a href="http://filamentgroup.com/lab/responsive_images_experimenting_with_context_aware_image_sizing" rel="nofollow">Responsive Images: Experimenting with Context-Aware Image Sizing</a></li>
+<li><a href="http://adaptive-images.com/" rel="nofollow">Adaptive Images</a></li>
+<li><a href="http://www.alistapart.com/articles/responsive-images-how-they-almost-worked-and-what-we-need" rel="nofollow">Responsive Images: How they Almost Worked and What We Need</a></li>
+<li><a href="http://www.w3.org/community/respimg/2012/03/15/polyfilling-picture-without-the-overhead" rel="nofollow">Proposed <code class="language-php">&lt;picture&gt;</code> element and polyfill</a></li>
+<li><a href="https://github.com/adamdbradley/foresight.js" rel="nofollow">Foresite.js</a></li>
+<li><a href="http://fourkitchens.com/blog/2013/02/07/responsive-images-drupal-implementation" rel="nofollow">Responsive images - a Drupal implementation</a></li>
+</ul>
+<h3 id="s-drupal-modules"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-modules"></a>Drupal modules</h3>
+<ul>
+<li><a href="http://drupal.org/project/picture" rel="nofollow">Picture</a> is part of Drupal 8 core and is backported to Drupal 7. It follows responsive design principles. In order to use it, select the 'Picture' instead of 'Image' formatter when managing the display of a content-type.</li>
+<li>Adaptive Image <a href="http://drupal.org/project/adaptive_image" rel="nofollow">http://drupal.org/project/adaptive_image</a></li>
+<li>Adaptive Image Styles <a href="http://drupal.org/project/ais" rel="nofollow">http://drupal.org/project/ais</a></li>
+<li>Client-side adaptive image <a href="http://drupal.org/project/cs_adaptive_image" rel="nofollow">http://drupal.org/project/cs_adaptive_image</a></li>
+<li>Responsive Images <a href="http://drupal.org/project/responsive_images" rel="nofollow">http://drupal.org/project/responsive_images</a> (not maintained any more)</li>
+<li>Responsive images and styles <a href="http://drupal.org/project/resp_img" rel="nofollow">http://drupal.org/project/resp_img</a> (replaced by “Picture”)</li>
+<li>Fluid html grid that can be used with responsive design techniques <a href="http://drupal.org/project/views_fluid_grid" rel="nofollow">http://drupal.org/project/views_fluid_grid</a></li>
+</ul>
+<h3 id="s-responsive-thumbnail-galleries"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-thumbnail-galleries"></a>Responsive thumbnail galleries</h3>
+<ul>
+<li><a href="http://designshack.net/articles/css/how-to-build-a-responsive-thumbnail-gallery" rel="nofollow">How to Build a Responsive Thumbnail Gallery</a></li>
+</ul>
+<h3 id="s-responsive-background-images"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-background-images"></a>Responsive background images</h3>
+<ul>
+<li><a href="http://elliotjaystocks.com/blog/better-background-images-for-responsive-web-design" rel="nofollow">Better background images for responsive web design</a></li>
+<li><a href="https://github.com/danmillar/jquery-anystretch" rel="nofollow">Anystretch jQuery plugin</a></li>
+</ul>
+<h2 id="s-responsive-slideshows"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-slideshows"></a>Responsive slideshows</h2>
+<ul>
+<li>Example of a "lightweight" slideshow: <a href="http://yiibu.com/articles/rethinking-the-mobile-web/page-3.html#slideshow" rel="nofollow">http://yiibu.com/articles/rethinking-the-mobile-web/page-3.html#slideshow</a></li>
+<li>Flexslider module <a href="http://drupal.org/project/flexslider" rel="nofollow">http://drupal.org/project/flexslider</a> (based on <a href="http://flex.madebymufffin.com" rel="nofollow">http://flex.madebymufffin.com</a>)</li>
+<li>Full screen image slideshow: <a href="http://buildinternet.com/project/supersized" rel="nofollow">http://buildinternet.com/project/supersized</a></li>
+</ul>
+<h2 id="s-responsive-videos"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-videos"></a>Responsive videos</h2>
+<ul>
+<li>CSS only <a href="http://amobil.se/2011/11/responsive-embeds/" rel="nofollow">http://amobil.se/2011/11/responsive-embeds/</a></li>
+<li>FitVids module <a href="http://drupal.org/project/fitvids" rel="nofollow">http://drupal.org/project/fitvids</a> (based on <a href="http://fitvidsjs.com" rel="nofollow">http://fitvidsjs.com</a>)</li>
+</ul>
+<h2 id="s-responsive-text"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-text"></a>Responsive text</h2>
+<ul>
+<li>FitText module <a href="http://drupal.org/project/fit_text" rel="nofollow">http://drupal.org/project/fit_text</a> (based on <a href="http://fittextjs.com" rel="nofollow">http://fittextjs.com</a>)</li>
+<li>Responsive Typography, reference of core concepts by Tim Brown - <a href="http://nicewebtype.com/notes/responsive-typography/" rel="nofollow">http://nicewebtype.com/notes/responsive-typography/</a></li>
+</ul>
+<h2 id="s-responsive-navigation-menus"><a class="toc-anchor" title="Permalink to this headline" href="#s-responsive-navigation-menus"></a>Responsive navigation menus</h2>
+<p>Simple navigation menus lend themselves to larger display platforms (laptops) as well as smaller displays (smartphones). In general, drop down menus are not often used on smaller displays (smartphones) since visual space is limited.</p>
+<p>Usually, you find drop down menus converted to stacked vertical lists when the display detected is a smartphone.</p>
+<p>Excellent background info:</p>
+<ul>
+<li><a href="http://bradfrostweb.com/blog/web/responsive-nav-patterns" rel="nofollow">Responsive navigation patterns</a></li>
+<li><a href="https://github.com/joggink/jquerymobiledropdown" rel="nofollow">Mobile dropdown jQuery plugin</a></li>
+</ul>
+<h3 id="s-possible-solutions--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-possible-solutions--2"></a>Possible Solutions</h3>
+<p>A common method to provide a more sophisticated menu system for both large and small displays is to use conditional menu blocks. Be aware that complex, lengthy menus do not lend themselves to small displays.</p>
+<h3 id="s-drupal-modules--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-modules--2"></a>Drupal Modules</h3>
+<ul>
+<li><a href="http://drupal.org/project/menu_block" rel="nofollow">Menu Block Module</a></li>
+<li><a href="http://drupal.org/project/jump_menu" rel="nofollow">Better Jump Menus</a> to easily create hierarchical select jump menus</li>
+<li><a href="http://drupal.org/project/superfish" rel="nofollow">Superfish</a></li>
+</ul></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-058764ec7dcdd3fa7555694e860ed9f3">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/1388492/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/1388492/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%281388492%29%20Responsive%20web%20design">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"WVHcpkCiYrtMN8WgOcg6UYd2-ez0CITtJ5J39hzsxeo"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/mobile\/responsive-web-design":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2789177"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

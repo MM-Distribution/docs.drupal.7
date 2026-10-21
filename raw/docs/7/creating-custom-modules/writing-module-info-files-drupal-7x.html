@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Overview" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x" />
+<link rel="shortlink" href="https://www.drupal.org/node/542202" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x" />
+<meta property="og:title" content="Writing module .info files (Drupal 7.x)" />
+<meta property="og:description" content="Overview Drupal uses .info files to store metadata about themes and modules. For modules, the .info file is used for: rendering information on the Drupal Web GUI administration pages; providing criteria to control module activation and deactivation; notifying Drupal about the existence of a module; specifying the module&#039;s dependencies on other Drupal projects general administrative purposes in other contexts. This .info file is required for the system to recognize the presence of a module." />
+<meta property="og:updated_time" content="2020-04-22T17:57:56+00:00" />
+<meta property="article:published_time" content="2009-08-06T22:02:43+00:00" />
+<meta property="article:modified_time" content="2020-04-22T17:57:56+00:00" />
+  <title>Writing module .info files (Drupal 7.x) | Creating custom modules in Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-542202 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2804065" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-zNMgqWwRgOh_6VNLkMOMjlPLcGIo3cBu5UF1Yiepa_Y" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/542202" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/542202" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-VwXaNT6NG3bJVs88luEz-g7XYHLsGH0eMx_DUOW7oS0" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/creating-custom-modules-in-drupal-7">Creating custom modules in Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-542202">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-overview" class="toc-link toc-link-invalid-id active">Overview</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-example" class="toc-link toc-link-invalid-id active">Example</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-properties" class="toc-link toc-link-invalid-id active">Properties</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-contents" class="toc-link toc-link-invalid-id active">Contents</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-project-dependencies" class="toc-link toc-link-invalid-id active">Project dependencies</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-version-dependencies" class="toc-link toc-link-invalid-id active">Version dependencies</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-troubleshooting" class="toc-link toc-link-invalid-id active">Troubleshooting</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-description-and-non-ascii-characters" class="toc-link toc-link-invalid-id active">Description and Non-ASCII Characters</a></li>
+<li class="anchor-list__item h2-tag last"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x#s-see-also" class="toc-link toc-link-invalid-id active">See also</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="creating-custom-modules-in-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/creating-custom-modules-in-drupal-7">Creating custom modules in Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/creating-custom-modules/getting-started">Getting started</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/telling-drupal-about-your-module">Telling Drupal about your module</a></li>
+<li class="leaf active-trail"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x" class="active-trail active">Writing module .info files (Drupal 7.x)</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/creating-drupal-7-hooks">Creating Drupal 7 hooks</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/writing-comments-and-implementing-your-first-hook">Writing comments and implementing your first hook</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/writing-install-files-drupal-7x">Writing .install files (Drupal 7.x)</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/declaring-the-block">Declaring the block</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/retrieving-data">Retrieving data</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/generating-block-content">Generating block content</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/testing-and-troubleshooting-the-module">Testing and troubleshooting the module</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/preparing-for-a-module-configuration-form">Preparing for a module configuration form</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/creating-the-configuration-form">Creating the configuration form</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/validating-the-data">Validating the data</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/specifying-a-custom-permission-for-a-new-page">Specifying a custom permission for a new page</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/adapting-the-query">Adapting the query</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/theming-the-page">Theming the page</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/adding-a-more-link">Adding a &#039;More&#039; link</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/testing-with-simpletest">Testing with SimpleTest</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/practicing-patches">Practicing patches</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/show-all-errors-while-developing">Show all errors while developing</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/drupal-7s-code-registry">Drupal 7&#039;s code registry</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/exportable-configuration">Exportable configuration</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/suppress-caching-for-development-or-to-use-an-external-page-cache">Suppress caching (for development) or to use an external page cache</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/using-the-theme-layer-drupal-7x">Using the theme layer (Drupal 7.x)</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective">Drupal 6/7 programming from an object-oriented perspective</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable">Making your custom data translatable</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/howtos">Module development HowTos</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/understanding-the-hook-system-for-drupal-modules">Understanding the hook system for Drupal modules</a></li>
+<li class="last leaf"><a href="/docs/7/creating-custom-modules/working-with-multilingual-content">Working with multilingual content</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Writing module .info files (Drupal 7.x)</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/542202/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    22 April 2020  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h2 id="s-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-overview"></a>Overview</h2>
+<p>Drupal uses .info files to store metadata about themes and modules.</p>
+<p>For modules, the .info file is used for:</p>
+<ul>
+<li>rendering information on the Drupal Web GUI administration pages;</li>
+<li>providing criteria to control module activation and deactivation;</li>
+<li>notifying Drupal about the existence of a module;</li>
+<li>specifying the module's dependencies on other Drupal projects</li>
+<li>general administrative purposes in other contexts.</li>
+</ul>
+<p>This .info file is required for the system to recognize the presence of a module.</p>
+<h2 id="s-example"><a class="toc-anchor" title="Permalink to this headline" href="#s-example"></a>Example</h2>
+<p>The following is a sample .info file:</p>
+<pre>
+<code class="language-php">name = Really Neat Widget
+description = Provides a really neat widget for your site's sidebar.
+core = 7.x
+package = Views
+dependencies[] = views:views
+dependencies[] = panels:panels
+files[] = tests/example.test
+configure = admin/config/content/example
+</code></pre><p>The .info file should have the same name as the .module file and reside in the same directory. For example, if your module is named <strong>example.module</strong> then your .info file should be named <strong>example.info</strong>.</p>
+<p>This file is in standard .ini file format, which defines properties in key/value pairs separated by an equals sign (key = value). You may use quotation marks to wrap the value. Quoted values may contain newlines.</p>
+<p>.info files may contain comments. A semi-colon [<strong>;</strong>] placed at the beginning of a line makes that line a comment, and that line will not be parsed.</p>
+<p><strong>Note: Whenever you create or change your .info file, you will need to clear your site's cache for your changes to take effect.</strong></p>
+<h2 id="s-properties"><a class="toc-anchor" title="Permalink to this headline" href="#s-properties"></a>Properties</h2>
+<p>The .info file can contain the following properties:</p>
+<h3 id="s-contents"><a class="toc-anchor" title="Permalink to this headline" href="#s-contents"></a>Contents</h3>
+<ul>
+<li><a href="#name" rel="nofollow">name</a> <em>required</em></li>
+<li><a href="#description" rel="nofollow">description</a> <em>recommended</em></li>
+<li><a href="#core" rel="nofollow">core</a> <em>required</em></li>
+<li><a href="#stylesheets" rel="nofollow">stylesheets</a></li>
+<li><a href="#scripts" rel="nofollow">scripts</a></li>
+<li><a href="#files" rel="nofollow">files</a></li>
+<li><a href="#dependencies" rel="nofollow">dependencies</a></li>
+<li><a href="#package" rel="nofollow">package</a></li>
+<li><a href="#php" rel="nofollow">php</a></li>
+<li><a href="#version" rel="nofollow">version</a> <em>discouraged</em></li>
+<li><a href="#configure" rel="nofollow">configure</a></li>
+<li><a href="#required" rel="nofollow">required</a></li>
+<li><a href="#hidden" rel="nofollow">hidden</a></li>
+<li><a href="#project" rel="nofollow">project</a> <em>Discouraged, packaging use only</em></li>
+<li><a href="#project status url" rel="nofollow">project status url</a> <em>Only used for custom modules not submitted to drupal.org</em></li>
+</ul>
+<dl>
+<dt id="name">name <em>(Required)</em></dt>
+<dd>This displays the name of your module, which will appear on the Modules page. Since module names are proper names, it should be capitalized as a proper name (e.g., "Really Neat Widget", not "really neat widget" or "Really neat widget"), and it should be a human-readable name (not really_neat_widget). If your module name includes an acronym (CSS, WYSIWYG, UI, etc.) or a third-party trade name (jQuery, JavaScript), of course follow the standard capitalization for those.
+<pre>
+<code class="language-php">name = Really Neat Widget
+</code></pre></dd>
+<dt id="description">description <em>(Recommended)</em></dt>
+<dd>A short, preferably one-line description that will tell the administrator what this module does on the module administration page. Remember, overly long descriptions can make this page difficult to work with, so please try to be concise. This field is limited to 255 characters.
+<pre>
+<code class="language-php">description = Provides a really neat widget for your site's sidebar.
+</code></pre><p>Descriptions can contain links to documentation and sources. The following example shows a link to the author. It could be a link to a documentation node on Drupal.org. This is useful when the online documentation is better than the readme file and when you want to read about a module before switching it on.<br />
+	<code class="language-php">description = Domain manager by &lt;a href="http://petermoulding.com"&gt;Peter Moulding .com&lt;/a&gt;.</code></p>
+</dd>
+<dt id="core">core <em>(Required)</em></dt>
+<dd>The version of Drupal that your module is for. For Drupal 7 this would be 7.x, etc. Note that modules cannot specify the minor version of a branch of Drupal. 6.x is correct; 6.2 is not.
+<pre>
+<code class="language-php">core = 7.x
+</code></pre></dd>
+<dt id="stylesheets">stylesheets <em>(Optional)</em></dt>
+<dd>Drupal 7 allows you to add CSS files in the module's .info file if it should be added on every page, just like theme .info files do. Here is an example from the node module's .info file:
+<pre>
+<code class="language-php">stylesheets[all][] = node.css
+</code></pre></dd>
+<dt id="scripts">scripts <em>(Optional)</em></dt>
+<dd>You can add Javascript in the module's .info file if it should be added on every page. This allows Javascript to be aggregated in an optimal way, and is the preferred method of adding Javascript that most visitors will need on a typical site visit:
+<pre>
+<code class="language-php">scripts[] = somescript.js
+</code></pre><p>For more information see <a href="/node/756722" rel="nofollow">Managing JavaScript in Drupal 7</a>.</p>
+</dd>
+<dt id="files">files <em>(Optional)</em></dt>
+<dd>Drupal supports a dynamic-loading code registry. To support it, all modules must declare any code files containing class or interface declarations in the .info file, like so:
+<pre>
+<code class="language-php">name = Really Neat Widget
+...
+files[] = tests/example.test
+</code></pre><p>When a module is enabled, Drupal will rescan all declared files and index all the classes and interfaces that it finds. Classes will be loaded automatically by PHP when they are first accessed.</p>
+<p>Currently this mechanism does not natively support <a href="http://php.net/manual/en/language.namespaces.rationale.php" rel="nofollow">namespaced</a> classes.</p>
+</dd>
+<dt id="dependencies">dependencies <em>(Optional)</em></dt>
+<dd>An array of other modules that your module requires. If these modules are not present, your module cannot be enabled. If these modules are present but not enabled, the administrator will be prompted with a list of additional modules to enable and may choose to enable the required modules as well, or cancel at that point.
+<p>As of Drupal 7.40, dependencies on modules that are hosted on drupal.org should be namespaced to the project they are part of, in the format:</p>
+<p><code class="language-php">dependencies[] = {project}:{module}</code></p>
+<p>The string value of each dependency must be the project's name as it appears in the url on Drupal.org (i.e: drupal.org/project/views) then the <code class="language-php">:</code> character then the module name as it appears in the .module file of the release. The string should be lower case and spaces are not allowed.</p>
+<p>Because this namespacing pattern is only available in Drupal 7.40 and above, you should include a dependency on Drupal 7.40, as in the following code.</p>
+<pre>
+<code class="language-php">dependencies[] = drupal:taxonomy
+dependencies[] = drupal:comment
+dependencies[] = ubercart:uc_product
+dependencies[] = drupal:system (&gt;= 7.40)
+</code></pre><p>In addition, test_dependencies[] can be used to indicate dependencies which are optional but recommended. At this writing they are supported only by Drupal.org's automated testing system. They cause the testbots to check out the projects suggested. Generally any modules that you have listed in the 'dependencies' array in the getInfo() function of your module's tests should be added as test_dependencies[].</p>
+<p>Test dependencies should be defined with the same namespace rules as regular dependencies.</p>
+<pre>
+<code class="language-php">test_dependencies[] = autoload:autoload
+</code></pre><h3 id="s-project-dependencies"><a class="toc-anchor" title="Permalink to this headline" href="#s-project-dependencies"></a>Project dependencies</h3>
+<p><em>Project dependencies require Drupal 7.40 or higher. Modules using project dependencies will not be able to install in previous versions. See the original issue at <a href="/node/2205271" rel="nofollow">#2205271</a>.</em></p>
+<p>Sometimes the name of a module and it's parent project are not the same thing. For example the "date_api" module is part of the <a href="https://www.drupal.org/project/date" rel="nofollow">Date</a> project. So a module might depend upon "date_api", but not "date" with a dependencies line like this:</p>
+<pre>
+<code class="language-php">dependencies[] = date_api
+</code></pre><p>This would work as long as the Date project has already been downloaded onto the given site. But when needing to reference sub-modules under a parent project it is better to specify the parent project as well. So a more descriptive version is:</p>
+<pre>
+<code class="language-php">dependencies[] = date:date_api
+</code></pre><p>Indicating that the <code class="language-php">date_api</code> sub-module within the <code class="language-php">date</code> project is needed. This allows external tools such as <a href="/project/drush" rel="nofollow">Drush</a> to install dependencies by downloading the parent project and enabling only the needed sub-module.</p>
+<h3 id="s-version-dependencies"><a class="toc-anchor" title="Permalink to this headline" href="#s-version-dependencies"></a>Version dependencies</h3>
+<p>If you need to specify that a certain module's version number is required Drupal 7 provides a way for this in the dependencies[] field. Version numbers are <em>optional</em> and only necessary if the module absolutely requires another module's specific version or branch.</p>
+<p>The syntax for version-specific dependencies is:</p>
+<pre>
+<code class="language-php">dependencies[] = module_name (major.minor)
+</code></pre><p>Where <em>major</em> is the numeric major version number and <em>minor</em> is the numeric or alphanumeric minor version number. <em>x</em> can be used to denote any minor version. Some examples follow.</p>
+<pre>
+<code class="language-php">name = Really Neat Widget
+description = An example module
+dependencies[] = exampleapi (1.x)
+
+test_dependencies[] = autoload (&gt;7.x-1.5)
+...
+</code></pre><p>In the above .info code, the "Example" module requires an "Example API" module with the major version of 1 and any minor version.</p>
+<pre>
+<code class="language-php">dependencies[] = exampleapi (1.0)
+</code></pre><p>This means that the module requires the 1.0 (and only the 1.0) version of the Example API module.</p>
+<pre>
+<code class="language-php">dependencies[] = exampleapi (1.x)
+</code></pre><p>The above module requires any minor version of the module in the 1.x branch (1.0, 1.1, 1.2-beta4, etc.)</p>
+<p>The dependencies[] property in the .info file can also optionally specify version ranges or exact versions:</p>
+<ul>
+<li>= or == equals (optional: equals is the default)</li>
+<li>&gt; greater than</li>
+<li>&lt; lesser than</li>
+<li>&gt;= greater than or equal to</li>
+<li>&lt;= lesser than or equal to</li>
+<li>!= not equal to</li>
+</ul>
+<blockquote><p><strong>Note: </strong>When using composer, '&gt;' and '&gt;=' are translated to '^' meaning any version above until the next major version. See issue <a href="https://www.drupal.org/project/project_composer/issues/3123327" rel="nofollow">3123327</a> for the reasoning.</p>
+</blockquote>
+<pre>
+<code class="language-php">dependencies[] = exampleapi (&gt;1.0)
+</code></pre><p>The above module requires any version greater than version 1.0.</p>
+<p>You can optionally specify the core version number as well:</p>
+<pre>
+<code class="language-php">dependencies[] = exampleapi (&gt;7.x-1.5)
+</code></pre><p>The above module requires a 7.x version compatible version of the module and a version greater than 1.5.</p>
+<p>Additionally, multiple version dependencies can be specified as comma-separated values within the parentheses:</p>
+<pre>
+<code class="language-php">dependencies[] = exampleapi (&gt;1.0, &lt;=3.2, !=3.0)
+</code></pre><p>This facility can be used to specify a minimal core version by using <code class="language-php">system</code> as the module name:</p>
+<pre>
+<code class="language-php">dependencies[] = system (&gt;=7.53)
+</code></pre><p>This makes the module require at least Drupal 7.53.</p>
+</dd>
+<dt id="package">package <em>(Optional)</em></dt>
+<dd>If your module comes with other modules or is meant to be used exclusively with other modules, enter the name of the package here. If left blank, the module will be listed as 'Other'. In general, this property should only be used by large multi-module packages, or by modules meant to extend these packages, such as Fields, Views, Commerce, Organic Groups, and the like. All other modules should leave this blank. As a guideline, four or more modules that depend on each other (or all on a single module) make a good candidate for a package. Fewer probably do not. An exception to this rule is the "Development" package, which should be used for any modules which are code development tool modules.
+<p>If present, the package string groups modules together on the module administration page (admin/modules); the string should therefore be the heading you would like your modules to appear under, and it needs to be consistent (in spelling and capitalization) in all .info files in which it appears. It should not use punctuation and it should follow the Drupal capitalization standard as noted above.</p>
+<p>Capitalization is important because package string is case sensitive, and using <code class="language-php">package = fields</code> in one module and <code class="language-php">package = Fields</code> in another would yield two different packages on the module administration page. This can be highly confusing as Seven (the default administrative theme) capitalizes fieldset legends, making <code class="language-php">fields</code> and <code class="language-php">Fields</code> indistinguishable. Using <code class="language-php">package = Fields</code> is the correct way.</p>
+<pre>
+<code class="language-php">package = Views
+</code></pre><p>Suggested examples of appropriate items for the package field:</p>
+<ul>
+<li>Administration</li>
+<li>Commerce</li>
+<li>Development</li>
+<li>Fields</li>
+<li>Media</li>
+<li>User interface</li>
+<li>Views</li>
+<li>Voting (if it uses/requires VotingAPI)</li>
+</ul>
+<p>The <a href="http://groups.drupal.org/node/97054" rel="nofollow">Package names for contributed modules wiki</a> tries to track current package names; this does not mean they are recommended.</p>
+</dd>
+<dt id="php">php <em>(Optional)</em></dt>
+<dd>As of version 6.x, module and themes may specify a minimum PHP version that they require. They may do so by adding a line similar to the following to their .info file:
+<pre>
+<code class="language-php">php = 5.3
+</code></pre><p>That specifies that the module/theme will not work with a version of PHP earlier than 5.3. That is useful if the module makes use of features added in later versions of PHP (improved XML handling, object iterators, JSON, etc.). If no version is specified, it is assumed to be the same as the required PHP version for Drupal core. Modules should generally not specify a required version unless they specifically need a higher later version of PHP than is required by core. See the PHP Manual for further details on PHP version strings.</p>
+</dd>
+<dt id="version">version <em>(Discouraged)</em></dt>
+<dd>The version string will be added by drupal.org when a release is created and a tarball packaged. However, if your module is not being hosted on the drupal.org infrastructure, you can give your module whatever version string makes sense (eg. see <a href="https://drupal.org/node/1015226" rel="nofollow">Release naming conventions</a>).
+<p>Users getting their modules directly from git will not have a version string, since the .info files checked into git do not define a version. These users are encouraged to use the <a href="/project/git_deploy" rel="nofollow">git deploy</a> module to provide accurate version strings for the admin/build/modules page for modules in directories checked out directly from git.</p>
+<p>Because Drupal core uses a slightly different packaging process than contributed modules, the core modules have a version line predefined. This is an exception to the rule, not the model for contributed modules.</p>
+</dd>
+<dt id="configure">configure <em>(Optional)</em></dt>
+<dd>As of version 7.x, the path of the module's (main) configuration page.<br />
+	If a module is enabled, a "Configure" and "Permissions" link appear. This will be the path of the "Configure" link for this particular module on the modules overview page.
+<pre>
+<code class="language-php">configure = admin/config/content/example
+</code></pre></dd>
+<dt id="required">required <em>(Optional)</em></dt>
+<dd>As of version 7.x, modules and themes may specify that they are absolutely required and should never be disabled by adding <code class="language-php">required = TRUE</code>. These modules will be enabled automatically during install. In most cases it should only be used with the Drupal core required modules (e.g. Node, User, etc.).</dd>
+<dt id="hidden">hidden <em>(Optional)</em></dt>
+<dd>As of version 7.x, modules and themes may specify that they should not be visible on the modules page by adding <code class="language-php">hidden = TRUE</code>. This is commonly used with testing modules used with SimpleTest where end-users should never enable the testing modules.</dd>
+<dt id="project">project <em>(Discouraged, packaging use only)</em></dt>
+<dd>Module maintainers should not use this at all. The packaging script on drupal.org will automatically place a string here to identify what project the module came from. This is primarily for the <a href="/project/update_status" rel="nofollow">Update status</a> module, so that Drupal installations can monitor versions of installed packages and notify administrators when new versions are available.</dd>
+<dt id="project status url">project status url <em>(Only used for custom modules not submitted to drupal.org)</em></dt>
+<dd>Allows module maintainers to define a URL to check for updates to their module using the <a href="/project/update_status" rel="nofollow">Update status</a> module. No module released on drupal.org should define this parameter. URL should point to an XML feed that accepts requests in the form of <code class="language-php">http://my.domain.com/projects/{project}/{core}</code>. In that example, <code class="language-php">project status url</code> should be set to <code class="language-php">http://my.domain.com/projects</code>.</dd>
+</dl>
+<p>For more information on info file formatting, see the <a href="http://api.drupal.org/api/function/drupal_parse_info_file/7" rel="nofollow">drupal_parse_info_file() documentation</a>.</p>
+<h2 id="s-troubleshooting"><a class="toc-anchor" title="Permalink to this headline" href="#s-troubleshooting"></a>Troubleshooting</h2>
+<p><strong>I added the core = 7.x line, but my module still says "This version is incompatible with the 7.x version of Drupal core" on the modules page. What gives?</strong></p>
+<p>Be aware that the "dependencies" format changed between Drupal 5.x and 6.x.</p>
+<p>Wrong:</p>
+<pre>
+<code class="language-php">name = Really Neat Widget
+...
+dependencies = foo bar   ; 5.x dependency format.
+core = 6.x
+</code></pre><p>Correct:</p>
+<pre>
+<code class="language-php">name = Really Neat Widget
+...
+; Note the [], and that each of the dependencies is on its own line:
+dependencies[] = foo
+dependencies[] = bar
+core = 7.x
+</code></pre><h3 id="s-description-and-non-ascii-characters"><a class="toc-anchor" title="Permalink to this headline" href="#s-description-and-non-ascii-characters"></a>Description and Non-ASCII Characters</h3>
+<p>Note that if you want to use accented characters or other non-ASCII characters in your .info file's description field, you should include the HTML escaped notation, e.g., <code class="language-php">&amp;ouml;</code> for the "ö" character or <code class="language-php">&amp;copy;</code> for the "©" character.</p>
+<h2 id="s-see-also"><a class="toc-anchor" title="Permalink to this headline" href="#s-see-also"></a>See also</h2>
+<ul>
+<li><a href="https://www.drupal.org/node/2000204" rel="nofollow">Let Drupal 8 know about your module with an .info.yml file</a></li>
+<li><a href="http://drupal.org/node/171205" title="Drupal 6 themes .info files" rel="nofollow">Drupal 6 themes .info files</a></li>
+<li><a href="http://drupal.org/node/231036" title="Drupal 6 modules .info files" rel="nofollow">Drupal 6 modules .info files</a></li>
+</ul></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-0e251817300b75962a6d609e10c2ecda">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/542202/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/542202/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28542202%29%20Writing%20module%20.info%20files%20%28Drupal%207.x%29">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"dK996shE6ZBZIfeV6hjWMah_U48bPV46ZXa0-9vdSsw"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/creating-custom-modules\/writing-module-info-files-drupal-7x":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2804065"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
