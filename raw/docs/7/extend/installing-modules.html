@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Various information about how to install Drupal 7 modules" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/extend/installing-modules" />
+<link rel="shortlink" href="https://www.drupal.org/node/895232" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/extend/installing-modules" />
+<meta property="og:title" content="Installing modules" />
+<meta property="og:description" content="Extend your Drupal 7 site&#039;s functionality beyond the features that come from the built-in &#039;Drupal core&#039; modules, by installing contributed modules from Drupal.org. This page will detail, from a beginner&#039;s point of view, how you can find a module or theme to use, import it into your Drupal 7 site, enable a module (turn it on), and then configure a module." />
+<meta property="og:updated_time" content="2020-07-27T02:42:43+00:00" />
+<meta property="article:published_time" content="2010-08-27T13:39:38+00:00" />
+<meta property="article:modified_time" content="2020-07-27T02:42:43+00:00" />
+  <title>Installing modules | Extending Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-895232 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2764159" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/extend/installing-modules" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-pleiqcNigW_D_Rk3brAchdvTR6Clfbv4rasXbByKJsI" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/895232" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/895232" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/extend/installing-modules" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-Og_Es9Ydq0hkQH9m-LuMkSu_i84_HfSJrGVN456KNE4" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/extend">Extending Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-895232">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/extend/installing-modules#s-contents" class="toc-link toc-link-invalid-id active">Contents</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-in-a-nutshell" class="toc-link toc-link-invalid-id active">In a nutshell</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-warning-backup-your-site-before-using-an-un-tried-module" class="toc-link toc-link-invalid-id active">Warning: Backup your site before using an un-tried module</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-for-windows-users-versus-" class="toc-link toc-link-invalid-id active">For Windows users: &quot;\&quot; versus &quot;/&quot;</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-find-a-module-to-use" class="toc-link toc-link-invalid-id active">Find a module to use</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-module-project-page" class="toc-link toc-link-invalid-id active">Module project page</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-downloads-section" class="toc-link toc-link-invalid-id active">&#039;Downloads&#039; section</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-issues-for" class="toc-link toc-link-invalid-id active">&#039;Issues for...&#039;:</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-resources" class="toc-link toc-link-invalid-id active">Resources:</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-understand-the-various-module-versions-available" class="toc-link toc-link-invalid-id active">Understand the various module versions available</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-recommended-releases" class="toc-link toc-link-invalid-id active">&#039;Recommended releases&#039;</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-other-releases" class="toc-link toc-link-invalid-id active">&#039;Other releases&#039;</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-development-releases" class="toc-link toc-link-invalid-id active">&#039;Development releases&#039;</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-version-column" class="toc-link toc-link-invalid-id active">&#039;Version&#039; column</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-download-column" class="toc-link toc-link-invalid-id active">&#039;Download&#039; column</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-targz-versus-zip-file-formats-for-all-project-downloads" class="toc-link toc-link-invalid-id active">*.tar.gz versus *.zip file formats for all project downloads #</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-codebase-and-database-overview" class="toc-link toc-link-invalid-id active">Codebase and database overview</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-module-location-in-the-codebase" class="toc-link toc-link-invalid-id active">Module location in the codebase</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-using-sub-folders-of-the-modules-folder-" class="toc-link toc-link-invalid-id active">Using sub-folders of the &#039;modules&#039; folder </a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-moving-modules-that-have-already-begun-to-be-used" class="toc-link toc-link-invalid-id active">Moving modules that have already begun to be used</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-importing-the-module" class="toc-link toc-link-invalid-id active">Importing the module</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-module-import-overview" class="toc-link toc-link-invalid-id active">Module import - Overview</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-automated-module-import-with-url-overview" class="toc-link toc-link-invalid-id active">Automated module import with URL - Overview</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-automated-module-import-of-local-file-overview" class="toc-link toc-link-invalid-id active">Automated module import of local file - Overview</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-manual-module-import-overview" class="toc-link toc-link-invalid-id active">Manual module import - Overview</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-for-the-two-automated-import-methods" class="toc-link toc-link-invalid-id active">For the two &#039;automated&#039; import methods...</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-enable-the-drupal-core-module-update-manager" class="toc-link toc-link-invalid-id active">Enable the Drupal core module &#039;Update manager&#039;</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-security-enable-update-manager-regardless" class="toc-link toc-link-invalid-id active">Security: Enable &#039;Update manager&#039; regardless</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-module-import-the-steps" class="toc-link toc-link-invalid-id active">Module import - The steps</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-automated-module-import-with-url-the-steps" class="toc-link toc-link-invalid-id active">Automated module import with URL - The steps</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-automated-module-import-of-local-file-the-steps" class="toc-link toc-link-invalid-id active">Automated module import of local file - The steps</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-manual-module-import-the-steps" class="toc-link toc-link-invalid-id active">Manual module import - The steps</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-enabling-modules" class="toc-link toc-link-invalid-id active">Enabling modules</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-modules-page-overview" class="toc-link toc-link-invalid-id active">&#039;Modules&#039; page overview</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-check-box-column" class="toc-link toc-link-invalid-id active">Check-box column</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-name-column" class="toc-link toc-link-invalid-id active">&#039;Name&#039; column</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-version-column--2" class="toc-link toc-link-invalid-id active">&#039;Version&#039; column</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-description-column" class="toc-link toc-link-invalid-id active">&#039;Description&#039; column</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-missing-libraries-and-other-possible-non-module-requirements-of-a-module" class="toc-link toc-link-invalid-id active">Missing libraries and other possible non-module requirements of a module</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-operations-column" class="toc-link toc-link-invalid-id active">&#039;Operations&#039; column</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-enable-your-new-module" class="toc-link toc-link-invalid-id active">Enable your new module</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-broken-site-problems-run-the-update-script-and-clear-all-caches" class="toc-link toc-link-invalid-id active">Broken site problems - Run the update script, and &#039;Clear all caches&#039;</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-configuring-modules" class="toc-link toc-link-invalid-id active">Configuring modules</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-module-help-link" class="toc-link toc-link-invalid-id active">Module &#039;Help&#039; link</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-module-permissions-link" class="toc-link toc-link-invalid-id active">Module &#039;Permissions&#039; link</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-permissions-overview" class="toc-link toc-link-invalid-id active">Permissions overview</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-your-modules-permissions" class="toc-link toc-link-invalid-id active">Your module&#039;s permissions</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/extend/installing-modules#s-module-permissions-security-warning" class="toc-link toc-link-invalid-id active">Module permissions security warning</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-module-configure-link" class="toc-link toc-link-invalid-id active">Module &#039;Configure&#039; link</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-module-documentation-and-help" class="toc-link toc-link-invalid-id active">Module documentation and help</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-trial-and-error" class="toc-link toc-link-invalid-id active">Trial and error</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-project-page-content" class="toc-link toc-link-invalid-id active">Project page content</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-project-page-read-documentation-link-when-existing" class="toc-link toc-link-invalid-id active">Project page &#039;Read documentation&#039; link (when existing)</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-module-readmetxt-or-installtxt-files" class="toc-link toc-link-invalid-id active">Module &quot;README.txt&quot;, or &quot;INSTALL.txt&quot; files</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-google-search-limited-to-drupalorg" class="toc-link toc-link-invalid-id active">Google search limited to drupal.org</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/installing-modules#s-your-sites-module-page-help-buttonslinks-when-existing" class="toc-link toc-link-invalid-id active">Your site&#039;s &#039;Module&#039; page &quot;Help&quot; buttons/links (when existing)</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/extend/installing-modules#s-updating-the-module" class="toc-link toc-link-invalid-id active">Updating the module</a></li>
+<li class="anchor-list__item h2-tag last"><a href="/docs/7/extend/installing-modules#s-uninstalling-the-module" class="toc-link toc-link-invalid-id active">Uninstalling the module</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="extending-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/extend">Extending Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/extend/overview">Overview</a></li>
+<li class="leaf active-trail"><a href="/docs/7/extend/installing-modules" title="" class="active-trail active">Installing modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/installing-themes">Installing themes</a></li>
+<li class="leaf"><a href="/docs/7/extend/moving-modules-and-themes">Moving modules and themes</a></li>
+<li class="leaf"><a href="/docs/7/extend/uninstalling-modules">Uninstalling modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/directory-precedence">Directory precedence and multi-site considerations</a></li>
+<li class="last leaf"><a href="/docs/7/extend/comparison-of-contributed-modules">Comparison of contributed modules</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Installing modules</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/895232/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    27 July 2020  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p><strong>Extend your Drupal 7 site's functionality beyond the features that come from the built-in 'Drupal core' modules, by installing <a href="https://www.drupal.org/project/project_module?f%5B3%5D=drupal_core%3A103&amp;solrsort=iss_project_release_usage+desc&amp;op=Search" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">contributed modules from Drupal.org</a>.</strong> </p>
+<p>This page will detail, from a beginner's point of view, how you can find a module or theme to use, import it into your Drupal 7 site, enable a module (turn it on), and then configure a module.</p>
+<h2 id="s-contents"><a class="toc-anchor" title="Permalink to this headline" href="#s-contents"></a><a href="#contents_start" id="contents_start" rel="nofollow">Contents</a></h2>
+<ol>
+<li><a href="#overview" id="contents_overview" rel="nofollow">In a nutshell</a></li>
+<li><a href="#warning_backup" id="contents_warning_backup" rel="nofollow">Warning: Backup your site before using an un-tried module</a></li>
+<li><a href="#win_backslash" id="contents_win_backslash" rel="nofollow">For Windows users: "\" versus "/"</a></li>
+<li><a href="#find_mod_to_use" id="contents_find_mod_to_use" rel="nofollow">Find a module to use</a></li>
+<li><a href="#mod_proj_pg" id="contents_mod_proj_pg" rel="nofollow">Module project page</a></li>
+<li><a href="#understand_mod_ver" id="contents_understand_mod_ver" rel="nofollow">Understand the various module versions available</a></li>
+<li><a href="#codebase_db_overview" id="contents_codebase_db_overview" rel="nofollow">Codebase and database overview</a></li>
+<li><a href="#mod_location" id="contents_mod_location" rel="nofollow">Module location in the codebase</a></li>
+<li><a href="#import_mod" id="contents_import_mod" rel="nofollow">Importing the module</a></li>
+<li><a href="#enable_mod" id="contents_enable_mod" rel="nofollow">Enabling modules</a></li>
+<li><a href="#config_mod" id="contents_config_mod" rel="nofollow">Configuring modules</a></li>
+<li><a href="#help_doc" id="contents_help_doc" rel="nofollow">Module documentation and help</a></li>
+<li><a href="#update_mod" id="contents_update_mod" rel="nofollow">Updating the module</a></li>
+<li><a href="#uninstall_mod" id="contents_uninstall_mod" rel="nofollow">Uninstalling the module</a></li>
+</ol>
+<h2 id="s-in-a-nutshell"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-a-nutshell"></a><a href="#overview" id="overview" rel="nofollow">In a nutshell</a></h2>
+<p>This page will obviously be of greater benefit to you if you have an existing Drupal 7 site.</p>
+<p>You should feel free to experiment with any module, because you can always disable the module and remove it from your site.</p>
+<p>I recommend that if you are trying out modules that you have not used before, only install one 'new-to-you' module at a time. And before you move on to another module, test the first module as thoroughly as necessarily to see how it changes things on your site, in particular, whether or not it breaks things that are already working.</p>
+<p><strong>Drupal modules 'In a nutshell':</strong></p>
+<ul>
+<li>Find a module (or theme) to use.</li>
+<li>Go to that module's (or theme's) "project" page, and see if it seems like something to try.</li>
+<li>Pick a version of the module (or theme) to use.</li>
+<li>Import the module (or theme) into your Drupal site.</li>
+<li>Enable the module on your site.</li>
+<li>Configure the module, if needed.</li>
+</ul>
+<h2 id="s-warning-backup-your-site-before-using-an-un-tried-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-warning-backup-your-site-before-using-an-un-tried-module"></a><a href="#warning_backup" id="warning_backup" rel="nofollow">Warning: Backup your site before using an un-tried module</a></h2>
+<p>That warning is not really relevant if you are just getting started with Drupal, because on the off-chance that a module breaks your site beyond your ability to quickly fix it, you can just create a new site. It's good practice to create additional Drupal sites.</p>
+<p>If, however, your site reaches a point at which you would hate to have to re-build it from the beginning, read on.</p>
+<p><strong>Backup your site, and test your backup</strong> to see that it works before you use a module that you have not used before, especially if it is an 'Other releases' or 'Development releases' version that has not yet been released as being suitable for a live website.</p>
+<p>Before using a contrib module that you have not used before, you should always backup your site first, in particular your database with a record of which version of Drupal core that was used with that database.</p>
+<p>Also, critically, you should always test the contrib module on a test site (also known as a 'development' site), not on a live site (also known as a 'production' site), just in case the module breaks your site.</p>
+<!-- Insert Main_level_2_ul above - SAVE ME --><!-- <br /> for 'level_1_li'(s) only --><h2 id="s-for-windows-users-versus-"><a class="toc-anchor" title="Permalink to this headline" href="#s-for-windows-users-versus-"></a><a href="#win_backslash" id="win_backslash" rel="nofollow">For Windows users: "\" versus "/"</a></h2>
+<p>A Windows computer file system uses a back-slash character ("\") as a separator between parent\child folders, but for simplicity sake, the following guide will only use the forward-slash character ("/"), as is used on MAC and Linux computers, and used on online webhosts using UNIX based Apache servers.</p>
+<h2 id="s-find-a-module-to-use"><a class="toc-anchor" title="Permalink to this headline" href="#s-find-a-module-to-use"></a><a href="#find_mod_to_use" id="find_mod_to_use" rel="nofollow">Find a module to use</a></h2>
+<p>Go to the main page for <a href="https://www.drupal.org/project/project_module" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">contrib Modules from drupal.org ~ drupal.org/project/project_module ⎘</a>.</p>
+<p>That page is the 'Modules' sub-tab of the drupal.org main section 'Download &amp; Extend'</p>
+<p><strong>Core compatibility: "7.x"</strong> - Set the fourth item down from the page-top, 'Core compatibility', to "7.x".</p>
+<p><strong>Other search options:</strong> Feel free to change any of the other search items. You can also put a keyword or two in the textarea box for 'Search modules'.</p>
+<p>The item 'Sort by' is, by default, set on "Most installed", which means that the search results will be sorted by the most-popular first.</p>
+<p>Click the button "Search".</p>
+<p>On the search results page, the 'name' of each module (or theme) is a link to it's home-page, known at drupal.org as its 'project' page.</p>
+<p>Click on the name of a module (or theme you would like to investigate further).</p>
+<h2 id="s-module-project-page"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-project-page"></a><a href="#mod_proj_pg" id="mod_proj_pg" rel="nofollow">Module project page</a></h2>
+<p>This section is an overview of a few things of importance on project pages. In addition to contrib 'modules', contrib 'themes' are also known on drupal.org as 'project'(s), and all drupal.org project pages have the same basic layout.</p>
+<p>Module project pages vary in depth of detail, however, because the content of each project page is created by one of the module's developers.</p>
+<p><strong>The project page is usually worth reading carefully.</strong></p>
+<p>Among other things, if the module is dependent on another module(s), or possibly an extra 'library'(s), that information will be posted. It is not critical if you forget about a module or library dependency, however, because later when you try to enable or use the module, you will get a notice about what you are missing.</p>
+<h3 id="s-downloads-section"><a class="toc-anchor" title="Permalink to this headline" href="#s-downloads-section"></a>'Downloads' section</h3>
+<p>A project page will always include links to get the various versions that are available for that module.</p>
+<p>Those 'Downloads' links will be discussed in more detail in the next section, <a href="#understand_mod_ver" rel="nofollow">Understand the various module versions available</a>.</p>
+<h3 id="s-issues-for"><a class="toc-anchor" title="Permalink to this headline" href="#s-issues-for"></a>'Issues for...':</h3>
+<p>The module's project page will always include links under the heading 'Issues for...'. Those links are in the right-hand column when your browser window is wide enough, or they are near the page bottom under the 'Downloads' and 'Maintainers for...' sections when your browser window is narrower.</p>
+<p>The 'Issues for...' links take you to the issues queue for that specific module project. The issues queue is the official place where all of the problems ('Bug report'), support requests, ('Support request') and new-feature requests ('Feature request') can be found and searched for.</p>
+<p>So, if you run into problems with a module, search the module's issue queue. If your problem (or request) has not already been addressed, post your question or issue using the link 'Create a new issue', and someone will try to help you out.</p>
+<h3 id="s-resources"><a class="toc-anchor" title="Permalink to this headline" href="#s-resources"></a>Resources:</h3>
+<p>Just under the 'Issues...' section, in the section under the heading 'Resources', I always look for the link 'Read documentation'. That link will not always exist, but if it is there, it is a link to what the project's developers consider the most useful information for their project.</p>
+<p>The 'Read documentation' link might take you to a page on drupal.org in the 'Documentation' section, or the link might take you to a page off of the drupal.org site.</p>
+<p>Generally speaking though, every contrib module will have a "README.txt" file and/or an "INSTALL.txt" file in its top-level folder that you can view after you download the module, or after you import it into your site.</p>
+<p>The various Documentation resources available for a module (or theme) will be discussed in greater detail near the bottom of this page, in the section <a href="#help_doc" rel="nofollow">Module documentation and help</a>, but notably at this time, you can view any project's 'README.txt' file, or see its other documentation without downloading anything, by following the instructions below in the 'Module documentation and help' sub-section <a href="#mod_readme" rel="nofollow">Module "README.txt", or "INSTALL.txt" files</a></p>
+<h2 id="s-understand-the-various-module-versions-available"><a class="toc-anchor" title="Permalink to this headline" href="#s-understand-the-various-module-versions-available"></a><a href="#understand_mod_ver" id="understand_mod_ver" rel="nofollow">Understand the various module versions available</a></h2>
+<p>On the "project" page, see the section 'Downloads' under which are the sub-headings 'Recommended releases', 'Other releases', and 'Development releases'.</p>
+<p><img alt="Table of Drupal module versions categorized by 'recommended', 'other', and 'development' versions" src="/files/versions.png" width="600px" /></p>
+<p>The version you choose must be compatible with the version of Drupal you are using. So since you are using Drupal 7, you can only use a 'Version' that begins with '7.x-...'. But do not worry. If you try to use a Drupal 6 or 8 version on a Drupal 7 site, your site will not allow it to be used.</p>
+<h3 id="s-recommended-releases"><a class="toc-anchor" title="Permalink to this headline" href="#s-recommended-releases"></a>'Recommended releases'</h3>
+<p>Look for the uppermost 'Version' that you can find for Drupal 7. That is the version that you should try first, and hopefully it will be under the sub-heading 'Recommended releases', which means that it is stable enough to use on a live site (also known as a 'production' site).</p>
+<h3 id="s-other-releases"><a class="toc-anchor" title="Permalink to this headline" href="#s-other-releases"></a>'Other releases'</h3>
+<p>If no 'Recommended releases' is available, your next best option is to try an 'Other releases' version, if available.</p>
+<p>'Other releases' are generally on their way to becoming a 'Recommended releases' version.</p>
+<p>But, on the other hand, on a rare occasion an 'Other releases' version is an older stable version of the module before major changes were made to it. In that somewhat rare case, the older stable version will have been moved from the 'recommended releases' when the newer version was ready. One reason for keeping an older version around in the 'Other releases' section would be if some other separate module project were dependent on the older 'Other releases' version for that dependent module to work properly.</p>
+<h3 id="s-development-releases"><a class="toc-anchor" title="Permalink to this headline" href="#s-development-releases"></a>'Development releases'</h3>
+<p>The 'Development releases' version of the module is in some stage of development.</p>
+<p>It is the current 'state of the art of development' version, as the developers are working out bugs, or are adding new features.</p>
+<p>Be aware that the 'development release' might be being prepared for a future version of Drupal. Taking Drupal 8, for example, even though today Drupal 8.1 is the current recommended version of Drupal 8 core, the module's 'development release' might be being prepared for future use with the Drupal core version 8.2, or 8.3, which will have features not found in the current 8.1 core version.</p>
+<h3 id="s-version-column"><a class="toc-anchor" title="Permalink to this headline" href="#s-version-column"></a>'Version' column</h3>
+<p>This column is for the version number of the module on that row.</p>
+<p>For more detailed information about the version numbering scheme that is being used, go the drupal.org page <a href="https://www.drupal.org/docs/7/choosing-drupal-version/version-numbers" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">Version numbers ⎘</a>.</p>
+<h3 id="s-download-column"><a class="toc-anchor" title="Permalink to this headline" href="#s-download-column"></a>'Download' column</h3>
+<p>This column contains the download links for you to actually get the module.</p>
+<h4 id="s-targz-versus-zip-file-formats-for-all-project-downloads"><a class="toc-anchor" title="Permalink to this headline" href="#s-targz-versus-zip-file-formats-for-all-project-downloads"></a>*.tar.gz versus *.zip file formats for all project downloads <a href="#tar_v_zip" id="tar_v_zip" rel="nofollow">#</a></h4>
+<p>Each module (or theme) is available in both the *.tar.gz and *.zip formats. Each of these files contains all of the module's (or theme's) files and folders in a single file that has been archived (multiple files and folders in one file), and compressed (made small as possible).</p>
+<p>The *.tar.gz version is smaller, but the contents of the *.tar.gz and *.zip files are identical.</p>
+<p><strong>MAC and Linux users</strong> should use the *.tar.gz version</p>
+<p><strong>Windows users:</strong></p>
+<p>Use the *.zip version if you intend to extract the file onto your computer.</p>
+<ul>
+<li>
+<p>A Windows extraction of a *.zip file onto a personal computer is a one-step process. If, however, you extract the *.tar.gz file onto your Windows computer using, for example, the built-in Windows tool, (that was first introduced in Windows 7, or 8) the extraction process will first extract the *.tar.gz file to a *.tar file, and then you will have to repeat the extraction process with the *.tar file to fully complete the extraction.</p>
+<p>Granted, as a Windows user, if you are only grabbing the download link for an automated import of the module using the steps below in the section 'Automated module import with URL', then either version would do. Similarly, if you are only downloading the file onto your computer before using the automated import method detailed below under 'Automated module import of local file', then either version would do.</p>
+<p>In other words, Windows users will only find difficulties when they are extracting the *.tar.gz file onto their computer, because of the two-step requirement, and because older versions of Windows do not have a built-in tool for extracting *.tar.gz files.</p>
+<p>In conclusion, Windows users: Use the *.zip version.</p>
+</li>
+</ul>
+<h2 id="s-codebase-and-database-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-codebase-and-database-overview"></a><a href="#codebase_db_overview" id="codebase_db_overview" rel="nofollow">Codebase and database overview</a></h2>
+<p>Although a Drupal site requires a server program (Eg. Apache or IIS), a database program (Eg. MySQL or MSSql), and a PHP interpreter to run, everything that is unique to your site is contained in your database and codebase.</p>
+<p><strong>Database</strong></p>
+<p>The database is something which I have never needed to edit or adjust. It takes care of itself, so to speak. It is stored separately and away from the codebase.</p>
+<p>Online, the database is one or two directory levels above 'public_html'. If you are running Drupal locally on your computer, the database is, using Windows as an example, somewhere at the location you installed the 'stack', possibly in 'C:\Program Files'.</p>
+<p><strong>Codebase</strong></p>
+<p>The codebase is a set of the files and folders that you can navigate around in, just like any other set of files and folder on your computer.</p>
+<p>The codebase is made up of Drupal core, contrib modules, contrib themes, and any other extra files you have added, like images or videos. These files are the ones that you will on occasion need to, or want to modify.</p>
+<p>The top level folder of your Drupal codebase will be referred to on this page as <code class="language-php">[d7-root]</code>.</p>
+<p>If you are running Drupal on your computer 'local'-ly, your codebase is in a location that your 'stack' knows where to find it. That location might be set by you, or might be in a default location determined by a stack installer, if that is what you used.</p>
+<p>Windows example: As an example, if you installed your Drupal site using Acquia Dev Desktop on a Windows computer, your codebase will by default be within:</p>
+<p><code class="language-php">C:\Users\*YOUR-USER-ACCOUNT-NAME*\Sites\*YOUR-D7-ROOT-FOLDER-HERE*</code></p>
+<p>Please note that the 'Sites' folder above, which is intended to hold all of your Drupal installations, is not the 'sites' folder within your codebase at <code class="language-php">[d7-root]/sites</code></p>
+<h2 id="s-module-location-in-the-codebase"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-location-in-the-codebase"></a><a href="#mod_location" id="mod_location" rel="nofollow">Module location in the codebase</a></h2>
+<p>All of the module's (or theme's) files and folders will be contained in a single parent folder in your codebase. That parent folder will be named similarly to the module itself, using lowercase-alphabetic characters, and occasionally the underscore character ("_") between multiple words.</p>
+<p>When you import a module into your Drupal codebase using either of the two automated processes discussed below, the module will be placed at the default recommended location:</p>
+<p><code class="language-php">[d7-root]/sites/all/modules/*NEW-SINGLE-MODULE-FOLDER-HERE*/*MULTIPLE-MODULE-FILES-AND-FOLDERS-HERE*</code>.</p>
+<p>[Themes default location: <code class="language-php">[d7-root]/sites/all/themes/*NEW-SINGLE-THEME-FOLDER-HERE*/*MULTIPLE-THEME-FILES-AND-FOLDERS-HERE*</code>]</p>
+<p><strong>Manual import location</strong></p>
+<p>If you import a module 'manually', you should place your module in that same default recommended location, *HERE*:</p>
+<p><code class="language-php">[d7-root]/sites/all/modules/*HERE*</code></p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*HERE*</code>]</p>
+<p>After you perform a manual extraction of a *.tar.gz or *.zip file, be sure to check the file/folder structure to make sure that the module's folders are in the proper place, and are structured properly. This will be discussed below in more detail at <a href="#ck_post_extract" rel="nofollow">Check file/folder structure after manual extraction</a></p>
+<p><strong>Other possible locations</strong></p>
+<p>While it is possible to use locations other than the default recommended location for modules, you should have a very specific reason for using any other location.</p>
+<p>One legitimate exception would be, for example, if you are running a <a href="https://www.drupal.org/docs/7/multisite-drupal/multi-site-sharing-the-same-code-base" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">Multisite Drupal ⎘</a> with several Drupal sites sharing the same codebase, and you want your new module to only be available to a 'specific_site'. In that case, the module should go into the folder:</p>
+<p><code class="language-php">[d7-root]/sites/*specific_site*/modules/*NEW-SINGLE-MODULE-FOLDER-HERE*</code></p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/*specific_site*/themes/*NEW-SINGLE-THEME-FOLDER-HERE*</code>]</p>
+<p>Otherwise, with a multi-site setup, if a module will be shared between all sites, it should be placed in the normal default recommended location:</p>
+<p><code class="language-php">[d7-root]/sites/all/modules/*HERE*</code>.</p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*HERE*</code></p>
+<p><strong>For simplicity sake</strong></p>
+<p>The rest of this page will be based on your using only one Drupal website, and not a multi-site setup.</p>
+<p><strong>Do not use the core 'modules' (nor 'themes') folder</strong></p>
+<p>Be careful not to use the Drupal core 'modules' folder for you new module.</p>
+<p>The 'modules' folder that you see at the top level of your Drupal installation at <code class="language-php">[d7-root]/modules</code>, is reserved for Drupal core modules (the ones that come with the original download of Drupal). Your contrib modules should not be placed there. They could go there, but they should not.</p>
+<p>[Folder reserved for 'core' themes: <code class="language-php">[d7-root]/themes</code>]</p>
+<p>If you keep your contrib modules out of <code class="language-php">[d7-root]/modules</code>, that makes it easy to update your site later, because you can delete the entire <code class="language-php">[d7-root]/modules</code> folder, and replace it with the updated version of the core <code class="language-php">[d7-root]/modules</code> folder.</p>
+<p><strong>Themes, likewise:</strong> If you keep your contrib themes out of the core 'themes' folder at <code class="language-php">[d7-root]/themes</code>, when you update Drupal core, you can delete the entire <code class="language-php">[d7-root]/themes</code> folder, and simply replace it with the updated version of the core 'themes' folder.</p>
+<h3 id="s-using-sub-folders-of-the-modules-folder-"><a class="toc-anchor" title="Permalink to this headline" href="#s-using-sub-folders-of-the-modules-folder-"></a><a href="#mod_subfolders" id="mod_subfolders" rel="nofollow">Using sub-folders of the 'modules' folder </a></h3>
+<p>Some advanced users who intend to modify the contrib modules, or to create modules of their own, or who simply have a lot of contrib modules, organize their non-core modules in sub-folders of the contrib 'modules' folder <code class="language-php">[d7-root]/sites/all/modules</code>.</p>
+<p>Keep in mind that each module must be unique in both the 'machine name' used for its folder name, as well as the name it uses in the *.info file.</p>
+<p>{{COMMENT: If the above paragraph is not entirely accurate, or if you can think of a better way to phrase it, or if you can add more details for clarity, please 'Edit' this page, or add your suggestions using the 'Discuss' link. Thank you.}}</p>
+<p>A typical organization scheme might be:</p>
+<ul>
+<!-- Main_level_2_ul --><li>
+<!-- Main_level_2_li --><p><code class="language-php">[d7-root]/sites/all/modules/contrib</code><br />
+	for original versions of contributed modules</p>
+</li>
+<!-- End Main_level_2_li --><li>
+<!-- Main_level_2_li --><p><code class="language-php">[d7-root]/sites/all/modules/custom</code><br />
+	for all custom modules</p>
+</li>
+<!-- End Main_level_2_li --><li>
+<!-- Main_level_2_li --><p><code class="language-php">[d7-root]/sites/all/modules/features</code><br />
+	for modules created using <a href="http://drupal.org/project/features" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">'Features' contrib module ⎘</a></p>
+</li>
+<!-- End Main_level_2_li --></ul>
+<!-- End Main_level_2_ul --><p>If you put your new module into a sub-folder of the 'module' folder before you first use it, then you can rest assured that Drupal will use your new module without any problem.</p>
+<h4 id="s-moving-modules-that-have-already-begun-to-be-used"><a class="toc-anchor" title="Permalink to this headline" href="#s-moving-modules-that-have-already-begun-to-be-used"></a>Moving modules that have already begun to be used</h4>
+<p>If you want to move modules that you have already begun using on your site, see the page <a href="https://www.drupal.org/docs/7/extending-drupal/moving-modules-and-themes" target="_blank" title="   This link opens in a new tab/window." rel="nofollow">Moving modules and themes ⎘</a>.</p>
+<h2 id="s-importing-the-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-importing-the-module"></a><a href="#import_mod" id="import_mod" rel="nofollow">Importing the module</a></h2>
+<p>Importing a new module (or theme) into your site can be done in several ways. From a beginner's stand-point, the three ways are:</p>
+<ol>
+<li>Automated module import with URL</li>
+<li>Automated module import of local file</li>
+<li>Manual module import</li>
+</ol>
+<p>PS! Advanced users very often prefer to use <a href="http://www.drush.org" rel="nofollow">Drush</a>, the Drupal Shell. It requires familiarity with the command line.  </p>
+<h3 id="s-module-import-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-import-overview"></a><a href="#import_overview" id="import_overview" rel="nofollow">Module import - Overview</a></h3>
+<p>The process of getting your module into your codebase is at times referred to, elsewhere, as 'installing' the module. I use the word 'import' instead of 'install', because the import methods discussed below simply place the module into your codebase. Until you enable the module, it is dormant, and unused by your site.</p>
+<p>The two 'automated' methods are accomplished using your browser in the administrative area of your site, just like any other task you might perform on your Drupal site. The two automated methods can be used for both 'local' and 'online' sites, and are occasionally referred to as using your Drupal site's front-end UI (User Interface).</p>
+<p>The 'automated' methods take care of placing the module where it goes in your codebase, and also takes care of extracting the module's file and folders from the *tar.gz or *.zip file.</p>
+<p>The automated import processes will extract all of the module's files and folders into your codebase at</p>
+<p><code class="language-php">[d7-root]/sites/all/modules/*NEW_MODULE_HERE--A_SINGLE_FOLDER*/*MULTIPLE_MODULE_FILES_AND_FOLDERS_HERE*</code></p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*NEW_THEME_HERE--A_SINGLE_FOLDER*/*MULTIPLE_THEME_FILES_AND_FOLDERS_HERE*</code>]</p>
+<h4 id="s-automated-module-import-with-url-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-automated-module-import-with-url-overview"></a><a href="#auto_mod_url_over" id="auto_mod_url_over" rel="nofollow">Automated module import with URL - Overview</a></h4>
+<p>With this first automated method, you go to the module's project page at drupal.org, and copy the URL for the version of the module you want to use. You paste that URL into the appropriate box on the appropriate page of your site, and click "Install".</p>
+<p>If your site is online, this process is particularly fast, since it involves two online servers talking to each other, and bi-passes your personal computer. And, my online webhost server also extracts files at least ten times faster than my home computer can.</p>
+<p>Pros: You do not have to download the module, you do not have extract it, and you do not have to worry about putting it where it goes in your codebase.</p>
+<h4 id="s-automated-module-import-of-local-file-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-automated-module-import-of-local-file-overview"></a><a href="#auto_mod_local_over" id="auto_mod_local_over" rel="nofollow">Automated module import of local file - Overview</a></h4>
+<p>With this second automated method, you start with the module in a *.tar.gz or *.zip file on your computer.</p>
+<p>That file will usually be the one that you downloaded from the module's project page.</p>
+<p>The *.tar.gz or *.zip file might also be a *.tar.gz or *.zip file you created yourself after having made custom changes to the module. That is a fairly uncommon thing to have to do, however, and I have never had need to do it myself.</p>
+<p>With the *.tar.gz or *.zip file on your computer, you go to the appropriate page on your Drupal site, you click the button 'Browse', and navigate to the file's location on your computer. Then, click "Install".</p>
+<p>Pros: You do not (usually) have to extract the *tar.gz or *.zip file after downloading it, and you do not have to worry about where the module goes in your Drupal codebase.</p>
+<h4 id="s-manual-module-import-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-manual-module-import-overview"></a><a href="#man_mod_over" id="man_mod_over" rel="nofollow">Manual module import - Overview</a></h4>
+<p>The 'manual' method amounts to your manually put the module where it belongs in your codebase.</p>
+<p>That will either be locally on your computer, or at an online site by uploading it with your webhost Control Panel, or with SFTP.</p>
+<p>Also, you must manually extract the module's files from the *.tar.gz or *.zip file, either before importing it, or after.</p>
+<p>A manual import for a 'local' site running on your computer is not really such a chore, particularly if you are already familiar with using *.tag.gz or *.zip files.</p>
+<p>With a manual import to an 'online' site, it is much faster to upload the module as a single *.tar.gz or *.zip file, than it is to upload the multiple files and folders extracted from a *.tar.gz or *.zip file.</p>
+<p>If, for an online site, you first upload the *.tar.gz or *.zip file, you can easily extract it using your webhost Control Panel's 'File Manager' in a matter of two or three seconds, by doing this:</p>
+<p><strong>How to extract an online *.tar.gz or *.zip file using your webhost Control Panel</strong></p>
+<ol>
+<li>Login to your webhost Control Panel.</li>
+<li>Go to "Files" &gt; "File manager".</li>
+<li>Navigate to the *.tar.gz or *.zip file.</li>
+<li>Click on the file once to highlight it.</li>
+<li>Click the page-top button "Extract".</li>
+</ol>
+<h4 id="s-for-the-two-automated-import-methods"><a class="toc-anchor" title="Permalink to this headline" href="#s-for-the-two-automated-import-methods"></a><strong>For the two 'automated' import methods...</strong></h4>
+<p>You can use either the 'Install new module' button near the top of the 'Modules' page, or you can use the 'Install new theme' button near the top of the 'Appearance' page, to import either a module or theme.</p>
+<p>The respective addresses that you will see in your browser's address-bar for the pages you will be taken to after you click 'Install new module' or 'Install new theme' are:<br />
+<code class="language-php">[d7-root]/admin/modules/install</code><br />
+and<br />
+<code class="language-php">[d7-root]/admin/appearance/install</code><br />
+but both pages are essentially identical, and will work fine with either modules or themes.</p>
+<p>You will not, however, see 'Install new module' and 'Install new theme' on the 'Modules' or 'Appearance' page, if the Drupal core module 'Update manager' is not enabled. That is the subject of the next section.</p>
+<h3 id="s-enable-the-drupal-core-module-update-manager"><a class="toc-anchor" title="Permalink to this headline" href="#s-enable-the-drupal-core-module-update-manager"></a><a href="#enable_updt_mngr" id="enable_updt_mngr" rel="nofollow">Enable the Drupal core module 'Update manager'</a></h3>
+<p>Both of the automated import methods require that you have the Drupal core module '<a href="http://www.drupal.org/docs/7/core/modules/update/overview" rel="nofollow">Update manager</a>' enabled. For security reasons, however, you should have it enabled regardless of whether or not you intend to use those import methods.</p>
+<p><strong>If you see 'Install new module'</strong></p>
+<p>If, at the top of the 'Modules' page, you see the button (or text-link) 'Install new module', then 'Update manager' is enabled. You can <a href="#mod_import_steps" rel="nofollow">Jump down to section "Module import - The steps"</a></p>
+<p><strong>If you do not see 'Install new module'</strong></p>
+<p>If at the top of the 'Modules' page, you do not see 'Install new module', then your Drupal core module 'Update manager' is not enabled. It will not be enabled if you disabled it, of course, and it will also not be enabled if during the browser-based installation of your Drupal site, you removed the check-mark for the box "Check for updates automatically".</p>
+<p>So, if you are not seeing 'Install new module', scroll to the bottom of the top section 'Core', and find the row for the module 'Update manager'.</p>
+<p>If you see that the box for 'Update manager' is not checked, put a check-mark in the box, then scroll to the bottom of the page, and click the button "Save configuration".</p>
+<p>After the 'Modules' page reloads, check again. If at the top of the 'Modules' page you are now seeing 'Install new module', then you can <a href="#mod_import_steps" rel="nofollow">Jump down to section "Module import - The steps"</a></p>
+<p><strong>If you still do not see 'Install new module' at the top of the 'Modules' page, and the box for 'Update manager' is checked:</strong></p>
+<p>Maybe you forgot to click the button 'Save configuration' after you selected the box for 'Update manager' earlier, and you have not yet navigated away from the 'Modules' page.</p>
+<p>Refresh the 'Modules' page, and double-check that 'Install new module' is still not at the page top. Check whether or not the box for 'Update manager' is in fact still showing as checked.</p>
+<p>After you are sure that you have enabled 'Update manager', it is possible that you may not yet be seeing the button/link "Install new module" at the top of the 'Extend' page.</p>
+<p>So, if the button/link 'Install new module' is still missing, I suggest that you try 'running the update script', and 'Clear all caches', using the steps for those two processes outlined below (with a couple of other suggestions if those do not work) at <a href="#broken_site" rel="nofollow">Broken site problems - Run the update script, and 'Clear all caches'</a>.</p>
+<h4 id="s-security-enable-update-manager-regardless"><a class="toc-anchor" title="Permalink to this headline" href="#s-security-enable-update-manager-regardless"></a><a href="#updt_mngr_regardless" id="updt_mngr_regardless" rel="nofollow">Security: Enable 'Update manager' regardless</a></h4>
+<p>Regardless of whether or not you intend to use one of the automated methods for importing your module, you should always have your Drupal core module 'Update manager' enabled.</p>
+<p>It is important that you are notified when Drupal core updates are available that are 'security updates', so that you can IMMEDIATELY update your site.</p>
+<p>Otherwise, you run the extremely rare, but possible risk, of having your site hacked into after the Drupal security team releases the details of a Drupal site's vulnerabilities, as they do, if needed, on the third Wednesday of the month between 12 noon and 5pm Eastern time. <a href="https://www.drupal.org/node/1173280" target="_blank" title="   This link opens in a new tab/window. [ ~ drupal.org ]" rel="nofollow">Security release numbers and release timing explained</a>.</p>
+<p>For all the scary details relating to the most infamous occurrence of this, (known officially as 'Drupageddon', without the 'l', but also commonly known as 'Drupalgeddon', with the 'l') do a Google search for <a href="https://www.google.com/search?num=100&amp;q=Drupalgeddon+2014-10-15" target="_blank" title="   This link opens in a new tab/window. [ ~ google.com ]" rel="nofollow">Drupalgeddon 2014-10-15</a>.</p>
+<p>During the original browser-based creation of your Drupal 7 site, the check-box for 'Update notifications': "Check for updates automatically" may not have been left selected.</p>
+<p>Or, you may have un-'Enabled' the 'Update manager', because you do not want to see daily notices in your email about your Drupal site having updates available.</p>
+<p>Set it to weekly, if that is the case. Go to <code class="language-php">[d7-root]/admin/reports/updates/settings</code>, which you can get to by going to your 'Modules' page, and at the far right-hand side of the 'Update Manager' table row, click the 'Configure' button. (The 'Update manager' module must be enabled for the 'Configure' button to be visible) On the configuration page, select the radio-button for 'weekly', instead of the default option 'daily'.</p>
+<p>For more information about what the core module 'Update manager' can do, see the drupal.org page <a href="http://drupal.org/documentation/modules/update" target="_blank" title="   This link opens in a new tab/window. [ ~ drupal.org ]" rel="nofollow">Update manager (and Update status)</a>.</p>
+<h3 id="s-module-import-the-steps"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-import-the-steps"></a><a href="#mod_import_steps" id="mod_import_steps" rel="nofollow">Module import - The steps</a></h3>
+<p>These are the actual steps for importing a module (or theme) using the three different methods.</p>
+<p>As recommended above, at this point, you should have the Drupal core module 'Update manager' module enabled, and you should be seeing, "Install new module" at the top of the 'Modules' page. That is, in fact, required for the two 'automated' module import methods discussed below.</p>
+<p>Also, as mentioned above, the first two 'automated' methods for importing a module, in some rare cases, are not permitted by some servers, and so the third method, 'manually' importing your module, will be required instead.</p>
+<ul>
+<li>
+<p><a href="#import_mod--ui" rel="nofollow">Automated module import with URL - The steps</a>(The next section immediately below)</p>
+</li>
+<li>
+<p><a href="#import_mod--local_arch" rel="nofollow">Automated module import of local file - The steps</a></p>
+</li>
+<li>
+<p><a href="#import_mod--manual" rel="nofollow">Manual module import - The steps</a></p>
+</li>
+</ul>
+<h4 id="s-automated-module-import-with-url-the-steps"><a class="toc-anchor" title="Permalink to this headline" href="#s-automated-module-import-with-url-the-steps"></a><a href="#import_mod--ui" id="import_mod--ui" rel="nofollow">Automated module import with URL - The steps</a></h4>
+<p>This is the easiest method to use, and is what I do every time I am checking out a new module (or theme). It works for 'local' Drupal sites running on your computer, and for 'online' sites at a webhost.</p>
+<p>This automated import process will extract all of the module's files and folders into your codebase at <code class="language-php">[d7-root]/sites/all/modules/*NEW_MODULE_HERE--A_SINGLE_FOLDER*/*MULTIPLE_MODULE_FILES_AND_FOLDERS_HERE*</code></p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*NEW_THEME_HERE--A_SINGLE_FOLDER*/*MULTIPLE_THEME_FILES_AND_FOLDERS_HERE*</code>]</p>
+<p>This 'automated' method requires you to have the Drupal core module 'Update manager' enabled. Jump up to <a href="#enable_updt_mngr" rel="nofollow">Enable the Drupal core module 'Update manager'.</a></p>
+<h5>Go to 'Modules' page.</h5>
+<p>Go to your 'Modules' page, and near the page-top, just under the word 'Modules', you should see the button/link "Install new module".</p>
+<p><img alt="Drupal 7 website 'Modules' page 'Install new module' button for importing a new module" src="/files/install_new_module.png" /></p>
+<p>[As stated above, the 'Install new module' button/link works just fine for themes also.]</p>
+<p><strong>If you do not see the button/link "Install new module" at the top of the 'Modules' page</strong>, return above to this page's section <a href="#enable_updt_mngr" rel="nofollow">Enable the Drupal core module 'Update manager' </a>and carefully follow all of the steps outlined there.</p>
+<p><strong>Click "Install new module".</strong></p>
+<p>The page you are taken to does not have a title, but the address is <code class="language-php">[d7-root]/admin/modules/install</code></p>
+<h5>Go to your module's drupal.org project page, and 'Copy' the module's download link</h5>
+<p>Return to the project page for the module you want to install, and scroll down to the 'Downloads' section.</p>
+<p>If you need help deciding which version to use, jump up to the section <a href="#understand_mod_ver" rel="nofollow">Understand the various module versions available</a>.</p>
+<p>In the 'Download' column, RIGHT-click the text-link for either the *.tar.gz file, or the *.zip file. (Windows: use *.zip)</p>
+<p>In the drop-down 'context menu' that appears, if you use:</p>
+<ul>
+<li>FireFox - Click "Copy link location"</li>
+<li>Chrome - Click "Copy link address"</li>
+<li>Internet Explorer - Click "Copy shortcut"</li>
+</ul>
+<h5>Return to your site</h5>
+<p><img alt="Drupal Update manager page snippet for installing a module" src="/files/install_manager_module.png" /></p>
+<p><strong>Paste the URL, which you have 'copied', into the box for: 'Install from a URL'.</strong></p>
+<p><strong>[Ctrl]+[V]</strong> - I prefer to do my 'pasting' by clicking once inside the box, so that the cursor is flashing on the left. Then I hold down one of my two "Ctrl" (Control) keyboard keys, and then I press the key "V". (The MAC 'Command' key = my Windows 'Ctrl' key)</p>
+<p><strong>Click the button/link "Install".</strong></p>
+<p>This automated import process will extract all of the module's files and folders into your codebase at <code class="language-php">[d7-root]/sites/all/modules/*NEW-SINGLE-MODULE-FOLDER-HERE*</code></p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*NEW-SINGLE-THEME-FOLDER-HERE*</code>]</p>
+<h5></h5>
+<h5>"Installation was completed successfully."<a href="#import_done_1x" id="import_done_1" rel="nofollow">ꞈ</a></h5>
+<p>On the next page that loads, you will see "Installation was completed successfully."</p>
+<p>Click the link "Enable newly added modules" to return to the Drupal 7 'Modules' page.</p>
+<p>[Themes: Click the link "Enable newly added themes", and you will be taken to your site's 'Appearance' page]</p>
+<p>Not that I am recommending it, but if you want your module moved from its current default location in the folder 'modules' at ...</p>
+<p><code class="language-php">[d7-root]/sites/all/modules/*NEW-SINGLE-MODULE-FOLDER-HERE*</code></p>
+<p>...into a sub-folder of the 'modules', as for example, into a sub-folder named 'contrib', at...</p>
+<p><code class="language-php">[d7-root]/sites/all/modules/contrib/*NEW-SINGLE-MODULE-FOLDER-HERE*</code></p>
+<p>...then now is the ideal time to do it-- before you start using it, as was discussed above at <a href="#mod_subfolders" rel="nofollow"> Using sub-folders of the 'modules' folder</a>.</p>
+<p>Although I recommend that you read the next two sections that describe the other two methods for importing a module into your site, you can jump over them and continue at the section <a href="#enable_mod" rel="nofollow">Enabling modules</a>.</p>
+<h4 id="s-automated-module-import-of-local-file-the-steps"><a class="toc-anchor" title="Permalink to this headline" href="#s-automated-module-import-of-local-file-the-steps"></a><a href="#import_mod--local_arch" id="import_mod--local_arch" rel="nofollow">Automated module import of local file - The steps</a></h4>
+<p>This method is used to automatically import a module into a local or online site from a *.tar.gz or *.zip file on your computer.</p>
+<p>This 'automated' method requires you to have the Drupal core module 'Update manager' enabled. Jump up to <a href="#enable_updt_mngr" rel="nofollow">Enable the Drupal core module 'Update manager'.</a></p>
+<p>This automated import processes will extract all of the module's files and folders into your codebase at<br />
+<code class="language-php">[d7-root]/sites/all/modules/*NEW_MODULE_HERE--A_SINGLE_FOLDER*/*MULTIPLE_MODULE_FILES_AND_FOLDERS_HERE*</code></p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*NEW_THEME_HERE--A_SINGLE_FOLDER*/*MULTIPLE_THEME_FILES_AND_FOLDERS_HERE*</code>]</p>
+<h5>Go to 'Modules' page.</h5>
+<p>Go to your 'Modules' page, and near the page-top, just under the title 'Modules', you should see the button/link "Install new module".</p>
+<p>[As mentioned above, the 'Install new modules' button/link works just fine for themes as well.]</p>
+<p><img alt="Drupal 8 website 'Modules' page 'Install new module' button for importing a new module" src="/files/install_new_module.png" /></p>
+<p>If you do not see the "Install new module" button/link, carefully follow all of the instructions above at <a href="#enable_updt_mngr" rel="nofollow">Enable the Drupal core module 'Update manager'.</a></p>
+<p><strong>Click "Install new module"</strong></p>
+<p>The page you are taken to does not have a title, but the address is <code class="language-php">[d7-root]/admin/modules/install</code></p>
+<h5>Download module from project page</h5>
+<p>Return to the drupal.org project page for the module (or theme) you want to install.</p>
+<p>Scroll down to the 'Downloads' section.</p>
+<p>In the 'Download' column, find the version you want to download. If you need help deciding which version to use, jump up to the section <a href="#understand_mod_ver" rel="nofollow">Understand the various module versions available</a>.</p>
+<p>Click the text-link for either the *.tar.gz file, or the *.zip file (Windows: use *.zip)</p>
+<p>Typically, that will start the download of the file.</p>
+<p>If you need help controlling exactly where downloads are saved onto your computer, see this section on a different drupal.org page: <a href="https://www.drupal.org/node/1248034#dl_location" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">Know your browser's file-download location; or change browser's download location. ~ drupal.org/1248034#dl_location ⎘</a>.</p>
+<h5>Return to your site page 'Modules'</h5>
+<p><img alt="Drupal Update manager page snippet for installing a module" src="/files/install_manager_module.png" /></p>
+<p>Under the heading 'Upload a module or theme archive to install', click the button "Browse".</p>
+<p>Navigate on your computer to the location of the *.tar.gz or *.zip module file you downloaded.</p>
+<p><strong>Click the button/link "Install".</strong></p>
+<p>This automated import process will extract all of the files and folders from the archived/compressed *.tar.gz or *.zip file into your codebase at <code class="language-php">[d7-root]/sites/all/modules/*NEW-SINGLE-MODULE-FOLDER-HERE*</code></p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*NEW-SINGLE-THEME-FOLDER-HERE*</code>]</p>
+<h5>"Installation was completed successfully."<a href="#import_done_2x" id="import_done_2x" rel="nofollow">ꞈ</a></h5>
+<p>On the next page that loads, you will see "Installation was completed successfully."</p>
+<p>Click the link "Enable newly added modules" to return to the Drupal 7 'Modules' page.</p>
+<p>[Themes: Click the link "Enable newly added themes", and you will be taken to your site's 'Appearance' page.]</p>
+<p>Not that I am recommending it, but if you want your module moved from its current default location in the folder 'modules' at...</p>
+<p><code class="language-php">[d7-root]/sites/all/modules/*NEW-SINGLE-MODULE-FOLDER-HERE*</code></p>
+<p>...into a sub-folder of the 'modules', as for example, into a sub-folder named 'contrib', at...</p>
+<p><code class="language-php">[d7-root]/sites/all/modules/contrib/*NEW-SINGLE-MODULE-FOLDER-HERE*</code></p>
+<p>...then now is the ideal time to do it-- before you start using it, as was discussed above at <a href="#mod_subfolders" rel="nofollow"> Using sub-folders of the 'modules' folder</a>.</p>
+<p>Although I recommend that you read the next section that describes the third method for importing a module into your site, you can jump over it and continue at the section <a href="#enable_mod" rel="nofollow">Enabling modules</a>.</p>
+<h4 id="s-manual-module-import-the-steps"><a class="toc-anchor" title="Permalink to this headline" href="#s-manual-module-import-the-steps"></a><a href="#import_mod--manual" id="import_mod--manual" rel="nofollow">Manual module import - The steps</a></h4>
+<p>With this method of importing a module, you manually put the module where it belongs into your 'local' or 'online' codebase. You will also have to extract the module's files and folders from the module's *.tar.gz or *.zip file either before or after the move to the codebase.</p>
+<h5>Download module from project page</h5>
+<p>Return to the project page for the module you want to install.</p>
+<p>Scroll down to the 'Downloads' section.</p>
+<p>In the 'Download' column, find the version you want to download. If you need help deciding which version to use, jump up to the section <a href="#understand_mod_ver" rel="nofollow">Understand the various module versions available</a>.</p>
+<p>Click the text-link for either the *.tar.gz file, or the *.zip file (Windows: use *.zip)</p>
+<p>Typically, that will start the download of the file.</p>
+<p>If you need help controlling exactly where downloads are saved onto your computer, see this section on a different drupal.org page: <a href="https://www.drupal.org/node/1248034#dl_location" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">Know your browser's file-download location; or change browser's download location</a>.</p>
+<h5>Local</h5>
+<p>If your site is running locally on your computer, paste the downloaded file at <code class="language-php">[d7-root]/sites/all/modules/*HERE*</code>.</p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*HERE*</code>]</p>
+<p>Extract the file's contents into that folder by doing the following.</p>
+<p><strong>For Windows</strong>,<br />
+to extract the contents of the *tar.gz or *.zip file, RIGHT-click on the file, and in the drop-down context menu, click "Extract here" to use the built-in Windows extractor. Or better yet, use a program like <a href="http://www.7-zip.org" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">7-zip ~ 7-zip.org</a>.</p>
+<p><strong>On modern Mac systems</strong>,<br />
+double-click the .tar.gz file.</p>
+<p>Check the structure of the folders after a manual extraction to make sure that the module's folders are in the proper place, and are structured properly. This will be discussed in more detail in the next section <a href="#ck_post_extract" rel="nofollow">Check file/folder structure after manual extraction</a></p>
+<p>You can now delete the *.tar.gz or *.zip file from your computer if you like.</p>
+<h5>Online</h5>
+<p>If your site is 'online', upload the file using your webhost Control Panel, or use SFTP (secure file transfer protocol). I highly recommend against using FTP because it is not secure.</p>
+<p>Put the *.tar.gz or *.zip file at <code class="language-php">[d7-root]/sites/all/modules/*HERE*</code>.</p>
+<p>[Themes: <code class="language-php">[d7-root]/sites/all/themes/*HERE*</code>]</p>
+<p>You can then extract the *.tar.gz or *.zip file using your webhost Control Panel 'File Manager'. Navigate to the file, highlight it, and then click the page-top button "Extract".</p>
+<p>Or, to extract it after it is online, your SFTP program might have a feature for accomplishing that task.</p>
+<p><strong>You can now delete the *.tar.gz or *.zip file from your website, if you like.</strong></p>
+<h5><a href="#ck_post_extract" id="ck_post_extract" rel="nofollow">Check file/folder structure after manual extraction</a></h5>
+<p>You should examine the files and folders structure of your module after you perform a manual extraction to make sure that everything is in its proper place.</p>
+<p>This is not something you have to do after using one of the two automated import processes, but is something you should do after you manually extract a *.tar.gz or *.zip file on your computer, or online.</p>
+<p>The problem lies in the possibility of the module's parent folder being created twice: Once as a parent folder, and again as a child of that parent, with both folders having the same name.</p>
+<p>The possibility of that problem is not limited to, but is common when, for example, you are dealing with *.tar.gz files on a Windows computer.</p>
+<p>Using, for example, the module 'Token', what you do not want to have is a parent and its child both named 'token', like this:</p>
+<p>[d7-root]/sites/all/modules/token/token/*MULTIPLE_MODULE_FILES_AND_FOLDERS_HERE*</p>
+<p>If you see that situation, eliminate one of the two identically named module folders by moving the *MULTIPLE_MODULE_FILES_AND_FOLDERS* up one level, so that you get this (again, using the 'token' module as an example):</p>
+<p>[d7-root]/sites/all/modules/token/*MULTIPLE_MODULE_FILES_AND_FOLDERS_HERE*</p>
+<p>[Themes: Similarly, using the theme 'Zen' as an example, you do not want to have multiple 'zen' folders inside of each other, and so if you see the following, it is a problem: <code class="language-php">[d7-root]/sites/all/themes/zen/zen/*MULTIPLE_THEME_FILES_AND_FOLDERS_HERE*</code>]</p>
+<h2 id="s-enabling-modules"><a class="toc-anchor" title="Permalink to this headline" href="#s-enabling-modules"></a><a href="#enable_mod" id="enable_mod" rel="nofollow">Enabling modules</a></h2>
+<p>After a module (or theme) has been imported, it is only taking up space. It is not actively using any of your sites resources except storage space. Only after you enable it does it become active, and if you disable it, it again returns to a dormant state, just taking up space, but no longer affecting your site.</p>
+<p>To enable your new module, go to your site's 'Modules' page.</p>
+<p>Module enabling: In a hurry? If you put a check-mark in the box for a module on the 'Modules' page, and scroll to the page bottom and click the button "Save configuration", you will enable that module.</p>
+<h3 id="s-modules-page-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-modules-page-overview"></a><a href="#modules_pg_overview" id="modules_pg_overview" rel="nofollow">'Modules' page overview</a></h3>
+<p>On the 'Modules' page, every module that exists in your codebase had a row of its own in the tabular list.</p>
+<h4 id="s-check-box-column"><a class="toc-anchor" title="Permalink to this headline" href="#s-check-box-column"></a>Check-box column</h4>
+<p>The first column on the left is for check-boxes.</p>
+<p>When the check-box is not checked, it means the module is not enabled. If you were to check it, and scroll to the bottom of the page, and click the button "Install", that would 'enable' that module.</p>
+<p>When the check-box is checked, it means that the module is enabled, and therefore 'working' on your site.</p>
+<h4 id="s-name-column"><a class="toc-anchor" title="Permalink to this headline" href="#s-name-column"></a>'Name' column</h4>
+<p>To the right of the check-boxes is the module's 'human readable' name.</p>
+<h4 id="s-version-column--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-version-column--2"></a>'Version' column</h4>
+<p>The third column is for the 'Version' of the module.</p>
+<h4 id="s-description-column"><a class="toc-anchor" title="Permalink to this headline" href="#s-description-column"></a>'Description' column</h4>
+<p>The fourth column is for the 'Description'.</p>
+<p>At the bottom of the description, you will see 'Requires:', and/or 'Required by:' whenever those items are applicable to a module.</p>
+<p><strong>Requires:</strong> If this item exists, it will list all of the modules that your module depends on.</p>
+<p>Those other listed modules will need to exist on your site, and be enabled for your module to work.</p>
+<p>Following each module in that listing, you will see either see nothing, or you will see '(disabled)', or '(missing)'.</p>
+<p>'Nothing' is good. That means that the module that your module requires, is already on your site and enabled.</p>
+<p><strong>'(disabled)'</strong> means the other module is on your site, but it is not enabled. You do not have to bother with enabling any '(disabled)' module, because when you try to enable your module, you will be prompted to let the Drupal system enable the '(disabled)' module for you.</p>
+<p><strong>'(missing)'</strong> means that the other module is not on your site (assuming it is a 'module' that is missing, and not something else, like a 'library'), and you will have to go that module's project page at Drupal to get it.</p>
+<h4 id="s-missing-libraries-and-other-possible-non-module-requirements-of-a-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-missing-libraries-and-other-possible-non-module-requirements-of-a-module"></a>Missing libraries and other possible non-module requirements of a module</h4>
+<p>At times, a module will be dependent on something besides another module that is missing from your site, as for an example, a library.</p>
+<p><strong>'Required by:'</strong><a href="#reqd_by" id="reqd_by" rel="nofollow">ꞈ</a> The item 'Required by', when it exists in a module's description is most helpful if, and when, you are considering uninstalling that module, because you can see which other modules, if any, that uninstalling it will affect.</p>
+<p>The 'Required by:' modules that are listed (if any) will be followed by either nothing, or by '(disabled)'. '(disabled)' means it exits on your site, but it is not enabled; whereas if '(disabled)' is not displayed, then that module is both 'on your site' and 'enabled'.</p>
+<p><strong>Multiple modules packaged in one project</strong></p>
+<p>Please note that it is not unusual for a contrib module to actually be a of set more than one module. Yet, even if a single contrib module project comes with multiple modules, all of the modules from a single download will be found together in a single section on the 'Modules' page.</p>
+<p>If your module came as a set of more than one module, one of them is the main module, and, usually, the other module(s) will be dependent upon the main module to work.</p>
+<p>You will usually want to enable the main module, but you may or may not want to enable the other modules (if any) that came with it.</p>
+<p>The description to the right of the module name (in the tabular list on the 'Extend' page) should give you a good idea of which module is the main one.</p>
+<p>And, as explained earlier, the description will tell you which other modules it is dependent on, if any, and whether or not they already exist on your site, and whether or not they are enabled.</p>
+<p>Do not worry though, because if the module you try to install has another module that it depends upon, and which is either not on your site, or is not enabled, you will get a helpful notice to that effect. If the other module is on your site but not enabled, the notice you will get will also be giving you the option to continue by allowing it to enable that other module for you.</p>
+<p>If, on the other hand, the module you are trying to install is dependent upon another module that is not already on your site, you will have to return to drupal.org, and get that other module from its project page.</p>
+<p>Also, a module might be dependent on something other than another module, as for example, upon a 'library' that needs to be found and downloaded. In that case also, when you try to enable the module, you should get a notice telling you what you are lacking.</p>
+<p>The description for a specific module will also usually list which, if any, of the other modules you have on your site, both enabled and not enabled, that are dependent upon that module.</p>
+<p>If it should happen to be that the module is designed strictly for development purposes, and that it should not be used on a 'live' site for security reasons, or, as another example, because it dramatically slows down the responsiveness of your site, that information would, at a minimum, have been explained on the module's project page, and might also be in the description on the 'Modules' page.</p>
+<h4 id="s-operations-column"><a class="toc-anchor" title="Permalink to this headline" href="#s-operations-column"></a>'Operations' column</h4>
+<p>The operations column will have one or more links labeled 'Help', 'Permissions', or 'Configure' if those options are applicable to that module.</p>
+<p>Those items will be discussed individually in the next section, "Configuring modules", after you are done enabling your new module.</p>
+<h3 id="s-enable-your-new-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-enable-your-new-module"></a><a href="#enable_your_mod" id="enable_your_mod" rel="nofollow">Enable your new module</a></h3>
+<p>Find your new module on the 'Modules' page</p>
+<p>Your new module will never be in the top section 'Core', which is reserved for Drupal all of the Drupal 7 core modules that came with it originally.</p>
+<p>Your module could be in any one of the sections that follow the 'Core' section, but, as to which one, that is dependent on how the module's developer(s) wanted to categorize it.</p>
+<p>Scroll down the page until you find the module you just installed.</p>
+<p><strong>Put a check-mark in the left-hand box for any of the modules that you want to enable.</strong></p>
+<p>Click the page-bottom button "Save configuration"</p>
+<p><strong>"Some required modules must be enabled"</strong></p>
+<p>If you happen to be installing a module which 'requires' another module (or several) that are already on your site, but are not enabled, you will get this notice:</p>
+<pre>
+<code class="language-php">____________________________ 
+Some required modules must be enabled You must enable the *REQUIRED-MODULE-NAME-HERE* module to install *YOUR-MODULE-NAME-HERE*. Would you like to continue with the above?
+ ____________________________ </code></pre><p>That will be followed by a button "Continue", and a text-link "Cancel".</p>
+<p>Click the button "Continue".</p>
+<p>When the 'Modules' page reloads, and displays at the top, "The configuration options have been saved", then you know you have successfully enabled your new module.</p>
+<p>If you would like to double-check that the module is installed, scroll down the module list, and make your new module has a check-mark in its box.</p>
+<h3 id="s-broken-site-problems-run-the-update-script-and-clear-all-caches"><a class="toc-anchor" title="Permalink to this headline" href="#s-broken-site-problems-run-the-update-script-and-clear-all-caches"></a><a href="#broken_site" id="broken_site" rel="nofollow">Broken site problems - Run the update script, and 'Clear all caches'</a></h3>
+<p>When my site is acting strangely, or displays bizarre errors, or displays a blank page, particularly after I have just enabled a module, the first thing I do is refresh the page I am on.</p>
+<p>After that, I have quite often found that 'running the update script', followed up with 'clearing all caches', solves the majority of any problems.</p>
+<p>Of the two, 'Clear all caches' is an easier, and quicker 'fix' to try, and is at times effective, but the steps below will start with 'running the update script', because that is the most thorough of the two, and is the first thing I do anytime my site is giving me trouble.</p>
+<p>I will generally always follow up my running of the update script with clearing all caches, out of habit, since my Drupal 7 site's module 'DHTML-Menu' required me do do so every time I ran the update script.</p>
+<p>So, the following two steps seem to me to be the most logical things to do first when addressing any site problems, and you should feel free to run the update script, or clear all caches, anytime you want.</p>
+<ul>
+<!-- Main_level_2_ul --><li>
+<!-- Main_level_2_li --><p><strong><a href="#run_update_script_d7" id="run_update_script_d7" rel="nofollow">#</a> Run the update script for your Drupal 7 site</strong></p>
+<!-- The 'a' tag above is a target from another d.o page --><p>Add a single forward-slash character, and 'update.php' behind your website address in your browser.</p>
+<p>Eg. <code class="language-php">http://sample-site/update.php</code></p>
+<p>Press your keyboard-key [Return/Enter].</p>
+<p>At the page 'Drupal database update', click the button "Continue".</p>
+<p>The next page should report, 'No pending updates.' Click the link "Administration pages".</p>
+<p>If, by any chance, that page does not display 'No pending updates', but rather indicates that updates are pending, then apply the pending updates. That would, by the way, be an indication that you should have run the update script at some earlier point in time, as for example, after having updated a module, or perhaps, after updating Drupal core.</p>
+</li>
+<!-- End Main_level_2_li --><li>
+<!-- Main_level_2_li --><p><strong>Clear all caches</strong></p>
+<p>Go to your site page: "Administration" &gt; "Configuration" &gt; 'Development': "Performance"</p>
+<p><code class="language-php">[d7-root]/admin/config/development/performance</code></p>
+<p>Click the button "Clear all caches".</p>
+</li>
+<!-- End Main_level_2_li --></ul>
+<!-- End Main_level_2_ul --><p>If any problem I have persists, then, out of blind desperation, I also 'run cron'.</p>
+<p>Go to the page 'Reports' &gt; 'Status Reports' and click 'Run cron' near the top of the page.</p>
+<p>Lastly, I try a search at Google.com. If I had error reports associated with the problem, I load the first portion of the error message into the search box.</p>
+<h2 id="s-configuring-modules"><a class="toc-anchor" title="Permalink to this headline" href="#s-configuring-modules"></a><a href="#config_mod" id="config_mod" rel="nofollow">Configuring modules</a></h2>
+<p>Go to the 'Modules' page if you are not already there.</p>
+<p>Go to the far right-hand side of the row for the module that you just enabled.</p>
+<p>In that column, 'OPERATIONS', you might have one or more of the links 'Help', 'Permissions', or 'Configure'.</p>
+<p><img alt="Drupal 7 arrangement of 'Help', 'Permissions', and 'Configure' buttons on the 'Modules' page" src="/files/modules_page_permissions_configure.png" /></p>
+<p>Those links, however, will only be displayed after a module has been enabled.</p>
+<p><strong>Save time by not having to go hunting.</strong></p>
+<p>I consider the 'Extend' page to be the best place to establish whether or not a module has 'permissions' options, or 'configure' options, associated with it. And, conveniently, those are direct links to those options when applicable.</p>
+<p>It is true that a configuration page for a module will be accessible from your site's 'Configuration' page, but you need to know ahead of time whether or not a configuration page for a module even exists, and then you need to know under what heading it is located on the 'Configuration' page.</p>
+<p>Instead, I find the module on the 'Extend' page, and check to see whether or not it has a 'Configure' link, which takes me directly to the configuration page.</p>
+<p>It is also true that you can go to the 'Permissions' page via the Admin-menu item 'People' &gt; "Permissions" to set permissions for a module, but it would be very helpful to know ahead of time whether or not permissions for a module even exist, and if so, it would also be helpful to know exactly under what heading name they are classified on the 'Permissions' page.</p>
+<p>Instead, I find the module on the 'Extend' page, and check to see whether or not it even has a 'Permissions' link, which takes me to the right spot on the 'Permissions' page.</p>
+<h3 id="s-module-help-link"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-help-link"></a><a href="#mod_help" id="mod_help" rel="nofollow">Module 'Help' link</a></h3>
+<p>The amount of readily available help documentation provided by the developers of a module varies between modules, both in terms of existence, depth of detail, and in its level of usefulness to new users.</p>
+<p>Module documentation will be discussed in more detail below in the section "Module documentation and help", but for now, the 'Help' button found on the 'Extend' page will be briefly discussed in terms of its usefulness for module configuration.</p>
+<p>On the 'Modules' page of your site, if for a particular module you see a "Help" link, click on it and see what you get.</p>
+<p>I recommend that you at least scan the help page to get an idea of what it contains.</p>
+<p>That page might contain details that will be relevant for you when you next use either the 'Permissions' or 'Configure' buttons for your module (if applicable).</p>
+<p>Other module documentation and help options will be discussed below in the section <a href="#help_doc" rel="nofollow">Module documentation and help</a>.</p>
+<p>When you are done exploring the 'Help' page, return to the 'Modules' page.</p>
+<h3 id="s-module-permissions-link"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-permissions-link"></a><a href="#mod_permissions" id="mod_permissions" rel="nofollow">Module 'Permissions' link</a></h3>
+<p>Not all modules have 'permissions' associated with them, but if a module does, you should be seeing a 'Permissions' link for the module to the right of its description on the 'Modules' page.</p>
+<p>Whenever a contrib module is first enabled on your site, the 'Administrator' role is automatically granted full permissions for that module.</p>
+<p>Yet, some modules will require that you set permissions for the 'Anonymous user' and 'Authenticated user' roles to get a module to work for those roles in the manner that you want it to.</p>
+<p>Permissions information for your new contrib module might have been at the 'Help' link discussed just above, or it might be in 'README.txt' or 'INSTALL.txt' files at the top level of the module folder as will be discussed below in the section <a href="#help_doc" rel="nofollow">Module documentation and help</a>.</p>
+<h4 id="s-permissions-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-permissions-overview"></a><a href="#mod_perm_over" id="mod_perm_over" rel="nofollow">Permissions overview</a></h4>
+<p>If you have never been to the 'Permissions' page before, it would be helpful for you to have an idea of what it looks like as you read further.</p>
+<p>To get to the 'Permissions' page, you can click on any one of the 'Permissions' links on the 'Modules' page; or, in your page-top admin menu, click "People", and at the "People" page, click the page-top tab (or link) labeled "Permissions".</p>
+<p>By default, your Drupal site creates three permission levels, one for each type of basic site user: 'Anonymous user', 'Authenticated user', and 'Administrator'.</p>
+<p><strong>The 'Administrator' role user accounts</strong></p>
+<p>As you might guess, you are an 'Administrator', and as such, your account is granted the highest level of permissions allowed on your site: permission to do anything and everything.</p>
+<p>By default, every time a contrib module is first enabled, it grants full-access permissions to you, and any other user with the 'Administrator' role user account.</p>
+<p><strong>Note about Drupal 7 core modules not originally enabled:</strong> In the past, a Drupal 7 core module that was not enabled at the time the site was created, as for example, the 'Book' module, did not necessarily grant the 'Administrator' role permission to use it when it was enabled for the first time. That may be different now, but it is something you will want to be aware of as something to double-check after you enable a Drupal 7 core module for the first time.</p>
+<p><strong>The 'Authenticated user' role user accounts</strong></p>
+<p>'Authenticated user' accounts are accounts that are created, for example, by complete strangers, who come to your site, and register for an account.</p>
+<p>When authenticated users are 'logged in' to their accounts, your site classifies them as having a role of 'Authenticated user', and they will be granted permission to do the things, but only the things, that you have set permissions for an 'Authenticated user' to do.</p>
+<p>By default, the 'Authenticated user' role has relatively few permissions granted to it, but by default an 'Authenticated user' can post comments, and use shortcuts.</p>
+<p><strong>The 'Anonymous user' role user accounts</strong></p>
+<p>An 'Anonymous user', however, can do little more, by default, than view site content, and use the site-wide contact form.</p>
+<p><strong>You are in control</strong></p>
+<p>You can change the various permissions for each role as you like.</p>
+<p><strong>You are in control</strong></p>
+<p>You can also create any number of additional new accounts, and specify each account as being either an 'Authenticated user' account, or an 'Administrator' account. You give each account a minimum of a username and password, though you might also assign an email address as well.</p>
+<p><strong>Additional user roles</strong></p>
+<p>In addition to the three user roles that come with Drupal core, you can create any number of additional user roles if, for example, you want individuals that you trust to be able to administer certain things, but you do not want them to have permission to administer everything on your site.</p>
+<p>To create another user role, at the top of the 'Permissions' page, click the tab 'Roles', and near the bottom of that page, click the button 'Add role'.</p>
+<h4 id="s-your-modules-permissions"><a class="toc-anchor" title="Permalink to this headline" href="#s-your-modules-permissions"></a><a href="#your_mod_perm" id="your_mod_perm" rel="nofollow">Your module's permissions</a></h4>
+<p>If on the 'Modules' page, you have a 'Permissions' link for your module, click that.</p>
+<p>The 'Permissions' page for your module is at <code class="language-php">[d7-root]/admin/people/permissions</code></p>
+<p>Whenever you click on one of the 'Permissions' links on the 'Modules' page, you will be taken to the 'Permissions' page at a point on the page with the first of the relevant permission(s) at the top of the window (There may be more than one permission associated with the module).</p>
+<p>You might have to scroll up a line, bringing the window down a hair, because the permission you want might be hidden just under the admin-menu at the page's top.</p>
+<p>Be aware, however, that if the 'Permissions' page should happen to present itself as being scrolled all the way down, then the permission you seek will probably not be at the top of your viewing window. In other words, since the page is down as far as it can go, and your specific permission is too near the bottom of the list, your permission, therefore, will not be at the top of the viewing window, but rather, somewhere in the middle of it.</p>
+<p>The 'Administrator' column check-boxes (furthest to the right) will always be checked after you first enable a new contrib module.</p>
+<p><strong>Note about Drupal 7 core modules not originally enabled:</strong> In the past, a Drupal 7 core module that was not enabled at the time the site was created, as for example, the 'Book' module, did not necessarily grant the 'Administrator' role permission to use it when it was enabled for the first time. That may be different now, but it is something you will want to be aware of as something to double-check after you enable a Drupal 7 core module for the first time.</p>
+<p>Whether or not you allow 'Anonymous' and/or 'Authenticated' users to have a particular permission is up to you.</p>
+<p>If it is not clear to you what each permission is intended to control, and what the full implications might be behind allowing a permission for either 'Anonymous user' and/or 'Authenticated user', then please consult the 'Help' link for the module on the 'Extend' page (if the 'Help' link exists). Or, consult the 'README.txt' or 'INSTALL.txt' files at the top level of the module folder, as will be discussed below, along with additional help options, in the section <a href="#help_doc" rel="nofollow">Module documentation and help</a>.</p>
+<h4 id="s-module-permissions-security-warning"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-permissions-security-warning"></a><a href="#mod_perm_secure" id="mod_perm_secure" rel="nofollow">Module permissions security warning</a></h4>
+<p>Any permission that displays the following words, should only give given to individuals that you trust 100%.</p>
+<pre>
+<code class="language-php">Warning: Give to trusted roles only; this permission has security implications. </code></pre><p>And, importantly, even though a permission does not have the full warning quoted above, if it uses the word 'Administer' in its first-column description, then that item might also be a huge security risk, and should be given only to individuals you completely trust.</p>
+<p>For example, the 'Taxonomy' permission reads, "Administer vocabularies", but it does not display the full warning above.</p>
+<p>And yet, if you give someone permission to administer taxonomies, you will be giving them access to editing fields, which puts your site in jeopardy.</p>
+<p>In conclusion, when a 'Permission' uses the word "Administer", only give it to those individuals who you completely trust.</p>
+<p>Return to the 'Modules' page when you are done making changes on the 'Permissions' page.</p>
+<h3 id="s-module-configure-link"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-configure-link"></a><a href="#mod_config" id="mod_config" rel="nofollow">Module 'Configure' link</a></h3>
+<p>On the 'Modules' page, if the link 'Configure' is available for your new module, click that.</p>
+<p>If the link 'Configure' does not exist, then your module has no configurable options.</p>
+<p>If it is not clear to you what a each configuration option is intended to control, and what the full implications are behind each option, then please consult the 'Help' link for that module on the 'Extend' page (if the 'Help' link exists). Or, consult the 'README.txt' and/or 'INSTALL.txt' files at the top level folder of a contrib module, as will be discussed below, along with additional help options, in the section <a href="#help_doc" rel="nofollow">Module documentation and help</a>.</p>
+<h2 id="s-module-documentation-and-help"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-documentation-and-help"></a><a href="#help_doc" id="help_doc" rel="nofollow">Module documentation and help</a></h2>
+<p>Some modules do not actually need you to do anything, and they just do what they do behind the scenes. Those modules, however, probably have no configurable options, or that serve only as those upon which other modules are dependent upon.</p>
+<p>More commonly, a module you are concerned about is something that you can adjust permissions and options for. Some projects are easy to use, which is to say, their use is 'intuitive', and it will be relatively clear to you what you can adjust, and what you need to do to accomplish whatever it is that you may want to do.</p>
+<p>If you want to know all of the relevant details that you need to intelligently use the module you just installed, then, offhand, I can think of several things you may need to do, or places to look.</p>
+<p>The following suggestions are ordered roughly by ease-of-use.</p>
+<p>Unfortunately for beginning end-users like us, Drupal is in constant development, and while we are lucky to be able to freely benefit from all of the great work by the developers, their time is limited, and I think it is safe to say that the best of the developers are not inclined to be the most diligent of documentation creators for the benefit of newbies, which is what we are, else you and I would not be here now.</p>
+<p>I would encourage you to document and post your trials and tribulations as you are learning to use Drupal, for the benefit of the thousands of individuals who will in your shoes in the coming day, months, and years.</p>
+<p>I accept it as the ultimate challenge to create this documentation, in-spite of (or because of) the seemingly endless irritations, frustrations, and aggravations-- of using the new documentation section at Drupal-- and to a lesser extent, the undo challenges of learning and using Drupal, which could have been eliminated if adequate newbie 'How-to's had previously been created by others like you and I-- but especially, I am happy in my assumption that you, my friend, will benefit from this.</p>
+<p>You, like me, do not have to know anything about 'development' or programming to share what you 'do' know, and are learning.</p>
+<h3 id="s-trial-and-error"><a class="toc-anchor" title="Permalink to this headline" href="#s-trial-and-error"></a><a href="#trial_and_error" id="trial_and_error" rel="nofollow">Trial and error</a></h3>
+<p>You can just jump right in and start using the module, or start playing with its configuration options.</p>
+<p>Or in cases where after research on your part you can not figure out what an option does, or what all of the potential implications of using an option might be, you should feel free to just try anything that your adventurous soul thinks best</p>
+<p>Whenever you reach a point in time that a module requires guesswork on your part, you really do not have to worry about trying out any option available to you, because your site is backed up, and you can always revert to a former version of your site. You site is backed up, right?</p>
+<p>Given that it may not be immediately apparent to you what all of the affects a module or a particular option for that module will have across your site, it is for that reason that I recommend that you only try out one module at a time, and that you navigate to every corner of you site, and try using your site in every way that you can conceive of-- creating new pages, and trying different configuration options-- before you move on to adding another contrib module.</p>
+<p>Otherwise, if you enable more that one new module, and you then encounter problems or situations that seem weird to you, you will not know which of the new modules is responsible for that which is troubling you.</p>
+<h3 id="s-project-page-content"><a class="toc-anchor" title="Permalink to this headline" href="#s-project-page-content"></a><a href="#project_pg_content" id="project_pg_content" rel="nofollow">Project page content</a></h3>
+<p>Each module 'project page' is its home-page at drupal.org. The project page is where I usually go first both when I am considering whether or not to try out a module, or when I encounter problems, or have questions about a module I have just enabled.</p>
+<p>If you carefully read the project page in its entirety, you can be relatively certain that you have all of the most important information you need. For example, when considering whether to try out a module, if any other modules are required for the module to work, those other modules will be listed somewhere on the project page.</p>
+<p>The project page might also include other helpful links of interest for a variety of things relating to that module.</p>
+<p>The project page content might be intended for new Drupal users, or might be geared toward more advanced users/developers.</p>
+<h3 id="s-project-page-read-documentation-link-when-existing"><a class="toc-anchor" title="Permalink to this headline" href="#s-project-page-read-documentation-link-when-existing"></a><a href="#project_rd_docs_link" id="project_rd_docs_link" rel="nofollow">Project page 'Read documentation' link (when existing)</a></h3>
+<p>In the right-hand column, (a column that drops to the page-bottom on mobile devices, or inside other narrow browser windows) you will always find the heading 'Resources', under which you may, or may not find a link 'Read documentation'.</p>
+<p>Not all project pages have a 'Read documentation' link, however, and in that case, hopefully you will have found helpful documentation links in the project page's main content area.</p>
+<p>When the 'Read documentation' link does exist, it will be to what the developer(s) consider to be the single most relevant resource for you to use to begin your quest for more information.</p>
+<p>The contents of each project page is determined by, and under the control of, that project's initial creator, and possibly a few other individuals to whom the initial creator has given such permission.</p>
+<p>Other drupal.org members without access to changing the project page, will, never-the-less, have very often created other d.o pages with great information about the module you want to know about. Unfortunately, however, those other pages will only very rarely have links to them on the project page</p>
+<p>Finding those pages which are not linked-to on the project page will be discussed below in the section <a href="#google_search_a_site" rel="nofollow">Google search limited to drupal.org</a></p>
+<h3 id="s-module-readmetxt-or-installtxt-files"><a class="toc-anchor" title="Permalink to this headline" href="#s-module-readmetxt-or-installtxt-files"></a><a href="#mod_readme" id="mod_readme" rel="nofollow">Module "README.txt", or "INSTALL.txt" files</a></h3>
+<p>The "README.txt" file has historically been the official place where all of the truly relevant and necessary information for a module (or theme) is documented, including anything relevant when the module (or theme) is updated to a newer version.</p>
+<p>The README.txt file is in the top level folder of the contrib module (or theme) after it has been extracted, if it exists.</p>
+<p>To view a module's (or theme's) 'README.txt' file without having to download anything, visit the URL :</p>
+<p><code class="language-php">http://cgit.drupalcode.org/project/PROJECT_MACHINE_NAME.git/blob/HEAD:/README.txt</code></p>
+<p>Replace the expression <code class="language-php">PROJECT_MACHINE_NAME</code> in the URL above with the short 'machine name' of the particular project.</p>
+<p>The 'machine name' is in your browser's address-bar URL when you are at any drupal.org project page, as for example, the 'PROJECT_MACHINE_NAME' portion of this sample URL-- a URL similar to the one for every project:</p>
+<p><code class="language-php">https://www.drupal.org/project/PROJECT_MACHINE_NAME</code></p>
+<p>If the "README.txt", or "INSTALL.txt" files do not exist, the module is probably one for which their are no configurable options, and is simply a module that works silently in the background, and is necessary for other contrib modules to work.</p>
+<p>When there is no README.txt file, or if you want to see all of the other documentation for a project, use the following URL (replace 'PROJECT_MACHINE_NAME'):</p>
+<p><code class="language-php">http://cgit.drupalcode.org/PROJECT_MACHINE_NAME/tree/?id=HEAD</code></p>
+<p>At the top-right corner of that 'drupalcode.org' page, you may have to 'switch' to the Drupal core version that you are interested in exploring.</p>
+<p>Note: When the INSTALL.txt file exists for a Drupal 7 project, it might have important information not found in the README.txt file.</p>
+<h3 id="s-google-search-limited-to-drupalorg"><a class="toc-anchor" title="Permalink to this headline" href="#s-google-search-limited-to-drupalorg"></a><a href="#google_search_a_site" id="google_search_a_site" rel="nofollow">Google search limited to drupal.org</a></h3>
+<p>If you want a search that is limited to the entire drupal.org site, this is what I do. I use this method quite often for searches of drupal.org, or of any other domain of my choice.</p>
+<p>I go to <a href="https://www.google.com/" target="_blank" title="   This link opens in a new tab/window.  " rel="nofollow">google.com ⎘ </a>, and I type:</p>
+<p><code class="language-php">site:drupal.org</code></p>
+<p>Note that there is No space following the colon (":") in front of the domain name. And do not use 'www.' at the beginning of any domain name.</p>
+<p>Add a 'blank-space' following whatever the domain name is, and type whatever keywords you can think of, namely, for our discussion today, the module's name.</p>
+<p>You might have considered using the search engine provided by drupal.org at the top of all drupal.org pages. I tried that a few times years ago, and I would encourage you to try it for yourself only if you like exercises in futility.</p>
+<p>I have at times also found it helpful to try to limit a Google search specifically to 'Drupal 8' (instead of also getting results for D6, D7...) by adding <code class="language-php">"Drupal 8"</code> into the Google search engine text-area box. By using double-quotation marks, Google will then return search results for pages that contain the exact two-or-more word expression in double-quotes. (...mostly.)</p>
+<p>To see what information is available for a specific module all across the Earth, including pages both inside of, and outside of drupal.org, omit 'site:drupal.org'.</p>
+<p><strong>To get 100 Google search results per page, instead of 10</strong>, when you are at any Google search results page, click the top-right 'gear' icon, and in the drop-down menu, click 'Search settings'. At the next page, under the heading 'Google Instant predictions', click the radio-button "Never show instant results", Then under the heading 'Results per page', drag the slider all the way to the right. Your searches will now take an extra three-thousandths of a second, however, or something like that.</p>
+<h3 id="s-your-sites-module-page-help-buttonslinks-when-existing"><a class="toc-anchor" title="Permalink to this headline" href="#s-your-sites-module-page-help-buttonslinks-when-existing"></a><a href="#help_button" id="help_button" rel="nofollow">Your site's 'Module' page "Help" buttons/links (when existing)</a></h3>
+<p>On the 'Modules' page of your site, in the 'Operations' column for a module, you will sometimes have a 'Help' button/link for that module which takes you to a page generated by your site.</p>
+<p>Unfortunately, however, to gain access to the help page on your site for a module, not only do you have to have the module imported into your site, but also, the 'Help' button/link will only be visible if that module is enabled. And, unfortunately, not all contrib or core modules have a 'Help' button/link available for it, but you will have no way of knowing if one is available unless you first enable the module.</p>
+<p>For those problematic reasons, I have never relied on, nor used those 'Help' buttons, though looking at them now I see that they do often lead to pages that contain good information.</p>
+<h2 id="s-updating-the-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-updating-the-module"></a><a href="#update_mod" id="update_mod" rel="nofollow">Updating the module</a></h2>
+<p>See the page <a href="https://www.drupal.org/docs/7/updating-your-drupal-site/updating-modules" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">Updating modules (Drupal 7)</a>.</p>
+<p>Note: After you update a module that you have existing on your site (which you should only do after making a backup of both your database-- and your codebase folders: 'modules, 'sites', and 'themes'), is is a good idea to, and sometimes critical to, 'run the update script', a process detailed above at <a href="#broken_site" rel="nofollow">Broken site problems - Run the update script, and 'Clear all caches'</a>.</p>
+<p>Those instruction amount to you typing <code class="language-php">/update.php</code> following your site address in your browser's address-bar, as for example <code class="language-php">http://www.example.com/update.php</code>, then press your [Return/Enter] key, and on the page that loads next, click 'Continue'.</p>
+<p>Or, to 'run the update script', click the link 'update script' at the top of the 'Extend' page.</p>
+<p><strong>To keep up-to-date on any issues and fixes related to your newly installed module(s)</strong></p>
+<p>You can <a href="http://drupal.org/user/register" rel="nofollow">create a user account</a> on Drupal.org (if you haven't done so already), and then subscribe to the feed of each module you are using from the issues page for that module.<br />
+<img alt="drupal.org 'Issues' page 'Subscribe button for 'following' a module's or theme's issues or updates" src="/files/subscribe.jpg" /></p>
+<p>You can get to the 'issues' page for each module from its drupal.org project page, under the heading 'Issues for ...'.</p>
+<h2 id="s-uninstalling-the-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-uninstalling-the-module"></a><a href="#uninstall_mod" id="uninstall_mod" rel="nofollow">Uninstalling the module</a></h2>
+<p>See the page <a href="https://www.drupal.org/docs/7/extending-drupal/uninstalling-modules" target="_blank" title="   This link opens in a new tab/window. " rel="nofollow">Uninstalling modules</a>.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-498566152a001680db9da83659be5f77">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/895232/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/895232/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28895232%29%20Installing%20modules">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"efji3WSBuAqZR7dY-ctFSs4HN8Jt-CFG6b3HnoEl6uQ"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/extend\/installing-modules":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2764159"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

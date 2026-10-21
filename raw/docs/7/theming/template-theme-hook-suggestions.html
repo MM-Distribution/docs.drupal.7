@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="A theme hook suggestion is an alternate template (.tpl.php) file that you have created to override the base or original template file." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/theming/template-theme-hook-suggestions" />
+<link rel="shortlink" href="https://www.drupal.org/node/1089656" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/theming/template-theme-hook-suggestions" />
+<meta property="og:title" content="Template (theme hook) suggestions" />
+<meta property="og:description" content="A theme hook suggestion is an alternate template (.tpl.php) file that you have created to override the base or original template file. For Drupal 8, see Twig template naming conventions. Theme debug mode As of Drupal 7.33, Drupal core has a theme debug mode that can be enabled and disabled via the theme_debug variable and is very helpful when working with template suggestions. Custom Theme Hook Suggestions Custom suggestions beyond the ones listed below can be created. See the page Working with template suggestions." />
+<meta property="og:updated_time" content="2021-11-20T00:04:51+00:00" />
+<meta property="article:published_time" content="2011-03-11T20:25:31+00:00" />
+<meta property="article:modified_time" content="2021-11-20T00:04:51+00:00" />
+  <title>Template (theme hook) suggestions | Theming Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1089656 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2792973" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/theming/template-theme-hook-suggestions" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-6OfqNsj7TpA7cGGbhHMKpzKgFxEbccWCVn6wf6vKQ0Q" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/1089656" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/1089656" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/theming/template-theme-hook-suggestions" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-4p-9ugcaBRuBNcZWp8SqAW6pkRcZ__E11XaxNg5JtEU" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/theming">Theming Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-1089656">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/theming/template-theme-hook-suggestions#s-theme-debug-mode" class="toc-link toc-link-invalid-id active">Theme debug mode</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-custom-theme-hook-suggestions" class="toc-link toc-link-invalid-id active">Custom Theme Hook Suggestions</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-default-theme-hook-suggestions-in-core" class="toc-link toc-link-invalid-id active">Default Theme Hook Suggestions in Core</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-block-region-module-deltatplphp" class="toc-link toc-link-invalid-id active">block--[region|[module|--delta]].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-comment-node-typetplphp" class="toc-link toc-link-invalid-id active">comment--node-[type].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-comment-wrapper-node-typetplphp" class="toc-link toc-link-invalid-id active">comment-wrapper--node-[type].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-field-typename-content-typecontent-typetplphp" class="toc-link toc-link-invalid-id active">field--[type|name[--content-type]|content-type].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-forums-containertopic-forumidtplphp" class="toc-link toc-link-invalid-id active">forums--[[container|topic]--forumID].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-htmltplphp" class="toc-link toc-link-invalid-id active">html.tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-maintenance-page-offlinetplphp" class="toc-link toc-link-invalid-id active">maintenance-page--[offline].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-node-typenodeidtplphp" class="toc-link toc-link-invalid-id active">node--[type|nodeid].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-page-frontinternalpathtplphp" class="toc-link toc-link-invalid-id active">page--[front|internal/path].tpl.php</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-how-drupal-determines-page-theme-hook-suggestions-based-on-path" class="toc-link toc-link-invalid-id active">How Drupal determines page theme hook suggestions based on path</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-poll-results-blocktplphp" class="toc-link toc-link-invalid-id active">poll-results--[block].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-poll-vote-blocktplphp" class="toc-link toc-link-invalid-id active">poll-vote--[block].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-poll-bar-blocktplphp" class="toc-link toc-link-invalid-id active">poll-bar--[block].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-profile-wrapper-fieldtplphp" class="toc-link toc-link-invalid-id active">profile-wrapper--[field].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-region-regiontplphp" class="toc-link toc-link-invalid-id active">region--[region].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-search-results-searchtypetplphp" class="toc-link toc-link-invalid-id active">search-results--[searchType].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-search-result-searchtypetplphp" class="toc-link toc-link-invalid-id active">search-result--[searchType].tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-taxonomy-term-vocabulary-machine-nametidtplphp" class="toc-link toc-link-invalid-id active">taxonomy-term--[vocabulary-machine-name|tid].tpl.php</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/template-theme-hook-suggestions#s-add-a-pagetplphp-depending-on-content-type" class="toc-link toc-link-invalid-id active">Add a page.tpl.php depending on content type.</a></li>
+<li class="anchor-list__item h2-tag last"><a href="/docs/7/theming/template-theme-hook-suggestions#s-cache-issue" class="toc-link toc-link-invalid-id active">Cache issue</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="theming-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/theming">Theming Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/theming/overview-of-theme-files">Overview of theme files</a></li>
+<li class="leaf"><a href="/docs/7/theming/writing-theme-info-files">Writing theme .info files</a></li>
+<li class="leaf"><a href="/docs/7/theming/default-info-values">Default .info values</a></li>
+<li class="leaf"><a href="/docs/7/theming/assigning-content-to-regions">Assigning content to regions</a></li>
+<li class="leaf"><a href="/docs/7/theming/checking-if-a-region-is-occupied">Checking if a region is occupied</a></li>
+<li class="leaf"><a href="/docs/7/theming/theme-settings">Theme settings</a></li>
+<li class="leaf"><a href="/docs/7/theming/global-settings">Global settings</a></li>
+<li class="leaf"><a href="/docs/7/theming/integration-with-the-color-module">Integration with the Color module</a></li>
+<li class="leaf"><a href="/docs/7/theming/creating-a-sub-theme">Creating a sub-theme</a></li>
+<li class="leaf"><a href="/docs/7/theming/clearing-the-theme-cache">Clearing the theme cache</a></li>
+<li class="leaf"><a href="/docs/7/theming/sub-theme-inheritance-summary">Sub Theme - Inheritance Summary</a></li>
+<li class="leaf"><a href="/docs/7/theming/example-creating-a-garland-sub-theme-that-utilizes-the-color-module">Example: creating a Garland sub-theme that utilizes the Color module</a></li>
+<li class="leaf"><a href="/docs/7/theming/working-with-css">Working with CSS</a></li>
+<li class="leaf"><a href="/docs/7/theming/working-with-javascript-and-jquery">Working with JavaScript and jQuery</a></li>
+<li class="leaf"><a href="/docs/7/theming/using-newer-versions-of-jquery">Using Newer Versions of jQuery</a></li>
+<li class="leaf"><a href="/docs/7/theming/core-templates">Core templates</a></li>
+<li class="leaf active-trail"><a href="/docs/7/theming/template-theme-hook-suggestions" class="active-trail active">Template (theme hook) suggestions</a></li>
+<li class="leaf"><a href="/docs/7/theming/theming-blocks">Theming blocks</a></li>
+<li class="leaf"><a href="/docs/7/theming/advanced">Advanced theming</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output">Overriding themable output</a></li>
+<li class="leaf"><a href="/docs/7/theming/creating-accessible-themes">Creating accessible themes</a></li>
+<li class="leaf"><a href="/docs/7/theming/howto">Theming HowTos</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices">Tools and best practices</a></li>
+<li class="last leaf"><a href="/docs/7/theming/upgrading-6x-themes-to-7x">Upgrading 6.x themes to 7.x</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Template (theme hook) suggestions</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/1089656/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    20 November 2021  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>A theme hook suggestion is an alternate template (.tpl.php) file that you have created to override the base or original template file.</p>
+<p>For Drupal 8, see <a href="https://www.drupal.org/node/2354645" rel="nofollow">Twig template naming conventions</a>.</p>
+<h2 id="s-theme-debug-mode"><a class="toc-anchor" title="Permalink to this headline" href="#s-theme-debug-mode"></a>Theme debug mode</h2>
+<p>As of <a href="https://www.drupal.org/drupal-7.33-release-notes" rel="nofollow">Drupal 7.33</a>, Drupal core has a <a href="https://www.drupal.org/node/223440#theme-debug" rel="nofollow">theme debug mode</a> that can be enabled and disabled via the <code class="language-php">theme_debug</code> variable and is very helpful when working with template suggestions.</p>
+<h2 id="s-custom-theme-hook-suggestions"><a class="toc-anchor" title="Permalink to this headline" href="#s-custom-theme-hook-suggestions"></a>Custom Theme Hook Suggestions</h2>
+<p>Custom suggestions beyond the ones listed below can be created. See the page <a href="/node/223440#custom-suggestions" rel="nofollow">Working with template suggestions</a>.</p>
+<h2 id="s-default-theme-hook-suggestions-in-core"><a class="toc-anchor" title="Permalink to this headline" href="#s-default-theme-hook-suggestions-in-core"></a>Default Theme Hook Suggestions in Core</h2>
+<h3 id="s-block-region-module-deltatplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-block-region-module-deltatplphp"></a>block--[region|[module|--delta]].tpl.php</h3>
+<p>base template: <em>block.tpl.php</em></p>
+<p>Theme hook suggestions are made based on these factors, listed from the most specific template to the least. Drupal will use the most specific template it finds:</p>
+<ol>
+<li>block--<em>module--delta</em>.tpl.php</li>
+<li>block--<em>module</em>.tpl.php</li>
+<li>block--<em>region</em>.tpl.php</li>
+</ol>
+<p>"module" being the name of the module and "delta", the internal id assigned to the block by the module.</p>
+<p>For example, <em>"block--block--1.tpl.php"</em> would be used for the first user-submitted block added from the block administration screen since it was created by the block module with the id of 1. "region" will take effect for specific regions. An example of a region-specific template would be "<em>block--sidebar_first.tpl.php</em>".</p>
+<p>If you had a block created by a custom module called "custom" and a delta of "my-block", the theme hook suggestion would be called "<em>block--custom--my-block.tpl.php.</em>"</p>
+<p>Also one more example with Views, if you have a block created by views with a view name "front_news" and display id "block_1" then the theme hook suggestion would be: <em>block--views--front-news-block-1.tpl.php</em> (notice, when you have underscores in a display id or in a view name - you have to transform them into a single dash)</p>
+<p>Be aware that module names are case sensitive in this context. For instance if your module is called 'MyModule', the most general theme hook suggestion for this module would be "<em>block--MyModule.tpl.php.</em>"</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!block!block.tpl.php/7" rel="nofollow">block.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-comment-node-typetplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-comment-node-typetplphp"></a>comment--node-[type].tpl.php</h3>
+<p>base template: <em>comment.tpl.php</em></p>
+<p>Support was added to create comment--node-<em>type</em>.tpl.php files, to format comments of a certain node <em>type</em> differently than other comments in the site. For example, a comment made on an article-type node would be "comment--node-article.tpl.php".</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!comment!comment.tpl.php/7" rel="nofollow">comment.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-comment-wrapper-node-typetplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-comment-wrapper-node-typetplphp"></a>comment-wrapper--node-[type].tpl.php</h3>
+<p>base template: <em>comment-wrapper.tpl.php</em></p>
+<p>Similar to the above but for the wrapper template.</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!comment!comment-wrapper.tpl.php/7" rel="nofollow">comment-wrapper.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-field-typename-content-typecontent-typetplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-field-typename-content-typecontent-typetplphp"></a>field--[type|name[--content-type]|content-type].tpl.php</h3>
+<p>base template: <em>field.tpl.php</em></p>
+<p>Theme hook suggestions are made based on these factors, listed from the most specific template to the least. Drupal will use the most specific template it finds:</p>
+<ol>
+<li>field--<em>field-name</em>--<em>content-type</em>.tpl.php</li>
+<li>field--<em>content-type</em>.tpl.php</li>
+<li>field--<em>field-name</em>.tpl.php</li>
+<li>field--<em>field-type</em>.tpl.php</li>
+</ol>
+<p>Note that underscores in a Field's machine name are replaced by hyphens. Also remember to include "field-" in custom field names, e.g: field--field-phone.tpl.php.</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!field!theme!field.tpl.php/7" rel="nofollow">field.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-forums-containertopic-forumidtplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-forums-containertopic-forumidtplphp"></a>forums--[[container|topic]--forumID].tpl.php</h3>
+<p>base template: <em>forums.tpl.php</em></p>
+<p>Theme hook suggestions are made based on these factors, listed from the most specific template to the least. Drupal will use the most specific template it finds:</p>
+<p>For forum containers:</p>
+<ol>
+<li>forums--containers--<em>forumID</em>.tpl.php</li>
+<li>forums--<em>forumID</em>.tpl.php</li>
+<li>forums--containers.tpl.php</li>
+</ol>
+<p>For forum topics:</p>
+<ol>
+<li>forums--topics--<em>forumID</em>.tpl.php</li>
+<li>forums--<em>forumID</em>.tpl.php</li>
+<li>forums--topics.tpl.php</li>
+</ol>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!forum!forums.tpl.php/7" rel="nofollow">forums.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-htmltplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-htmltplphp"></a>html.tpl.php</h3>
+<p>base template: <em>html.tpl.php</em></p>
+<p>The following are some examples of how you may override the base template:</p>
+<ol>
+<li>html--internalviewpath.tpl.php</li>
+<li>html--node--id.tpl.php</li>
+</ol>
+<p>See <a href="https://api.drupal.org/api/drupal/modules%21system%21html.tpl.php/7.x" rel="nofollow">html.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-maintenance-page-offlinetplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-maintenance-page-offlinetplphp"></a>maintenance-page--[offline].tpl.php</h3>
+<p>base template: <em>maintenance-page.tpl.php</em></p>
+<p>This applies when the database fails. Useful for presenting a friendlier page without error messages. <a href="/node/195435" rel="nofollow">Theming the maintenance page</a> must be properly setup first.</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!system!maintenance-page.tpl.php/7" rel="nofollow">maintenance-page.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-node-typenodeidtplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-node-typenodeidtplphp"></a>node--[type|nodeid].tpl.php</h3>
+<p>base template: <em>node.tpl.php</em></p>
+<p>Theme hook suggestions are made based on these factors, listed from the most specific template to the least. Drupal will use the most specific template it finds:</p>
+<ol>
+<li>node--nodeid.tpl.php</li>
+<li>node--type.tpl.php</li>
+<li>node.tpl.php</li>
+</ol>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!node!node.tpl.php/7" rel="nofollow">node.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-page-frontinternalpathtplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-page-frontinternalpathtplphp"></a>page--[front|internal/path].tpl.php</h3>
+<p>base template: <em>page.tpl.php</em></p>
+<p>The suggestions are numerous. The one that takes precedence is for the front page. The rest is based on the internal path of the current page. Do not confuse the internal path to path aliases which are not accounted for. <em>Keep in mind that the commonly-used <a href="http://drupal.org/project/pathauto" rel="nofollow">Pathauto module</a> uses path aliases.</em></p>
+<p>The front page can be set at <em>"Administration &gt; Configuration &gt; System &gt; Site information."</em> In Drupal 6, at <em>"Administrator &gt; Site configuration &gt; Site information."</em> Anything set there will trigger the suggestion of "page--front.tpl.php" for it.</p>
+<p>The list of suggested template files is in order of specificity based on internal paths. One suggestion is made for every element of the current path, though numeric elements are not carried to subsequent suggestions. For example, "<a href="http://www.example.com/node/1/edit" rel="nofollow">http://www.example.com/node/1/edit</a>" would result in the following suggestions:</p>
+<ol>
+<li>page--node--edit.tpl.php</li>
+<li>page--node--1.tpl.php</li>
+<li>page--node.tpl.php</li>
+<li>page.tpl.php</li>
+</ol>
+<p>Also see <a href="http://api.drupal.org/api/drupal/modules--system--page.tpl.php/7" rel="nofollow">page.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h4 id="s-how-drupal-determines-page-theme-hook-suggestions-based-on-path"><a class="toc-anchor" title="Permalink to this headline" href="#s-how-drupal-determines-page-theme-hook-suggestions-based-on-path"></a>How Drupal determines page theme hook suggestions based on path</h4>
+<p>Here is another explanation based on the <a href="http://api.drupal.org/api/drupal/includes--theme.inc/function/theme_get_suggestions/7" rel="nofollow">theme_get_suggestions()</a> function:</p>
+<p>The list of possible templates for a given page is generated by Drupal through the <a href="http://api.drupal.org/api/drupal/includes--theme.inc/function/theme_get_suggestions/7" rel="nofollow">theme_get_suggestions()</a> function, which is called by the <a href="http://api.drupal.org/api/drupal/includes--theme.inc/function/template_preprocess_page/7" rel="nofollow">template_preprocess_page()</a> function.</p>
+<p>The <a href="http://drupal.org/node/19828" rel="nofollow">Drupal path</a> of the page is first broken up into its components. As mentioned above, the Drupal path is not any of its aliases: there is one and only one Drupal path for a page. For the examples "<a href="http://www.example.com/node/1/edit" rel="nofollow">http://www.example.com/node/1/edit</a>" and "<a href="http://www.example.com/mysitename?q=node/1/edit" rel="nofollow">http://www.example.com/mysitename?q=node/1/edit</a>", the Drupal path is node/1/edit, and its components are "node", 1, and "edit".</p>
+<p>Next, the prefix is set to "page". Then, for every component, the following logic is followed:</p>
+<ol>
+<li>If the component is a number, add the prefix plus "__%" to the list of suggestions.</li>
+<li>Regardless of whether the component is a number or not, add the prefix plus "__" plus the component to the list of suggestions.</li>
+<li>If the component is <em>not</em> a number, append "__" plus the component to the prefix.</li>
+</ol>
+<p>After the list of components is iterated through, if the page is the front page (as set through <em>"Administration &gt; Configuration &gt; System &gt; Site information."</em>), then "page__front" is added to the list of suggestions.</p>
+<p>Note that eventually, to turn a suggestion into an actual file name, "__" gets turned into "--", and ".tpl.php" gets appended to the suggestion. Thus, for node/1/edit, we get the following list of suggestions:</p>
+<ol>
+<li>page.tpl.php (this is always a suggestion)</li>
+<li>page--node.tpl.php (and prefix is set to page__node)</li>
+<li>page--node--%.tpl.php</li>
+<li>page--node--1.tpl.php (prefix is not changed because the component is a number)</li>
+<li>page--node--edit.tpl.php (and prefix is set to page__node__edit)</li>
+<li>page--front.tpl.php (but only if node/1/edit is the front page)</li>
+</ol>
+<p>When the page is actually rendered, the <em>last</em> suggestion is checked. If it exists, that suggestion is used. Otherwise the next suggestion up is checked, and so on. Of course, if none of the overriding suggestions exist, page.tpl.php is the final suggestion. This also explains why page--front.tpl.php, if it exists, overrides any other suggestion for the front page: it is always the last suggestion for the page designated as the front page.</p>
+<h3 id="s-poll-results-blocktplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-poll-results-blocktplphp"></a>poll-results--[block].tpl.php</h3>
+<p>base template: <em>poll-results.tpl.php</em></p>
+<p>The theme function that generates poll results are shared for nodes and blocks. The default is to use it for nodes but a suggestion is made for rendering them inside block regions. This suggestion is used by default and the template file is located at "modules/poll/poll-results--block.tpl.php".</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!poll!poll-results.tpl.php/7" rel="nofollow">poll-results.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-poll-vote-blocktplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-poll-vote-blocktplphp"></a>poll-vote--[block].tpl.php</h3>
+<p>base template: <em>poll-vote.tpl.php</em></p>
+<p>Similar to poll-results--[block].tpl.php but for generating the voting form. You must provide your own template for it to take effect.</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!poll!poll-vote.tpl.php/7" rel="nofollow">poll-vote.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-poll-bar-blocktplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-poll-bar-blocktplphp"></a>poll-bar--[block].tpl.php</h3>
+<p>base template: <em>poll-bar.tpl.php</em></p>
+<p>Same as poll-vote--[block].tpl.php but for generating individual bars.</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!poll!poll-bar.tpl.php/7" rel="nofollow">poll-bar.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-profile-wrapper-fieldtplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-profile-wrapper-fieldtplphp"></a>profile-wrapper--[field].tpl.php</h3>
+<p>base template: <em>profile-wrapper.tpl.php</em></p>
+<p>The profile wrapper template is used when browsing the member listings page. When browsing specific fields, a suggestion is made with the field name. For example, <a href="http://drupal.org/profile/country/Belgium" rel="nofollow">http://drupal.org/profile/country/Belgium</a> would suggest "profile-wrapper--country.tpl.php".</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!profile!profile-wrapper.tpl.php/7" rel="nofollow">profile-wrapper.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-region-regiontplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-region-regiontplphp"></a>region--[region].tpl.php</h3>
+<p>base template: <em>region.tpl.php</em></p>
+<p>The region template is used when a page region has content, either from the Block system or a function like <a href="http://api.drupal.org/api/drupal/modules--system--system.api.php/function/hook_page_build/7" rel="nofollow">hook_page_build()</a>. Possible region names are determined by the theme's <a href="http://drupal.org/node/171205#regions" rel="nofollow">.info file</a>.</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!system!region.tpl.php/7" rel="nofollow">region.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-search-results-searchtypetplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-search-results-searchtypetplphp"></a>search-results--[searchType].tpl.php</h3>
+<p>base template: <em>search-results.tpl.php</em></p>
+<p>search-results.tpl.php is the default wrapper for search results. Depending on type of search different suggestions are made. For example, "example.com/search/node/Search+Term" would result in "search-results--node.tpl.php" being used. Compare that with "example.com/search/user/bob" resulting in "search-results--user.tpl.php". Modules can extend search types adding more suggestions of their type.</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!search!search-results.tpl.php/7" rel="nofollow">search-results.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h3 id="s-search-result-searchtypetplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-search-result-searchtypetplphp"></a>search-result--[searchType].tpl.php</h3>
+<p>base template: <em>search-result.tpl.php</em></p>
+<p>The same as above but for individual search results.</p>
+<h3 id="s-taxonomy-term-vocabulary-machine-nametidtplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-taxonomy-term-vocabulary-machine-nametidtplphp"></a>taxonomy-term--[vocabulary-machine-name|tid].tpl.php</h3>
+<p>base template: <em>taxonomy-term.tpl.php</em></p>
+<p>Theme hook suggestions are made based on these factors, listed from the most specific template to the least. Drupal will use the most specific template it finds:</p>
+<ol>
+<li>taxonomy-term--tid.tpl.php</li>
+<li>taxonomy-term--vocabulary-machine-name.tpl.php</li>
+<li>taxonomy-term.tpl.php</li>
+</ol>
+<p>Note that underscores in a vocabulary's machine name are replaced by hyphens.</p>
+<p>See <a href="https://api.drupal.org/api/drupal/modules!taxonomy!taxonomy-term.tpl.php/7" rel="nofollow">taxonomy-term.tpl.php</a> in the Drupal API documentation for more information.</p>
+<h2 id="s-add-a-pagetplphp-depending-on-content-type"><a class="toc-anchor" title="Permalink to this headline" href="#s-add-a-pagetplphp-depending-on-content-type"></a>Add a <code class="language-php">page.tpl.php</code> depending on content type.</h2>
+<p>In Drupal 7, you do this by having this code in the function <code class="language-php">THEME_preprocess_page</code> (where <code class="language-php">THEME</code> is the name of the theme) in the theme's <code class="language-php">template.php</code>.</p>
+<pre>
+
+</pre><pre>
+<code class="language-php">function THEME_preprocess_page(&amp;$variables) {
+  if (isset($variables['node']-&gt;type)) {
+   // If the content type's machine name is "my_machine_name" the file
+   // name will be "page--my-machine-name.tpl.php".
+   $variables['theme_hook_suggestions'][] = 'page__' . $variables['node']-&gt;type;
+   }
+} </code></pre><p>Add the if-statement at the end if this function already exists in the theme's <code class="language-php">template.php</code>, otherwise, add the functions.</p>
+<h2 id="s-cache-issue"><a class="toc-anchor" title="Permalink to this headline" href="#s-cache-issue"></a>Cache issue</h2>
+<p>When working with theme hook suggestion, there is a possibility that Drupal use its cache rather than the new templates as suggested. Remove the cache if you experience this problem. To clear the cache, choose one of the methods described in <a href="http://drupal.org/node/42055" rel="nofollow">Clearing Drupal's cache</a>.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-aad57633b12e94dad03e82427965837d">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/1089656/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/1089656/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%281089656%29%20Template%20%28theme%20hook%29%20suggestions">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"X9aupxFJvfy1ITgr5hrgErvcIGVtVKv3wWpHUnBSeeU"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/theming\/template-theme-hook-suggestions":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2792973"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
