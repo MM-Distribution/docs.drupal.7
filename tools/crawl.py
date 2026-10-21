@@ -93,7 +93,7 @@ def wait_turn():
         last = float(open(LAST).read().strip())
     except (FileNotFoundError, ValueError):
         last = 0
-    gap = DELAY - (time.time() - last)
+    gap = DELAY + 0.5 - (time.time() - last)
     if gap > 0:
         time.sleep(gap)
 
@@ -101,10 +101,10 @@ def wait_turn():
 def record_request():
     t = time.time()
     with open(LAST, "w") as f:
-        f.write(f"{int(t)}\n")
+        f.write(f"{t:.3f}\n")
     stamps = [s for s in read_log() if t - s < 86400] + [t]
     with open(LOG, "w") as f:
-        f.write("\n".join(f"{s:.0f}" for s in stamps) + "\n")
+        f.write("\n".join(f"{s:.3f}" for s in stamps) + "\n")
 
 
 def fetch(url):
