@@ -2,3 +2,17 @@ url	fetched_at	status	output_path
 https://www.drupal.org/docs/7/api	2026-10-21T05:11:10Z	200-index-only	-
 https://www.drupal.org/docs/7/api/database-api/dynamic-queries	2026-10-21T05:26:20Z	200-not-verbatim (fetch tool refused exact copy)	-
 https://www.drupal.org/docs/7	2026-10-21T05:48:38Z	200	raw/docs/7.html
+https://www.drupal.org/docs/7/understanding-drupal-7	2026-10-21T05:49:36Z	200	raw/docs/7/understanding-drupal-7.html
+https://www.drupal.org/docs/7/understanding-drupal/overview	2026-10-21T05:49:56Z	200	raw/docs/7/understanding-drupal/overview.html
+https://www.drupal.org/docs/7/understanding-drupal/general-concepts	2026-10-21T05:50:06Z	200	raw/docs/7/understanding-drupal/general-concepts.html
+https://www.drupal.org/docs/7/understanding-drupal/users-permissions-and-roles	2026-10-21T05:50:21Z	200	raw/docs/7/understanding-drupal/users-permissions-and-roles.html
+https://www.drupal.org/docs/7/understanding-drupal/content-types	2026-10-21T05:50:36Z	200	raw/docs/7/understanding-drupal/content-types.html
+https://www.drupal.org/docs/7/understanding-drupal/url-paths	2026-10-21T05:50:51Z	200	raw/docs/7/understanding-drupal/url-paths.html
+https://www.drupal.org/docs/7/understanding-drupal/technology-stack	2026-10-21T05:51:22Z	200	raw/docs/7/understanding-drupal/technology-stack.html
+https://www.drupal.org/docs/7/drupal-7-system-requirements	2026-10-21T05:51:38Z	200	raw/docs/7/drupal-7-system-requirements.html
+https://www.drupal.org/docs/7/system-requirements/overview	2026-10-21T05:51:53Z	200	raw/docs/7/system-requirements/overview.html
+https://www.drupal.org/docs/7/system-requirements/web-server	2026-10-21T05:52:08Z	200	raw/docs/7/system-requirements/web-server.html
+https://www.drupal.org/docs/7/system-requirements/database-server	2026-10-21T05:52:24Z	200	raw/docs/7/system-requirements/database-server.html
+https://www.drupal.org/docs/7/system-requirements/php-requirements-for-drupal-7	2026-10-21T05:52:40Z	200	raw/docs/7/system-requirements/php-requirements-for-drupal-7.html
+https://www.drupal.org/docs/7/system-requirements/what-is-pdo	2026-10-21T05:52:55Z	200	raw/docs/7/system-requirements/what-is-pdo.html
+https://www.drupal.org/docs/7/system-requirements/browser-requirements	2026-10-21T05:53:11Z	200	raw/docs/7/system-requirements/browser-requirements.html
