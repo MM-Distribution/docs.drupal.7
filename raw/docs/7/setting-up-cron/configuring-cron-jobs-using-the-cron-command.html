@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Cron is a daemon that executes commands at specified intervals. These commands are called &quot;cron jobs.&quot; Cron is available on Unix, Linux and" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command" />
+<link rel="shortlink" href="https://www.drupal.org/node/23714" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command" />
+<meta property="og:title" content="Configuring cron jobs using the cron command" />
+<meta property="og:description" content="Cron is a daemon that executes commands at specified intervals. These commands are called &quot;cron jobs.&quot; Cron is available on Unix, Linux and Mac servers. Windows servers use a Scheduled Task to execute commands. For a modest personal site, you might set up this cron job to run once a day. For a more active site, you might want to run that job more often—perhaps every few hours or every hour. This regular visit will tell Drupal to perform its periodic tasks, and this will help keep your system running smoothly." />
+<meta property="og:updated_time" content="2021-05-19T17:46:29+00:00" />
+<meta property="article:published_time" content="2005-05-27T00:45:44+00:00" />
+<meta property="article:modified_time" content="2021-05-19T17:46:29+00:00" />
+  <title>Configuring cron jobs using the cron command | Setting up cron for Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-23714 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2764153" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-baWvuG0kDyY8fd-AY00GYS_90zqxEL8CicRNgJBfKDM" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/23714" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/23714" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-mzLrB57T5UgKiVmIflpDo4eue6_74JHp0rVGUK2dRMg" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/setting-up-cron-for-drupal-7">Setting up cron for Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-23714">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-cron-url" class="toc-link toc-link-invalid-id active">Cron URL</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-the-cron-command" class="toc-link toc-link-invalid-id active">The cron command</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-how-drupal-uses-cron" class="toc-link toc-link-invalid-id active">How Drupal uses cron</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-how-to-set-up-a-cron-job" class="toc-link toc-link-invalid-id active">How to set up a cron job</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-some-hosting-companies-dont-allow-access-to-cron" class="toc-link toc-link-invalid-id active">Some hosting companies don’t allow access to cron</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-troubleshooting-cron-jobs" class="toc-link toc-link-invalid-id active">Troubleshooting cron jobs</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-example-scripts" class="toc-link toc-link-invalid-id active">Example scripts</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-running-cron-as-an-authenticated-user-d6-and-earlier-only" class="toc-link toc-link-invalid-id active">Running cron as an authenticated user (D6 and earlier only)</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-running-drupal-cron-tasks-from-drush" class="toc-link toc-link-invalid-id active">Running Drupal cron tasks from Drush</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-hard-coding-crons-secret-key" class="toc-link toc-link-invalid-id active">Hard-coding cron&#039;s &quot;secret key&quot;</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-drupal-7" class="toc-link toc-link-invalid-id active">Drupal 7</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-drupal-8" class="toc-link toc-link-invalid-id active">Drupal 8</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-security-notes" class="toc-link toc-link-invalid-id active">Security notes</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-multiple-sites" class="toc-link toc-link-invalid-id active">Multiple sites</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-ssl" class="toc-link toc-link-invalid-id active">SSL</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-configuring-an-editor-for-cron" class="toc-link toc-link-invalid-id active">Configuring an editor for cron</a></li>
+<li class="anchor-list__item h4-tag last"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command#s-proxy" class="toc-link toc-link-invalid-id active">Proxy</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="setting-up-cron-for-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/setting-up-cron-for-drupal-7">Setting up cron for Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/setting-up-cron/overview">Overview</a></li>
+<li class="leaf active-trail"><a href="/docs/7/setting-up-cron/configuring-cron-jobs-using-the-cron-command" class="active-trail active">Configuring cron jobs using the cron command</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron/running-cron-manually">Running cron manually</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron/multisite-cron">Multisite cron</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron/troubleshooting-cron">Troubleshooting cron</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron/configuring-cron-without-wget-lynx-or-curl-commands">Configuring cron without wget, lynx, or curl commands</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-dreamhost">Configuring cron jobs with DreamHost</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-mamp-localhost">Configuring cron jobs with MAMP localhost</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-mac-os-x-server-105x-and-later">Configuring cron jobs with Mac OS X Server 10.5.x and later</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-media-temple-grid-gs-and-dv-servers">Configuring cron jobs with Media Temple Grid (gs) and DV servers</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-network-solutions">Configuring cron jobs with Network Solutions</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-rackspace-cloud-sites">Configuring cron jobs with Rackspace Cloud Sites</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-virtualmin-and-webmin">Configuring cron jobs with Virtualmin and Webmin</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-windows">Configuring cron jobs with Windows</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-cpanel">Configuring cron jobs with cPanel</a></li>
+<li class="leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-hosteurope">Configuring cron jobs with hosteurope</a></li>
+<li class="last leaf"><a href="/docs/7/setting-up-cron-for-drupal/configuring-cron-jobs-with-ixwebhosting">Configuring cron jobs with ixWebHosting</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Configuring cron jobs using the cron command</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/23714/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    19 May 2021  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Cron is a daemon that executes commands at specified intervals. These commands are called "cron jobs." Cron is available on Unix, Linux and Mac servers. Windows servers use a <a href="http://drupal.org/node/31506" rel="nofollow">Scheduled Task</a> to execute commands.</p>
+<p>For a modest personal site, you might set up this cron job to run once a day. For a more active site, you might want to run that job more often—perhaps every few hours or every hour. This regular visit will tell Drupal to perform its periodic tasks, and this will help keep your system running smoothly.</p>
+<h2 id="s-cron-url"><a class="toc-anchor" title="Permalink to this headline" href="#s-cron-url"></a>Cron URL</h2>
+<p>Each Drupal version has a different URL, you must request for cron to trigger. For Drupal 7 and later, the URL contains a "secret key" (see below for hard-coding it) to prevent external abuse. The secret URL can be found at each of these pages:</p>
+<ul>
+<li><strong>Status report</strong> — <code class="language-php">Reports Administration &gt; Reports &gt; Status (/admin/reports/status)</code></li>
+<li><strong>Cron configuration</strong> — <code class="language-php">Administration &gt; Configuration &gt; System &gt; Cron (/admin/config/system/cron)</code></li>
+</ul>
+<p><strong>URL format:</strong></p>
+<table>
+<tbody>
+<tr>
+<th>Drupal core version</th>
+<th>URL</th>
+</tr>
+<tr>
+<td>Drupal 8</td>
+<td><code class="language-php">http://www.example.com/cron/&lt;key&gt;</code></td>
+</tr>
+<tr>
+<td>Drupal 7</td>
+<td><code class="language-php">http://www.example.com/cron.php?cron_key=&lt;key&gt;</code></td>
+</tr>
+<tr>
+<td>Drupal 6 and earlier</td>
+<td><code class="language-php">http://www.example.com/cron.php</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="s-the-cron-command"><a class="toc-anchor" title="Permalink to this headline" href="#s-the-cron-command"></a>The cron command</h2>
+<p>In the following example, the crontab command shown below will activate the cron tasks automatically on the hour:</p>
+<p><code class="language-php">0 * * * * wget -O - -q -t 1 http://CRON_URL</code></p>
+<p><code class="language-php">http://CRON_URL</code> is replaced with a URL which is different for each Drupal version. See above.</p>
+<p>In the above sample, the <code class="language-php">0 * * * *</code> represents when the task should happen. The first figure represents minutes – in this case, on the "zero" minute, or top of the hour. The other figures represent, respectively, hour, day, month and day of the week. A <code class="language-php">*</code> is a wildcard, meaning "every time." The minimum is every one minute <code class="language-php">* * * * *</code>.</p>
+<p>The rest of the line <code class="language-php">wget -O - -q -t 1</code> basically tells the server to request a url, so that the server executes the cron script. </p>
+<p>Another option is to use Drupal console, for example:</p>
+<p><code class="language-php">30 * * * * /var/www/html/vendor/bin/drupal --root=/var/www/html/docroot cron:execute &gt; /dev/null 2&gt;&amp;1</code></p>
+<p>executes cron once per hour at 30 minutes after the hour, with all output (stdout and stderr) silenced by<code class="language-php">&gt; /dev/null 2&gt;&amp;1</code>.</p>
+<p><strong>Examples</strong></p>
+<table>
+<tbody>
+<tr>
+<th>When</th>
+<th>Setting</th>
+</tr>
+<tr>
+<td>Every 1 minute</td>
+<td><code class="language-php">* * * * *</code></td>
+</tr>
+<tr>
+<td>Every 15 minutes</td>
+<td><code class="language-php">*/15 * * * *</code></td>
+</tr>
+<tr>
+<td>Every 30 minutes</td>
+<td><code class="language-php">*/30 * * * *</code></td>
+</tr>
+<tr>
+<td>Every 1 hour</td>
+<td><code class="language-php">0 * * * *</code></td>
+</tr>
+<tr>
+<td>Every 6 hours</td>
+<td><code class="language-php">0 */6 * * *</code></td>
+</tr>
+<tr>
+<td>Every 12 hours</td>
+<td><code class="language-php">0 */12 * * *</code></td>
+</tr>
+<tr>
+<td>Once a day</td>
+<td><code class="language-php">4 0 * * *</code></td>
+</tr>
+<tr>
+<td>Once a week</td>
+<td><code class="language-php">4 0 * * 0</code></td>
+</tr>
+<tr>
+<td>Once a month</td>
+<td><code class="language-php">4 0 1 * *</code></td>
+</tr>
+</tbody>
+</table>
+<p>Here is a diagram of the general crontab syntax, for illustration:</p>
+<div>
+<pre>
+<code class="language-php"># +---------------- minute (0 - 59)
+# |  +------------- hour (0 - 23)
+# |  |  +---------- day of month (1 - 31)
+# |  |  |  +------- month (1 - 12)
+# |  |  |  |  +---- day of week (0 - 6) (Sunday=0)
+# |  |  |  |  |
+  *  *  *  *  *  command to be executed</code></pre></div>
+<p>Thus, the cron command example above means "ping <a href="http://www.example.com/cron.php" rel="nofollow">http://www.example.com/cron.php</a> at the zero minute on every hour of every day of every month of every day of the week."</p>
+<h3 id="s-how-drupal-uses-cron"><a class="toc-anchor" title="Permalink to this headline" href="#s-how-drupal-uses-cron"></a>How Drupal uses cron</h3>
+<p>Every Drupal install requires regular actions to handle maintenance tasks such as cleaning up log files and checking for updates. Cron.php is the file that Drupal uses to run the maintenance process.</p>
+<p>For instance, if your site were <em><a href="http://www.example.com" rel="nofollow">www.example.com</a></em>, loading the URL <em><a href="http://www.example.com/cron.php" rel="nofollow">http://www.example.com/cron.php</a></em> in your browser would run the maintenance.</p>
+<p>This page is automatically set up when you install Drupal. Simply loading the URL will run the maintenance. Nothing more is required.</p>
+<h3 id="s-how-to-set-up-a-cron-job"><a class="toc-anchor" title="Permalink to this headline" href="#s-how-to-set-up-a-cron-job"></a>How to set up a cron job</h3>
+<p>Cron jobs are scheduled by setting up a "crontab." A crontab is a text file that contains the commands to be run. This file can be created and edited either through the command line interface, or, if you manage your website through a web-based control panel such as <a href="http://www.cpanel.net/support/docs/11/cpanel/advanced_cron_jobs.html" rel="nofollow">cpanel</a>, Plesk, or <a href="/node/2526018" title="Configuring cron jobs with Virtualmin and Webmin" rel="nofollow">Virtualmin and Webmin</a>, you will use the web interface.</p>
+<p>In order to schedule your cron job in Plesk for Linux, go to Settings &gt; Scheduled Tasks in the General Group. Select the system user account on whose behalf the task will be executed (usually the domain ftp user). Click "Schedule New Task". Specify when to run your command. You can schedule the time using the UNIX crontab entry form as specified in this article. Then, specify which command to run, using the same format as specified in this article. Then, Click OK.</p>
+<p>Otherwise, check with your hosting company for detailed instructions if you are using a web-based control panel.</p>
+<p>To edit a crontab through the command line, type:</p>
+<p><code class="language-php">crontab -e</code></p>
+<p>If this fails, see the <a href="#help" rel="nofollow">Troubleshooting Cron</a> section below.</p>
+<p>Add ONE of the following lines:</p>
+<div>
+<pre>
+<code class="language-php">45 * * * *  /usr/bin/lynx -source http://example.com/cron.php 
+
+45 * * * * /usr/bin/wget -O - -q -t 1 http://www.example.com/cron.php 
+
+45 * * * * curl -s http://example.com/cron.php 
+</code></pre></div>
+<p>This would have a <a href="http://lynx.isc.org/" rel="nofollow">lynx</a>, <a href="http://www.gnu.org/software/wget/wget.html" rel="nofollow">wget</a>, or <a href="http://curl.haxx.se" rel="nofollow">curl</a> visit your cron page 45 minutes after every hour.</p>
+<p>Three options are provided in case either wget, lynx or curl are not installed on the server. Any will do the job well, except as noted below.</p>
+<p>Note that the lynx option above is not working with https sites as recently as 7/4/2018. The test site is Drupal 8.5.3 hosted on Go Daddy/Linux, where a previously working cron job is no longer working after the site was switched from http to https. The server email message indicated: "lynx: Can't access startfile". The cron job was changed from the lynx option to the wget option and is operating as intended with Drupal's cron and Scheduler's lightweight cron (admin/config/content/scheduler/cron).</p>
+<p><a href="http://www.adminschoice.com/crontab-quick-reference" rel="nofollow">Learn more about the crontab file syntax here</a> to set up the cron job to run more or less often.</p>
+<p>There are many ways to configure a cron job. If you have full access to crontab features, you should be able to simply paste in one of the above example commands – <em>be sure to replace "example.com" with your own web domain or docroot</em>.</p>
+<p>If you're on shared hosting, you should be able to find cron job configuration somewhere in your hosting control panel. Some hosts even have cron "wizards" that walk you through the cron configuration, making it much easier if cron is new to you. On a Windows system you can accomplish the same thing with scheduled tasks to launch Internet Explorer pointed to the URL.</p>
+<p>Some hosting companies do not permit local loopback, so using wget, curl or lynx will not work. If this is the case, and they run PHP as a CGI (check with your hosting company to see if this is the case), the following will run the cron locally:-</p>
+<p><code class="language-php">/usr/bin/php /home/sites/example.com/public_html/cron.php</code></p>
+<h3 id="s-some-hosting-companies-dont-allow-access-to-cron"><a class="toc-anchor" title="Permalink to this headline" href="#s-some-hosting-companies-dont-allow-access-to-cron"></a>Some hosting companies don’t allow access to cron</h3>
+<p>If your hosting company restricts access to cron, you have many options.</p>
+<ul>
+<li>Ask the company to give you access, or to set up a cron job for you</li>
+<li>Ask someone else with access to a server to set up a cron job for you. Any Unix, Linux, or Mac server with access to the internet can have a cron job to regularly visit your site. There are also some companies that offer cron services.</li>
+<li>Use the <a href="/project/poormanscron" rel="nofollow">Poor Man's Cron module</a>.</li>
+<li>Use webcron services like <a href="https://www.easycron.com" rel="nofollow">EasyCron</a>. You may find other providers of <a href="http://www.cronjobservices.com/" rel="nofollow">cron job services</a>. Many are free,but with restrictions.</li>
+</ul>
+<p>Cron doesn't guarantee your commands will run at the specified interval. But Drupal will try its best to come as close as possible. The more you visit cron.php, the more accurate cron will be.<br />
+<a id="help" name="help" rel="nofollow"></a></p>
+<h3 id="s-troubleshooting-cron-jobs"><a class="toc-anchor" title="Permalink to this headline" href="#s-troubleshooting-cron-jobs"></a>Troubleshooting cron jobs</h3>
+<p>Make sure your web site is <strong>not</strong> in maintenance mode.</p>
+<p>If you receive a permission denied error after starting crontab -e, you may need to use sudo:</p>
+<p><code class="language-php">sudo crontab -e</code></p>
+<p>You may need to adjust the path to wget, lynx or curl in your crontab. For example, the cron example listed above contains the line:</p>
+<p><code class="language-php">45 * * * * /usr/bin/lynx -source http://example.com/cron.php</code></p>
+<p>However, Lynx may be in a different location on your server, or not installed at all. To find out where Lynx is installed, enter:</p>
+<p><code class="language-php">whereis lynx</code></p>
+<p>or</p>
+<p><code class="language-php">which lynx</code></p>
+<p>If it is not located at /usr/bin/lynx, adjust the path as needed. The same applies for wget and curl. If none are installed, ask a server administrator for help.</p>
+<p>It may be necessary to change <strong><a href="http://example.com/cron.php" rel="nofollow">http://example.com/cron.php</a></strong> to the location of your Drupal installation. For example, if you have Drupal installed in a subdirectory, it might be <a href="http://www.example.com/drupal/cron.php" rel="nofollow">http://www.example.com/drupal/cron.php</a>).</p>
+<h3 id="s-example-scripts"><a class="toc-anchor" title="Permalink to this headline" href="#s-example-scripts"></a>Example scripts</h3>
+<p>Drupal ships with two example scripts in the scripts directory, cron-curl.sh and cron-lynx.sh. You can call these scripts from cron as well:</p>
+<p><code class="language-php">45 * * * * /home/www/drupal/scripts/cron-lynx.sh</code></p>
+<p>Note that the scripts will need to be updated with the path to your directory and URL.</p>
+<h3 id="s-running-cron-as-an-authenticated-user-d6-and-earlier-only"><a class="toc-anchor" title="Permalink to this headline" href="#s-running-cron-as-an-authenticated-user-d6-and-earlier-only"></a>Running cron as an authenticated user (D6 and earlier only)</h3>
+<p>If triggering cron.php via the methods above, cron tasks will run as the anonymous user. For most cases this should be fine, but if Drupal cron has been customized to include tasks that must run as a certain site user (e.g. Custom logic has been implemented in hook_cron that requires special user permissions), the following script may be useful. This script authenticates a user of your choosing before calling cron.php.</p>
+<p>Note that as of Drupal 7, cron <em>always</em> runs as an anonymous user, so this will not work in Drupal 7 and later versions!</p>
+<p>Note that this script should be called instead of cron.php within your server's cron configuration and must be executable by appropriate system user on your server.</p>
+<div>
+<pre>
+<code class="language-php">#!/bin/sh
+# Reference http://drupal.org/node/479948#comment-1673488 by pearlbear
+
+SITE=https://dev.example.com/
+USERNAME=user.name
+PASS=ChangeMe!!12
+
+COOKIES=/tmp/cron-cookies.txt
+WGETPARAMS="--quiet -O /dev/null --no-check-certificate --save-cookies $COOKIES --keep-session-cookies --load-cookies $COOKIES"
+# if you run drupal in a default language different than English you need to modify this
+LOGIN="Log%20in"
+
+wget $WGETPARAMS "${SITE}user"
+wget $WGETPARAMS --post-data="name=$USERNAME&amp;pass=$PASS&amp;op=$LOGIN&amp;form_id=user_login" "${SITE}user"
+wget $WGETPARAMS "${SITE}cron.php"
+</code></pre></div>
+<h3 id="s-running-drupal-cron-tasks-from-drush"><a class="toc-anchor" title="Permalink to this headline" href="#s-running-drupal-cron-tasks-from-drush"></a>Running Drupal cron tasks from Drush</h3>
+<p>Visit: <a href="https://docs.drush.org/en/8.x/cron/" rel="nofollow">https://docs.drush.org/en/8.x/cron/</a></p>
+<h3 id="s-hard-coding-crons-secret-key"><a class="toc-anchor" title="Permalink to this headline" href="#s-hard-coding-crons-secret-key"></a>Hard-coding cron's "secret key"</h3>
+<p>The key at the end of the url is automatically generated on site install, if you want to give it a manual value, use the following indications :</p>
+<h4 id="s-drupal-7"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-7"></a>Drupal 7</h4>
+<p>Edit settings.php :</p>
+<pre>
+$conf['cron_key'] = 'your value';</pre><h4 id="s-drupal-8"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-8"></a>Drupal 8</h4>
+<p>Use the following drush command:</p>
+<div>
+<pre>
+drush state-set system.cron_key foobar
+</pre></div>
+<h3 id="s-security-notes"><a class="toc-anchor" title="Permalink to this headline" href="#s-security-notes"></a>Security notes</h3>
+<p>It is possible to run cron.php directly via scripts/drupal.sh with Drupal 6. Drupal.sh allows a Drupal page to be executed from a shell script. To do so, add the following cron job to run as the Apache user:</p>
+<p><code class="language-php">/full/path/to/drupal.sh --root /full/path/to/site/root/ http://default/cron.php</code></p>
+<p>Note that <a href="http://default/cron.php" rel="nofollow">http://default/cron.php</a> is NOT shown as an example, it should be used as is, without changes.</p>
+<p>Taking this approach allows cron.php to be blocked to prevent remote access.</p>
+<p>To block remote access to cron.php, in the server's .htaccess file or vhost configuration file add this section:</p>
+<div>
+<pre>
+<code class="language-php">    &lt;Files cron.php&gt;
+        Order Deny,Allow
+        Deny from all
+        Allow from localhost
+        Allow from 127.0.0.1
+        Allow from xx.xx.xx.xx &lt;-- your IP address
+    &lt;/Files&gt;
+</code></pre></div>
+<p>If you take this approach and use drupal.sh to call cron.php, it is probably best not to use the root user to run the cron job. A non-privileged user account, or the Apache account user, for example http-service or www-data, is a better choice. To do so, call crontab -e when logged in as a non-privileged user, or for the Apache account on a Debian server, for example, you can add a user parameter:</p>
+<p><code class="language-php">sudo crontab -e -u www-data</code></p>
+<p>The downside to this method is that any URLs generated by cron jobs using this method will not be properly formed, starting with "<a href="http://default/" rel="nofollow">http://default/</a>".</p>
+<h4 id="s-multiple-sites"><a class="toc-anchor" title="Permalink to this headline" href="#s-multiple-sites"></a>Multiple sites</h4>
+<p>If you run many sites, you can use this tip to make managing your cron jobs easier. To minimize the clutter, create an /etc/cron.5min directory and has crontab read this directory every five minutes.</p>
+<p><code class="language-php">*/5 * * * * root run-parts /etc/cron.5min</code></p>
+<p>Then place multiple individual files into the /etc/cron.5min directory, one for each site. The files can be named "site1", "site2", etc. -- note that <em>run-parts</em> may fail to detect files which contain a dot (.) in their name. To make sure that all of your files are visible to cron, type this at a shell prompt:</p>
+<p><code class="language-php">$ sudo run-parts --test /etc/cron.5min</code><br />
+and make sure that all of your files are listed.</p>
+<p>Each of the files in /etc/cron.5min should contain one line:</p>
+<p><code class="language-php">/usr/bin/lynx -source http://(full site URL)/cron.php &gt; /dev/null 2&gt;&amp;1</code><br />
+or, alternatively, one of the <em>curl</em> or <em>wget</em> commands specified above.</p>
+<p>If this doesn't work, try putting another line at the start of each file:</p>
+<p><code class="language-php">#!/bin/sh</code><br />
+and make sure that the files are executable by doing</p>
+<p><code class="language-php">$ sudo chmod u+x /etc/cron.5min/*</code></p>
+<p>For more information about using cron in a multisite configuration, see the <a href="/node/237503" rel="nofollow">Multisite Cron</a> section of this guide.</p>
+<h4 id="s-ssl"><a class="toc-anchor" title="Permalink to this headline" href="#s-ssl"></a>SSL</h4>
+<p>When using SSL, add one additional argument when calling wget: --no-check-certificate. Do not put “--no-check-certificate” between the -0 and the -.</p>
+<p><code class="language-php">45 * * * * /usr/bin/wget --no-check-certificate --quiet -O - https://example.com/cron.php</code></p>
+<h4 id="s-configuring-an-editor-for-cron"><a class="toc-anchor" title="Permalink to this headline" href="#s-configuring-an-editor-for-cron"></a>Configuring an editor for cron</h4>
+<p>You can specify which text editor (emacs, vi, nano, etc.) you want to use to edit the crontab. If you want to change your editor permanently to nano, type:</p>
+<p><code class="language-php">export EDITOR=nano</code></p>
+<p>If you want to use nano for just this time, type:</p>
+<p><code class="language-php">env EDITOR=nano crontab -e</code></p>
+<h4 id="s-proxy"><a class="toc-anchor" title="Permalink to this headline" href="#s-proxy"></a>Proxy</h4>
+<p>If your server is behind a proxy, you might need to add <code class="language-php">--no-proxy</code> to the command. Also in the example below, the Shield module is used, with the username and password "login" and "login_pasword":</p>
+<p><code class="language-php">05 * * * * /usr/bin/wget --no-proxy -O - -q -t 1 http://login:login_pasword@example.com/cron/CRON_URL</code></p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-770c162408f59c31b7fcef9edc1714bd">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/23714/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/23714/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%2823714%29%20Configuring%20cron%20jobs%20using%20the%20cron%20command">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"HsTbS7ErOatwZktxc54S6Eqg7aJXlw3jXebAYRoOg5Q"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/setting-up-cron\/configuring-cron-jobs-using-the-cron-command":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2764153"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
