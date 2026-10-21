@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Some guidelines on how to choose sensibly what code to include in your web application." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between" />
+<link rel="shortlink" href="https://www.drupal.org/node/2920818" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between" />
+<meta property="og:title" content="Contributed versus custom code and everything in between" />
+<meta property="og:description" content="Drupal core offers common functionality out of the box but the more specific the demands of your web application, the more likely you need to extend Drupal with contributed modules or write custom code." />
+<meta property="og:updated_time" content="2025-09-05T20:48:19+00:00" />
+<meta property="article:published_time" content="2017-11-03T14:44:39+00:00" />
+<meta property="article:modified_time" content="2025-09-05T20:48:19+00:00" />
+  <title>Contributed versus custom code and everything in between | Drupal 7 site building best practices | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-2920818 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2764195" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-PCINFf-6kSoK2c8ZX3wIHjC1Wi3kNDRHdAtoBUddY_w" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/2920818" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/2920818" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-N3EjmSRA99X8Kj7538onQCEg8dgt4uwkVNB2WExSaWE" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/drupal-7-site-building-best-practices">Drupal 7 site building best practices</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-2920818">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-preference-order-in-choosing-modules" class="toc-link toc-link-invalid-id active">Preference order in choosing modules</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-use-the-already-installed-modules-first-and-consider-to-accomplish-your-functionality-with-configuration-instead-of-code" class="toc-link toc-link-invalid-id active">Use the already installed modules first and consider to accomplish your functionality with configuration instead of code</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-extend-using-the-drupal-api-or-the-api-of-already-installed-modules" class="toc-link toc-link-invalid-id active">Extend using the Drupal API or the API of already installed modules</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-use-a-contributed-module" class="toc-link toc-link-invalid-id active">Use a contributed module</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-extend-a-contributed-module" class="toc-link toc-link-invalid-id active">Extend a contributed module</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-write-a-contributed-module" class="toc-link toc-link-invalid-id active">Write a contributed module</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-write-custom-code" class="toc-link toc-link-invalid-id active">Write custom code</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-do-not-hack-any-code-that-makes-part-of-the-project-core-or-contributed-but-overrideit-if-you-need-to-alter-its-behavior" class="toc-link toc-link-invalid-id active">Do not hack any code that makes part of the project (core or contributed) but override it if you need to alter its behavior</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-use-stable-versions-if-possible" class="toc-link toc-link-invalid-id active">Use stable versions if possible</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-bottom-line" class="toc-link toc-link-invalid-id active">Bottom line</a></li>
+<li class="anchor-list__item h2-tag last"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between#s-other-resources" class="toc-link toc-link-invalid-id active">Other resources</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="drupal-7-site-building-best-practices" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/drupal-7-site-building-best-practices">Drupal 7 site building best practices</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/site-building-best-practices/best-practices">Best practices</a></li>
+<li class="leaf"><a href="/docs/7/site-building-best-practices/backup-your-database-and-files">Backup your database and files</a></li>
+<li class="leaf"><a href="/docs/7/site-building-best-practices/never-hack-core">Never hack core</a></li>
+<li class="leaf"><a href="/docs/7/site-building-best-practices/avoid-hardcoding">Avoid hardcoding</a></li>
+<li class="leaf"><a href="/docs/7/site-building-best-practices/building-drupal-7-with-drupal-8-in-mind">Building Drupal 7 with Drupal 8 in mind</a></li>
+<li class="leaf"><a href="/docs/7/site-building-best-practices/ensure-that-your-site-is-secure">Ensure that your site is secure</a></li>
+<li class="leaf"><a href="/docs/7/site-building-best-practices/use-test-sites">Use test sites</a></li>
+<li class="leaf"><a href="/docs/7/site-building-best-practices/taking-your-site-live">Taking your site live</a></li>
+<li class="leaf"><a href="/docs/7/site-building-best-practices/avoid-too-many-modules">Avoiding too many modules</a></li>
+<li class="last leaf active-trail"><a href="/docs/7/site-building-best-practices/contributed-versus-custom-code-and-everything-in-between" class="active-trail active">Contributed versus custom code and everything in between</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Contributed versus custom code and everything in between</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/2920818/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    5 September 2025  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Drupal core offers common functionality out of the box but the more specific the demands of your web application, the more likely you need to extend Drupal with contributed modules or write custom code.</p>
+<p>When building and maintaining a Drupal application we should try to find a balance between:</p>
+<ul>
+<li>not writing too much custom code that needs lots of development time and might turn into an unmaintainable mess, especially if it needs to be maintained by others than its creator</li>
+<li>not installing too many contributed modules that might result in an <a href="https://stackoverflow.com/a/1001150/523688" title="design - What is &quot;over-engineering&quot; as applied to software? - Stack Overflow" rel="nofollow">over-engineered</a> application (code for functionalities you don't need).</li>
+</ul>
+<p>Nice to read what we shouldn't do, but then, what should we do? Below guidelines help you to walk the thin line between the two <em>don'ts</em> just described above and show that contributed versus custom code is not necessarily a black or white decision but contains shades of grey.</p>
+<p>Based on the requirements, make an analysis of your project on what potential modules to use and what functionalities you might have to write custom code for.  This results in specifications. Working <a href="https://en.wikipedia.org/wiki/Agile_software_development" title="Agile software development - Wikipedia" rel="nofollow">Agile</a> you will always be able to make adjustments along the way to either <a href="https://softwareengineering.stackexchange.com/a/121292" title="What is the difference between requirements and specifications? - Software Engineering Stack Exchange" rel="nofollow">requirements or specifications</a>.</p>
+<h2 id="s-preference-order-in-choosing-modules"><a class="toc-anchor" title="Permalink to this headline" href="#s-preference-order-in-choosing-modules"></a>Preference order in choosing modules</h2>
+<p>For a particular functionality in your web application, the following order is recommended for choosing the right solution.</p>
+<p><img alt="" height="436" src="/files/Code%20Development%20Flow.png" width="700" /></p>
+<h3 id="s-use-the-already-installed-modules-first-and-consider-to-accomplish-your-functionality-with-configuration-instead-of-code"><a class="toc-anchor" title="Permalink to this headline" href="#s-use-the-already-installed-modules-first-and-consider-to-accomplish-your-functionality-with-configuration-instead-of-code"></a><strong>Use the already installed modules first and consider to accomplish your functionality with configuration instead of code</strong></h3>
+<p>To <a href="https://www.drupal.org/docs/7/site-building-best-practices/avoiding-too-many-modules" rel="nofollow">avoid too many modules</a> some new features can be built with configuration only. A typical example is a list of data that can be accomplished with the <a href="https://www.drupal.org/project/views" rel="nofollow">Views</a> module (in Drupal 8 part of core).</p>
+<h3 id="s-extend-using-the-drupal-api-or-the-api-of-already-installed-modules"><a class="toc-anchor" title="Permalink to this headline" href="#s-extend-using-the-drupal-api-or-the-api-of-already-installed-modules"></a><strong>Extend using the Drupal API or the API of already installed modules</strong></h3>
+<p>An example is writing a <a href="https://api.drupal.org/api/views/views.api.php/group/views_handlers/7.x-3.x" rel="nofollow">Views handler</a>. While this article initially appears to be in contradiction, it is actually similar to the <a href="http://mikecr.it/ramblings/drupal-and-invented-here" rel="nofollow">Invented Here</a> approach where you extend code that already is present. Keep in mind that custom code is usually not plain PHP but extends the Drupal API, whether provided by core or contributed modules (for example Rules).</p>
+<h3 id="s-use-a-contributed-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-use-a-contributed-module"></a><strong><a id="contrib" name="contrib" rel="nofollow"></a>Use a contributed module</strong></h3>
+<p>If the required functionality cannot be accomplished with the existing code (or extending it through an API), choose a contributed module.</p>
+<p><a href="https://goo.gl/forms/RFvhrykp1bUyggID2" title="Review a Drupal.org contributed module" rel="nofollow">Checklist on Google Forms</a> with the below questions to answer (as <a href="https://www.drupal.org/files/Review%20of%20a%20Drupal.org%20contributed%20module%20-%20Google%20Forms.pdf" rel="nofollow">PDF</a> instead). You can receive your answers on your provided email address to use when you are requested to review a module (e.g. in JIRA).</p>
+<p><strong>Some considerations to select a module to use (in no particular order):</strong></p>
+<ul>
+<li>
+<p>Use a mainstream multi-purpose module that can be reused for other solutions as well. Examples are <a href="https://www.drupal.org/project/rules" rel="nofollow">Rules</a> to define logic or <a href="https://www.drupal.org/project/ds" rel="nofollow">Display Suite</a> to flexibly control output and layout.</p>
+</li>
+<li>
+<p>If the above is not feasible use a module that does what you need and not much more. In case it does offer too many features for your needs, consider to <a href="https://www.drupal.org/patch/submit" rel="nofollow">propose a patch</a> with the possibility to put unwanted features in submodules that can be disabled.</p>
+</li>
+<li>
+<p>Does the module <a href="https://www.drupal.org/docs/7/creating-custom-modules/creating-drupal-7-hooks" rel="nofollow">provide alter hooks</a>? If it doesn't, consider <a href="https://www.drupal.org/patch/submit" rel="nofollow">providing a patch</a> in the issue queue that extends the module with it.</p>
+</li>
+<li>
+<p>How many sites report this module to be installed? Look at the statistics to have a breakdown per version to get an impression of the growth of the latest. Consider young modules take some time to be "discovered" and might have only a few or even no site installs reported despite being of good quality. In that case, it's worth checking the other modules by the same author.</p>
+</li>
+<li>
+<p>When was the last commit?</p>
+</li>
+<li>
+<p>Is it actively maintained? Do not rely on the indicated status only but check if there are no old issues in <em>Reviewed and Tested By Community (RTBC)</em> or <em>Needs review (NR)</em> status?</p>
+</li>
+<li>
+<p>How many bugs are there in the issue queue for the version you plan to install?</p>
+</li>
+<li>
+<p>If on Drupal 7 <a href="https://www.drupal.org/docs/7/site-building-best-practices/building-drupal-7-with-drupal-8-in-mind" rel="nofollow">is there a Drupal 8 version</a> in case we need to upgrade in the future?</p>
+</li>
+<li>
+<p>Is there a stable version?</p>
+</li>
+<li>
+<p>Is it covered by the <a href="https://www.drupal.org/security-advisory-policy" rel="nofollow">security advisory policy</a>? If it does it means the author went through a one-time code quality <a href="/node/539608" rel="nofollow">review process</a> to get permission to mark their projects as covered for security advisories.</p>
+</li>
+<li>
+<p>Is there documentation? Apart from a link to a manual of some sort, preferably on Drupal.org, it does also include the project page itself (is it clear?) and the presence of a README.txt and UPGRADE.txt if applicable.</p>
+</li>
+<li>
+<p>If there is a demo, check it out. It shows the author cared about promoting their work.</p>
+</li>
+<li>
+<p>Code quality: How does it perform when we apply <a href="https://www.drupal.org/node/1419988" rel="nofollow">Code Sniffer</a> on the code? Open an issue 'Code Sniffer suggestions' and <a href="https://www.drupal.org/patch/submit" rel="nofollow">provide a patch</a>. Alternatively, r<a href="https://pareview.sh/" title="PAReview" rel="nofollow">eview a Drupal project online</a>.</p>
+</li>
+<li>
+<p>Is there a unit test included in the code for <a href="https://www.drupal.org/docs/7/testing/unit-testing-with-simpletest" title="Unit Testing with SimpleTest | Drupal.org" rel="nofollow">D7</a> or <a href="https://www.drupal.org/docs/8/phpunit" title="PHPUnit in Drupal 8 | Drupal.org" rel="nofollow">D8</a> and turned on? Check the <em>Automated testing</em> tab on the project page to find out. If so, it is less likely bugs will slip in during ongoing development as each supplied patch is automatically tested against it (does it break functionalities?).</p>
+</li>
+<li>
+<p>For specific functionality make sure to also check the published <a href="https://www.drupal.org/search/site/the?f%5B0%5D=&amp;f%5B1%5D=&amp;f%5B2%5D=&amp;f%5B3%5D=&amp;f%5B4%5D=sm_field_project_type%3Asandbox&amp;f%5B5%5D=&amp;f%5B6%5D=ss_meta_type%3Amodule&amp;solrsort=ds_created+desc" rel="nofollow">sandbox modules</a>. They are often overlooked but contain some well-coded gems. Some developers do not promote their code into full projects to avoid the maintenance burden of feature and support requests or having to write documentation. Do not hesitate to ask the maintainer to publish it as a full project. Once it is, it is more likely been found and used by others, and receive the attention to keep it maintained.</p>
+</li>
+</ul>
+<p>For more inspiration: <span class="project-issue-issue-link project-issue-status-info project-issue-status-13"><a href="/project/drupalorg/issues/2186377" title="Status: Needs work">#2186377: Highlight projects that follow Best Practices</a></span></p>
+<h3 id="s-extend-a-contributed-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-extend-a-contributed-module"></a><strong>Extend a contributed module</strong></h3>
+<p>Sometimes you find a module that can be extended to do what is needed. Instead of writing custom code this is preferred mainly because:</p>
+<ul>
+<li>
+<p>No code needs to be written from scratch.</p>
+</li>
+<li>
+<p>Community members can review and improve the code.</p>
+</li>
+<li>
+<p>Security issues are more likely to be spotted.</p>
+</li>
+<li>
+<p>It forces your developers to write reusable generic code that results in a more solid solution than with site-specific code. It is more likely you can adopt the same solution for similar use cases that come up in the future.</p>
+</li>
+<li>
+<p>If the developer leaves your company the code is more likely to receive continued maintenance and will probably be easier to be maintained by the other developers. If possible make sure at least two of your developers are involved as maintainers.</p>
+</li>
+</ul>
+<p>There are basically three ways to extend the functionality of a contributed module:</p>
+<ul>
+<li>If you think your new functionality or improvement will be desired by many of the module's users create a feature request in the issue queue. Then <a href="https://www.drupal.org/patch/submit" rel="nofollow">provide a patch</a> that adds the new feature directly. Make sure that a module upgrade will not break anything or changes the expected behavior or output for existing websites.</li>
+<li>If the new functionality is more specific provide a patch that adds it as a sub-module that can be enabled only if needed.</li>
+<li> If the new functionality is very specific write a module that extends the functionality with a dependency on the base module to avoid code duplication. It can be installed only if needed. Ask the maintainer to mention the extension module on their project page to make sure people can find your new module.</li>
+</ul>
+<h3 id="s-write-a-contributed-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-write-a-contributed-module"></a><strong>Write a contributed module</strong></h3>
+<p>If no contributed module is available instead of writing custom code it is preferred to publish the code as a contributed module (full project or sandbox) for the same reasons as mentioned previously.</p>
+<p>Feel free to mirror host your module elsewhere (for example <a href="https://github.com/" rel="nofollow">GitHub.com</a>) besides Drupal.org if you prefer forking over patching. That way you still take advantage of Drupal's automatically built releases and be able to push out new releases to users that check for updates.</p>
+<h3 id="s-write-custom-code"><a class="toc-anchor" title="Permalink to this headline" href="#s-write-custom-code"></a><strong>Write custom code</strong></h3>
+<p>Of course, if extending and overriding contrib takes much more time than pure "stand-alone" custom code, consider using the <a href="http://mikecr.it/ramblings/drupal-and-invented-here" rel="nofollow">Invented Here</a> approach. But still, if your solution is pretty generic it is maybe worth to contribute to Drupal.org, even as a sandbox module. If others need the same lightweight solution, it is there for them.</p>
+<p>Also if the needed code cannot be built as a generic solution (with maybe a site-specific configuration) but is site-specific then write a custom module. Even then consider splitting it up in a contributed generic part and a site-specific implementation using alter hooks. Writing custom code should in most cases be the last resort.</p>
+<p>Apart from theming (for example templates and preprocess functions) ideally custom code should stay limited to alter hooks, some definitions of a Views handler or Rules action. Maybe a custom entity if you have requirements for your content that do not fit the node entity or others provided by a contributed module (for example <a href="https://drupalcommerce.org/developer-guide/core-architecture/entities" rel="nofollow">the ones of Drupal Commerce</a>). Also then, you should consider making it generic enough to publish it as a contributed module.</p>
+<h2 id="s-do-not-hack-any-code-that-makes-part-of-the-project-core-or-contributed-but-overrideit-if-you-need-to-alter-its-behavior"><a class="toc-anchor" title="Permalink to this headline" href="#s-do-not-hack-any-code-that-makes-part-of-the-project-core-or-contributed-but-overrideit-if-you-need-to-alter-its-behavior"></a>Do not hack any code that makes part of the project (core or contributed) but override it if you need to alter its behavior</h2>
+<p>See also <a href="https://www.drupal.org/docs/7/site-building-best-practices/never-hack-core" rel="nofollow">Never hack core</a>.</p>
+<p>If you hack the code directly it will be overwritten once you upgrade the code to a newer version. The recommended way is to <a href="https://www.drupal.org/docs/8/creating-custom-modules/understanding-hooks" rel="nofollow">use hooks</a>. If the code does not allow for that you can either:</p>
+<ul>
+<li>
+<p><a href="https://www.drupal.org/patch/submit" rel="nofollow">provide a patch</a> in the issue queue of the project adding or changing the desired functionality directly</p>
+</li>
+<li>
+<p><a href="https://www.drupal.org/patch/submit" rel="nofollow">provide a patch</a> for the project adding an alter hook that you then use in custom code.</p>
+</li>
+</ul>
+<p>In that case, you can put the applied patch file in the relevant module folder of your project until the change has been committed in the stable version. The patch will not be removed if the module gets upgraded and is an indication that probably a code change should be applied to the module to work as before. You can extend that with <a href="https://www.drupal.org/project/patch_manager" rel="nofollow">other</a> <a href="https://bitbucket.org/davereid/drush-patchfile" rel="nofollow">solutions</a> to track the patches you applied in your web application.</p>
+<h2 id="s-use-stable-versions-if-possible"><a class="toc-anchor" title="Permalink to this headline" href="#s-use-stable-versions-if-possible"></a>Use stable versions if possible</h2>
+<p>Using a development version is not recommended mainly because it is not representing a fixed state. If you upgrade to the latest dev version and it causes issues, it is cumbersome to roll back (although possible <a href="https://stackoverflow.com/a/4114122/523688" rel="nofollow">using commit hashes</a> or saving the older version as a backup before the upgrade).</p>
+<p>Using a <a href="https://www.drupal.org/docs/8/extending-drupal-8/installing-sandbox-modules" rel="nofollow">sandbox module</a> is possible. This might still be preferred over creating custom code (see preference order above). If you find a good sandbox module request the maintainer to release it as a full project in the issue queue. Some companies only allow for stable full modules to be used in their projects.</p>
+<h2 id="s-bottom-line"><a class="toc-anchor" title="Permalink to this headline" href="#s-bottom-line"></a>Bottom line</h2>
+<p>If you have doubts about keeping your future application maintainable while avoiding over-engineering, maybe you should consider solutions other than Drupal and make an analysis with those. Consider also to adjust either the <a href="https://softwareengineering.stackexchange.com/a/121292" title="What is the difference between requirements and specifications? - Software Engineering Stack Exchange" rel="nofollow">requirements</a> or the budget.</p>
+<h2 id="s-other-resources"><a class="toc-anchor" title="Permalink to this headline" href="#s-other-resources"></a>Other resources</h2>
+<ul>
+<li><a href="https://guidebook.civicactions.com/en/latest/practice-areas/engineering/drupal/most-important-decision-in-developing-a-drupal-site-contributed-vs-custom-development/" rel="nofollow">The most important decision in developing a Drupal site: contributed vs. custom development – CivicActions</a></li>
+<li><a href="https://www.webomelette.com/go-custom-or-use-contributed-module" rel="nofollow">Go custom or use a contributed module? | Web Omelette</a></li>
+<li><a href="https://www.drupal.org/docs/7/modules/views/understanding-views-versus-custom-code" rel="nofollow">Understanding Views versus custom code | Drupal.org</a></li>
+<li><a href="https://www.phase2technology.com/blog/how-and-why-patch-drupal-module" rel="nofollow">How and Why to Patch a Drupal Module | Phase2</a></li>
+<li><a href="http://mikecr.it/ramblings/drupal-and-invented-here" rel="nofollow">Drupal and "Invented Here" | Mike Crittenden</a></li>
+<li><a href="https://www.youtube.com/watch?v=Uhx4cRn2_jo#t=28m32s" title="Starts video at most interesting part" rel="nofollow">Chris Jansen and Jeffrey A. McGuire: Challenges in Getting your Open Source Company to Contribute - YouTube</a></li>
+</ul></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-4d14f0efe05fd2dd4638ec6f95addb6d">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/2920818/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/2920818/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%282920818%29%20Contributed%20versus%20custom%20code%20and%20everything%20in%20between">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"ND7vkPt1trsBA2uGOXlQR77TyIi7z1ys5haMO_7CM-Q"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/site-building-best-practices\/contributed-versus-custom-code-and-everything-in-between":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2764195"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
