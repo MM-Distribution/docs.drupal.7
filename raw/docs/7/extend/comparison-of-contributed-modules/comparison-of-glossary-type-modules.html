@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Choosing between glossary-type modules" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules" />
+<link rel="shortlink" href="https://www.drupal.org/node/266511" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules" />
+<meta property="og:title" content="Comparison of Glossary-type modules" />
+<meta property="og:description" content="Choosing between glossary-type modules There are several glossary-type modules available, all of which are designed for slightly different needs. This page is here to help you choose which module you should probably be using, or if you should really write your own." />
+<meta property="og:updated_time" content="2025-04-30T20:53:04+00:00" />
+<meta property="article:published_time" content="2008-06-04T09:30:03+00:00" />
+<meta property="article:modified_time" content="2025-04-30T20:53:04+00:00" />
+  <title>Comparison of Glossary-type modules | Comparison of contributed modules | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-266511 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-266179" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-eo_QpyK-an1hWAL8I42HSuC7gfOGlbe8_ZyDmv2WaTg" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/266511" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/266511" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-qKqjwHeM5mEUXx7OlB_yz-AgbO87gOR7e4XuGBdZmh4" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/extend">Extending Drupal 7</a></span><span><a href="/docs/7/extend/comparison-of-contributed-modules">Comparison of contributed modules</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-266511">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h3-tag first"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules#choosing_between_glossary_type_modules" class="toc-link active">Choosing between glossary-type modules</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules#rationale_for_g2_specificities" class="toc-link active">Rationale for G2 specificities</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules#glossary design" class="toc-link active">Glossary Design</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules#lexicon-module" class="toc-link active">Lexicon</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="comparison-of-contributed-modules" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/extend/comparison-of-contributed-modules">Comparison of contributed modules</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-and-overview-of-access-control-modules">Comparison and Overview of Access Control modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-captcha-free-anti-spam-modules">Comparison of &quot;captcha free&quot; anti-spam modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-asset-management-modules">Comparison of Asset Management modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules">Comparison of Breadcrumb customizing modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-ccktaxonomy-modules">Comparison of CCK/Taxonomy Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-css-preprocessors">Comparison of CSS Preprocessors</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-charting-modules">Comparison of Charting modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-content-block-modules">Comparison of Content Block modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-e-commerce-solutions-circa-2008">Comparison of E-Commerce solutions (circa 2008)</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-form-building-modules">Comparison of Form Building Modules</a></li>
+<li class="leaf active-trail"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules" class="active-trail active">Comparison of Glossary-type modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-image-handling-modules">Comparison of Image-handling modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-invoice-modules-for-drupal-commerce">Comparison of Invoice modules for Drupal Commerce</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-links-page-modules">Comparison of Links Page modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-mapping-modules">Comparison of Mapping modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-node-pager-modules">Comparison of Node Pager modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-nodeentity-ordering-modules">Comparison of Node/Entity Ordering Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-pdf-viewer-modules">Comparison of PDF viewer modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-question-and-answer-modules">Comparison of Question and Answer modules</a></li>
+<li class="leaf"><a href="/docs/extending-drupal/contributed-modules/comparison-of-contributed-modules/comparison-of-responsive-menus">Comparison of Responsive Menus</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-rotator-slider-modules">Comparison of Rotator / Slider modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-salesforce-webform-integration-modules">Comparison of Salesforce-Webform integration modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-user-interface-tweak-modules-and-edit-form-modifications">Comparison of User Interface tweak modules and edit form modifications</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-wysiwyg-modules">Comparison of WYSIWYG Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-web-service-client-modules">Comparison of Web-service client modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-automatic-link-modules">Comparison of automatic Link Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-content-recommendation-and-related-content-modules">Comparison of content recommendation and related content modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-email-newsletter-oriented-modules">Comparison of email newsletter oriented modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-file-download-gateway-and-tracking-modules">Comparison of file download gateway and tracking modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-image-cropping-and-resizing-modules">Comparison of image cropping and resizing modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-modules-for-html-tables">Comparison of modules for HTML tables</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-modules-for-dealing-with-troublesome-users">Comparison of modules for dealing with troublesome users</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-node-based-previous-and-next-navigation-modules">Comparison of node based previous and next navigation modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-staging-and-deployment-modules">Comparison of staging and deployment modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-user-edit-protection-modules">Comparison of user edit protection modules</a></li>
+<li class="last leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/drupal-7-comparison-of-lightbox-type-modules">[Drupal 7] Comparison of lightbox-type modules</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Comparison of Glossary-type modules</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/266511/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    30 April 2025  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h3 id="choosing_between_glossary_type_modules"><a class="toc-anchor" title="Permalink to this headline" href="#choosing_between_glossary_type_modules"></a>Choosing between glossary-type modules</h3>
+<p>There are several glossary-type modules available, all of which are designed for slightly different needs. This page is here to help you choose which module you should probably be using, or if you should really write your own.</p>
+<table border="1">
+<tr>
+<th>Feature</th>
+<th><a href="http://drupal.org/project/glossary" rel="nofollow">Glossary</a></th>
+<th><a href="http://drupal.org/project/g2" rel="nofollow">G2</a></th>
+<th><a href="http://drupal.org/project/glossify" rel="nofollow">Glossify</a></th>
+<th><a href="http://drupal.org/project/lexicon" rel="nofollow">Lexicon</a></th>
+</tr>
+<tr>
+<th colspan="5">Drupal-related</th>
+</tr>
+<tr>
+<td>Drupal 8.x</td>
+<td>-dev</td>
+<td>-dev</td>
+<td>-beta</td>
+<td></td>
+</tr>
+<tr>
+<td>Drupal 7.x</td>
+<td>-dev</td>
+<td>-dev</td>
+<td>-beta</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Drupal 6.x</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>-beta</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Drupal 5.x</td>
+<td>Yes</td>
+<td>Yes<sup>*</sup></td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Drupal 4.7.x</td>
+<td>-dev</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Drupal 4.6.x</td>
+<td>-dev</td>
+<td>No</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Documentation</td>
+<td><a href="http://drupal.org/node/196880" rel="nofollow">Handbook</a><br />
+      <a href="http://cvs.drupal.org/viewvc.py/drupal/contributions/modules/glossary/README.txt?view=markup" rel="nofollow">README.txt</a> </td>
+<td><a href="http://wiki.audean.com/g2/start" rel="nofollow">external to DO</a><br />
+      <a href="http://cvs.drupal.org/viewvc.py/drupal/contributions/modules/g2/README.txt?view=markup" rel="nofollow">README.txt</a></td>
+<td><a href="http://drupalcode.org/project/glossify.git/blob/refs/heads/6.x-3.x:/README.txt" rel="nofollow">README.txt</a></td>
+<td><a href="http://drupalcode.org/project/lexicon.git/blob/HEAD:/README.txt" rel="nofollow">README.txt</a></td>
+</tr>
+<tr>
+<td>AJAX</td>
+<td>No</td>
+<td>Entry selector</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td>term-based</td>
+<td>node-based</td>
+<td>term&amp;node-based</td>
+<td>term-based</td>
+</tr>
+<tr>
+<th colspan="5">Services provided</th>
+</tr>
+<tr>
+<td>Multiple glossaries on one site</td>
+<td>Yes</td>
+<td>No</td>
+<td></td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>RSS feeds on entries</td>
+<td>Yes, Drupal core</td>
+<td>No</td>
+<td></td>
+<td>Yes, Drupal core</td>
+</tr>
+<tr>
+<td>RSS feeds on additional vocabularies</td>
+<td>No</td>
+<td>Yes, Drupal core</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Classify entries using taxonomy</td>
+<td>No</td>
+<td>Yes, Drupal core</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Commenting on entries</td>
+<td>No</td>
+<td>Yes, Drupal core</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Private editorial information</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Feature blocks</td>
+<td>Search glossary<br /><br />
+      Random / Term of the Day</td>
+<td>alphabar<br /><br />
+      latest<br /><br />
+      top<br /><br />
+      random<br /><br />
+      word of the day</td>
+<td></td>
+<td>Random term block</td>
+</tr>
+<tr>
+<td>XML-RPC services provided</td>
+<td>No</td>
+<td>alphabar<br /><br />
+      latest<br /><br />
+      top<br /><br />
+      random<br /><br />
+      word of the day</td>
+<td></td>
+<td>No</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>Drupal core</td>
+<td>Drupal core<br /><br />
+      XML-RPC access control<br /><br />
+      XML-RPC throttling</td>
+<td></td>
+<td>Drupal core</td>
+</tr>
+<tr>
+<td>Alphabar maintenance</td>
+<td>automatic</td>
+<td>manual</td>
+<td></td>
+<td>automatic</td>
+</tr>
+<tr>
+<td>Content filtering</td>
+<td>automatic</td>
+<td>dfn elements</td>
+<td></td>
+<td>automatic</td>
+</tr>
+<tr>
+<th colspan="5">Performance</th>
+</tr>
+<tr>
+<td>Memory needs/number of entries</td>
+<td>proportional</td>
+<td>constant</td>
+<td></td>
+<td>proportional</td>
+</tr>
+<tr>
+<td>Speed on small glossaries</td>
+<td>faster</td>
+<td>slower</td>
+<td></td>
+<td>faster</td>
+</tr>
+<tr>
+<td>Speed on large glossaries</td>
+<td>slower with size</td>
+<td>remains constant</td>
+<td></td>
+<td>slower with size</td>
+</tr>
+<tr>
+<td>Themeability</td>
+<td>search form<br /><br />
+      node overview</td>
+<td>Drupal core node themeing<br /><br />
+      Independent themeing for all 5 feature blocks<br /><br />
+      Independent themeing for all parts of a term definition</td>
+<td></td>
+<td>overridable tpl files for all output</td>
+</tr>
+<tr>
+<td>Translation template supplied</td>
+<td>Yes</td>
+<td>No</td>
+<td></td>
+<td>No</td>
+</tr>
+</table>
+<p>* <sub><i>G2's support for 5.x is intended as a bridge from 4.7 to 6.x.</i></sub></p>
+<p>Obviously, in all cases, a "No" actually means: "roll your own", as in all Open Source software.</p>
+<h3 id="rationale_for_g2_specificities"><a class="toc-anchor" title="Permalink to this headline" href="#rationale_for_g2_specificities"></a>Rationale for G2 specificities</h3>
+<p>G2 is not intended as a direct replacement for the glossary module already available with Drupal for quite some time now.</p>
+<p>A more detailed <a href="http://wiki.audean.com/g2/choosing" rel="nofollow">comparison for choosing a glossary-type module</a> can be found at audean.</p>
+<ul>
+<li>Optimization for large glossaries: this is the need expressed by OSInet, which funded development, to support its 5000+ term glossary of computing, for which glossary.module, even when coupled with flexinode to bind blob content to terms, is not really efficient enough.</li>
+<li>Single glossary: multiple glossaries were not necessary to the initial sponsor</li>
+<li>Explicit linking to terms with dfn elements:
+<ul>
+<li>limits system workload</li>
+<li>allows invisible marking of entries made of other entries. Think: XML-RPC, points to XML and to RPC with glossary.module and various wiki filters, but can point to "XML-RPC" with G2. Wrapping XML-RPC in quotes is necessary to allow linking to this entry in glossary, but the quotes remain visible, degrading the UI.</li>
+<li>allows redactor-level choice of:
+<ul>
+<li>whether to link to an entry: Glossary typically links if the term matches, which is not always meaningful ("and" can be present in a glossary and you don't want "and" to be linked from in all nodes on the site).</li>
+<li>where to link to an entry: glossary allows only a predefined set of positions (first, last or all matches).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>nodes vs terms: this is the most salient difference.
+<ul>
+<li>Using custom node types in G2 allows large definitions, with the complete Drupal feature set for nodes.</li>
+<li>Using terms (glossary.module) allows definitions to be bound to custom nodes instead of being nodes on their own.</li>
+</ul>
+</li>
+<li>Alphabar maintenance: large glossaries will, most of the time, use all available initials, so the processing cost of maintaining it is not justifiable.</li>
+</ul>
+<h3 id="glossary design"><a class="toc-anchor" title="Permalink to this headline" href="#glossary design"></a>Glossary Design</h3>
+<ul>
+<li>Customizable</li>
+<ul>
+<li>Administrator options.</li>
+<ul>
+<li>Glossary display.</li>
+<li>Alphabet / Alphabar.</li>
+<li>Input Formats.</li>
+<ul>
+<li>Indicator style.</li>
+<li>Link type.</li>
+<li>Choice of HTML elements.</li>
+<li>Term matching flexibility.</li>
+</ul>
+</ul>
+<li>Liberal CSS usage.</li>
+<li>Multiple glossaries.</li>
+<li>Add-on modules.</li>
+</ul>
+<li>Taxonomy options.</li>
+<ul>
+<li>Related terms link to each other.</li>
+<li>Synonyms will filter the same.</li>
+</ul>
+<li>Drupal filter. Cacheable.</li>
+<li>Translation template provided.</li>
+</ul>
+<p>The Glossary module has largely been designed by its users. Many, if not most, of its features have been added and refined by the input of the community. It is actively maintained and there have been performance efforts to make sure it runs as fast as possible. Considerable work has been done to make sure that i18n (internationalization) can be effectively used with Glossary.</p>
+<p>Glossary uses Taxonomy to define its terms. While most sites have a smaller glossary than the one G2 was designed for, there are also sites with larger glossaries. The ability to handle multiple vocabularies as glossaries gives Glossary additional flexibility.</p>
+<p>The Glossary module acts as a Drupal filter, locating terms within administrator-selectable content and adding additional HTML to them to show or (optionally) link the term's definition to the end-user as they view the content. The terms may be marked with a superscript or icon that links to the term or the term may be converted to an "acronym," "abbr," "cite," or "dfn" element with browser help tips. If the <a href="http://drupal.org/project/hovertip" rel="nofollow">Hovertips and Clicktips</a> module is installed, it may be used to provide hovertips. There are also three mechanisms for marking a section of the content to not be filtered. Matching of terms may be selected as whole words or substrings, and may be either case-sensitive or not.</p>
+<p>Since Glossary filters content, the first time a piece of content is shown, there will be a small delay while the filtering is done. The filtered content is then cached, so the next time, the filtering is unnecessary and the delay does not occur.</p>
+<p>When a user clicks on a linked term, they will go to the entire glossary or the individual term, depending on which option the administrator chose. When displaying the entire glossary, there is an alphabar on top, which fills in automatically. The administrator may define his/her own alphabet for those who use some language other than English. The terms are then organized by the first letter of the term's name. Each section may be separated by a CSS-themable separator. At the bottom of the display, if the user has the appropriate permissions, are shortcut links to the vocabulary and module settings pages.</p>
+<p>Within the glossary display, each term may be followed by a link that will initiate a search for the term, if the search module is enabled. For those who have the proper permission, there will also be a link to edit the term itself.</p>
+<p>The type of glossary indicator that is used is specified for each input format, so, for example, "Filtered HTML" may use a superscript type of indicator, while "Full HTML" may use a hovertip. Additionally, each input format also selects which vocabularies are to be used. So one may, again for example, specify that "Filtered HTML" filter for Bible verses, while "Full HTML" filters for technical terms.</p>
+<p>Since Glossary is taxonomy-based, that opens the range of taxonomy-based modules to work together. For example, <a href="http://drupal.org/project/taxonomy_image" rel="nofollow">Taxonomy Image</a> may be used to show images for the terms and <a href="http://drupal.org/project/taxonomy_delegate" rel="nofollow">Taxonomy Delegate</a> may be used to delegate vocabulary maintenance to sub-administrators or editors.</p>
+<h3 id="lexicon-module"><a class="toc-anchor" title="Permalink to this headline" href="#lexicon-module"></a>Lexicon</h3>
+<p>The Lexicon module started out as a fork of the Glossary module for Drupal 6.x improving the output to be XHTML strict compliant for use in a project for the Dutch government. Soon after the release of Drupal 7.0 a 7.x version of the module was released and has been improved since then.</p>
+<p> </p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-a5323ba3cce656d5197a018f7ff03b40">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">Not set</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/266511/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/266511/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28266511%29%20Comparison%20of%20Glossary-type%20modules">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"4EOYCYEMiCl9_HXp-8qIFAmiu1ITwgbE6uXPn5tL13c"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/extend\/comparison-of-contributed-modules\/comparison-of-glossary-type-modules":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"266179"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

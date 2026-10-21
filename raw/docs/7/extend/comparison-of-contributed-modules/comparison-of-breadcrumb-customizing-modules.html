@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Modules that influence the generation of a breadcrumb trail" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules" />
+<link rel="shortlink" href="https://www.drupal.org/node/533448" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules" />
+<meta property="og:title" content="Comparison of Breadcrumb customizing modules" />
+<meta property="og:description" content="Modules that influence the generation of a breadcrumb trail Comparison of modules that customize the breadcrumb and make nodes and other content appear to be under a chosen menu item: Hansel (7.x)  Hansel provides custom breadcrumbs which are build by user defined rules. These rules are independent from the menu system. Rules can have logic switches and can add links to the breadcrumbs.  Node Breadcrumb (7.x)  Allows you to create rules which indicate menu location of nodes (and the breadcrumb), either with the admin UI, or with PHP code." />
+<meta property="og:updated_time" content="2025-04-30T20:53:04+00:00" />
+<meta property="article:published_time" content="2009-07-28T15:16:09+00:00" />
+<meta property="article:modified_time" content="2025-04-30T20:53:04+00:00" />
+  <title>Comparison of Breadcrumb customizing modules | Comparison of contributed modules | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-533448 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-266179" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-u5dHf-VIuyfvvWjbmAtJYvodiUHB35hRlZVz8BtNVaY" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/533448" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/533448" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-Hre9Hxw8dJb9ETbbenSt1ef_AEULQaR34Lth-oKBXtI" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/extend">Extending Drupal 7</a></span><span><a href="/docs/7/extend/comparison-of-contributed-modules">Comparison of contributed modules</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-533448">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules#s-modules-that-influence-the-generation-of-a-breadcrumb-trail" class="toc-link toc-link-invalid-id active">Modules that influence the generation of a breadcrumb trail</a></li>
+<li class="anchor-list__item h2-tag last"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules#s-modules-that-add-functionality-to-an-existing-breadcrumb" class="toc-link toc-link-invalid-id active">Modules that add functionality to an existing breadcrumb</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="comparison-of-contributed-modules" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/extend/comparison-of-contributed-modules">Comparison of contributed modules</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-and-overview-of-access-control-modules">Comparison and Overview of Access Control modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-captcha-free-anti-spam-modules">Comparison of &quot;captcha free&quot; anti-spam modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-asset-management-modules">Comparison of Asset Management modules</a></li>
+<li class="leaf active-trail"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules" class="active-trail active">Comparison of Breadcrumb customizing modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-ccktaxonomy-modules">Comparison of CCK/Taxonomy Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-css-preprocessors">Comparison of CSS Preprocessors</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-charting-modules">Comparison of Charting modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-content-block-modules">Comparison of Content Block modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-e-commerce-solutions-circa-2008">Comparison of E-Commerce solutions (circa 2008)</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-form-building-modules">Comparison of Form Building Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules">Comparison of Glossary-type modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-image-handling-modules">Comparison of Image-handling modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-invoice-modules-for-drupal-commerce">Comparison of Invoice modules for Drupal Commerce</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-links-page-modules">Comparison of Links Page modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-mapping-modules">Comparison of Mapping modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-node-pager-modules">Comparison of Node Pager modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-nodeentity-ordering-modules">Comparison of Node/Entity Ordering Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-pdf-viewer-modules">Comparison of PDF viewer modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-question-and-answer-modules">Comparison of Question and Answer modules</a></li>
+<li class="leaf"><a href="/docs/extending-drupal/contributed-modules/comparison-of-contributed-modules/comparison-of-responsive-menus">Comparison of Responsive Menus</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-rotator-slider-modules">Comparison of Rotator / Slider modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-salesforce-webform-integration-modules">Comparison of Salesforce-Webform integration modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-user-interface-tweak-modules-and-edit-form-modifications">Comparison of User Interface tweak modules and edit form modifications</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-wysiwyg-modules">Comparison of WYSIWYG Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-web-service-client-modules">Comparison of Web-service client modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-automatic-link-modules">Comparison of automatic Link Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-content-recommendation-and-related-content-modules">Comparison of content recommendation and related content modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-email-newsletter-oriented-modules">Comparison of email newsletter oriented modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-file-download-gateway-and-tracking-modules">Comparison of file download gateway and tracking modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-image-cropping-and-resizing-modules">Comparison of image cropping and resizing modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-modules-for-html-tables">Comparison of modules for HTML tables</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-modules-for-dealing-with-troublesome-users">Comparison of modules for dealing with troublesome users</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-node-based-previous-and-next-navigation-modules">Comparison of node based previous and next navigation modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-staging-and-deployment-modules">Comparison of staging and deployment modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-user-edit-protection-modules">Comparison of user edit protection modules</a></li>
+<li class="last leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/drupal-7-comparison-of-lightbox-type-modules">[Drupal 7] Comparison of lightbox-type modules</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Comparison of Breadcrumb customizing modules</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/533448/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    30 April 2025  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h2 id="s-modules-that-influence-the-generation-of-a-breadcrumb-trail"><a class="toc-anchor" title="Permalink to this headline" href="#s-modules-that-influence-the-generation-of-a-breadcrumb-trail"></a>Modules that influence the generation of a breadcrumb trail</h2>
+<p> Comparison of modules that customize the breadcrumb and make nodes and other content appear to be under a chosen menu item:
+</p>
+<dl>
+<dt>
+        <a href="/project/hansel" rel="nofollow">Hansel</a> (7.x)<br />
+    </dt>
+<dd>
+        Hansel provides custom breadcrumbs which are build by user defined rules. These rules are independent from the menu system. Rules can have logic switches and can add links to the breadcrumbs.<br />
+    </dd>
+<dt>
+        <a href="/project/node_breadcrumb" rel="nofollow">Node Breadcrumb</a> (7.x)<br />
+    </dt>
+<dd>
+        Allows you to create rules which indicate menu location of nodes (and the breadcrumb), either with the admin UI, or with PHP code.<br />
+    </dd>
+<dt>
+        <a href="/project/taxonomy_breadcrumb" rel="nofollow">Taxonomy Breadcrumb</a> (7.x, 8.x)<br />
+    </dt>
+<dd>
+        Automatically add term links (taxonomy/term/tid) to breadcrumb of nodes<br />
+    </dd>
+<dt>
+        <a href="/project/custom_breadcrumbs" rel="nofollow">Custom Breadcrumbs</a> (7.x, 8.x, 9.x)<br />
+    </dt>
+<dd>
+        Customization only for entire content types, manual enter of breadcrumb links<br />
+    </dd>
+<dt>
+        <a href="/project/menu_breadcrumb" rel="nofollow">Menu Breadcrumb</a> (7.x, 8.x, 9.x)<br />
+    </dt>
+<dd>Use your site's menu(s) to generate breadcrumbs.</dd>
+<dt>
+        <a href="/project/menutrails" rel="nofollow">Menu Trails</a> (not maintained)<br />
+    </dt>
+<dd>
+        Customization by content types and taxonomy terms. This module's main function is to implement primary/secondary links which keep the current menu trail "active" or highlighted.<br />
+    </dd>
+<dt>
+        <a href="/project/crumbs" rel="nofollow">Crumbs</a> (7.x)<br />
+    </dt>
+<dd>
+        Builds a breadcrumb trail by finding the parent of the current page, then the parent of the parent, etc, until it arrives at the home page. Each step is based on a series of user-prioritized plugins representing menu hierarchy, taxonomy, system path, alias, pathauto rules, nodereference fields, custom token paths per entity bundle, and additional rules that can be defined in custom modules.<br />
+    </dd>
+<dt>
+        <a href="/project/menu_position" rel="nofollow">Menu position</a> (7.x, 8.x)<br />
+    </dt>
+<dd>
+        Allows for the creation of rules that will dynamically add the current page into the menu system (and thus breadcrumbs) at the requested spots. Currently, the Menu position module provides "content type", "pages", "taxonomy", "vocabulary" and "language" plug-ins that allows conditions to be added to rules.<br />
+    </dd>
+<dt>
+        <a href="/project/breadcrumbs_by_path" rel="nofollow">Breadcrumbs by path</a> (7.x)<br />
+    </dt>
+<dd>
+        Breadcrumbs by path uses the current URL (path alias) and the current page's title to automatically extract the breadcrumb's segments and its respective links<br />
+    </dd>
+<dt>
+        <a href="/project/easy_breadcrumb" rel="nofollow">Easy Breadcrumb</a> (7.x, 8.x)<br />
+    </dt>
+<dd>
+        Easy Breadcrumb uses the current URL (path alias) and the current page's title to automatically extract the breadcrumb's segments and its respective links<br />
+    </dd>
+<dt>
+        <a href="/project/path_breadcrumbs" rel="nofollow">Path Breadcrumbs</a> (7.x)<br />
+    </dt>
+<dd>
+        Path Breadcrumbs module helps you to create breadcrumbs for <strong>any page</strong><br />
+        with any selection rules and load any entity from the URL.<br />
+    </dd>
+</dl>
+<h2 id="s-modules-that-add-functionality-to-an-existing-breadcrumb"><a class="toc-anchor" title="Permalink to this headline" href="#s-modules-that-add-functionality-to-an-existing-breadcrumb"></a>Modules that add functionality to an existing breadcrumb</h2>
+<dl>
+<dt>
+        <a href="/project/crumbdown" rel="nofollow">Crumbdown</a><br />
+    </dt>
+<dd>
+        Adds dropdown submenus to some breadcrumb items. Depends on Crumbs. Currently not actively developed. D6 only.<br />
+    </dd>
+</dl>
+<p>  
+</p>
+<p>
+	 </p>
+<p>
+	<b>Check the comparison tables below (moved, so sidebar doesn't clobber).</b></p>
+<p>
+	 </p>
+<p>
+	↓</p>
+<p>
+	↓</p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	↓</p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	↓</p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+     </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p>
+	↓</p>
+<p>
+	 </p>
+<p>
+	 </p>
+<p> <strong>Comparison table for Drupal 7.x and above.</strong><br />
+  
+</p>
+<p> 
+</p>
+<div>
+<table height="1252" width="936">
+<thead>
+<tr>
+<th> Feature</th>
+<th align="center"> <a href="http://drupal.org/project/custom_breadcrumbs" rel="nofollow"><em>Custom Breadcrumbs</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/menu_breadcrumb" rel="nofollow"><em>Menu Breadcrumb</em></a></th>
+<th align="center"> <a href="https://drupal.org/project/path_breadcrumbs" rel="nofollow"><em>Path Breadcrumbs</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/popup" rel="nofollow"><em>Popup</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/clickpath" rel="nofollow"><em>Clickpath</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/hansel" rel="nofollow"><em>Hansel</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/crumbs" rel="nofollow"><em>Crumbs</em></a></th>
+<td valign="top">
+    </td>
+<th align="center"> <a href="http://drupal.org/project/breadcrumb" rel="nofollow"><em>Breadcrumb</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/menu_position" rel="nofollow"><em>Menu position</em></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="11"> <em><strong>Drupal-related</strong></em></td>
+</tr>
+<tr>
+<td> Drupal 8.x</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td valign="top">
+    </td>
+<td align="center"> <a href="http://drupal.org/node/481564" rel="nofollow">Planned</a></td>
+</tr>
+<tr>
+<td> <strong>Drupal 7.x</strong></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center">  <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td> <strong>Drupal 6.x</strong></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> -</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> "unstable"</td>
+<td valign="top">
+    </td>
+<td align="center">  <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td> Drupal 5.x</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> -</td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td valign="top">
+    </td>
+<td align="center">  <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td> Usage</td>
+<td align="center"> &gt;49k</td>
+<td align="center"> &gt;40k</td>
+<td align="center"> &gt;13k</td>
+<td align="center"> &gt;7k</td>
+<td align="center"> &lt;300</td>
+<td align="center"> &gt;1k</td>
+<td align="center"> &gt;15k</td>
+<td valign="top">
+    </td>
+<td align="center"> &lt;600</td>
+<td align="center"> &gt;23k</td>
+</tr>
+<tr>
+<td> <strong><a href="#fn-lastupdate" id="ln-lastupdate" name="ln-lastupdate" rel="nofollow">*</a></strong>Last update</td>
+<td align="center">
+<p> September 9,<br />
+      <br />2014
+    </p>
+</td>
+<td align="center"> October 8,<br />
+    <br />2013</td>
+<td align="center"> June 24,<br />
+    <br />2014</td>
+<td align="center"> July 6, 2014</td>
+<td align="center"> April 4, 2010</td>
+<td align="center"> October 30, 2014</td>
+<td align="center"> October 2,<br />
+    <br />2014</td>
+<td valign="top">
+    </td>
+<td align="center"> February 24, 2011</td>
+<td align="center"> February 22,<br />
+    <br />2012</td>
+</tr>
+<tr>
+<td> Documentation / README</td>
+<td align="center"> <a href="http://drupalcode.org/project/custom_breadcrumbs.git/blob_plain/refs/heads/6.x-2.x:/README.txt" rel="nofollow"><strong>Readme</strong></a></td>
+<td align="center">  </td>
+<td align="center"> <a href="https://drupal.org/node/2061939" rel="nofollow">FAQ</a>,<br />
+    <br /><a href="http://codekarate.com/daily-dose-of-drupal/drupal-7-path-breadcrumbs-module" rel="nofollow">Video</a></td>
+<td align="center"> <a href="http://drupal.org/node/842100" rel="nofollow">Page</a></td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center"> <a href="http://drupal.org/node/1004394" rel="nofollow">Doc</a></td>
+<td valign="top">
+    </td>
+<td align="center">  </td>
+<td align="center">  </td>
+</tr>
+<tr>
+<td> Demo / screenshot</td>
+<td align="center"> -</td>
+<td align="center"> <a href="http://drupal.org/files/images/menu_breadcrumb_screenshot_crop.png" rel="nofollow"><strong>settings screen</strong></a></td>
+<td align="center"> <a href="http://codekarate.com/daily-dose-of-drupal/drupal-7-path-breadcrumbs-module" rel="nofollow">Video</a>,<br />
+    <br /><a href="https://drupal.org/project/path_breadcrumbs" rel="nofollow">screenshots</a></td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> <a href="http://www.flickr.com/photos/bertboerland/sets/72157623924447201/" rel="nofollow">screenshots</a></td>
+<td align="center"> -</td>
+<td valign="top">
+    </td>
+<td align="center">  </td>
+<td align="center"> <a href="http://drupal.org/files/images/menu_position_0.png" rel="nofollow">screenshot</a></td>
+</tr>
+<tr>
+<td colspan="11"> <em><strong>Functionality</strong></em></td>
+</tr>
+<tr>
+<td> API, Hooks, classes available</td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center"> <a href="http://drupalcode.org/project/path_breadcrumbs.git/blob/refs/heads/7.x-3.x:/path_breadcrumbs.api.php" rel="nofollow">API</a>,<br />
+    <br /><a href="https://drupal.org/project/path_breadcrumbs" rel="nofollow">CTools Plugins</a></td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center"> <a href="http://drupal.org/project/hansel" rel="nofollow">Yes</a></td>
+<td align="center"> <a href="http://drupal.org/project/crumbs" rel="nofollow">Plugins</a></td>
+<td valign="top">
+    </td>
+<td align="center">  </td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td> User defined rules</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>  Admin UI</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center">  </td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center">  </td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td> Token support</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center">  <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td> Additional database tables</td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td valign="top">
+    </td>
+<td align="center">  </td>
+</tr>
+<tr>
+<td colspan="10"> <em><strong>Breadcrumbs based on ...</strong></em></td>
+</tr>
+<tr>
+<td> Menu hierarchy</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> -</td>
+<td align="center"> ?</td>
+<td align="center"> -</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+</tr>
+<tr>
+<td> Taxonomy</td>
+<td align="center"> ?</td>
+<td align="center"> -</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> -</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+</tr>
+<tr>
+<td> Path alias</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> -</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+</tr>
+<tr>
+<td> Node reference / entity reference</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+</tr>
+<tr>
+<td> Organic groups</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+</tr>
+<tr>
+<td> Click history</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+</tr>
+<tr>
+<td> Admin defined rules</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td> Code-defined rules</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td valign="top">
+    </td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+</tr>
+<tr>
+<td> Prioritization of rules</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> fine-grained hierarchical prioritization with wildcards via admin weights UI</td>
+<td valign="top"> <br />
+    <br /></td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+</tr>
+<tr>
+<td> <em><strong>Notes</strong></em></td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center"> Page Manager friendly UI. Ctools based. Cacheable.</td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td valign="top"> <br />
+    <br /></td>
+<td align="center"> See: <a href="http://drupal.org/node/481564" rel="nofollow">#481564</a></td>
+<td align="center">
+<p> Makes you breadcrumbs and menus consistent.
+    </p>
+<p>Due to the usage of the menu system it’s less flexible than other modules.
+    </p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p><strong><a href="#ln-lastupdate" id="fn-lastupdate" name="fn-lastupdate" rel="nofollow">*</a>Note:</strong> The most recent update to <strong>any</strong> of these modules' "Last update" dates was <a href="https://drupal.org/node/533448/revisions/2630504/view" rel="nofollow">December 16, 2014</a>.
+</p>
+<p> 
+</p>
+
+<p><strong>Comparison table for Drupal 6.x and below.</strong><br />
+  
+</p>
+<table height="745" width="780">
+<thead>
+<tr>
+<th> Feature</th>
+<th align="center"> <a href="http://drupal.org/project/menutrails" rel="nofollow"><em>Menu Trails</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/taxonomy_breadcrumb" rel="nofollow"><em>Taxonomy Breadcrumb</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/nodehierarchy" rel="nofollow"><em>Node Hierarchy</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/node_breadcrumb" rel="nofollow"><em>Node breadcrumb</em></a></th>
+<th align="center"> <a href="http://drupal.org/project/trailscout" rel="nofollow"><em>TrailScout</em></a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td colspan="6"> <em><strong>Drupal-related</strong></em></td>
+</tr>
+<tr>
+<td> Drupal 8.x</td>
+<td align="center"> -</td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+</tr>
+<tr>
+<td> <strong>Drupal 7.x</strong></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> <strong>Drupal 6.x</strong></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Drupal 5.x</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Usage</td>
+<td align="center"> &gt;8k</td>
+<td align="center"> &gt;7k</td>
+<td align="center"> &gt;4k</td>
+<td align="center"> &lt;1k</td>
+<td align="center"> &lt;100</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> <strong><a id="ln-lastupdate" name="ln-lastupdate" rel="nofollow">*</a></strong>Last update</td>
+<td align="center"> March 16, 2010</td>
+<td align="center"> April 16, 2010</td>
+<td align="center"> June 13, 2013</td>
+<td align="center"> December 10, 2014</td>
+<td align="center"> September 26, 2014</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Documentation / README</td>
+<td align="center"> <a href="http://drupalcode.org/project/menutrails.git/blob_plain/refs/heads/6.x-1.x:/README.TXT" rel="nofollow"><strong>Readme</strong></a></td>
+<td align="center">  </td>
+<td align="center"> <a href="http://drupal.org/node/302253" rel="nofollow">Page</a></td>
+<td align="center">  </td>
+<td align="center"> <a href="http://vacilando.net/ts" rel="nofollow">Desc</a></td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Demo / screenshot</td>
+<td align="center"> <a href="http://chapterthreellc.com/node/72" rel="nofollow"><strong>screenshots</strong></a></td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> <a href="http://drupalcode.org/project/node_breadcrumb.git/blob_plain/refs/heads/6.x-1.x:/screenshot_node_breadcrumb.png" rel="nofollow">screenshots</a></td>
+<td align="center"> <a href="http://www.vacilando.eu/ts" rel="nofollow">demo</a></td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td colspan="7"> <em><strong>Functionality</strong></em></td>
+</tr>
+<tr>
+<td> API, Hooks, classes available</td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> User defined rules</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td>  Admin UI</td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center">  </td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Token support</td>
+<td align="center"> <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> <a href="http://drupal.org/node/411642" rel="nofollow">No</a></td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center">  <img src="/misc/watchdog-error.png" /></td>
+<td align="center"> <img src="/misc/watchdog-error.png" /></td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Additional database tables</td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+</tr>
+<tr>
+<td colspan="6"> <em><strong>Breadcrumbs based on ...</strong></em></td>
+</tr>
+<tr>
+<td> Menu hierarchy</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> -</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Taxonomy</td>
+<td align="center"> -</td>
+<td align="center">  <img src="/misc/watchdog-ok.png" /></td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Path alias</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Node reference / entity reference</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Organic groups</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Click history</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Admin defined rules</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Code-defined rules</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> Prioritization of rules</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center"> ?</td>
+<td align="center">
+    </td>
+</tr>
+<tr>
+<td> <em><strong>Notes</strong></em></td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">  </td>
+<td align="center">
+    </td>
+</tr>
+</tbody>
+</table>
+<p><strong><a id="fn-lastupdate" name="fn-lastupdate" rel="nofollow">*</a>Note:</strong> The most recent update to <strong>any</strong> of these modules' "Last update" dates was <a href="https://drupal.org/node/533448/revisions/2630504/view" rel="nofollow">December 16, 2014</a>.
+</p>
+<dl>
+<dt> Suggested web-browser add-ons to easier edit above tables: <a href="https://code.google.com/p/xinha/" rel="nofollow">Xinha</a>, <a href="https://addons.mozilla.org/en-US/firefox/addon/write-area/" rel="nofollow">Write Area</a>.</dt>
+</dl>
+<p>See also: <a href="https://groups.drupal.org/node/79839" rel="nofollow">Comparison of Breadcrumb Modules</a> in the <a href="https://groups.drupal.org/similar-module-review" rel="nofollow">Similar Module Review</a> Drupal group.
+</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-5da5b4b339cd32d600ff50acfd92797c">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">Not set</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/533448/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/533448/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28533448%29%20Comparison%20of%20Breadcrumb%20customizing%20modules">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"SM0yTkdfjBqTg5DXkZvv_Swt3VxRyy89Ku5sAWzahkw"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/extend\/comparison-of-contributed-modules\/comparison-of-breadcrumb-customizing-modules":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"266179"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="What is the maintenance page?" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page" />
+<link rel="shortlink" href="https://www.drupal.org/node/195435" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page" />
+<meta property="og:title" content="Theming the Drupal maintenance page" />
+<meta property="og:description" content="What is the maintenance page? The maintenance page is used when the site is set in off-line mode or the site is inoperable due to technical problems, such as a database failure. You can enable this mode from &quot;Administer &gt; Site configuration &gt; Site maintenance&quot;. This mode will also trigger during a database failure. By default, the core theme Minnelli is used in this mode even if another theme is selected. However, you might like to include a maintenance page from within your own site." />
+<meta property="og:updated_time" content="2026-02-20T15:53:45+00:00" />
+<meta property="article:published_time" content="2007-11-26T16:15:45+00:00" />
+<meta property="article:modified_time" content="2026-02-20T15:53:45+00:00" />
+  <title>Theming the Drupal maintenance page | Tools and best practices | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-195435 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2797181" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-soOpw-MwTW9UJFR1F8iuh3yWWaVRTKckwoaeJPobNiE" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/195435" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/195435" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-Hv_OpB8_2d2ZDWldi1sZXuN_WNbpy-snMlgah008fLw" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/theming">Theming Drupal 7</a></span><span><a href="/docs/7/theming/tools-and-best-practices">Tools and best practices</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-195435">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page#s-what-is-the-maintenance-page" class="toc-link toc-link-invalid-id active">What is the maintenance page?</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page#s-overriding-template-files-in-drupal" class="toc-link toc-link-invalid-id active">Overriding template files in Drupal</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page#s-step-1-override-the-maintenance-page-template" class="toc-link toc-link-invalid-id active">Step 1: Override the maintenance page template</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page#s-step-2-indicate-in-your-settingsphp-file" class="toc-link toc-link-invalid-id active">Step 2: Indicate in your settings.php file</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page#s-option-1" class="toc-link toc-link-invalid-id active">Option 1</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page#s-option-2" class="toc-link toc-link-invalid-id active">Option 2</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page#s-step-3-create-the-maintenance-offline-page-in-the-case-of-database-failure" class="toc-link toc-link-invalid-id active">Step 3: Create the maintenance offline page in the case of database failure</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page#s-step-4-hard-code-site-settings" class="toc-link toc-link-invalid-id active">Step 4: Hard code site settings</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="tools-and-best-practices" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/theming/tools-and-best-practices">Tools and best practices</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/theming/tools-and-best-practices/safe-theme-development">Safe theme development</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/theme-coding-conventions">Theme coding conventions</a></li>
+<li class="leaf active-trail"><a href="/docs/7/theming/tools-and-best-practices/theming-the-drupal-maintenance-page" class="active-trail active">Theming the Drupal maintenance page</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/adding-your-theme-to-drupalorg">Adding your theme to Drupal.org</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/cross-browser-testing">Cross-browser testing</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/recommended-target-browsers">Recommended target browsers</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/creating-a-screenshot-for-the-appearance-page">Creating a screenshot for the appearance page</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/creating-a-screenshot-for-the-administration-page">Creating a screenshot for the administration page</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/making-your-theme-semantically-correct">Making your theme semantically correct</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/doctype-xml-and-xhtml">Doctype, XML, and XHTML</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/feature-detection">Feature detection</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/installing-modernizr-module-and-javascript-library">Installing Modernizr module and JavaScript library</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/creating-a-custom-build-of-modernizr-based-on-your-drupal">Creating a custom build of Modernizr based on your Drupal setup</a></li>
+<li class="leaf"><a href="/docs/7/theming/tools-and-best-practices/modernizrload-and-drupal-basics">Modernizr.load() and Drupal: Basics</a></li>
+<li class="last leaf"><a href="/docs/7/theming/tools-and-best-practices/implementing-the-modernizr-test-api-within-a-module-or-theme">Implementing the Modernizr Test API within a module or theme</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Theming the Drupal maintenance page</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/195435/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    20 February 2026  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-field-documentation-status"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-field-documentation-status field-type-list-text field-label-hidden"><div class="field-items"><div class="field-item even"><p class="deprecated">This documentation <strong>needs work</strong>. See "Help improve this page" in the sidebar.</p></div></div></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h2 id="s-what-is-the-maintenance-page"><a class="toc-anchor" title="Permalink to this headline" href="#s-what-is-the-maintenance-page"></a>What is the maintenance page?</h2>
+<p>The maintenance page is used when the site is set in off-line mode or the site is inoperable due to technical problems, such as a database failure. You can enable this mode from "<em>Administer &gt; Site configuration &gt; Site maintenance</em>". This mode will also trigger during a database failure. By default, the core theme Minnelli is used in this mode even if another theme is selected. However, you might like to include a maintenance page from within your own site.</p>
+<h2 id="s-overriding-template-files-in-drupal"><a class="toc-anchor" title="Permalink to this headline" href="#s-overriding-template-files-in-drupal"></a>Overriding template files in Drupal</h2>
+<p>Creating a custom theme in Drupal is a practice of overriding existing template (.tpl.php) files. You can find template files included with the core distribution and you can either copy these files into your theme folder, or create new files with the same name. Drupal will first choose your theme's template files before the core ones. In this way, you can override the default templates. For example, there is a <code class="language-php">maintenance-page--offline.tpl.php</code> file which exists in Drupal core, that you can duplicate into your own theme.</p>
+<p>Sometimes you can use template suggestions, which means example files don't exist with Drupal, but if you include a file with the suggested name, Drupal will pick it up. For example <code class="language-php">maintenance-page.tpl.php</code> doesn't exist in core, but you can create a file with that name and Drupal will recognize it.</p>
+<p>In this case there are two maintenance page files that you can create. You can duplicate your theme's <code class="language-php">page.tpl.php</code> twice and name them:</p>
+<ol>
+<li><code class="language-php">maintenance-page.tpl.php</code>: This file controls the page that is displayed when the site is in "maintenance mode" but the database connection and database are still functioning correctly.</li>
+<li><code class="language-php">maintenance-page--offline.tpl.php</code>: This file controls the page that is displayed when Drupal cannot access the database (for whatever reason). <em>[Note - broken since Drupal 7. Requires a patch since Drupal 8: <a href="https://www.drupal.org/project/drupal/issues/2720109" rel="nofollow">https://www.drupal.org/project/drupal/issues/2720109</a>]</em></li>
+</ol>
+<h3 id="s-step-1-override-the-maintenance-page-template"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-1-override-the-maintenance-page-template"></a>Step 1: Override the maintenance page template</h3>
+<p>Copy your main <code class="language-php">page.tpl.php</code> and rename it to <code class="language-php">maintenance-page.tpl.php</code> or copy the template located in <code class="language-php">modules/system/maintenance-page.tpl.php</code> to your theme and edit so it matches the rest of your site.</p>
+<h3 id="s-step-2-indicate-in-your-settingsphp-file"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-2-indicate-in-your-settingsphp-file"></a>Step 2: Indicate in your settings.php file</h3>
+<p>In the case of a database failure, your maintenance page setting must be indicated in configuration files so this can operate without access to the database. Specify your maintenance page in your <code class="language-php">settings.php</code> file, which is usually located at <code class="language-php">sites/default</code> or <code class="language-php">sites/yourdomain.com</code> (if you are on a multi-site installation).</p>
+<h4 id="s-option-1"><a class="toc-anchor" title="Permalink to this headline" href="#s-option-1"></a>Option 1</h4>
+<p>In the <code class="language-php">settings.php</code> file, enable the <code class="language-php">$conf</code> variable with the internal name of your theme:</p>
+<pre>
+<code class="language-php">  $conf['maintenance_theme'] = 'themeName';
+</code></pre><h4 id="s-option-2"><a class="toc-anchor" title="Permalink to this headline" href="#s-option-2"></a>Option 2</h4>
+<p>In the <code class="language-php">settings.php</code> file, numerous configurations are disabled with a # (<em>hash</em>) symbol at the start of the line. You can remove the # symbol at the start of the line to uncomment and enable that configuration.</p>
+<p>Therefore, instead of adding the line as in Option 1 above to the <code class="language-php">settings.php</code> file, you can also uncomment the relevant lines in <code class="language-php">settings.php</code>. In that case, you have to uncomment 3 separate lines:</p>
+<ul>
+<li>The array declaration (<code class="language-php"># $conf = array(</code>)</li>
+<li>The maintenance theme setting (<code class="language-php"># 'maintenance_theme' =&gt; 'minnelli',</code>)</li>
+<li>The closing parenthesis (<code class="language-php"># );</code>)</li>
+</ul>
+<p>Verify the changes by setting the site into off-line mode then log out.</p>
+<p>To account for database failures, try turning off your database. Any function call that depends on the database should be checked first with <a href="http://api.drupal.org/api/function/db_is_active/6" rel="nofollow">db_is_active</a>. The variable $db_is_active can also be used from the template.</p>
+<p>As an alternative to disabling your database, force a database connection failure. Examples for both methods can be found <a href="http://drupal.org/node/195435#comment-1452608" title="Examples for disabling the database or simulating database failure." rel="nofollow">here</a>.</p>
+<h3 id="s-step-3-create-the-maintenance-offline-page-in-the-case-of-database-failure"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-3-create-the-maintenance-offline-page-in-the-case-of-database-failure"></a>Step 3: Create the maintenance offline page in the case of database failure</h3>
+<p>To prevent warnings about the database connection from appearing, copy your <code class="language-php">page.tpl.php</code> file and rename it <code class="language-php">maintenance-page--offline.tpl.php</code>. Change the <code class="language-php">$content</code> variable with your custom message. Note, this template file is a <a href="/node/223440" rel="nofollow">template suggestion</a> based on <code class="language-php">maintenance-page.tpl.php</code> so they both need to exist in the same folder.</p>
+<p>At the top of <code class="language-php">maintenance-page--offline.tpl.php</code>, you might also want to set the following variables detailed in step 4.</p>
+<h3 id="s-step-4-hard-code-site-settings"><a class="toc-anchor" title="Permalink to this headline" href="#s-step-4-hard-code-site-settings"></a>Step 4: Hard code site settings</h3>
+<p>In this mode, your database is inaccessible, therefore some key settings about your site are not available. If you want this page to use the same theme and other settings that the site would normally use, you must replicate those settings by using hard-coded values.</p>
+<p>Copy these variables into the <code class="language-php">maintenance-page--offline.tpl.php</code> file:</p>
+<ul>
+<li><code class="language-php">$head_title</code> - the value used in the HTML <code class="language-php">&lt;title&gt;</code> tag. Defaults to "Site off-line | Drupal"</li>
+<li><code class="language-php">$site_name</code> - the value used in the page's <code class="language-php">&lt;h1&gt;</code> tag. Defaults to "Drupal". If "Site name" is turned off in your theme configuration, then you'll want to clear this variable (see example below).</li>
+<li><code class="language-php">$logo</code> - if you're using a custom logo override in the theme settings. Use the full path of the custom logo, relative to the base directory of the Drupal installation. If you used the standard override upload function in the theme configuration for your custom logo, your logo will be stored in <code class="language-php">sites/all/files/</code> (see example below).</li>
+<li><code class="language-php">$site_slogan</code> - your site's slogan. If "Site slogan" is turned off in your theme configuration but you still have a site slogan defined in Site Information, then you'll want to clear this variable (see example below).</li>
+</ul>
+<p>Example additions at the top of <code class="language-php">maintenance-page--offline.tpl.php</code>:</p>
+<pre>
+<code class="language-php">  $head_title = 'mysite.com :: Site-offline';
+  $logo = 'sites/all/files/customLogo.png';
+
+  // If your theme is set to display the site name, uncomment this line and replace the value:
+  // $site_name = 'Your Site Name';
+
+  // If your theme is set to *not* display the site name, uncomment this line:
+  unset($site_name);
+
+  // If your theme is set to display the site slogan, uncomment this line and replace the value:
+  $site_slogan = 'My Site Slogan';
+
+  // If your theme is set to *not* display the site slogan, uncomment this line:
+  // unset($site_slogan);
+
+  // Main message. Note HTML markup.
+  $content = '</code></pre><p><code class="language-php">The site is currently not available due to technical problems. Please try again later. Thank you for your understanding.</code></p>
+<hr />
+<p><code class="language-php">If you are the maintainer of this site, please check your database settings.</code></p>
+<p><code class="language-php">'; </code></p>
+<p>A <code class="language-php">maintenance.css</code> file is included in this mode. It is located in <code class="language-php">modules/system/maintenance.css</code>. You can override this file with the instructions provided in the <a href="/node/171209#styles-override-module" rel="nofollow">style sheets section</a>.</p>
+<p><em>Notes:</em></p>
+<ul>
+<li><em>The initial install and updating of your site depends on the core themes, Minnelli and Garland. It cannot be changed for these modes.</em></li>
+<li><em>The theme registry is not cached when set to off-line mode.</em></li>
+<li><em>Ensure that the theme used as maintenance theme is enabled (Administer &gt; Site building &gt; Themes).</em></li>
+</ul></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-c413ce7e7619c5308cd3a4030b248713">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">Needs work</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/195435/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/195435/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28195435%29%20Theming%20the%20Drupal%20maintenance%20page">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"sWaI1xIIYLWgWiB7asDJCQTCHFEmXrUmlMnLljPbs50"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/theming\/tools-and-best-practices\/theming-the-drupal-maintenance-page":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2797181"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

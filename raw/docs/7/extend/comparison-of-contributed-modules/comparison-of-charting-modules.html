@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/extend/comparison-of-contributed-modules/comparison-of-charting-modules" />
+<link rel="shortlink" href="https://www.drupal.org/node/2363985" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/extend/comparison-of-contributed-modules/comparison-of-charting-modules" />
+<meta property="og:title" content="Comparison of Charting modules" />
+<meta property="og:description" content="About charting modules Charting wrapper modules Native charting modules Other charting modules Supported Drupal versions Supported Charting Libraries Available integrations Features Issue Queue Statistics Maintenance Scorecards Charting Modules Discussions Contribute to this comparison Charts can help you visualize vast amounts of data in a way that is easily understood. Similar to the saying &quot;A picture is worth more than 1000 words,&quot; one may say &quot;A chart is worth more than 1.000 reports&quot; ... About charting modules There are a variety of modules that facilitate the creation of charts." />
+<meta property="og:updated_time" content="2025-04-30T20:53:04+00:00" />
+<meta property="article:published_time" content="2014-10-27T08:08:03+00:00" />
+<meta property="article:modified_time" content="2025-04-30T20:53:04+00:00" />
+  <title>Comparison of Charting modules | Comparison of contributed modules | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-2363985 node-type-guide drupalorg-site-main panels-layout og-context og-context-node og-context-node-2363985" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/extend/comparison-of-contributed-modules/comparison-of-charting-modules" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-bkoA96hRpI6-22tuGIbyVFb5gLZO47_EKYn4hyuXxjE" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/2363985" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/2363985" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/extend/comparison-of-contributed-modules/comparison-of-charting-modules" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-BG1IzNrvXvqvKGlL2PVKg7ztP-9VGj-rkyXGS4T0yhQ" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/extend">Extending Drupal 7</a></span><span><a href="/docs/7/extend/comparison-of-contributed-modules">Comparison of contributed modules</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-guide node-2363985">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="comparison-of-contributed-modules" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/extend/comparison-of-contributed-modules">Comparison of contributed modules</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-and-overview-of-access-control-modules">Comparison and Overview of Access Control modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-captcha-free-anti-spam-modules">Comparison of &quot;captcha free&quot; anti-spam modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-asset-management-modules">Comparison of Asset Management modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-breadcrumb-customizing-modules">Comparison of Breadcrumb customizing modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-ccktaxonomy-modules">Comparison of CCK/Taxonomy Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-css-preprocessors">Comparison of CSS Preprocessors</a></li>
+<li class="leaf active-trail"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-charting-modules" class="active-trail active">Comparison of Charting modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-content-block-modules">Comparison of Content Block modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-e-commerce-solutions-circa-2008">Comparison of E-Commerce solutions (circa 2008)</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-form-building-modules">Comparison of Form Building Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-glossary-type-modules">Comparison of Glossary-type modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-image-handling-modules">Comparison of Image-handling modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-invoice-modules-for-drupal-commerce">Comparison of Invoice modules for Drupal Commerce</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-links-page-modules">Comparison of Links Page modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-mapping-modules">Comparison of Mapping modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-node-pager-modules">Comparison of Node Pager modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-nodeentity-ordering-modules">Comparison of Node/Entity Ordering Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-pdf-viewer-modules">Comparison of PDF viewer modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-question-and-answer-modules">Comparison of Question and Answer modules</a></li>
+<li class="leaf"><a href="/docs/extending-drupal/contributed-modules/comparison-of-contributed-modules/comparison-of-responsive-menus">Comparison of Responsive Menus</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-rotator-slider-modules">Comparison of Rotator / Slider modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-salesforce-webform-integration-modules">Comparison of Salesforce-Webform integration modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-user-interface-tweak-modules-and-edit-form-modifications">Comparison of User Interface tweak modules and edit form modifications</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-wysiwyg-modules">Comparison of WYSIWYG Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-web-service-client-modules">Comparison of Web-service client modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-automatic-link-modules">Comparison of automatic Link Modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-content-recommendation-and-related-content-modules">Comparison of content recommendation and related content modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-email-newsletter-oriented-modules">Comparison of email newsletter oriented modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-file-download-gateway-and-tracking-modules">Comparison of file download gateway and tracking modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-image-cropping-and-resizing-modules">Comparison of image cropping and resizing modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-modules-for-html-tables">Comparison of modules for HTML tables</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-modules-for-dealing-with-troublesome-users">Comparison of modules for dealing with troublesome users</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-node-based-previous-and-next-navigation-modules">Comparison of node based previous and next navigation modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-staging-and-deployment-modules">Comparison of staging and deployment modules</a></li>
+<li class="leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-user-edit-protection-modules">Comparison of user edit protection modules</a></li>
+<li class="last leaf"><a href="/docs/7/extend/comparison-of-contributed-modules/drupal-7-comparison-of-lightbox-type-modules">[Drupal 7] Comparison of lightbox-type modules</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-page-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Comparison of Charting modules</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><hr />
+<img src="/files/ScatterGraph.png" width="302" height="203" align="right" alt="Comparison of Charting modules" />
+<ul>
+<li><a href="#about" rel="nofollow">About charting modules</a></li>
+<li><a href="#wrappermodules" rel="nofollow">Charting wrapper modules</a></li>
+<li><a href="#nativemodules" rel="nofollow">Native charting modules</a></li>
+<li><a href="#othermodules" rel="nofollow">Other charting modules</a></li>
+<li><a href="#drupalversions" rel="nofollow">Supported Drupal versions</a></li>
+<li><a href="#supportedlibraries" rel="nofollow">Supported Charting Libraries</a></li>
+<li><a href="#integrations" rel="nofollow">Available integrations</a></li>
+<li><a href="#features" rel="nofollow">Features</a></li>
+<li><a href="#stats" rel="nofollow">Issue Queue Statistics</a></li>
+<li><a href="#scorecards" rel="nofollow">Maintenance Scorecards</a></li>
+<li><a href="#discussions" rel="nofollow">Charting Modules Discussions</a></li>
+<li><a href="#contribute" rel="nofollow">Contribute to this comparison</a></li>
+</ul>
+<!--break--><hr />
+<p>Charts can help you visualize vast amounts of data in a way that is easily understood. Similar to the saying "A picture is worth more than 1000 words," one may say "A chart is worth more than 1.000 reports" ...</p>
+<h2 id="about">About charting modules </h2>
+<p>There are a variety of modules that facilitate the creation of charts. When it comes to charting in Drupal, the saying "There's a module for it" doesn't really apply. In this case, it's more accurate to say, "There are plenty of modules for it" ...</p>
+<p>These modules support for various charting libraries that may be desirable based on a site's desired appearance, feature-set, and licensing needs.</p>
+<p><strong>Warning</strong>: The names and/or namespaces of some of the modules, in combination with the various charting libraries they support, can be very confusing! Furthermore, it can be difficult to keep track of which charting module depends on another charting module, or which one is still supported. For anyone getting scared, help might be on the way in the form of <span class="project-issue-issue-link project-issue-status-info project-issue-status-1"><a href="/project/chart/issues/2368793" title="Status: Active">#2368793: Chart 2.0</a></span> ...</p>
+<h2 id="wrappermodules">Charting wrapper modules</h2>
+<p>Charting wrapper modules are modules that support the creation of charts, but which depend on at least 1 <strong>native charting module</strong>, further explained below, to produce such charts.</p>
+<p>Below is a list of charting wrapper modules:</p>
+<ul>
+<li><a href="/project/rate" target="_blank" rel="nofollow">Rate</a> provides flexible voting widgets for nodes and comments. Optionally it displays the vote results in a chart if the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> module is available.</li>
+<li><a href="/project/google_analytics_reports" target="_blank" rel="nofollow">Google Analytics Reporting</a> provides graphical reporting of a site's tracking data. Graphical reports include a dashboard widget for administrators, a small path-based report in blocks, and a full path-based report. It currently uses the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> module, though the next release will switch to using the <a href="/project/charts" target="_blank" rel="nofollow">Charts</a> module.</li>
+<li>The Quiz Stats submodule of <a href="/project/quiz" target="_blank" rel="nofollow">Quiz</a> (used to create graded assessments) provides charts using the <a href="/project/charts" target="_blank" rel="nofollow">Charts</a> module.</li>
+<li>The Yandex.Metrics Reports submodule of <a href="https://www.drupal.org/project/yandex_metrics" target="_blank" rel="nofollow">Yandex.Metrics</a> integrates a website with the Yandex.Metrica, which is an alternative to Google Analytics. It provides charts using the <a href="/project/charts" target="_blank" rel="nofollow">Charts</a> module.</li>
+<li>The <a href="/project/ad" target="_blank" rel="nofollow">Advertisement</a> module is a powerful advertising system with basic graphical reports created using the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> module.</li>
+<li><a href="/project/commerce_reports" target="_blank" rel="nofollow">Commerce Reporting</a> provides a reporting system for <a href="/project/commerce" target="_blank" rel="nofollow">Drupal Commerce</a> via an advanced reports dashboard using the <a href="/project/charts" target="_blank" rel="nofollow">Charts</a> module.</li>
+<li><a href="/project/support" target="_blank" rel="nofollow">Support Ticketing System</a> provides a basic ticketing system and helpdesk that is native to Drupal. Optionally it generates basic charts from ticket statistics if the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> module is available.</li>
+<li><a href="/project/search_log" target="_blank" rel="nofollow">Search Log</a> generates  charts (some nice eye-candy ...) if the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> module is available.</li>
+<li><a href="/project/quant" target="_blank" rel="nofollow">Quant</a> (<strong>beta</strong> version only for D7, and a D6 version) provides an engine for producing quantitative, time-based analytics for virtually any Drupal component. It takes raw data about normal Drupal actions, such as node creation, and plots the activity over time, with the selected time being configurable. It uses the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> module.</li>
+<li><a href="/project/webform_chart" target="_blank" rel="nofollow">Webform Chart</a> displays <a href="http://drupal.org/project/webform" target="_blank" rel="nofollow">webform</a> results in a graphical manner using either the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> or <a href="/project/charts" target="_blank" rel="nofollow">Charts</a> module.</li>
+<li><a href="/project/webform_charts" target="_blank" rel="nofollow">Webform Charts</a> (<strong>beta</strong> version only), not to be confused with <a href="/project/webform_chart" target="_blank" rel="nofollow">Webform Chart</a>, integrates the <a href="/project/webform" target="_blank" rel="nofollow">Webform</a> module with the <a href="/project/charts" target="_blank" rel="nofollow">Charts</a> module. It integrates with the "Analysis" tab of a Webform to provide charts for each individual component's analytical data.</li>
+<li><a href="/project/drd" target="_blank" rel="nofollow">Drupal Remote Dashboard</a> monitors and manages any number of Drupal installations at once. Optionally the monitoring data will be made visible in graphs if the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> module is available.</li>
+<li><a href="/project/poll_chart" target="_blank" rel="nofollow">Poll Chart Block</a> displays  poll's results in a block, with a selectable chart type, and using the <a href="/project/chart" target="_blank" rel="nofollow">Chart</a> module.</li>
+<li><a href="/project/qmo_bugzilla" target="_blank" rel="nofollow">Bugzilla Dashboard</a> (D6 release only) sets up a Bugzilla query to run over a set period of time, at a given frequency, and pick up on specific data to display in a chart.</li>
+<li><a href="/project/csvchart" target="_blank" rel="nofollow">CSV Chart</a>, which only has a D5 version for now, though recently <span class="project-issue-issue-link project-issue-status-info project-issue-status-1"><a href="/project/csvchart/issues/2368967" title="Status: Active, Assigned to: Pierre.Vriens">#2368967: Upgrade to Drupal version 6</a></span> and <span class="project-issue-issue-link project-issue-status-info project-issue-status-1"><a href="/project/csvchart/issues/2368971" title="Status: Active, Assigned to: Pierre.Vriens">#2368971: Upgrade to Drupal version 7</a></span> were announced.</li>
+<li>The <a href="/project/views_chart_tools" target="_blank" rel="nofollow">Views Chart Tools</a> module (<strong>dev</strong> version only) integrates the advanced features of the interactive HTML5 charts of the <a href="https://developers.google.com/chart/" target="_blank" rel="nofollow">Google Chart Tools API</a> with the query building abilities of <a href="/project/views" target="_blank" rel="nofollow">views</a>. It uses view results to render interactive visualizations containing multiple charts and controls and depends on the <a href="/project/google_charts" target="_blank" rel="nofollow">Google Chart Tools for Drupal</a> module.</li>
+<li>The <a href="/project/charts_rgraph" target="_blank" rel="nofollow">Charts RGraph</a> module (<strong>alpha</strong> version only) is a canvas and JavaScript based charts library built for web charts. It supports <a href="/project/views" target="_blank" rel="nofollow">views</a> through the <a href="/project/charts" target="_blank" rel="nofollow">Charts</a> module.</li>
+<li>The <a href="/project/statspro" target="_blank" rel="nofollow">Statistics Pro</a> module, which creates statistics with aggregated data. The data is stored in a new table, which is updated with a cron run. It provides statistical results of nodes, comments and users. When specific modules are enabled, it enables specific features which depend one those modules, such as page visualization reports and graphs.</li>
+<li><a href="/project/views_charts" target="_blank" rel="nofollow">Views Charts</a> (<strong>dev</strong> version only for D7, and a D6 version, which requires <a href="/project/views_groupby" target="_blank" rel="nofollow">Views GroupBy</a>), not to be confused with <a href="/project/views_chart_tools" target="_blank" rel="nofollow">Views Chart Tools</a>, provides a "charts" style output for <a href="/project/views" target="_blank" rel="nofollow">Views</a> to render the result-set not just as text (list, tabular) but as a PieChart, BarChart, ScatterPlot etc. It has basic usage instructions available as Advanced Help pages. Install and enable it to see the available help. A great presentation about it was done during <a href="http://vimeo.com/5306364" target="_blank" rel="nofollow">DC DrupalCon '09</a>.</li>
+<li>The <a href="/project/charts_graphs_flot" target="_blank" rel="nofollow">Charts and Graphs Flot</a> module, which adds <a href="http://code.google.com/p/flot/" target="_blank" rel="nofollow">Flot</a> support for the <a href="http://drupal.org/project/charts_graphs" target="_blank" rel="nofollow">Charts and Graphs</a> module using the <a href="http://drupal.org/project/flot" target="_blank" rel="nofollow">Flot module</a>.</li>
+</ul>
+<p>The table below contains an overview of charting wrapper modules and their dependencies upon any of the native charting modules:</p>
+<table>
+<thead>
+<tr>
+<th> </th>
+<th><a href="/project/forena" target="_blank" rel="nofollow">Forena</a></th>
+<th><a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google<br />Chart<br />Tools</a></th>
+<th><a href="/project/chart" target="_blank" rel="nofollow">Chart</a></th>
+<th><a href="/project/charts" target="_blank" rel="nofollow">Charts</a></th>
+<th><a href="/project/charts_graphs" target="_blank" rel="nofollow">Charts<br />and<br />Graphs</a></th>
+<th><a href="/project/flot" target="_blank" rel="nofollow">Flot</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/project/rate" target="_blank" rel="nofollow">Rate</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/google_analytics_reports" target="_blank" rel="nofollow">Google Analytics Reporting</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /> (D6)</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /> (D7)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/quiz" target="_blank" rel="nofollow">Quiz</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/yandex_metrics" target="_blank" rel="nofollow">Yandex.Metrics</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/ad" target="_blank" rel="nofollow">Advertisement</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/commerce_reports" target="_blank" rel="nofollow">Commerce Reporting</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/support" target="_blank" rel="nofollow">Support Ticketing System</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/search_log" target="_blank" rel="nofollow">Search Log</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/quant" target="_blank" rel="nofollow">Quant</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/webform_chart" target="_blank" rel="nofollow">Webform Chart</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /> (D6)</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /> (D7)</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/webform_charts" target="_blank" rel="nofollow">Webform Charts</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/drd" target="_blank" rel="nofollow">Drupal Remote Dashboard</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/poll_chart" target="_blank" rel="nofollow">Poll Chart Block</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/qmo_bugzilla" target="_blank" rel="nofollow">Bugzilla Dashboard</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/csvchart" target="_blank" rel="nofollow">CSV Chart</a></td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /> (D5)</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/views_chart_tools" target="_blank" rel="nofollow">Views Chart Tools</a></td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/charts_rgraph" target="_blank" rel="nofollow">Charts RGraph</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/statspro" target="_blank" rel="nofollow">Statistics Pro</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/views_charts" target="_blank" rel="nofollow">Views<br />Charts</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>-</td>
+</tr>
+<tr>
+<td><a href="/project/charts_graphs_flot" target="_blank" rel="nofollow">Charts and Graphs Flot</a></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="nativemodules">Native charting modules</h2>
+<p>Native charting modules are modules that support the creation of charts, but which do not depend on other modules to produce such charts. These modules may depend on other Drupal modules (e.g. the libraries module), but these other modules are not related to the charting features they offer. Typically these native charting modules use one or more charting related libraries.</p>
+<h3>An extensive comparison of modules that depend on the Highcharts javascript library can be found <a href="https://www.drupal.org/node/2559993" title="Comparison of native charting modules that depend on the Highcharts javascript library" rel="nofollow">here</a>.</h3>
+<p>Below is a list of native charting modules, for which <strong>at least 1 official release</strong> exist:</p>
+<ul>
+<li><a href="/project/forena" target="_blank" rel="nofollow">Forena Reports</a> facilitates the creation of charts  by using the <a href="http://www.goat1000.com/svggraph.php" target="_blank" rel="nofollow">SVG Graph</a> library. Forena does not depend on <a href="/project/views" target="_blank" rel="nofollow">Views</a> for creating charts, however it can be used as an extra views style plugin.</li>
+<li><a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google Chart Tools</a> provides a simple API to build interactive SVG charts, using the <a href="http://code.google.com/apis/chart" target="_blank" rel="nofollow">Google Chart Tools</a>.</li>
+<li><a href="/project/chart" target="_blank" rel="nofollow">Google Chart Tools: Image Charts</a> currently only supports the deprecated <a href="https://developers.google.com/chart/image/" target="_blank" rel="nofollow">Google Chart Tools: Image Charts</a>, which is deprecated as of April 20, 2015. Though <span class="project-issue-issue-link project-issue-status-info project-issue-status-17"><a href="/project/chart/issues/2371567" title="Status: Closed (outdated)">#2371567: Chart 6.x-2.x Release</a></span>, <span class="project-issue-issue-link project-issue-status-info project-issue-status-1"><a href="/project/chart/issues/2371075" title="Status: Active">#2371075: Chart 7.x-2.x Release</a></span> and <span class="project-issue-issue-link project-issue-status-info project-issue-status-1"><a href="/project/chart/issues/2368793" title="Status: Active">#2368793: Chart 2.0</a></span> are about addressing that. It is the most commonly used charting module today (over 25K reported installs, which is more then double of all other native charting modules together).</li>
+<li><a href="/project/charts" target="_blank" rel="nofollow">Charts</a> (not to be confused with the charting module with namespace <a href="/project/chart" target="_blank" rel="nofollow">chart</a> !!!) provides an API that can be used as a stand-alone API, and the integration with <a href="/project/views" target="_blank" rel="nofollow">Views</a> supports building charts with no coding.</li>
+<li><a href="/project/charts_graphs" target="_blank" rel="nofollow">Charts and Graphs</a>, which is an API for developers. It can be extended by third-party modules that want to add their own charting implementations. It does nothing by itself. It should only be installed if some other module requires it. <a href="/project/views_charts" target="_blank" rel="nofollow">Views Charts</a> is one of the modules using it, while <span class="project-issue-issue-link project-issue-status-info project-issue-status-1"><a href="/project/forena/issues/2364427" title="Status: Active">#2364427: Renderer for Charts and Graphs APIs</a></span> is a forena feature request to also consider using it.</li>
+<li><a href="/project/flot" target="_blank" rel="nofollow">Flot</a> provides an API and views integration for using the <a target="_blank" rel="nofollow">flot</a> graphing library.</li>
+<li><a href="/project/easychart" target="_blank" rel="nofollow">Easychart</a> is a graphical user interface, built on top of the <a href="http://www.highcharts.com/products/highcharts" target="_blank" rel="nofollow">Highcharts</a> javascript library.</li>
+</ul>
+<p>Some additional native charting modules, but for which <strong>no official release</strong> exists yet:</p>
+<ul>
+<li><a href="/project/views_gantt" target="_blank" rel="nofollow">Views Gantt</a> (<strong>beta</strong> version only), which provides a views display plugin to show tasks in a GANTT Chart using the (open source) <a href="http://www.dhtmlx.com/docs/products/dhtmlxGantt/" target="_blank" rel="nofollow">dhtmlx GANTT javascript library</a>.</li>
+<li><a href="/project/data_visualization" target="_blank" rel="nofollow">Data Visualization API</a> (<strong>beta</strong> version only), which allows site builders to create, import &amp; store data visualizations as entities and their data as standardized JSON. A user can then choose which installed data visualization library to use when rendering each data visualization entity.</li>
+<li><a href="/project/highcharttable" target="_blank" rel="nofollow">HighchartTable</a> (<strong>beta</strong> version only) transforms any HTML table on a site into a Highchart by clicking on the cogwheel above it. It doesn't matter whether that table was created through <a href="http://drupal.org/project/views" rel="nofollow">Views</a>, <a href="http://drupal.org/project/webform" rel="nofollow">Webform</a> or a WYSIWYG. <em>One click</em> and you have a chart on your page. Easy install of the JS libraries too through Drush with <a href="http://drupal.org/project/features" rel="nofollow">Features</a> support via <a href="http://drupal.org/project/strongarm" rel="nofollow">Strongarm</a>.</li>
+<li><a href="/project/d3" target="_blank" rel="nofollow">D3</a> creates visualizations as <a href="/project/libraries" rel="nofollow">libraries</a> (<strong>alpha</strong> version only) which allows one to add/remove visualizations, share them between modules, and integrate them with (for example: <a href="/node/2257739" rel="nofollow">views</a>) through library .info files.</li>
+<li><a href="/project/highcharts" target="_blank" rel="nofollow">Highcharts</a> (<strong>alpha</strong> version only), to create charts using the <a href="http://www.highcharts.com/products/highcharts" target="_blank" rel="nofollow">Highcharts</a> JS library.</li>
+<li><a href="/project/visualization" target="_blank" rel="nofollow">Visualization API</a> (<strong>alpha</strong> version only), which provides a theme hook that takes a data array and some options and will then render a chart in-place. It also provides a <a href="/project/views" target="_blank" rel="nofollow">Views</a> display plugin to visualize data retrieved through Views.</li>
+<li><a href="/project/google_charts" target="_blank" rel="nofollow">Google Chart Tools for Drupal</a> (<strong>dev</strong> version only), not to be confused with <a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google Chart Tools</a> !!!). It is a tool for developers to facilitate the use of Google's <a href="https://developers.google.com/chart/" target="_blank" rel="nofollow">Chart Tools</a> and its <a href="https://developers.google.com/chart/interactive/docs/reference" target="_blank" rel="nofollow">Visualization API</a> within a Drupal site.</li>
+</ul>
+<p>Below is an attempt to compare the charting capabilities of the native charting modules, limited to those modules for which at least 1 official release exists.</p>
+<h2 id="othermodules">Other charting modules</h2>
+<p>Since this comparison was created, new modules related to charting have been discovered. Consequently, they are still missing in this comparison. Here is an attempt to mention a few:</p>
+<ol>
+<li><a href="/project/views_dataviz" target="_blank" rel="nofollow">Views Dataviz with Google Charts API</a>, which provides data visualisation for <a href="/project/views" target="_blank" rel="nofollow">views</a>.</li>
+<li><a href="/node/2368793#comment-9330663" rel="nofollow">Comment #9</a> in <span class="project-issue-issue-link project-issue-status-info project-issue-status-1"><a href="/project/chart/issues/2368793" title="Status: Active">#2368793: Chart 2.0</a></span> contains another list of (about 10) modules not included here. Anybody interested in getting the missing ones added here (in a similar format like being used here)?</li>
+<li><a href="/project/raphael" target="_blank" rel="nofollow">Raphaël</a> exposing some of the functionality of the <a href="http://raphaeljs.com/" target="_blank" rel="nofollow">Raphaël</a> JavaScript vector graphics library.</li>
+<li><a href="/project/jpgraph" target="_blank" rel="nofollow">JpGraph</a> is a PHP library providing a simple loader for that library.</li>
+<li><a href="/project/jqPlot" target="_blank" rel="nofollow">jqplot Charts Library</a> provides a library interface for <a href="http://www.jqplot.com/" target="_blank" rel="nofollow">jqPlot</a> javascript library and is used by (dependency) <a href="https://drupal.org/project/webform_reports" target="_blank" rel="nofollow">Webform reports</a>.</li>
+<li><a href="/project/forum_stats" target="_blank" rel="nofollow">Forum Stats</a> provides statistics  on forum usage, using the <a href="http://www.highcharts.com/products/highcharts" target="_blank" rel="nofollow">Highcharts</a> library.</li>
+<li><a href="/project/Chartbeat" target="_blank" rel="nofollow">Chartbeat</a> provides third party integration with <a href="http://chartbeat.com/" target="_blank" rel="nofollow">Chartbeat</a>, for real-time site monitoring statistics.</li>
+<li>... (Which other ones should be mentioned here?).</li>
+</ol>
+<p>Check out the links to those modules for more details. Better still, if you're familiar with any of these modules, get them added to the comparison here by editing this page. Adding an extra column to the right is probably the easiest approach.</p>
+<p>Here are some other topics (not included in the comparisons below) that seem worth addressing:</p>
+<ul>
+<li><a href="http://drupal.org/project/drush" target="_blank" rel="nofollow">Drush</a> support (Yes or No).</li>
+<li>Supported <a href="http://drupal.org/project/views" target="_blank" rel="nofollow">Views</a> versions (2, 3 or both).</li>
+<li><a href="http://drupal.org/project/advanced_help" target="_blank" rel="nofollow">Advanced help</a> support (Yes or No).</li>
+<li><a href="http://drupal.org/project/features" target="_blank" rel="nofollow">Features</a> support (Yes or No).</li>
+</ul>
+<p>Anybody interested in investigating any of these topics, and adding them to the comparison here (by editing this page)? If not, George (the one Dries talked about at DrupalCon Amsterdam 2014) will hopefully do it ... someday.</p>
+<h2 id="drupalversions">Supported Drupal versions</h2>
+<table>
+<thead>
+<tr>
+<th> </th>
+<th><a href="/project/forena" target="_blank" rel="nofollow">Forena</a></th>
+<th><a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google<br />Chart<br />Tools</a></th>
+<th><a href="/project/chart" target="_blank" rel="nofollow">Chart</a></th>
+<th><a href="/project/charts" target="_blank" rel="nofollow">Charts</a></th>
+<th><a href="/project/charts_graphs" target="_blank" rel="nofollow">Charts<br />and<br />Graphs</a></th>
+<th><a href="/project/flot" target="_blank" rel="nofollow">Flot</a></th>
+<th><a href="https://www.drupal.org/project/easychart" rel="nofollow">Easychart</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Drupal 8 support</td>
+<td>DEV</td>
+<td>?</td>
+<td><a href="/node/2139771" target="_blank" rel="nofollow">#2139771</a></td>
+<td><a href="/node/2140651" target="_blank" rel="nofollow">#2140651</a></td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>Drupal 7 support</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Warning" src="/misc/watchdog-warning.png" /><br />(<strong>rc1</strong>)</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>Drupal 6 support</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="supportedlibraries">Supported Charting Libraries</h2>
+<table>
+<thead>
+<tr>
+<th> </th>
+<th><a href="/project/forena" target="_blank" rel="nofollow">Forena</a></th>
+<th><a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google<br />Chart<br />Tools</a></th>
+<th><a href="/project/chart" target="_blank" rel="nofollow">Chart</a></th>
+<th><a href="/project/charts" target="_blank" rel="nofollow">Charts</a></th>
+<th><a href="/project/charts_graphs" target="_blank" rel="nofollow">Charts<br />and<br />Graphs</a></th>
+<th><a href="/project/flot" target="_blank" rel="nofollow">Flot</a></th>
+<th><a href="https://www.drupal.org/project/easychart" rel="nofollow">Easychart</a></th>
+<th><a href="/project/highcharttable" target="_blank" rel="nofollow">Highchart<br />Table</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.goat1000.com/svggraph.php" target="_blank" rel="nofollow">PHP SVG Graph</a></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/chart/image/" target="_blank" rel="nofollow">Google Chart Tools: Image API</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="https://developers.google.com/chart/" target="_blank" rel="nofollow">Google Charts</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://www.highcharts.com/" target="_blank" rel="nofollow">Highcharts</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td><a href="http://teethgrinder.co.uk/open-flash-chart/" target="_blank" rel="nofollow">Open Flash Chart</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>?</td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://teethgrinder.co.uk/open-flash-chart-2/" target="_blank" rel="nofollow">Open Flash Chart 2</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /> (D6)</td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://www.amcharts.com/" target="_blank" rel="nofollow">amCharts</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /> (D6)</td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://code.google.com/p/flot/" target="_blank" rel="nofollow">Flot</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://d3js.org/" target="_blank" rel="nofollow">D3</a></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /><br />
+<a href="/node/2364427#comment-9363133" target="_blank" rel="nofollow">#2364427</a>
+</td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://bluff.jcoglan.com/" target="_blank" rel="nofollow">Bluff</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://jpgraph.net/" target="_blank" rel="nofollow">JpGraph</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://www.pchart.net/" target="_blank" rel="nofollow">pChart</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="http://www.dhtmlx.com/docs/products/dhtmlxGantt/" target="_blank" rel="nofollow">dhtmlx GANTT JS library</a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+</tbody>
+</table>
+<p><em class="marker"><strong>Note</strong></em>: if the above list of libraries isn't enough yet, then checkout the list included in <a href="http://stackoverflow.com/questions/7034/graph-visualization-library-in-javascript?rq=1" target="_blank" rel="nofollow">Graph visualization library in JavaScript</a>.</p>
+<h2 id="integrations">Available integrations</h2>
+<table>
+<thead>
+<tr>
+<th> </th>
+<th><a href="/project/forena" target="_blank" rel="nofollow">Forena</a></th>
+<th><a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google<br />Chart<br />Tools</a></th>
+<th><a href="/project/chart" target="_blank" rel="nofollow">Chart</a></th>
+<th><a href="/project/charts" target="_blank" rel="nofollow">Charts</a></th>
+<th><a href="/project/charts_graphs" target="_blank" rel="nofollow">Charts<br />and<br />Graphs</a></th>
+<th><a href="/project/flot" target="_blank" rel="nofollow">Flot</a></th>
+<th><a href="https://www.drupal.org/project/easychart" rel="nofollow">Easychart</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="/project/views" target="_blank" rel="nofollow">Views</a></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td><a href="/project/feeds" target="_blank" rel="nofollow">Feeds</a></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>?</td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td>?</td>
+<td>?</td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><a href="/project/bean" target="_blank" rel="nofollow">BEAN</a></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>?</td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><a href="https://www.drupal.org/project/wysiwyg" rel="nofollow">Wysiwig</a></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2 id="features">Features</h2>
+<table>
+<thead>
+<tr>
+<th> </th>
+<th><a href="/project/forena" target="_blank" rel="nofollow">Forena</a></th>
+<th><a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google<br />Chart<br />Tools</a></th>
+<th><a href="/project/chart" target="_blank" rel="nofollow">Chart</a></th>
+<th><a href="/project/charts" target="_blank" rel="nofollow">Charts</a></th>
+<th><a href="/project/charts_graphs" target="_blank" rel="nofollow">Charts<br />and<br />Graphs</a></th>
+<th><a href="/project/flot" target="_blank" rel="nofollow">Flot</a></th>
+<th><a href="https://www.drupal.org/project/easychart" rel="nofollow">Easychart</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JSON support</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /><br />
+<a href="/node/2362855#comment-9653785" target="_blank" rel="nofollow">#2362855</a></td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /><br />
+<a href="/node/2429505" target="_blank" rel="nofollow">#2429505</a></td>
+<td>?</td>
+<td>?</td>
+<td> </td>
+</tr>
+<tr>
+<td>XML support</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /><br />
+<a href="/node/2437701#comment-9663819" target="_blank" rel="nofollow">#2437701</a>
+</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td> </td>
+</tr>
+<tr>
+<td>CSV support</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>Multilanguage support</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>IE support</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><a href="/node/1987126" target="_blank" rel="nofollow">#1987126</a></td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td>?</td>
+<td> </td>
+</tr>
+<tr>
+<td>export chart to PDF</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><a href="/node/1899032" target="_blank" rel="nofollow">#1899032</a></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>export chart to SVG</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>export chart to jpg</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>export chart to png</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+</tr>
+<tr>
+<td>Privacy</td>
+<td><img alt="Yes" src="/misc/watchdog-ok.png" /></td>
+<td><a href="/node/1733940" target="_blank" rel="nofollow"><img alt="Attention" src="/misc/watchdog-warning.png" /></a></td>
+<td><a href="/node/1733940" target="_blank" rel="nofollow"><img alt="Attention" src="/misc/watchdog-warning.png" /></a></td>
+<td><a href="/node/1733940" target="_blank" rel="nofollow"><img alt="Attention" src="/misc/watchdog-warning.png" /></a></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="stats">Issue Queue Statistics</h2>
+<table>
+<thead>
+<tr>
+<th> </th>
+<th><a href="/project/forena" target="_blank" rel="nofollow">Forena</a></th>
+<th><a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google<br />Chart<br />Tools</a></th>
+<th><a href="/project/chart" target="_blank" rel="nofollow">Chart</a></th>
+<th><a href="/project/charts" target="_blank" rel="nofollow">Charts</a></th>
+<th><a href="/project/charts_graphs" target="_blank" rel="nofollow">Charts<br />and<br />Graphs</a></th>
+<th><a href="/project/flot" target="_blank" rel="nofollow">Flot</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open Issues,<br />Fixed Issues,<br />Total Issues</td>
+<td><a href="/project/issues/forena?categories=All" target="_blank" rel="nofollow">33</a>,<br />
+<a href="/project/issues/forena?status=2" target="_blank" rel="nofollow">0</a>,<br />
+<a href="/project/issues/forena?status=All&amp;categories=All" target="_blank" rel="nofollow">318</a></td>
+<td><a href="/project/issues/google_chart_tools?categories=All" target="_blank" rel="nofollow">49</a>,<br />
+<a href="/project/issues/google_chart_tools?status=2" target="_blank" rel="nofollow">0</a>,<br /><a href="/project/issues/google_chart_tools?status=All&amp;categories=All" target="_blank" rel="nofollow">79</a></td>
+<td><a href="/project/issues/chart?categories=All" target="_blank" rel="nofollow">50</a>,<br />
+<a href="/project/issues/chart?status=2" target="_blank" rel="nofollow">0</a>,<br /><a href="/project/issues/chart?status=All&amp;categories=All" target="_blank" rel="nofollow">173</a></td>
+<td><a href="/project/issues/charts?categories=All" target="_blank" rel="nofollow">82</a>,<br />
+<a href="/project/issues/charts?status=2" target="_blank" rel="nofollow">9</a>,<br /><a href="/project/issues/charts?status=All&amp;categories=All" target="_blank" rel="nofollow">287</a></td>
+<td><a rel="nofollow">27</a>,<br />
+<a href="/project/issues/charts_graphs?status=2" target="_blank" rel="nofollow">0</a>,<br /><a href="/project/issues/charts_graphs?status=All&amp;categories=All" target="_blank" rel="nofollow">129</a></td>
+<td><a href="/project/issues/flot?categories=All" target="_blank" rel="nofollow">59</a>,<br />
+<a href="/project/issues/flot?status=2" target="_blank" rel="nofollow">0</a>,<br />
+<a href="/project/issues/flot?status=All&amp;categories=All" target="_blank" rel="nofollow">88</a></td>
+</tr>
+<tr>
+<td>Unresolved Issues /<br />Total Issues</td>
+<td>10%</td>
+<td>62%</td>
+<td>29%</td>
+<td>25%</td>
+<td>21%</td>
+<td>67%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Special Request</strong>: Seems like transforming the tabular format above in a corresponding <strong>CHART</strong> can be done via <a href="https://drupal.org/project/highchartttable" rel="nofollow">HighchartTable</a>, but how to get this module enabled on drupal.org? As an alternative: add a row to the table with links to such chart for each of the modules, maybe with some details about the required steps to create these charts?</p>
+<h2 id="scorecards">Maintenance Scorecards</h2>
+<p><span class="project-issue-issue-link project-issue-status-info project-issue-status-13"><a href="/project/drupalorg/issues/2186377" title="Status: Needs work">#2186377: Highlight projects that follow Best Practices</a></span> contains a list of <em class="marker"><strong>23 criteria</strong></em> (=28-5) that might help to evaluate the maintenance and support of contributed modules. Below is an attempt to apply those criteria to each of the native charting modules, however with some minor variations / interpretations to provide more accurate details.</p>
+<p><strong>Tip</strong>: some of the <img alt="Yes" src="/misc/watchdog-ok.png" /> and <img alt="Yes" src="/misc/watchdog-error.png" /> icons are hyperlinked, such as the ones for <em class="marker">(7) </em>.</p>
+<table>
+<thead>
+<tr>
+<th> </th>
+<th><a href="/project/forena" target="_blank" rel="nofollow">Forena</a></th>
+<th><a href="/project/google_chart_tools" target="_blank" rel="nofollow">Google<br />Chart<br />Tools</a></th>
+<th><a href="/project/chart" target="_blank" rel="nofollow">Chart</a></th>
+<th><a href="/project/charts" target="_blank" rel="nofollow">Charts</a></th>
+<th><a href="/project/charts_graphs" target="_blank" rel="nofollow">Charts<br />and<br />Graphs</a></th>
+<th><a href="/project/flot" target="_blank" rel="nofollow">Flot</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em class="marker">(1) </em>No open bugs +1 year </td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(2) </em>No RTBC'd items +1 month</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(3) </em>Stable release every year</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(4) </em>Last commits <strong>(*1*)</strong></td>
+<td><a href="/node/728764/commits" target="_blank" rel="nofollow">Feb 11,<br />2015</a></td>
+<td><a href="/node/1508666/commits" target="_blank" rel="nofollow">Feb 27,<br />2013</a></td>
+<td><a href="/node/206038/commits" target="_blank" rel="nofollow">Nov 14,<br />2014</a></td>
+<td><a href="/node/232629/commits" target="_blank" rel="nofollow">Feb 13,<br />2015</a></td>
+<td><a href="/node/390684/commits" target="_blank" rel="nofollow">Mar 2,<br />2015</a></td>
+<td><a href="/node/314650/commits" target="_blank" rel="nofollow">Jul 16,<br />2012</a></td>
+</tr>
+<tr>
+<td><em class="marker">(7) </em>Community docu</td>
+<td><a href="https://drupal.org/node/2041363" target="_blank" rel="nofollow"><img alt="Yes" src="/misc/watchdog-ok.png" /></a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+<td><a href="/node/2370811" target="_blank" rel="nofollow"><img alt="Yes" src="/misc/watchdog-ok.png" /></a></td>
+<td><a href="https://drupal.org/node/233753" target="_blank" rel="nofollow"><img alt="Yes" src="/misc/watchdog-ok.png" /></a></td>
+<td><a href="https://drupal.org/node/681660" target="_blank" rel="nofollow"><img alt="Yes" src="/misc/watchdog-ok.png" /></a></td>
+<td><img alt="No" src="/misc/watchdog-error.png" /></td>
+</tr>
+<tr>
+<td><em class="marker">(8) </em>Alpha / Beta duration</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(9) </em>Recommended release present</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(11) </em>Support 2 core releases <strong>(*2*)</strong></td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(12) </em>DEV release for D8</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(13) </em>Committers</td>
+<td><a href="/node/728764/committers" target="_blank" rel="nofollow">3</a></td>
+<td><a href="/node/1508666/committers" target="_blank" rel="nofollow">6</a></td>
+<td><a href="/node/206038/committers" target="_blank" rel="nofollow">12</a></td>
+<td><a href="/node/232629/committers" target="_blank" rel="nofollow">3</a></td>
+<td><a href="/node/390684/committers" target="_blank" rel="nofollow">5</a></td>
+<td><a href="/node/314650/committers" target="_blank" rel="nofollow">4</a></td>
+</tr>
+<tr>
+<td><em class="marker">(14) </em>Maint- and Dev-status</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(15) </em>Image on project page</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(16) </em>SimpleTests or Unit Tests</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(17) </em>Meaningful release notes</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(18) </em>Automated testing enabled</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(19) </em>README.txt &amp; INSTALL.txt</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(20) </em>CHANGELOG.txt</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(23) </em>Project's purpose teaser</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(24) </em>Project description +500 chars</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(25) </em>Headings &amp; docu links</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(26) </em>Downloads<br />/ installs ratio</td>
+<td><a href="/project/usage/forena" target="_blank" rel="nofollow">8.700<br />/650</a></td>
+<td><a href="/project/usage/google_chart_tools" target="_blank" rel="nofollow">38.900<br />/2.900</a></td>
+<td><a href="/project/usage/chart" target="_blank" rel="nofollow">113.000<br />/25.900</a></td>
+<td><a href="/project/usage/charts" target="_blank" rel="nofollow">58.300<br />/9.250</a></td>
+<td><a href="/project/usage/charts_graphs" target="_blank" rel="nofollow">29.000<br />/2.600</a></td>
+<td><a href="/project/usage/flot" target="_blank" rel="nofollow">12.000<br />/700</a></td>
+</tr>
+<tr>
+<td><em class="marker">(27) </em>Translations available</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr>
+<td><em class="marker">(28) </em>Contributing users in commits</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Notes</strong>:</p>
+<ul>
+<li><strong>(*1*)</strong>: Variation of '<em>If there are open bugs, see that there is activity in git every 6 months</em>'.</li>
+<li><strong>(*2*)</strong>: Refer to <a href="#drupalversions" rel="nofollow">Supported Drupal versions</a> for more detailed info.</li>
+</ul>
+<hr />
+If you want to help completing or correcting the above criteria,<br />it's fairly easy, just a lot of work to do all the research. So please ... <a href="/node/2363985/edit" class="action-button" rel="nofollow">do so now</a>
+<h2 id="discussions">Charting Modules Discussions</h2>
+<ul>
+<li><a href="https://groups.drupal.org/node/439438" target="_blank" rel="nofollow">Another comparison</a> about charting modules ... A group with related visualisation topics also.</li>
+<li><a href="https://groups.drupal.org/node/9946" target="_blank" rel="nofollow">History keeps repeating</a>.</li>
+<li><a href="https://groups.drupal.org/node/93064" target="_blank" rel="nofollow">Charting and Graphing Modules</a>.</li>
+</ul>
+<h2 id="contribute">Contribute to this comparison</h2>
+<p>The comparison above reflects Drupal developments up until early 2015. It may become incomplete or outdated (e.g. because of recent evolutions in any of these modules), and it contains some "?" marks to indicate missing information. Hopefully there are no errors in it!</p>
+<p>If you want to help to extend, enhance, complete or correct it, please ... <a href="/node/2363985/edit" class="action-button" rel="nofollow">do so now</a></p></div></div></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-section-contents"  >
+  
+      
+  
+  <div class="pane-content">
+    <section><h2><a href="/docs/7/extend/comparison-of-contributed-modules/comparison-of-charting-modules/comparison-of-native-charting-modules-that-depend-on-the-highcharts-javascript-library">Comparison of native charting modules that depend on the Highcharts javascript library</a></h2><p>Inspired by Pierre.Vriens and his extensive Comparison of Charting modules, I wrote this extension on native charting modules that depend on</p></section>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-group-maintainers-panel-pane-1"  id="guide-maintainers" >
+  
+        <h2 class="pane-title">
+      Guide maintainers    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-group-maintainers view-id-group_maintainers view-display-id-panel_pane_1 view-dom-id-f13d4643b9bbf71af467f2a6606e7a90">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1">
+      
+          <a href="/user/1689304" title="View Pierre.Vriens&#039;s profile"><img src="https://www.drupal.org/files/styles/drupalorg_user_picture/public/user-pictures/picture-1689304-1407401291.jpg?itok=42rJRxyR" width="80" height="80" alt="Pierre.Vriens&#039;s picture" /></a>    </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"w8ljfbpUHyLjux-UHsKsKwRFyu1B0egewP8DtUq2fMQ"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"group_maintainers":{"displays":{"panel_pane_1":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/extend\/comparison-of-contributed-modules\/comparison-of-charting-modules":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2363985"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
