@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="This page includes instructions about how to update CCK field modules from D6 to D7. Start by using the Coder module and other documentation" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7" />
+<link rel="shortlink" href="https://www.drupal.org/node/728792" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7" />
+<meta property="og:title" content="Updating CCK Field Modules from D6 to D7" />
+<meta property="og:description" content="This page includes instructions about how to update CCK field modules from D6 to D7. Start by using the Coder module and other documentation to apply basic D6 to D7 changes, then focus on the changes in the Field API. See the Field API Book Page or the embedded Field API documentation, or look at the way core fields are defined for more information. Miscellaneous Changes Remove content_notify() calls. They were in the module_enable(), module_disable(), module_install() and module_uninstall() hooks." />
+<meta property="og:updated_time" content="2016-12-22T06:01:51+00:00" />
+<meta property="article:published_time" content="2010-03-01T02:32:33+00:00" />
+<meta property="article:modified_time" content="2016-12-22T06:01:51+00:00" />
+  <title>Updating CCK Field Modules from D6 to D7 | Converting Drupal 6 modules to Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-728792 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2819037" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-YETxqv2CPoATHfis4PXe7P6feTymXLHzEk87eZX-JHM" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/728792" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/728792" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-1BslGQiEl5DQKCkFT7QSp5ZYipUQ_HjZ1G-hZ38gES0" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/converting-drupal-6-modules-to-drupal-7">Converting Drupal 6 modules to Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-728792">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-miscellaneous-changes" class="toc-link toc-link-invalid-id active">Miscellaneous Changes</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-new-fields-everywhere" class="toc-link toc-link-invalid-id active">New! Fields Everywhere</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-new-instance-array" class="toc-link toc-link-invalid-id active">New! Instance Array</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-changed-field-array" class="toc-link toc-link-invalid-id active">Changed! Field Array</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-changed-hook-widget-info" class="toc-link toc-link-invalid-id active">Changed! Hook Widget Info</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-6" class="toc-link toc-link-invalid-id active">In Drupal 6</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-7" class="toc-link toc-link-invalid-id active">In Drupal 7</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-changed-hook-widget" class="toc-link toc-link-invalid-id active">Changed! Hook Widget</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-6--2" class="toc-link toc-link-invalid-id active">In Drupal 6</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-7--2" class="toc-link toc-link-invalid-id active">In Drupal 7</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-changed-hook-field-info" class="toc-link toc-link-invalid-id active">Changed! Hook Field Info</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-6--3" class="toc-link toc-link-invalid-id active">In Drupal 6</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-7--3" class="toc-link toc-link-invalid-id active">In Drupal 7</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-changed-hook-field-settings" class="toc-link toc-link-invalid-id active">Changed! Hook Field Settings</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-drupal-6" class="toc-link toc-link-invalid-id active">Drupal 6</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-drupal-7" class="toc-link toc-link-invalid-id active">Drupal 7</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-replacing-op-validate-with-element-validate" class="toc-link toc-link-invalid-id active">Replacing $op == &#039;validate&#039; with #element_validate</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-replacing-op-views-data-for-views-relationships-etc" class="toc-link toc-link-invalid-id active">Replacing $op == &#039;views data&#039; for views relationships, etc.</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-changed-hook-field" class="toc-link toc-link-invalid-id active">Changed! Hook Field</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-drupal-6--2" class="toc-link toc-link-invalid-id active">Drupal 6</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-drupal-7--2" class="toc-link toc-link-invalid-id active">Drupal 7</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-changed-hook-formatter-info" class="toc-link toc-link-invalid-id active">Changed! Hook Formatter Info</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-6--4" class="toc-link toc-link-invalid-id active">In Drupal 6</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-7--4" class="toc-link toc-link-invalid-id active">In Drupal 7</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-changed-hook-formatter" class="toc-link toc-link-invalid-id active">Changed! Hook Formatter</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-6--5" class="toc-link toc-link-invalid-id active">In Drupal 6</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7#s-in-drupal-7--5" class="toc-link toc-link-invalid-id active">In Drupal 7</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="converting-drupal-6-modules-to-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/converting-drupal-6-modules-to-drupal-7">Converting Drupal 6 modules to Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/converting-6x-modules-to-7x">Converting 6.x modules to 7.x</a></li>
+<li class="leaf"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/converting-6x-modules-to-7x-categorical">Converting 6.x modules to 7.x - Categorical</a></li>
+<li class="leaf"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/converting-node-access-queries-to-73">Converting node access queries to 7.3</a></li>
+<li class="leaf"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/creating-html-formatted-emails-in-drupal-7">Creating HTML formatted emails in Drupal 7</a></li>
+<li class="leaf"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/menu-path-changes-from-6x-to-7x">Menu path changes from 6.x to 7.x</a></li>
+<li class="leaf"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/new-ajaxprevent-property-added-in-75">New #ajax[&#039;prevent&#039;] property added in 7.5</a></li>
+<li class="last leaf active-trail"><a href="/docs/7/converting-drupal-6-modules-to-drupal-7/updating-cck-field-modules-from-d6-to-d7" class="active-trail active">Updating CCK Field Modules from D6 to D7</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Updating CCK Field Modules from D6 to D7</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/728792/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    22 December 2016  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>This page includes instructions about how to update CCK field modules from D6 to D7. Start by using the <a href="http://drupal.org/project/coder" title="coder" rel="nofollow">Coder</a> module and other documentation to apply basic D6 to D7 changes, then focus on the changes in the Field API. See the <a href="http://drupal.org/community-initiatives/drupal-core/fields" rel="nofollow">Field API Book Page</a> or the embedded <a href="http://drupalcode.org/viewvc/drupal/drupal/modules/field/field.api.php?revision=1.65&amp;content-type=text%2Fplain&amp;view=co&amp;pathrev=MAIN" rel="nofollow">Field API documentation</a>, or look at the way core fields are defined for more information.</p>
+<h2 id="s-miscellaneous-changes"><a class="toc-anchor" title="Permalink to this headline" href="#s-miscellaneous-changes"></a>Miscellaneous Changes</h2>
+<ul>
+<li>Remove <strong>content_notify()</strong> calls. They were in the module_enable(), module_disable(), module_install() and module_uninstall() hooks. There is a <a href="http://drupal.org/node/224333#hook_modules_action" rel="nofollow">new method in core</a> to allow modules to be notified when other modules are enabled and disabled, so this is no longer needed.</li>
+<li>Change <strong>hook_content_is_empty()</strong> to <strong>hook_field_is_empty()</strong>, this is just a change in the hook name.</li>
+<li>Functions like <strong>content_fields()</strong> need to be replaced with their new equivalents, like <strong>field_info_fields()</strong>. Replace <strong>content_types()</strong> with <strong>field_info_instances()</strong>. The information from <strong>content_database_info()</strong> is now available in <strong>$field['storage']</strong> (keep in mind that the field might not use database storage). See <a href="http://drupalcode.org/project/drupal.git/blob_plain/refs/heads/7.x:/modules/field/field.info.inc" rel="nofollow">field.info.inc</a> for some of the new functions. The fingerprint of the function and the structure of the values returned may be slightly different, so you'll need to test that.</li>
+<li>Note that the field data structure has changed slightly. The language (or a variable that indicates that the field has no translation) lives at the top level of the field array, i.e. The field value looks like $field['field_name'][unc][0]['value'] instead of $field['field_name'][0]['value']</li>
+</ul>
+<h2 id="s-new-fields-everywhere"><a class="toc-anchor" title="Permalink to this headline" href="#s-new-fields-everywhere"></a>New! Fields Everywhere</h2>
+<p>In Drupal 7, fields can be on any object that declares it is 'fieldable', including nodes and users. Other modules can create their own entities that can have fields attached to them by declaring hook_entity_info().</p>
+<pre>
+<code class="language-php">/**
+ * Implements hook_entity_info().
+ */
+function node_entity_info() {
+  $return =  array(
+    'example' =&gt; array(
+      'label' =&gt; t('Node'),
+      'controller class' =&gt; 'NodeController',
+      'base table' =&gt; 'node',
+      'revision_table' =&gt; 'node_revision',
+      'fieldable' =&gt; TRUE,
+      'uri callback' =&gt; 'node_uri',
+      'entity keys' =&gt; array(
+        'id' =&gt; 'nid',
+        'revision' =&gt; 'vid',
+        'bundle' =&gt; 'type',
+      ),
+      'bundle keys' =&gt; array(
+        'bundle' =&gt; 'node',
+       ),
+      'bundles' =&gt; array(),
+      'view modes' =&gt; array(
+        'full' =&gt; array(
+          'label' =&gt; t('Full content'),
+        ),
+        'teaser' =&gt; array(
+          'label' =&gt; t('Teaser'),
+        ),
+        'rss' =&gt; array(
+          'label' =&gt; t('RSS'),
+        ),
+      ),
+    ),
+  );
+  return $return;
+}
+</code></pre><h2 id="s-new-instance-array"><a class="toc-anchor" title="Permalink to this headline" href="#s-new-instance-array"></a>New! Instance Array</h2>
+<p>There is a new array called an $instance. It has the same basic structure as the $field array used in Drupal 6, but contains the settings that apply to a specific instance of a field. The widget definition is a sub-array of the instance. The $field array is a separate, smaller, array that contains only values that apply to all instances of a field.</p>
+<p>Note that there are numerous 'settings' arrays. The field has settings, the instance has settings, the widget has settings, and the display has settings.</p>
+<p>Several things that were field values in Drupal 6 are now instance values: required, label, description, widget. There are now separate weights for the widget, and the display. Settings values are now in 'settings' sub-arrays, for instance $field['min'] is now $field['settings']['min'].</p>
+<p>The display settings correspond to the view modes declared by hook_entity_info() for the type of entity used in this instance.</p>
+<pre>
+<code class="language-php">$instance = array(
+  'entity_type' =&gt; 'node',
+  'label' =&gt; 'Example',
+  'required' =&gt; 0,
+  'description' =&gt; 'My description',
+  'default_value' =&gt; '',
+  'id' =&gt; 9,
+  'field_id' =&gt; 5,
+  'field_name' =&gt; 'field_example',
+  'bundle' =&gt; 'article',
+  'deleted' =&gt; 0,
+  'settings' =&gt; array(
+    'min' =&gt; 5,
+    'max' =&gt; 10,
+  ),
+  'widget' =&gt; array(
+    'weight' =&gt; 0,
+    'type' =&gt; 'number',
+    'module' =&gt; 'number',
+    'active' =&gt; 1,
+    'settings' =&gt; array(),
+  ),
+  'display' =&gt; array(
+    'full' =&gt; array(
+      'label' =&gt; 'above',
+      'type' =&gt; 'number_decimal',
+      'settings' =&gt; array(
+        'scale' =&gt; 2,
+      ),
+      'weight' =&gt; 0,
+      'module' =&gt; 'number',
+    ),
+  ),
+);
+</code></pre><h2 id="s-changed-field-array"><a class="toc-anchor" title="Permalink to this headline" href="#s-changed-field-array"></a>Changed! Field Array</h2>
+<p>The field array now contains only values that are the same across all instances. 'Bundle' is the new name for what we called a 'Content Type' in Drupal 6, to recognize that fields can go on objects other than nodes. 'Cardinality' is the new name for what we called 'Multiple' in Drupal 6. The field storage is now pluggable, defaulting to sql storage.</p>
+<p>A simplified example of a $field array (with some details left out) is below:</p>
+<pre>
+<code class="language-php">$field = array(
+  'translatable' =&gt; 1,
+  'id' =&gt; 5,
+  'field_name' =&gt; 'field_example',
+  'type' =&gt; 'number_decimal',
+  'module' =&gt; 'number',
+  'active' =&gt; 1,
+  'locked' =&gt; 0,
+  'cardinality' =&gt; 1,
+  'deleted' =&gt; 0,
+  'settings' =&gt; array(
+    'scale' =&gt; 2,
+  ),
+  'storage' =&gt; array(
+    'type' =&gt; 'field_sql_storage',
+    'settings' =&gt; array(),
+    'module' =&gt; 'field_sql_storage',
+    'active' =&gt; 1,
+    'details' =&gt; array(),
+  ),
+  'entity_types' =&gt; array(...),
+  'indexes' =&gt; array(...),
+  'columns' =&gt; array(
+    'value' =&gt; array(...),
+  ),
+  'bundles' =&gt; array(
+    'node' =&gt; array(...),
+  ),
+);  
+</code></pre><h2 id="s-changed-hook-widget-info"><a class="toc-anchor" title="Permalink to this headline" href="#s-changed-hook-widget-info"></a>Changed! Hook Widget Info</h2>
+<p>The name of the widget info hook has changed from hook_widget_info() to hook_field_widget_info(). Special behaviors for multiple values and default values are defined slightly differently. New in Drupal 7, you declare all the widget settings in the info hook and set default values for the settings.</p>
+<h3 id="s-in-drupal-6"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-6"></a>In Drupal 6</h3>
+<pre>
+<code class="language-php">function number_widget_info() {
+  return array(
+    'number' =&gt; array(
+      'label' =&gt; t('Text field'),
+      'field types' =&gt; array('number_integer', 'number_decimal', 'number_float'),
+      'multiple values' =&gt; CONTENT_HANDLE_CORE,
+      'callbacks' =&gt; array(
+        'default value' =&gt; CONTENT_CALLBACK_DEFAULT,
+      ),
+    ),
+  );
+}
+</code></pre><h3 id="s-in-drupal-7"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-7"></a>In Drupal 7</h3>
+<pre>
+<code class="language-php">/**
+ * Implements hook_field_widget_info().
+ */
+function number_field_widget_info() {
+  return array(
+    'number' =&gt; array(
+      'label' =&gt; t('Text field'),
+      'field types' =&gt; array('number_integer', 'number_decimal', 'number_float'),
+      'behaviors' =&gt; array(
+        'multiple values' =&gt; FIELD_BEHAVIOR_DEFAULT,
+        'default value' =&gt; FIELD_BEHAVIOR_DEFAULT,
+      ),
+      'settings' =&gt; array(
+        'size' =&gt; 60,
+      ),
+    ),
+  );
+}
+</code></pre><h2 id="s-changed-hook-widget"><a class="toc-anchor" title="Permalink to this headline" href="#s-changed-hook-widget"></a>Changed! Hook Widget</h2>
+<p>You still add #element_validate and name a function to do the widget validation, just as was done in Drupal 6. In Drupal 6 we had $element['_error_element'] which is gone in Drupal 7, replaced by new function hook_field_widget_error(). The hook_widget() function has been renamed to hook_field_widget_form(), and it has several new parameters passed to it.</p>
+<h3 id="s-in-drupal-6--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-6--2"></a>In Drupal 6</h3>
+<pre>
+<code class="language-php">function number_widget(&amp;$form, &amp;$form_state, $field, $items, $delta = 0) {
+  $element['value'] = array(
+    // Fill in $element.
+  );
+
+  // Used so that hook_field('validate') knows where to flag an error.
+  $element['_error_element'] = array(
+    '#type' =&gt; 'value',
+    '#value' =&gt; implode('][', array_merge($element['#parents'], array($field_key))),
+  );
+
+  return $element;
+}
+</code></pre><h3 id="s-in-drupal-7--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-7--2"></a>In Drupal 7</h3>
+<pre>
+<code class="language-php">/**
+ * Implements hook_field_widget_form().
+ */
+function number_field_widget_form(&amp;$form, &amp;$form_state, $field, $instance, $langcode, $items, $delta, $element) {
+  // use += to avoid overwriting incoming $element
+  $element['value'] += array(
+    // Fill in $element.
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_error().
+ */
+function number_field_widget_error($element, $error, $form, &amp;$form_state) {
+  form_error($element['value'], $error['message']);
+}
+</code></pre><p>The following values are available in the $element for widget processing. Don't try to use the values of $form['#fields'] in element processing, that doesn't exist in Drupal 7. Use $element['#field_name'] to get the field array from the $form_state, like <strong>$field = $form_state['field'][$element['#field_name']][$element['#language']]['field']</strong>. Note that you should get it from $form_state instead of field_info_field() during form processing to be sure you are not getting a cached, out of date, version of the field.</p>
+<pre>
+<code class="language-php">$element['#entity_type']
+$element['#bundle']
+$element['#field_name']
+$element['#language']
+$element['#columns']
+$element['#title']
+$element['#description']
+$element['#required']
+$element['#delta']
+$element['#language']
+</code></pre><h2 id="s-changed-hook-field-info"><a class="toc-anchor" title="Permalink to this headline" href="#s-changed-hook-field-info"></a>Changed! Hook Field Info</h2>
+<p>New in Drupal 7, you declare all the field and instance settings in the info hook and set default values for the settings. You also identify a default widget and a default formatter for this field.</p>
+<h3 id="s-in-drupal-6--3"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-6--3"></a>In Drupal 6</h3>
+<pre>
+<code class="language-php">/**
+ * Implementation of hook_field_info().
+ */
+function number_field_info() {
+  return array(
+    'number_integer' =&gt; array(
+      'label' =&gt; t('Integer'),
+      'description' =&gt; t('Store a number in the database as an integer.'),
+    ),
+  );
+}
+</code></pre><h3 id="s-in-drupal-7--3"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-7--3"></a>In Drupal 7</h3>
+<pre>
+<code class="language-php">/**
+ * Implements hook_field_info().
+ */
+function number_field_info() {
+  return array(
+    'number_integer' =&gt; array(
+      'label' =&gt; t('Integer'),
+      'description' =&gt; t('This field stores a number in the database as an integer.'),
+      'settings' =&gt; array('size' =&gt; 255),
+      'instance_settings' =&gt; array('min' =&gt; '', 'max' =&gt; '', 'prefix' =&gt; '', 'suffix' =&gt; ''),
+      'default_widget' =&gt; 'number',
+      'default_formatter' =&gt; 'number_integer',
+    ),
+  );
+}
+</code></pre><h2 id="s-changed-hook-field-settings"><a class="toc-anchor" title="Permalink to this headline" href="#s-changed-hook-field-settings"></a>Changed! Hook Field Settings</h2>
+<p>In Drupal 7 hook_field_settings() is broken out into hook_field_settings_form() and hook_field_schema(). The 'save' operation was used to instruct CCK what settings need to be saved and is no longer needed since the settings are defined in hook_field_info().</p>
+<h3 id="s-drupal-6"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-6"></a>Drupal 6</h3>
+<pre>
+<code class="language-php">/**
+ * Implementation of hook_field_settings().
+ */
+function number_field_settings($op, $field) {
+  switch ($op) {
+    case 'form':
+      $form = array();
+      $form['min'] = array(
+        '#type' =&gt; 'textfield',
+        '#title' =&gt; t('Minimum'),
+        '#element_validate' =&gt; array('_element_validate_number'),
+        '#default_value' =&gt; is_numeric($field['min']) ? $field['min'] : '',
+      );
+      return $form;
+
+    case 'validate':
+      // Any additional validation for the field could be done here.
+      break;
+
+    case 'save':
+      $values = array('prefix', 'suffix', 'min', 'max', 'allowed_values', 'allowed_values_php');
+      if ($field['type'] == 'number_decimal') {
+        $values = array_merge($values, array('precision', 'scale', 'decimal'));
+      }
+      return $values;
+
+    case 'database columns':
+      return array(
+        'value' =&gt; array('type' =&gt; 'int', 'not null' =&gt; FALSE, 'sortable' =&gt; TRUE),
+      );
+  }
+}
+</code></pre><h3 id="s-drupal-7"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-7"></a>Drupal 7</h3>
+<pre>
+<code class="language-php">/**
+ * Implements hook_field_settings_form().
+ */
+function number_field_settings_form($field, $instance, $has_data) {
+  $settings = $field['settings'];
+  $form = array();
+  if ($field['type'] == 'number_decimal' || $field['type'] == 'number_float') {
+    $form['decimal_separator'] = array(
+      '#type' =&gt; 'select',
+      '#title' =&gt; t('Decimal marker'),
+      '#options' =&gt; array(
+        '.' =&gt; 'decimal point',
+        ',' =&gt; 'comma',
+        ' ' =&gt; 'space',
+      ),
+      '#default_value' =&gt; $settings['decimal_separator'],
+      '#description' =&gt; t('The character users will input to mark the decimal point in forms.'),
+    );
+  }
+  return $form;
+}
+
+/**
+ * Implements hook_field_schema().
+ */
+function number_field_schema($field) {
+  switch ($field['type']) {
+    case 'number_integer' :
+      $columns = array(
+        'value' =&gt; array(
+          'type' =&gt; 'int',
+          'not null' =&gt; FALSE
+        ),
+      );
+      break;
+  }
+  return array(
+    'columns' =&gt; $columns,
+  );
+}
+
+</code></pre><h3 id="s-replacing-op-validate-with-element-validate"><a class="toc-anchor" title="Permalink to this headline" href="#s-replacing-op-validate-with-element-validate"></a>Replacing $op == 'validate' with #element_validate</h3>
+<p>The custom CCK validation hooks have been removed in D7. You can still validate more complicated forms by using the FAPI #element_validate on the entire sub-form.</p>
+<pre>
+<code class="language-php">/**
+ * Implements hook_field_settings_form().
+ */
+function myfield_field_settings_form($field, $instance, $has_data) {
+  $form = array();
+  $form['decimal_separator'] = array(
+    ...
+    '#element_validate' =&gt; array('myfield_field_settings_form_validate'),
+  );
+  return $form;
+}
+
+/**
+ * Implements the #element_validate callback for myfield_field_settings_form().
+ */
+function myfield_field_settings_form_validate($element, &amp;$form_state) {
+  // Do any custom validation here.
+  if ($has_error) {
+    form_error($element['decimal_separator'], t('%label has an error.', array('%label' =&gt; t('Decimal marker'))));
+  }
+  else {
+    // You can update the values of the settings here too.
+    form_set_value($element['decimal_separator'], $new_value, $form_state);
+  }
+}
+</code></pre><h3 id="s-replacing-op-views-data-for-views-relationships-etc"><a class="toc-anchor" title="Permalink to this headline" href="#s-replacing-op-views-data-for-views-relationships-etc"></a>Replacing $op == 'views data' for views relationships, etc.</h3>
+<p>If your D6 hook_field_settings() supported $op == 'views data' then that logic will have to be moved. To add support for relationships your module should implement hook_field_views_data() or hook_field_views_data_alter() to add the necessary information. <a href="http://drupal.org/node/761372" rel="nofollow">Related issue</a>.</p>
+<h2 id="s-changed-hook-field"><a class="toc-anchor" title="Permalink to this headline" href="#s-changed-hook-field"></a>Changed! Hook Field</h2>
+<p>Each of the operations in hook_field is now a separate hook, hook_field_validate, hook_field_insert, hook_field_update, etc. Note that a couple operations, load and prepare_view, operate on multiple entities at once, so are passed an array of $entities instead of a single $entity.</p>
+<p>In Drupal 6 we had $element['_error_element'] which is gone in Drupal 7, replaced with a $error array that is passed by reference to the validator.</p>
+<h3 id="s-drupal-6--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-6--2"></a>Drupal 6</h3>
+<pre>
+<code class="language-php">/**
+ * Implementation of hook_field().
+ */
+function number_field($op, &amp;$node, $field, &amp;$items, $teaser, $page) {
+  switch ($op) {
+    case 'validate':
+      $allowed_values = content_allowed_values($field);
+      if (is_array($items)) {
+        foreach ($items as $delta =&gt; $item) {
+          $error_element = isset($item['_error_element']) ? $item['_error_element'] : '';
+          if (is_array($item) &amp;&amp; isset($item['_error_element'])) unset($item['_error_element']);
+          if ($item['value'] != '') {
+            if (is_numeric($field['min']) &amp;&amp; $item['value'] &lt; $field['min']) {
+              form_set_error($error_element, t('%name: the value may be no smaller than %min.', array('%name' =&gt; t($field['widget']['label']), '%min' =&gt; $field['min'])));
+            }
+            if (is_numeric($field['max']) &amp;&amp; $item['value'] &gt; $field['max']) {
+              form_set_error($error_element, t('%name: the value may be no larger than %max.', array('%name' =&gt; t($field['widget']['label']), '%max' =&gt; $field['max'])));
+            }
+            if (count($allowed_values)) {
+              // We cannot use array_key_exists() because allowed values are
+              // stored as strings, and we need to compare numeric equality.
+              $valid = FALSE;
+              foreach ($allowed_values as $kay =&gt; $value) {
+                if ((float) $item['value'] == (float) $kay) {
+                  $valid = TRUE;
+                  break;
+                }
+              }
+              if (!$valid) {
+                form_set_error($error_element, t('%name: illegal value.', array('%name' =&gt; t($field['widget']['label']))));
+              }
+            }
+          }
+        }
+      }
+      return $items;
+  }
+}
+</code></pre><h3 id="s-drupal-7--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-7--2"></a>Drupal 7</h3>
+<pre>
+<code class="language-php">/**
+ * Implements hook_field_validate().
+ *
+ * Possible error codes:
+ * - 'number_min': The value is smaller than the allowed minimum value.
+ * - 'number_max': The value is larger than the allowed maximum value.
+ */
+function number_field_validate($entity_type, $entity, $field, $instance, $langcode, $items, &amp;$errors) {
+  foreach ($items as $delta =&gt; $item) {
+    if ($item['value'] != '') {
+      if (is_numeric($instance['settings']['min']) &amp;&amp; $item['value'] &lt; $instance['settings']['min']) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' =&gt; 'number_min',
+          'message' =&gt; t('%name: the value may be no smaller than %min.', array('%name' =&gt; t($instance['label']), '%min' =&gt; $instance['settings']['min'])),
+        );
+      }
+      if (is_numeric($instance['settings']['max']) &amp;&amp; $item['value'] &gt; $instance['settings']['max']) {
+        $errors[$field['field_name']][$langcode][$delta][] = array(
+          'error' =&gt; 'number_max',
+          'message' =&gt; t('%name: the value may be no larger than %max.', array('%name' =&gt; t($instance['label']), '%max' =&gt; $instance['settings']['max'])),
+        );
+      }
+    }
+  }
+}
+</code></pre><h2 id="s-changed-hook-formatter-info"><a class="toc-anchor" title="Permalink to this headline" href="#s-changed-hook-formatter-info"></a>Changed! Hook Formatter Info</h2>
+<p>In Drupal 6, a formatter could provide the default behavior of formatting a single field value or alternatively could be used to format all field values of a multiple value field in a single formatter, in Drupal 7, all formatters receive all field values to format as they wish.</p>
+<p>New feature in Drupal 7: formatters can declare settings and default values for those settings.</p>
+<p>New constraint in Drupal 7: two formatters cannot have the same machine name (this was already the case for field type and widget names in Drupal 6). It is therefore recommended to prefix formatter machine names by the name of the module that implements them. This also means that, unlike Drupal 6, Drupal 7 doesn't require each field type to have a formatter named 'default'.</p>
+<h3 id="s-in-drupal-6--4"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-6--4"></a>In Drupal 6</h3>
+<pre>
+<code class="language-php">/**
+ * Implementation of hook_field_formatter_info().
+ */
+function number_field_formatter_info() {
+  return array(
+    'default' =&gt; array(
+      'label' =&gt; '9999', 
+      'multiple values' =&gt; CONTENT_HANDLE_CORE, 
+      'field types' =&gt; array('number_integer', 'number_decimal', 'number_float')),
+  );
+}
+
+
+</code></pre><h3 id="s-in-drupal-7--4"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-7--4"></a>In Drupal 7</h3>
+<pre>
+<code class="language-php">/**
+ * Implements hook_field_formatter_info().
+ */
+function number_field_formatter_info() {
+  return array(
+    'number_integer' =&gt; array(
+      'label' =&gt; t('Default'),
+      'field types' =&gt; array('number_integer', 'number_decimal', 'number_float'),
+      'settings' =&gt;  array(
+        'thousand_separator' =&gt; ' ',
+        'decimal_separator' =&gt; '.',
+        'scale' =&gt; 0,
+        'prefix_suffix' =&gt; TRUE,
+      ),
+    ),
+  );
+}
+</code></pre><h2 id="s-changed-hook-formatter"><a class="toc-anchor" title="Permalink to this headline" href="#s-changed-hook-formatter"></a>Changed! Hook Formatter</h2>
+<p>In Drupal 6, you had to create a theme function for each formatter and declare each of them in hook_theme. In Drupal 7 you implement hook_field_formatter_view(), no need to implement hook_theme().</p>
+<h3 id="s-in-drupal-6--5"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-6--5"></a>In Drupal 6</h3>
+<pre>
+<code class="language-php">/**
+ * Implementation of hook_theme().
+ */
+function number_theme() {
+  return array(
+    'number_formatter_unformatted' =&gt; array('arguments' =&gt; array('element' =&gt; NULL)),
+  );
+}
+
+function theme_number_formatter_unformatted($element) {
+  return $element['#item']['value'];
+}
+</code></pre><h3 id="s-in-drupal-7--5"><a class="toc-anchor" title="Permalink to this headline" href="#s-in-drupal-7--5"></a>In Drupal 7</h3>
+<pre>
+<code class="language-php">/**
+ * Implements hook_field_formatter_view().
+ */
+function number_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings'];
+  $formatter = $display['type'];
+  foreach ($items as $delta =&gt; $item) {
+    $element[$delta] = array('#markup' =&gt; $item['value']);
+  }
+
+  return $element;
+}
+</code></pre></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-01055ed4afb410afa768b7a73965c94a">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/728792/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/728792/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28728792%29%20Updating%20CCK%20Field%20Modules%20from%20D6%20to%20D7">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"QKlu6uAC7o619lFQZcSLZB1I7gii_Rz7NaioPmju3ks"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/converting-drupal-6-modules-to-drupal-7\/updating-cck-field-modules-from-d6-to-d7":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2819037"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

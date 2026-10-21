@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="When developing a module, you should give some consideration to making the text your module displays translatable into other languages. An" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/creating-custom-modules/making-your-custom-data-translatable" />
+<link rel="shortlink" href="https://www.drupal.org/node/304002" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/creating-custom-modules/making-your-custom-data-translatable" />
+<meta property="og:title" content="Making your custom data translatable" />
+<meta property="og:description" content="When developing a module, you should give some consideration to making the text your module displays translatable into other languages. An overview of this process is given on the Multilingual Support page. This page concerns one step in that process: making user-entered text in your module translatable. Note that if all of the user-entered text in your module is stored in nodes, probably the core Locale and Content Translation module will take care of translations for you." />
+<meta property="og:updated_time" content="2018-03-19T18:35:00+00:00" />
+<meta property="article:published_time" content="2008-09-04T15:39:01+00:00" />
+<meta property="article:modified_time" content="2018-03-19T18:35:00+00:00" />
+  <title>Making your custom data translatable | Creating custom modules in Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-304002 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2804065" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/creating-custom-modules/making-your-custom-data-translatable" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-MsZKZkAvsDvKKnFhyNwsI0AwTUs4RmNzRNP5Z8Do4z0" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/304002" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/304002" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/creating-custom-modules/making-your-custom-data-translatable" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-ehMFld8-ShFQPWrNw-AAW7e5fRPteL2ZBmriBnFgR88" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/creating-custom-modules-in-drupal-7">Creating custom modules in Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-304002">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h3-tag first"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable#s-drupal-7" class="toc-link toc-link-invalid-id active">Drupal 7</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable#s-drupal-6" class="toc-link toc-link-invalid-id active">Drupal 6</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable#s-some-handy-methods" class="toc-link toc-link-invalid-id active">Some handy methods</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable#s-working-directly-with-the-locale-system" class="toc-link toc-link-invalid-id active">Working directly with the locale system</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable#s-working-with-the-internationalization-string-translation-module" class="toc-link toc-link-invalid-id active">Working with the Internationalization - String Translation module</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable#s-providing-custom-multilanguage-support" class="toc-link toc-link-invalid-id active">Providing custom multilanguage support</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="creating-custom-modules-in-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/creating-custom-modules-in-drupal-7">Creating custom modules in Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/creating-custom-modules/getting-started">Getting started</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/telling-drupal-about-your-module">Telling Drupal about your module</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x">Writing module .info files (Drupal 7.x)</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/creating-drupal-7-hooks">Creating Drupal 7 hooks</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/writing-comments-and-implementing-your-first-hook">Writing comments and implementing your first hook</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/writing-install-files-drupal-7x">Writing .install files (Drupal 7.x)</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/declaring-the-block">Declaring the block</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/retrieving-data">Retrieving data</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/generating-block-content">Generating block content</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/testing-and-troubleshooting-the-module">Testing and troubleshooting the module</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/preparing-for-a-module-configuration-form">Preparing for a module configuration form</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/creating-the-configuration-form">Creating the configuration form</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/validating-the-data">Validating the data</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/specifying-a-custom-permission-for-a-new-page">Specifying a custom permission for a new page</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/adapting-the-query">Adapting the query</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/theming-the-page">Theming the page</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/adding-a-more-link">Adding a &#039;More&#039; link</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/testing-with-simpletest">Testing with SimpleTest</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/practicing-patches">Practicing patches</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/show-all-errors-while-developing">Show all errors while developing</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/drupal-7s-code-registry">Drupal 7&#039;s code registry</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/exportable-configuration">Exportable configuration</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/suppress-caching-for-development-or-to-use-an-external-page-cache">Suppress caching (for development) or to use an external page cache</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/using-the-theme-layer-drupal-7x">Using the theme layer (Drupal 7.x)</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective">Drupal 6/7 programming from an object-oriented perspective</a></li>
+<li class="leaf active-trail"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable" class="active-trail active">Making your custom data translatable</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/howtos">Module development HowTos</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/understanding-the-hook-system-for-drupal-modules">Understanding the hook system for Drupal modules</a></li>
+<li class="last leaf"><a href="/docs/7/creating-custom-modules/working-with-multilingual-content">Working with multilingual content</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Making your custom data translatable</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/304002/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    19 March 2018  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>When developing a module, you should give some consideration to making the text your module displays translatable into other languages. An overview of this process is given on the <a href="/node/303984" rel="nofollow">Multilingual Support</a> page.</p>
+<p>This page concerns one step in that process: making user-entered text in your module translatable. Note that if all of the user-entered text in your module is stored in nodes, probably the core Locale and Content Translation module will take care of translations for you. But if your module lets the user enter data other than nodes, and that data will be displayed to users, then continue reading to find out how to make it translatable.</p>
+<p>The core Locale module supports enabling of languages, designation of a default language, and import/export of language files (.pot, .po) to be used and edited with external software. See its handbook page: <a href="http://drupal.org/handbook/modules/locale" rel="nofollow">http://drupal.org/handbook/modules/locale</a>.</p>
+<h3 id="s-drupal-7"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-7"></a><a id="d7" name="d7" rel="nofollow"></a>Drupal 7</h3>
+<p>Starting with Drupal 7, user-entered/configurable strings that are stored in the database may be translated by a contributed module that alters the database queries. To prepare the storage of your module for this translatable strings handling, follow these steps:</p>
+<ul>
+<li>Translation works by rewriting database queries. Therefore, translatable strings have to be stored in dedicated database columns and not in a serialized array or similar.</li>
+<li>In your implementation of hook_schema(), set the field to:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">'translatable' =&gt; TRUE, </code></pre><p>An example from block.install:</p>
+<pre>
+
+</pre><pre>
+<code class="language-php">function block_schema() {
+ $schema['block'] = array(
+ // ... 'title' =&gt; array(
+ 'type' =&gt; 'varchar',
+ 'length' =&gt; 64,
+ 'not null' =&gt; TRUE,
+ 'default' =&gt; '',
+ 'description' =&gt; 'Custom title for the block. (Empty string will use block default title, &lt;none&gt; will remove the title, text will cause block to use specified title.)',
+ 'translatable' =&gt; TRUE,
+ ), </code></pre></li>
+<li>When retrieving your data, use db_select() instead of db_query(), and add the 'translatable' query tag:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">-&gt;addTag('translatable') </code></pre><p>This will enable <a href="http://drupal.org/node/310077" rel="nofollow">Query alteration</a>. An example from block.module:</p>
+<pre>
+
+</pre><pre>
+<code class="language-php">$query = db_select('block', 'b')
+-&gt;fields('b')
+-&gt;condition('b.theme', $theme_key)
+-&gt;condition('b.status', 1)
+-&gt;orderBy('b.region')
+-&gt;orderBy('b.weight')
+-&gt;orderBy('b.module')
+-&gt;addTag('block_load')
+-&gt;addTag('translatable')
+-&gt;execute(); </code></pre></li>
+</ul>
+<p>By default, Drupal core does not translate these strings. The entire translation handling, storage, and editing are left to contributed modules (most likely <a href="http://drupal.org/project/entity_translation" rel="nofollow">entity_translation</a>).</p>
+<p>For more information, consult the originating patch:</p>
+<p><span class="project-issue-issue-link project-issue-status-info project-issue-status-7"><a href="/project/drupal/issues/593746" title="Status: Closed (fixed), Assigned to: sun">#593746: Prepare Drupal core for dynamic data translation</a></span></p>
+<h3 id="s-drupal-6"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-6"></a><a id="d6" name="d6" rel="nofollow"></a>Drupal 6</h3>
+<p>As of Drupal 6, the locale module enables multiple types of data to be translated--not just code-based strings. Drupal core includes support for a single type: strings defined at the code level in e.g., .module files. But other modules can register their own types by implementing <a href="https://api.drupal.org/api/drupal/developer%21hooks%21core.php/function/hook_locale/6.x" rel="nofollow">hook_locale()</a>.</p>
+<p>The contrib <a href="http://drupal.org/project/i18n" rel="nofollow">Internationalization package</a> (i18n) makes extensive use of <code class="language-php">hook_locale()</code> to make various types of Drupal core data translatable: taxonomies, variables, forums, user profiles, etc. i18n also includes a generic multilingual strings module, which provides a toolset that module authors can use to expose data through the locale system.</p>
+<p>The locale system is best suited to data that change relatively infrequently and less suited to longer, more complex strings that may need frequent updating.</p>
+<p>A key characteristic of the locale system is that there is only one version of a given item. String substitution happens at run time, e.g., before display. It's distinct in this way from the content translation system, in which there are multiple versions of a given piece of content, one per language.</p>
+<p>Module developers wanting to make their data translatable via the locale system have several options including:</p>
+<ol>
+<li>Work directly with the locale system</li>
+<li>Build on the Internationalization - String Translation module and use its API</li>
+<li>Introduce custom handling with multiple versions of a given item, one per language.</li>
+</ol>
+<p>Each of these options is described in a section below.</p>
+<h3 id="s-some-handy-methods"><a class="toc-anchor" title="Permalink to this headline" href="#s-some-handy-methods"></a><a id="methods" name="methods" rel="nofollow"></a>Some handy methods</h3>
+<p>Methods useful when working with locale and languages include:</p>
+<ul>
+<li><a href="https://api.drupal.org/api/drupal/modules%21locale%21locale.api.php/function/hook_locale/7.x" title="Allows modules to define their own text groups that can be translated" rel="nofollow">hook_locale()</a></li>
+<li><a href="https://api.drupal.org/api/drupal/includes%21bootstrap.inc/function/language_default/7.x" title="Default language used on the site" rel="nofollow">language_default()</a></li>
+<li><a href="https://api.drupal.org/api/drupal/includes%21bootstrap.inc/function/language_list/7.x" title="Get a list of languages set up indexed by the specified key" rel="nofollow">language_list()</a></li>
+<li><a href="https://api.drupal.org/api/drupal/modules%21locale%21locale.module/function/locale_language_list/7.x" title="Returns array of language names" rel="nofollow">locale_language_list()</a></li>
+</ul>
+<h3 id="s-working-directly-with-the-locale-system"><a class="toc-anchor" title="Permalink to this headline" href="#s-working-directly-with-the-locale-system"></a><a id="working-directly" name="working-directly" rel="nofollow"></a>Working directly with the locale system</h3>
+<p>To register one or more new "groups" (types of strings) to be recognized by the Locale module, you need to implement <code class="language-php">hook_locale()</code>. However, the Locale module doesn't provide you much help beyond this hook.</p>
+<p>The locale system is still focused mainly on the "default" case (strings passed through <code class="language-php">t()</code>, generally in code). The <code class="language-php">locale()</code> function is hard-coded to this use case. While studying the <code class="language-php">locale()</code> function might be useful, it won't directly help you to work with your own custom locale group. The locale system provides a UI for translating strings once they're registered, but, when it comes to registering strings and ensuring they're used when needed, you're on your own. Hence in part the creation of the strings module in i18n to facilitate these tasks.</p>
+<p>To work directly with the locale system, you need to:</p>
+<ul>
+<li>Save source strings as they are created to the {locales_source} table.</li>
+<li>Update existing translations when they change.</li>
+<li>Load strings if available from the {locales_target} table for the current language.</li>
+</ul>
+<h3 id="s-working-with-the-internationalization-string-translation-module"><a class="toc-anchor" title="Permalink to this headline" href="#s-working-with-the-internationalization-string-translation-module"></a><a id="i18n_strings" name="i18n_strings" rel="nofollow"></a>Working with the Internationalization - String Translation module</h3>
+<p>The basic process for using the String Translation API from the Internationalization module for translating your strings is as follows:</p>
+<ol>
+<li>Implement <code class="language-php">hook_locale()</code> to define a translation group for your module; for example, you might choose 'terms_of_use' for the Terms of Use module. See below for completed sample implementation.</li>
+<li>Make sure that you only invoke the Strings Translation module if it has been installed, by wrapping all of the calls into its functionality in:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">if (module_exists('i18nstrings')) { } </code></pre></li>
+<li>Locate places in your module where a user can edit a text string that is then displayed on the user interface. Make sure you tell them to enter the text in their site's default language, and perhaps give them some direction on how to translate this text using the Internationalization - Strings Translation module.</li>
+<li>Assign each of these strings a behind-the-scenes code name, consisting of your module's translation group name (defined in your hook_locale() implementation), a subgroup code for the section within your module (if desired), and a code specific to the string, separated by colons (e.g. <code class="language-php">'terms_of_use:tou:checkbox_label'</code> could be used as the code name for the label the user enters for a checkbox in the Terms of Use module on the 'tou' screen).</li>
+<li>Whenever the user interface text is updated by a user, call the <code class="language-php">tt()</code> function to store the new value for that text. For example:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">// First store the text in variable_set() or a database table. Then: if (module_exists('i18nstrings')) { $language = language_default('language'); tt('terms_of_use:tou:checkbox_label', $text_user_entered, $language, TRUE); } </code></pre></li>
+<li>Whenever you need to display the user interface text, call the <code class="language-php">tt()</code> function to retrieve the current translation of that text. For example:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">// First retrieve the text from variable_get or a database table. Then: if (module_exists('i18nstrings')) { $text_to_display = tt('terms_of_use:tou:checkbox_label', $text_to_display); } </code></pre></li>
+<li>Add a 'refresh' operation to your hook_locale() implementation, which retrieves the untranslated text from the database and calls the <code class="language-php">tt()</code> function on it. Sample hook_locale() implementation:<br />
+<pre>
+
+</pre><pre>
+<code class="language-php">function terms_of_use_locale($op = 'groups', $group = NULL) { switch ($op) { case 'groups': return array('terms_of_use' =&gt; t('Terms of Use')); case 'refresh': if(module_exists('i18nstrings')) { // Get the checkbox label from the database or from variable_get first. Then: tt('terms_of_use:tou:checkbox_label', $label_text, NULL, TRUE); } } } </code></pre></li>
+</ol>
+<p>For further reading: these two issues are useful references on how other contributed modules added support for translation using the String Translation module:</p>
+<ul>
+<li><span class="project-issue-issue-link project-issue-status-info project-issue-status-7"><a href="/project/legal/issues/79754" title="Status: Closed (fixed), Assigned to: robert castelo">#79754: Internationalization needed for Legal module</a></span></li>
+<li><span class="project-issue-issue-link project-issue-status-info project-issue-status-7"><a href="/project/terms_of_use/issues/299416" title="Status: Closed (fixed), Assigned to: kars-t">#299416: translations support</a></span></li>
+<li><span class="project-issue-issue-link project-issue-status-info project-issue-status-7"><a href="/project/user_relationships/issues/471546" title="Status: Closed (fixed)">#471546: Translate relationships (as 'friend')</a></span></li>
+</ul>
+<p>You might also study the code in the Internationalization module itself, as much of its module set is built off of its String Translation module.</p>
+<h3 id="s-providing-custom-multilanguage-support"><a class="toc-anchor" title="Permalink to this headline" href="#s-providing-custom-multilanguage-support"></a><a id="custom" name="custom" rel="nofollow"></a>Providing custom multilanguage support</h3>
+<p>Custom handling may be needed where strings are long, complex, or frequently updated.</p>
+<ol>
+<li>Introduce a <code class="language-php">language</code> field in your schema.</li>
+<li>On the editing form, present a language selection element. See <a href="https://api.drupal.org/api/drupal/modules%21locale%21locale.module/function/locale_form_alter/7.x" rel="nofollow">locale_form_alter()</a> for examples.</li>
+<li>On insert and update, save the language field along with other data.</li>
+<li>On load, load a version of your data in the appropriate language, if present. (Use the global <code class="language-php">$language</code> variable.)</li>
+<li>On view, provide e.g. a 'translate' link, loading a form with a copy of the item ready for translation.</li>
+</ol></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-6426a6e918bfdb67fed46012a46402bd">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/304002/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/304002/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28304002%29%20Making%20your%20custom%20data%20translatable">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"g_BKFACyL45iIetFZeUXJLn7-rdjx6SXyeBDEX5Mkco"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/creating-custom-modules\/making-your-custom-data-translatable":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2804065"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

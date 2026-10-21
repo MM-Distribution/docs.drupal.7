@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Note: This page is about Drupal 7&#039;s (and prior versions&#039;) architecture. Drupal 8 changed a great deal and now uses actual OOP practices." />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective" />
+<link rel="shortlink" href="https://www.drupal.org/node/547518" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective" />
+<meta property="og:title" content="Drupal 6/7 programming from an object-oriented perspective" />
+<meta property="og:description" content="Note: This page is about Drupal 7&#039;s (and prior versions&#039;) architecture. Drupal 8 changed a great deal and now uses actual OOP practices. Drupal often gets criticized by those who look to its source code and API expecting to find certain familiar aspects of object-oriented programming (OOP). For example, the word &quot;class&quot; does not appear in Drupal code as often as some might expect. Some have viewed this as a deficiency." />
+<meta property="og:updated_time" content="2016-12-23T07:19:17+00:00" />
+<meta property="article:published_time" content="2005-04-04T19:52:42+00:00" />
+<meta property="article:modified_time" content="2016-12-23T07:19:17+00:00" />
+  <title>Drupal 6/7 programming from an object-oriented perspective | Creating custom modules in Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-547518 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2804065" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-VKZPWHsgZQU1Iq_W-dzCLKrVcHnWy_v5ZaW3YAZbPAw" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/547518" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/547518" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-3etfIYkcw1aoN0hfE-VodsQ-0xvLW1l1fzroRO9uHeg" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/creating-custom-modules-in-drupal-7">Creating custom modules in Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-547518">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-motivations-for-current-design" class="toc-link toc-link-invalid-id active">Motivations for Current Design</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-oop-concepts-in-drupal" class="toc-link toc-link-invalid-id active">OOP Concepts in Drupal</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-objects" class="toc-link toc-link-invalid-id active">Objects</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-abstraction" class="toc-link toc-link-invalid-id active">Abstraction</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-encapsulation" class="toc-link toc-link-invalid-id active">Encapsulation</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-polymorphism" class="toc-link toc-link-invalid-id active">Polymorphism</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-inheritance" class="toc-link toc-link-invalid-id active">Inheritance</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-design-patterns-in-drupal" class="toc-link toc-link-invalid-id active">Design Patterns in Drupal</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-singleton" class="toc-link toc-link-invalid-id active">Singleton</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-decorator" class="toc-link toc-link-invalid-id active">Decorator</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-observer" class="toc-link toc-link-invalid-id active">Observer</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-bridge" class="toc-link toc-link-invalid-id active">Bridge</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-chain-of-responsibility" class="toc-link toc-link-invalid-id active">Chain of Responsibility</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-command" class="toc-link toc-link-invalid-id active">Command</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-why-not-to-use-classes" class="toc-link toc-link-invalid-id active">Why Not to Use Classes</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-room-for-improvement" class="toc-link toc-link-invalid-id active">Room for Improvement</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective#s-multiple-paradigms" class="toc-link toc-link-invalid-id active">Multiple Paradigms</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="creating-custom-modules-in-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/creating-custom-modules-in-drupal-7">Creating custom modules in Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/creating-custom-modules/getting-started">Getting started</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/telling-drupal-about-your-module">Telling Drupal about your module</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/writing-module-info-files-drupal-7x">Writing module .info files (Drupal 7.x)</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/creating-drupal-7-hooks">Creating Drupal 7 hooks</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/writing-comments-and-implementing-your-first-hook">Writing comments and implementing your first hook</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/writing-install-files-drupal-7x">Writing .install files (Drupal 7.x)</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/declaring-the-block">Declaring the block</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/retrieving-data">Retrieving data</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/generating-block-content">Generating block content</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/testing-and-troubleshooting-the-module">Testing and troubleshooting the module</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/preparing-for-a-module-configuration-form">Preparing for a module configuration form</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/creating-the-configuration-form">Creating the configuration form</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/validating-the-data">Validating the data</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/specifying-a-custom-permission-for-a-new-page">Specifying a custom permission for a new page</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/adapting-the-query">Adapting the query</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/theming-the-page">Theming the page</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/adding-a-more-link">Adding a &#039;More&#039; link</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/testing-with-simpletest">Testing with SimpleTest</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/practicing-patches">Practicing patches</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/show-all-errors-while-developing">Show all errors while developing</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/drupal-7s-code-registry">Drupal 7&#039;s code registry</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/exportable-configuration">Exportable configuration</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/suppress-caching-for-development-or-to-use-an-external-page-cache">Suppress caching (for development) or to use an external page cache</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/using-the-theme-layer-drupal-7x">Using the theme layer (Drupal 7.x)</a></li>
+<li class="leaf active-trail"><a href="/docs/7/creating-custom-modules/drupal-67-programming-from-an-object-oriented-perspective" class="active-trail active">Drupal 6/7 programming from an object-oriented perspective</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/making-your-custom-data-translatable">Making your custom data translatable</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/howtos">Module development HowTos</a></li>
+<li class="leaf"><a href="/docs/7/creating-custom-modules/understanding-the-hook-system-for-drupal-modules">Understanding the hook system for Drupal modules</a></li>
+<li class="last leaf"><a href="/docs/7/creating-custom-modules/working-with-multilingual-content">Working with multilingual content</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Drupal 6/7 programming from an object-oriented perspective</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/547518/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    23 December 2016  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p><em><strong>Note:</strong> This page is about Drupal 7's (and prior versions') architecture. Drupal 8 changed a great deal and now uses actual OOP practices.</em></p>
+<p>Drupal often gets criticized by those who look to its source code and API expecting to find certain familiar aspects of object-oriented programming (OOP). For example, the word "class" does not appear in Drupal code as often as some might expect. Some have viewed this as a deficiency.</p>
+<p>Although Drupal does not make thorough use of the native OOP features of PHP, the Drupal code base and API does reflect some principles found in object-oriented programming and design. This article describes the architecture of Drupal from an OOP perspective, so that programmers familiar with OOP can evaluate Drupal in light of object-oriented design principles, and hopefully feel more at home in the Drupal code base. In the future, as both PHP and Drupal become more mature, Drupal may increasingly adopt the native OOP features of PHP.</p>
+<h2 id="s-motivations-for-current-design"><a class="toc-anchor" title="Permalink to this headline" href="#s-motivations-for-current-design"></a>Motivations for Current Design</h2>
+<p>Back as far as version 4.6 of Drupal, the decision was made not to use PHP's <a href="http://us3.php.net/manual/en/language.oop5.php" rel="nofollow">class</a> construct. This decision was made for several reasons.</p>
+<p>First, PHP's support for object-oriented constructs was much less mature at the time of Drupal's design. Drupal was built on PHP 4, and most of the improvements in PHP 5 relate to its <a href="http://www.php.net/manual/en/migration5.oop.php" rel="nofollow">object-oriented features</a>.</p>
+<p>Second, Drupal code is highly compartmentalized into modules, each of which defines its own set of functions. The inclusion of files is handled inside functions as well; PHP's performance suffers if unneeded code is included, so Drupal attempts to load as little code as possible per request. This is a critical consideration, especially in the absence of a <a href="http://www.zend.com/store/products/zend-platform/index.php" rel="nofollow">PHP accelerator</a>: the act of compiling the code accounts for more than half of the time to complete a Drupal page request. Functions are therefore defined inside other functions in Drupal, with respect to the runtime scope. While this is perfectly legal for bare functions, PHP does not allow the same kind of nesting with class declarations. This means that the inclusion of files defining classes must be "top-level," and not inside any function, which leads either to slower code (always including the files defining classes) or a large amount of logic in the main index.php file.</p>
+<p>Finally, Drupal attempts to adopt some OOP design aspects that PHP's OOP system does not yet support, or did not support at the time of adoption.</p>
+<p>For instance, the Drupal <a href="http://api.drupal.org/api/group/themeable" rel="nofollow">theme system</a> relies on an OOP concept similar to <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW2" rel="nofollow">Objective-C's "categories"</a>, (this concept is also similarly known as 'open classes' in Ruby, 'modifying object prototypes' in Javascript, or 'extension methods' in C#).</p>
+<p>In Drupal 7, some of this has changed: Drupal 7, for the first time, requires PHP 5, and there are now a few modules in Drupal that use PHP's class system. However, the central structure of Drupal remains the same, and most of Drupal still does not use the PHP class construct.</p>
+<h2 id="s-oop-concepts-in-drupal"><a class="toc-anchor" title="Permalink to this headline" href="#s-oop-concepts-in-drupal"></a>OOP Concepts in Drupal</h2>
+<p>Despite the lack of explicitly-declared classes in Drupal, many object-oriented paradigms are still used in its design. There are many sets of "essential features" that are said to be necessary to classify a system as object-oriented; we will look at one of the <a href="http://en.wikipedia.org/wiki/Object-oriented_programming" rel="nofollow">more popular definitions</a> and examine some ways in which the central architecture of Drupal exhibits those characteristics.</p>
+<h3 id="s-objects"><a class="toc-anchor" title="Permalink to this headline" href="#s-objects"></a>Objects</h3>
+<p>There are many constructs in Drupal that fit the description of an "object". Some of the more prominent Drupal components that could be considered objects are modules, themes, nodes, and users.</p>
+<p>Nodes are the basic content building blocks of a Drupal site, and bundle together the data that makes up a "page" or "story" on a typical site. The methods that operate on this object are defined in node.module, usually called by the node_invoke() function. User objects similarly package data together, bringing together information about each account on the site, profile information, and session tracking. In both cases, the data structure is defined by a database table instead of a class. Drupal exploits the relational nature of its supported databases to allow other modules to extend the objects with additional data fields.</p>
+<p>Modules and themes are object-like as well, filling the "controller" role in many ways. Each module is a source file, but also bundles together related functions and follows a pattern of defining Drupal hooks.</p>
+<h3 id="s-abstraction"><a class="toc-anchor" title="Permalink to this headline" href="#s-abstraction"></a>Abstraction</h3>
+<p>Drupal's <a href="http://api.drupal.org/api/group/hooks" rel="nofollow">hook system</a> is the basis for its interface abstraction. Hooks define the operations that can be performed on or by a module. If a module implements a hook, it enters into a contract to perform a particular task or return a particular type of information when the hook is invoked. The calling code need not know anything about the module or the way the hook is implemented in order to get useful work done by invoking the hook.</p>
+<h3 id="s-encapsulation"><a class="toc-anchor" title="Permalink to this headline" href="#s-encapsulation"></a>Encapsulation</h3>
+<p>Like most other object-oriented systems, Drupal does not have a way of strictly limiting access to an object's inner workings, but rather relies on convention to accomplish this. Since Drupal code is based around functions, which share a single namespace, this namespace is subdivided by the use of prefixes. By following this simple convention, each module can declare its own functions and variables without the worry of conflict with others.</p>
+<p>Convention also delineates the public API of a class from its internal implementation. Internal functions are prefixed by an underscore to indicate that they should not be called by outside modules. For example, _user_categories() is a private function which is subject to change without notice, while user_save() is part of the public interface to the user object and can be called with the expectation that the user object will be saved to the database (even though the method of doing this is private).</p>
+<h3 id="s-polymorphism"><a class="toc-anchor" title="Permalink to this headline" href="#s-polymorphism"></a>Polymorphism</h3>
+<p>Nodes are polymorphic in the classical sense. If a module needs to display a node, for example, it can call node_build() on that node, followed by drupal_render(), to get an HTML representation. The actual rendering, though, will depend on which type of node is passed to the function; this is directly analogous to having the class of an object determine its behavior when a message is sent to it. Drupal itself handles the same introspection tasks required of an OOP language's runtime library.</p>
+<p>Furthermore, the rendering of the node in this example can be affected by the active theme. Themes are polymorphic in the same way; the theme is passed a "render this node" message, and responds to it in a different way depending on the implementation of the active theme, though the interface is constant.</p>
+<h3 id="s-inheritance"><a class="toc-anchor" title="Permalink to this headline" href="#s-inheritance"></a>Inheritance</h3>
+<p>Modules and themes can also be thought of as classes that inherit their behavior from an abstract base class (although both can also define whatever functions they please). In the case of themes, the behavior of the abstract base class is determined by the functions in theme.inc and the default theming implementations in enabled modules. A theme can either override the default rendering of any interface component or let the default rendering be used. Modules similarly have the selection of all Drupal hooks to override at will, and may pick and choose which ones to implement.</p>
+<h2 id="s-design-patterns-in-drupal"><a class="toc-anchor" title="Permalink to this headline" href="#s-design-patterns-in-drupal"></a>Design Patterns in Drupal</h2>
+<p>Much of Drupal's internal structure is more complicated than simple inheritance and polymorphism, however. The more interesting features of the system result from using established software design patterns. Many of the patterns detailed in the seminal "Gang of Four" (Gamma, Helm, Johnson, and Vlissides) <a href="http://en.wikipedia.org/wiki/Design_Patterns" rel="nofollow">Design Patterns book</a> can be observed in Drupal, for instance.</p>
+<h3 id="s-singleton"><a class="toc-anchor" title="Permalink to this headline" href="#s-singleton"></a>Singleton</h3>
+<p>If we are to think of modules and themes as objects, then they follow the singleton pattern. In general, these objects do not encapsulate data; what separates one module from another is the set of functions it contains, so it should be thought of as a class with a singleton instance.</p>
+<h3 id="s-decorator"><a class="toc-anchor" title="Permalink to this headline" href="#s-decorator"></a>Decorator</h3>
+<p>Drupal makes extensive use of the decorator pattern. The polymorphism of node objects was discussed earlier, but this is only a small piece of the power of the node system. More interesting is the use of the various node hooks (hook_node_load(), hook_node_view(), etc.), which allow arbitrary modules to extend the behavior of all nodes.</p>
+<p>This feature allows for a wide variety of behaviors to be added to nodes without the need for subclassing. For instance, a basic story node has only a few pieces of associated data: title, author, body, teaser, and a handful of metadata. A common need is for files to be uploaded and attached to a node, so one could design a new node type that had the story node's features plus the ability to attach files. Drupal's upload module satisfies this need in a much more modular fashion by using the node API to grant every node that requests it the ability to have attached files.</p>
+<p>This behavior could be imitated by the use of decorators, wrapping them around each node object. More simply, languages that support categories, like Objective-C, could augment the common base class of all node objects to add the new behavior. Drupal's implementation is a simple ramification of the hook system and the presence of node_invoke().</p>
+<h3 id="s-observer"><a class="toc-anchor" title="Permalink to this headline" href="#s-observer"></a>Observer</h3>
+<p>The above interaction is also similar to the use of observers in object-oriented systems. This Observer pattern is pervasive throughout Drupal, as many of Drupal's hooks essentially allow modules to register as observers of Drupal's objects. For instance, when a modification is made to a vocabulary in Drupal's taxonomy system, a taxonomy hook such as hook_taxonomy_vocabulary_update() is called in all modules that implement it. By implementing the hook, the modules have registered as observers of the vocabulary object; any changes to it can then be acted on as is appropriate.</p>
+<h3 id="s-bridge"><a class="toc-anchor" title="Permalink to this headline" href="#s-bridge"></a>Bridge</h3>
+<p>The Drupal <a href="http://api.drupal.org/api/group/database" rel="nofollow">database abstraction layer</a> is implemented in a fashion similar to the Bridge design pattern. Modules need to be written in a way that is independent of the database system being used, and the abstraction layer provides for this. New database layers can be written that conform to the API defined by the bridge, adding support for additional database systems without the need to modify module code.</p>
+<h3 id="s-chain-of-responsibility"><a class="toc-anchor" title="Permalink to this headline" href="#s-chain-of-responsibility"></a>Chain of Responsibility</h3>
+<p>Drupal's <a href="http://api.drupal.org/api/group/menu" rel="nofollow">menu system</a> follows the Chain of Responsibility pattern. On each page request, the menu system determines whether there is a module to handle the request, whether the user has access to the resource requested, and which function will be called to do the work. To do this, a message is passed to the menu item corresponding to the path of the request. If the menu item cannot handle the request, it is passed up the chain. This continues until a module handles the request, a module denies access to the user, or the chain is exhausted.</p>
+<h3 id="s-command"><a class="toc-anchor" title="Permalink to this headline" href="#s-command"></a>Command</h3>
+<p>Many of Drupal's hooks use the Command pattern to reduce the number of functions that are necessary to implement, passing the operation as a parameter along with the arguments. In fact, the hook system itself uses this pattern, so that modules do not have to define every hook, but rather just the ones they care to implement.</p>
+<h2 id="s-why-not-to-use-classes"><a class="toc-anchor" title="Permalink to this headline" href="#s-why-not-to-use-classes"></a>Why Not to Use Classes</h2>
+<p>The above hopefully clarifies the ways in which Drupal embodies various OOP concepts. Why, then, doesn't Drupal move in the direction of using classes to solve these problems in the future? Some of the reasons are historical, and were discussed earlier. Others, though, become clearer now that we have stepped through some of the design patterns used in Drupal.</p>
+<p>A good example is the extensibility of the theme system. A theme defines functions for each of the interface elements it wants to display in a special way. As noted earlier, this makes themes seem like a good candidate to inherit from an abstract base class that defines the default rendering of the elements.</p>
+<p>What happens, though, when a module is added that adds a new interface element? The theme should be able to override the rendering of this element as well, but if a base class is defined, the new module has no way of adding another method to that class. Complicated patterns could be set up to emulate this behavior, but Drupal's theme architecture quite elegantly handles the situation using its own function dispatch system. In this case and others like it, the classes that on the surface would seem to simplify the system would end up making it more cumbersome and difficult to extend.</p>
+<h3 id="s-room-for-improvement"><a class="toc-anchor" title="Permalink to this headline" href="#s-room-for-improvement"></a>Room for Improvement</h3>
+<p>While Drupal does reflect many object-oriented practices, there are some aspects of OOP that could be brought to bear on the project in more powerful ways.</p>
+<p>Encapsulation, while adequate in theory, is not applied consistently enough across the code base. Modules should more rigorously define which functions are public and which are private; the tendency right now is to publish most functions in the public namespace even if the interface is volatile. This problem is exacerbated by Drupal's policy of foregoing backward compatibility in exchange for cleaner APIs whenever necessary. This policy has led to some very good code, but would need to be exercised much less often if better encapsulation conventions were followed.</p>
+<p>Inheritance is also weak in the system. While, as noted above, all modules share a common set of behavior, it is difficult to extend this to new modules. One can create new modules easily that augment the behavior of existing ones, but there is not a way to override just some of a module's behavior. The impact of this can be marginalized by breaking large modules into smaller "a la carte" bundles of functionality, so that undesired aspects of a module may be more easily left out of the system.</p>
+<h3 id="s-multiple-paradigms"><a class="toc-anchor" title="Permalink to this headline" href="#s-multiple-paradigms"></a>Multiple Paradigms</h3>
+<p>Drupal is on the surface a procedural system, because it is built in a procedural language (PHP without classes). The paradigm behind a piece of software is not entirely dependent on its representation in code, however. Drupal is not afraid to borrow concepts from many disparate programming paradigms where it is convenient. A great deal of the power of Drupal comes from its underlying relational database, and relational programming techniques that mirror it. The fact that Drupal's work, much like that of any web application, consists of many reactions to discrete and rapid page requests should make the behavior of the system resonate with proponents of event-driven programming. To an aspect-oriented programmer, the invocation of hooks in arbitrary modules may look strikingly similar to a pointcut. And, as should be abundantly clear by now, Drupal is no stranger to object-oriented concepts either.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-b4b06f26925129c901550799c6f4658d">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/547518/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/547518/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28547518%29%20Drupal%206/7%20programming%20from%20an%20object-oriented%20perspective">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"2rxyF04nEF9qKRPt3od3vNkHVtnZ6xnDLp766mfHVpI"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/creating-custom-modules\/drupal-67-programming-from-an-object-oriented-perspective":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2804065"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
