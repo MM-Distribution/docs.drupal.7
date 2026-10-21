@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Overview" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system" />
+<link rel="shortlink" href="https://www.drupal.org/node/1927080" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system" />
+<meta property="og:title" content="Build a Drupal 7 HTML5 Video Subtitling/Closed-captioning System" />
+<meta property="og:description" content="Overview Why might you want to close-caption or subtitle video content on your site? Well, one reason for subtitling is to provide fully functional internationalization/localization capabilities. One of the many reasons Drupal is the CMS of choice is because of its robust multilingual support. If you are posting multilingual text content on your site, multilingual support can and should extend to all content, including video, through the use of subtitles." />
+<meta property="og:updated_time" content="2018-01-25T23:33:24+00:00" />
+<meta property="article:published_time" content="2013-02-25T17:37:26+00:00" />
+<meta property="article:modified_time" content="2018-01-25T23:33:24+00:00" />
+  <title>Build a Drupal 7 HTML5 Video Subtitling/Closed-captioning System | Site building and development HowTos for Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-1927080 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2824060" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-fkI7xCDMNuyOGyQFi5B2k1R7MImntsMuN-4QtjUuTzk" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/1927080" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/1927080" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-cg_8pZ7foBKmIw0aFvr3vOiassBKegijsFnBD1Rovy4" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/site-building-and-development-howtos-for-drupal-7">Site building and development HowTos for Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-1927080">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-overview" class="toc-link toc-link-invalid-id active">Overview</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-modules-used" class="toc-link toc-link-invalid-id active">Modules Used</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-installation-and-setup" class="toc-link toc-link-invalid-id active">Installation and Setup</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-create-the-movie-content-type-and-the-content-container-content-type" class="toc-link toc-link-invalid-id active">Create the Movie content type and the Content Container content type</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-create-some-test-content" class="toc-link toc-link-invalid-id active">Create some test content.</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-create-the-view-to-provide-the-subtitles-feed-for-each-node" class="toc-link toc-link-invalid-id active">Create the view to provide the subtitles feed for each node.</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-add-a-custom-views-data-export-template-to-your-theme-folder" class="toc-link toc-link-invalid-id active">Add a custom Views Data Export template to your theme folder.</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-code-from-views-data-export-txt-body-captionstplphp" class="toc-link toc-link-invalid-id active">Code from views-data-export-txt-body--captions.tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-create-a-videojs-override-template" class="toc-link toc-link-invalid-id active">Create a video.js override template.</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-code-from-videojstplphp" class="toc-link toc-link-invalid-id active">Code from videojs.tpl.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-check-your-test-content" class="toc-link toc-link-invalid-id active">Check your test content.</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-conclusion" class="toc-link toc-link-invalid-id active">Conclusion.</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system#s-appendix-html5-video-track-element-resources" class="toc-link toc-link-invalid-id active">Appendix: HTML5 Video Track Element Resources</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="site-building-and-development-howtos-for-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/site-building-and-development-howtos-for-drupal-7">Site building and development HowTos for Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/howtos/howtos">HowTos</a></li>
+<li class="leaf"><a href="/docs/7/howtos/add-php-code-to-the-body-of-a-drupal-7-block">Add PHP code to the body of a Drupal 7 Block</a></li>
+<li class="leaf"><a href="/docs/7/howtos/accessing-commerce-order-data-from-the-send-mail-rules-action">Accessing commerce order data from the send mail Rules action</a></li>
+<li class="leaf"><a href="/docs/7/howtos/add-google-webmasters-tools-verification-meta-tag-via-the-themes-templatephp-file">Add Google Webmasters Tools verification meta tag via the themes template.php file.</a></li>
+<li class="leaf"><a href="/docs/7/howtos/add-a-markup-element-to-a-views-exposed-filter-form">Add a markup element to a Views Exposed Filter form</a></li>
+<li class="leaf"><a href="/docs/7/howtos/adding-file-encryption-to-existing-drupal-7-site">Adding File Encryption to existing Drupal 7 site</a></li>
+<li class="leaf"><a href="/docs/7/howtos/book-drupal-7-the-essentials">Book: Drupal 7 the Essentials</a></li>
+<li class="leaf active-trail"><a href="/docs/7/howtos/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system" class="active-trail active">Build a Drupal 7 HTML5 Video Subtitling/Closed-captioning System</a></li>
+<li class="leaf"><a href="/docs/7/howtos/build-a-simple-conditional-field-in-views-7x-3x">Build a simple conditional field in Views 7.x-3.x</a></li>
+<li class="leaf"><a href="/docs/7/howtos/ctools-plugins-without-panels-step-by-step">CTools Plugins without Panels, step by step</a></li>
+<li class="leaf"><a href="/docs/7/howtos/cascading-select-using-views">Cascading select using views</a></li>
+<li class="leaf"><a href="/docs/7/howtos/change-default-strings-text-without-using-full-translation-system">Change default strings (text) without using full translation system</a></li>
+<li class="leaf"><a href="/docs/7/howtos/controlmodify-display-settings-author-and-date-on-posts">Control/modify display settings (author and date) on posts</a></li>
+<li class="leaf"><a href="/docs/7/howtos/copy-the-form-buttons-on-node-creation-pages-to-the-top">Copy the form buttons on node creation pages to the top</a></li>
+<li class="leaf"><a href="/docs/7/howtos/create-a-node-in-code">Create a Node in Code</a></li>
+<li class="leaf"><a href="/docs/7/howtos/create-a-rule-to-evaluate-if-a-logged-in-user-has-created-content-of-type-x">Create a Rule to Evaluate If a Logged-in User Has Created Content of Type X</a></li>
+<li class="leaf"><a href="/docs/7/howtos/create-a-custom-user-registration-form-with-fapi-d7">Create a custom User Registration form with FAPI D7</a></li>
+<li class="leaf"><a href="/docs/7/howtos/create-a-fixed-position-customized-information-box">Create a fixed position customized information box</a></li>
+<li class="leaf"><a href="/docs/7/howtos/creating-an-activity-newspaper-website-using-d7">Creating an activity newspaper website using D7</a></li>
+<li class="leaf"><a href="/docs/7/howtos/creating-iframe-ready-widgets-with-views-and-templates">Creating iFrame-ready Widgets with Views and Templates</a></li>
+<li class="leaf"><a href="/docs/7/howtos/customize-the-default-user-registration-form">Customize the default user registration form</a></li>
+<li class="leaf"><a href="/docs/7/howtos/display-users-points-of-specific-category-in-a-block-on-content-profile">Display User&#039;s Points of Specific Category in a Block on Content Profile</a></li>
+<li class="leaf"><a href="/docs/7/howtos/embed-a-date-specific-event-calendar">Embed a date-specific event calendar</a></li>
+<li class="leaf"><a href="/docs/7/howtos/faq-using-views">FAQ using Views</a></li>
+<li class="leaf"><a href="/docs/7/howtos/flot-usage-example">Flot Usage Example</a></li>
+<li class="leaf"><a href="/docs/7/howtos/future-proof-your-drupal-7-site">Future-proof your Drupal 7 site</a></li>
+<li class="leaf"><a href="/docs/7/howtos/how-to-create-an-image-gallery-in-drupal">How to Create an Image Gallery in Drupal</a></li>
+<li class="leaf"><a href="/docs/7/howtos/how-to-make-a-simple-module-with-a-form-and-menu-link">How to Make a Simple Module with a Form and Menu Link</a></li>
+<li class="leaf"><a href="/docs/7/howtos/how-to-reset-the-administrator-user-1-password-in-drupal-7">How to reset the administrator (user 1) password in Drupal 7</a></li>
+<li class="leaf"><a href="/docs/7/howtos/how-to-set-up-google-adsense-for-search-without-using-a-custom-module">How to Set up Google AdSense for Search without using a custom module</a></li>
+<li class="leaf"><a href="/docs/7/howtos/how-to-add-jquery-ui-libraries-to-a-page">How to add jQuery UI libraries to a page</a></li>
+<li class="leaf"><a href="/docs/7/howtos/image-gallery-with-imagefield-and-taxonomy">Image gallery with Imagefield and Taxonomy</a></li>
+<li class="leaf"><a href="/docs/7/howtos/making-a-guestbook-a-gallery-a-status-wall-chat-room">Making a Guestbook, a Gallery, a Status Wall, Chat Room ...</a></li>
+<li class="leaf"><a href="/docs/7/howtos/move-fields-help-text-description-between-the-label-and-input-elements">Move field&#039;s help text (description) between the label and input element(s)</a></li>
+<li class="leaf"><a href="/docs/7/howtos/moving-node-settings-on-the-edit-form">Moving node settings on the edit form</a></li>
+<li class="leaf"><a href="/docs/7/howtos/subscribe-a-user-to-specific-og-group-using-rules">Subscribe a user to specific OG group using Rules</a></li>
+<li class="leaf"><a href="/docs/develop/drupal-apis/writing-a-module-that-handles-node-access">Writing a module that handles node access</a></li>
+<li class="last leaf"><a href="/docs/7/howtos/yinyang-multisite-staging">Yin/Yang Multisite Staging</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Build a Drupal 7 HTML5 Video Subtitling/Closed-captioning System</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/1927080/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    25 January 2018  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><h2 id="s-overview"><a class="toc-anchor" title="Permalink to this headline" href="#s-overview"></a>Overview</h2>
+<p>Why might you want to close-caption or subtitle video content on your site? Well, one reason for subtitling is to provide fully functional internationalization/localization capabilities. One of the many reasons Drupal is the CMS of choice is because of its robust multilingual support. If you are posting multilingual text content on your site, multilingual support can and should extend to all content, including video, through the use of subtitles.</p>
+<p>Many visitors to your site—regardless of whether or not your content is internationalized—may use a screen reader or require the use of text captions where audio is used within a video to convey information. It is, therefore, a reasonable accessibility accommodation in many cases to provide closed captions where a video is an essential component of your site.</p>
+<p>A third use case involves a site where a video is used to demonstrate a process in detail, but where an audio description is too expensive, time-consuming, or creates significant localization challenges. I have a site where I have hundreds of separate videos, all with stepwise descriptions for completing maintenance or troubleshooting procedures. I needed the non-technical end-user to be able to upload the video and add subtitle text in the node edit page.</p>
+<p>As a note, I use the terms “captions” and “subtitles” interchangeably throughout this document. The only real difference is that subtitles usually denote language translations whereas captions denote audio transliteration. For my purposes, there is no difference.</p>
+<p>The system I describe below will send, format, and output text information in the <a href="http://dev.w3.org/html5/webvtt/" rel="nofollow">WEBVTT</a> format. Please take a look at the linked example from the W3C site; this is the format we will be using here. This is one of several captioning and subtitling formats available as of this writing. The HTML5 specification supports caption and subtitle output from the WEBVTT source through the <code class="language-php">&lt;track&gt;</code> element. I will discuss this later.</p>
+<p>Currently, there does not appear to be any existing modules or detailed processes for creating fieldable, scalable captions/subtitles within a Drupal site. The following text describes in detail how to create such a system using several modules with a few modifications to theme templates. I realize that these modifications are somewhat hackish and would probably be better executed through theme functions in a module; however, I don’t have the time or know-how at the moment to create such a module. If you do, please feel free to update this document and publish your code, or your approach, if different than the one I describe.</p>
+<p><strong>Note:</strong> The attached resource pack zip file contains a PDF of these instructions with screenshots, a text file with exported view code used here, and the two template files.</p>
+<h2 id="s-modules-used"><a class="toc-anchor" title="Permalink to this headline" href="#s-modules-used"></a>Modules Used</h2>
+<p>I used a combination of several modules. You may be able to substitute other modules (video, for instance) to fit your needs. These worked for me. You may be able to make this work in Drupal 6; all three modules are available for D6 also.</p>
+<ul>
+<li>Video.js 7x-2.2</li>
+<li>Views 7.x-3.5</li>
+<li>Views Data Export 7.x-3.0-beta6</li>
+</ul>
+<h2 id="s-installation-and-setup"><a class="toc-anchor" title="Permalink to this headline" href="#s-installation-and-setup"></a>Installation and Setup</h2>
+<h3 id="s-create-the-movie-content-type-and-the-content-container-content-type"><a class="toc-anchor" title="Permalink to this headline" href="#s-create-the-movie-content-type-and-the-content-container-content-type"></a>Create the Movie content type and the Content Container content type</h3>
+<ol>
+<li>First, install, enable, and configure your modules. I did not use any particular configuration options for the Video.js module.</li>
+<li>
+<p>Create a content type (see Figures 1a and 1b. <strong>These are included in the PDF in the attached resource pack</strong>) to hold your videos and captions/subtitles. Mine is called <strong>Movie.</strong></p>
+<p>a.  Add a <strong>File</strong> field to hold your movie. Mine is called <strong>Movie</strong>. The widget will default to <strong>File</strong>. Save this field.</p>
+<p>b.  Use the default <strong>Field Settings</strong> when prompted. Click <strong>Save Field Settings</strong>.</p>
+<p>c.  On the field <strong>Edit</strong> page, specify the types of video you will be using in the <strong>Allowed file extensions</strong> box. I added mp4, mov, flv, f4v, ogg, 3gp, avi; these seem to cover most HTML5 use scenarios.</p>
+<p>d.  Click the <strong>Manage Display</strong> tab. For the <strong>Movie</strong> field, select <strong>&lt;Hidden&gt;</strong> for the <strong>Label</strong>. For <strong>Format</strong>, select <strong>Video.js : HTML5 Video Player</strong>.</p>
+<p>e.  Now add a new text field to the Movie content type, labeled <strong>Time 1</strong>. This will hold the time for the first subtitle. This is just a plain text field, with all of the default settings. When you have saved this, click the <strong>Manage Display</strong> tab.  Since the time field will only be used by Video.js to add the subtitles at the appropriate time, select <strong>&lt;Hidden&gt;</strong> for <strong>Format</strong>.</p>
+<p>f.  Repeat the above step (e), for as many subtitles as you anticipate using. I will use no more than 25. <strong>Note</strong>: When adding the text field, you may notice you have the option to add an unlimited number of values<strong>. Do not do this</strong>. We need to create distinct fields so we can order them and reference them separately through a view, later.</p>
+<p>g. Add another text field to the Movie content type, with the label <strong>Text 1</strong>. This will hold the text for the first subtitle. Set the length to the maximum number of characters you anticipate using. Mine is set to 510. Select <strong>Filtered text</strong>.  You may need to configure and enable the Full HTML setting under <strong>Configuration &gt; Text Formats</strong>. Be sure to include here any HTML elements you want to use in your subtitles, &lt;em&gt; or &lt;strong&gt;, for instance. You can leave the <strong>Manage Display</strong> settings set to default values. I grouped my text fields here under a collapsing fieldset called <strong>View Procedure Text</strong>.  This hides the subtitles on the node view page but allows the user to optionally view them if they want to see all of the subtitles listed in order. You can hide these fields on the page using the content type display settings if you like, but they will still output as subtitles.</p>
+<p>h. Repeat the above step (g), for as many subtitles as you anticipate using. I will use no more than 25. When adding the text field, you may notice you have the option to add an unlimited number of values<strong>. Do not do this</strong>. We need to create distinct fields so we can order them and reference them separately through a view, discussed later.</p>
+<p>i.  Add any other optional fields you would like to display on the same page as your video content.</p>
+</li>
+<li>
+<p>Create a content type called <strong>Content Container</strong> (see Figure 1c). This is not strictly necessary for creating movies with subtitles, but in my case, we may have many instances where we refer to a single movie and its associated content again and again, in different contexts. We do this by using a node or entity reference field where we reuse the <strong>Movie</strong> content output through a different content type page (here called <strong>Content Container</strong>). This means there is only one source movie node to keep track of. <strong>Note:</strong> I am explaining this here because I refer to <strong>Content Container</strong> in code in my videojs.tpl.php override later. The code will still work on the <strong>Movie</strong> content type even if you don’t create the <strong>Content Container</strong> content type, however.</p>
+<p>a. Add an entity reference field to the content type called <strong>Media Reference</strong>. It should be a select list. For <strong>Entity Selection</strong>, choose <strong>Simple</strong>. Choose <strong>Movie</strong> as the type of content to reference.</p>
+</li>
+</ol>
+<h3 id="s-create-some-test-content"><a class="toc-anchor" title="Permalink to this headline" href="#s-create-some-test-content"></a>Create some test content.</h3>
+<p>See Figure 2 for an example.</p>
+<ol>
+<li>Click <strong>Add content</strong> from the admin <strong>Dashboard</strong>.</li>
+<li>Click <strong>Movie.</strong></li>
+<li>Add a title. Mine is called “Test of HTML5 Video.”</li>
+<li>Add a time in the <strong>Time 1</strong> field. WEBVTT expects a very specific time format for this field. It should be formatted HH:MM.SS where: HH is hours, with a leading 0 if necessary; MM is minutes, with a leading 0 if necessary; and SS is seconds, with a leading 0 if necessary. There is some flexibility in these time formats, as you will see if you look at the W3C spec. In general, they should correspond to the time format of your video clip. My clip is only a few seconds long, however, I have followed the HH:MM.SS format and this works reliably.</li>
+<li>Enter the start time in HH:MM.SS format, followed by two dashes and a greater-than sign (--&gt;), followed by the end time, like so: <strong>00:00.00 --&gt; 00:05.00.</strong></li>
+<li>Add some text to the <strong>Text 1 </strong>field. I entered “1. This is a test of subtitles with the H.264 video format for HTML5.” Make sure you select <strong>Full HTML</strong> for the text format--this will allow you to use formatting for your subtitles.</li>
+<li>Repeat as necessary for each subtitle you would like to add. Make sure that your start/end times do not overlap.</li>
+<li>Add some test content. I used an mp4 file, but you can use any file types supported by the Video.js module.</li>
+</ol>
+<h3 id="s-create-the-view-to-provide-the-subtitles-feed-for-each-node"><a class="toc-anchor" title="Permalink to this headline" href="#s-create-the-view-to-provide-the-subtitles-feed-for-each-node"></a>Create the view to provide the subtitles feed for each node.</h3>
+<p>We are going to be using the <strong>Views</strong> and the <strong>Views Data Export</strong> modules to “feed” the WEBVTT-formatted time and text information from our <strong>Movie</strong> content type into the actual video contained within our <strong>Movie</strong> page. Let’s go ahead and build our WEBVTT source view now.</p>
+<ol>
+<li>Create a new view; see figure 2a for details. Mine is called <strong>Captions</strong>. Select the following options on the Add new view page:
+<p>a. Show <strong>Content</strong> of type <strong>Movie</strong> sorted by <strong>Unsorted</strong>.</p>
+<p>b. Under <strong>Display</strong> select <strong>Unformatted list</strong> of <strong>fields</strong>.</p>
+<p>c. Enter <strong>1</strong> for <strong>Items to display</strong>.</p>
+<p>d. Uncheck <strong>Use a pager</strong>.</p>
+<p>e. Click <strong>Continue &amp; edit.</strong></p>
+</li>
+<li>Under <strong>Displays</strong> add a <strong>Data export</strong> display.
+<p>a. Under <strong>Data Export Settings &gt; Path</strong>, add this path: <strong>/feed/%/datafeed.vtt</strong></p>
+<p>It is important that you enter this path exactly. We will be using an argument to build the feed for each page, and the last section of the path must end in the .vtt extension, so the video player can read the source “file” it is being fed<strong>. Save</strong> the view. Do this first so the <strong>undefined path</strong> error message goes away.</p>
+<p>b. Click on <strong>Format &gt; CSV</strong> <strong>file</strong> (the default format). Change the format to <strong>TXT </strong>(plain text). When the style options window opens, accept the defaults (<strong>Provide as file</strong> should be unchecked). Click <strong>Apply</strong>.</p>
+<p>c. Under<strong> Fields</strong>, delete the <strong>Content: Title</strong> field. Now add a <strong>Global: Custom tex</strong>t field. Click on the <strong>Global: Custom text</strong> field and in the text box, add <strong>WEBVTT</strong>. This is the header that the HTML5 player is looking for to identify a subtitle source.</p>
+<p>d. Now add a second field, <strong>Content: Time 1. </strong>This is the display time field we created in our <strong>Movie</strong> content type. The formatter should be set to <strong>Plain text. </strong></p>
+<p>e. Go ahead and add a third field, <strong>Content: Text 1</strong>.<strong> </strong>This is the text we want to display at the time attached to the <strong>Time 1</strong> field. For the formatter, specify <strong>Default</strong>. We can use HTML tags to style individual words in our subtitles using this feature; there are also some unique features in the HTML5 spec: using cues, etc.</p>
+<p>f. Repeat steps d and e for as many <strong>Time</strong> and <strong>Text</strong> fields as you anticipate needing for your <strong>Movie </strong>content type. <strong>Note:</strong> Make sure the <strong>Global</strong> field is the first field in the view, followed by the first <strong>Time</strong> field and the first <strong>Text</strong> field. The second <strong>Time</strong> field will follow the first <strong>Text</strong> field, and the second <strong>Text</strong> field will follow the second <strong>Time</strong> field. Proceed in this order.</p>
+<p>g. For the last field in your view, add the <strong>Content: Nid </strong>field. This will hold the node ID of the node we are viewing. Select <strong>Exclude from display</strong> when configuring the field. This will allow us to use the Node ID of the page we are viewing as an argument for the WEBVTT feed we are constructing, but we don’t want it to display in our video.</p>
+<p>h. Now go to the <strong>Advanced </strong>panel of the <strong>Data export</strong> display. Under <strong>Contextual Filters</strong>, select <strong>Content: Nid. </strong>In the configuration box, select the <strong>Show “Page not found” </strong>option, under <strong>When the filter value is not in the URL.</strong></p>
+<p>i. <strong> </strong>Finally, add <strong>Content: Type (=Movie) </strong>under <strong>Filter Criteria. Content: Published (Yes) </strong>should appear in the view by default. If not, add it.</p>
+<p>j. <strong>Save</strong> the view.</p>
+<p>k. Now in <strong>Preview with contextual filters: </strong>field add the node ID number of the <strong>Movie</strong> content that you created and click <strong>Update preview. </strong>You should see something <strong><em>somewhat similar</em></strong> to the screenshot in Figure 3b. <strong><em>Yours should look different, however, probably with some extra formatting between the lines, that looks like this: </em></strong>[]. This is because we have not yet customized the theme template for the view. We’ll do this next.</p>
+</li>
+</ol>
+<h3 id="s-add-a-custom-views-data-export-template-to-your-theme-folder"><a class="toc-anchor" title="Permalink to this headline" href="#s-add-a-custom-views-data-export-template-to-your-theme-folder"></a>Add a custom Views Data Export template to your theme folder.</h3>
+<ol>
+<li>Still in the <strong>Data export</strong> display of our view, click on <strong>Theme: Information </strong>at the bottom-right corner of the page. This will open a box with many different theming options. Some of these are based on template files found in the <strong>Views Data Export</strong> module, and after looking through these files, I found that <strong>views-data-export-txt-body.tpl </strong>contained the page elements I wanted to modify.</li>
+<li>To create an override template that will only affect the output of this view, I followed the <strong>Theme: Information</strong> page’s suggestions and called it <strong>views-data-export-txt-body--captions.tpl</strong>. This is specific enough to cover all of the data exported from this view, but not from another view using the TXT setting of the <strong>Views Data Export</strong> display. Save this file <strong>views-data-export-txt-body--captions.tpl.php </strong>in your theme folder.</li>
+<li>See the screenshot of the final code below (Figure 4a). If possible, I will post the PHP template files described here with this document. You will want to use the code exactly as it appears; the spacing of the variables in the template make a difference in the final “plain text” output that WEBVTT is expecting. Line numbers are included for clarity.</li>
+<li>Now, back in the <strong>Captions view, Data export display, Theming information page</strong>, scroll to the bottom. Click the <strong>Rescan template files</strong> button. When the scan is complete, you should see the name of your overriding file listed in bold, in the second <strong>Alternative Style </strong>section (see Figure 4b). If you don’t, make sure that your template is in the proper theme folder and clear your caches. If you are using a <strong>templates </strong>folder within your theme, put the overriding file in there.</li>
+<li>In the <strong>Preview with contextual filters: field</strong>, your preview (with the node ID of the content you created entered) should now look exactly like Figure 3b. <strong><em>You should see lines of plain text with no extra formatting or strange characters between them</em></strong></li>
+</ol>
+<h4 id="s-code-from-views-data-export-txt-body-captionstplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-code-from-views-data-export-txt-body-captionstplphp"></a>Code from views-data-export-txt-body--captions.tpl.php</h4>
+<pre>
+<code class="language-php">&lt;?php
+/**
+ * @file views-view-table.tpl.php
+ * Template to display a view as a table.
+ *
+ * - $title : The title of this group of rows.  May be empty.
+ * - $rows: An array of row items. Each row is an array of content
+ *   keyed by field ID.
+ * - $header: an array of haeaders(labels) for fields.
+ * - $themed_rows: a array of rows with themed fields.
+ * @ingroup views_templates
+ */
+
+foreach ($themed_rows as $count =&gt; $row):
+  foreach ($row as $field =&gt; $content):
+?&gt;
+
+&lt;?php print $content; ?&gt;
+&lt;?php endforeach;?&gt;
+&lt;?php endforeach;?&gt;</code></pre><h3 id="s-create-a-videojs-override-template"><a class="toc-anchor" title="Permalink to this headline" href="#s-create-a-videojs-override-template"></a>Create a video.js override template.</h3>
+<ol>
+<li>
+<p>Okay, almost done. The last thing to do is create a video.js override template in your theme folder. This part probably would have been done better as a theme template function or as a separate module but it still works pretty well. Call the file videojs.tpl.php. This is from the video.js template file found in the video.js module. There’s a screenshot of the code I used below (Figure 5). The comments explain where I added custom code.</p>
+<p>a. Essentially, this code uses the HTML5</p>
+<p>element to add subtitles (line 32, kind=”subtitles”; change this to “captions” for closed captions) to any page where the video.js theme template is called. The WEBVTT-formatted source for the subtitles is specified in <code class="language-php">src=&lt;?php print(‘/feed/’ .$tnodeid . ‘datafeed.vtt’);?&gt;</code> . The variable <code class="language-php">$tnodeid</code> is passing in either the node ID (line 16) if the content is of the type Movie, or (lines 18-24) passes in the value of the referenced node, if it is contained in the Content Container content type (field_media_reference_target_id is the column containing the node reference target id).</p>
+<p>b. The view Captions view, Data export display, uses the node ID argument to provide the correct content for each page request, formatted as a WEBVTT “file,” hence the .vtt ending specified in the <code class="language-php">src</code> attribute.</p>
+</li>
+</ol>
+<h4 id="s-code-from-videojstplphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-code-from-videojstplphp"></a>Code from videojs.tpl.php</h4>
+<pre>
+<code class="language-php">&lt;?php
+/**
+ * @file
+ * Provide the HTML output of the Video.js video player.
+ */
+
+$attrs = '';
+if (!empty($autoplay)) {
+$attrs .= ' autoplay="autoplay"';
+}
+if (!empty($poster)) {
+  $attrs .= ' poster="'. check_plain($poster) .'"';
+}
+
+//Get the Node ID for the Movie node content type, for standalone use
+if (arg(0) == 'node' &amp;&amp; is_numeric(arg(1))) $nodeid = arg(1);
+// Query the database to test if the node ID of the Content Container is the same as the Movie node
+$result = db_query("SELECT field_media_reference_target_id
+FROM field_data_field_media_reference
+WHERE entity_id = :nodeid", array(':nodeid' =&gt; $nodeid));
+// If it returns a number, that must be the node ID of the referenced media type, so set $tnodeid to that
+$tnodeid = $result-&gt;fetchField();
+// If query returns zero, then the node must be of type Movie, so set $tnodeid to the second arugment (nid)
+if ($tnodeid == 0) $tnodeid = arg(1);
+
+
+// The code below passes in a dynamic path for the subtitles "file" (src), in this case, a view. The view uses an argument of node id ($tnodeid) to load the correct text for each page. 
+if (!empty($items)): ?&gt;
+&lt;video id="&lt;?php print $player_id; ?&gt;-video" data-setup="{}" class="video-js vjs-default-skin" width="&lt;?php print($width) ?&gt;" height="&lt;?php print($height) ?&gt;" controls="controls" preload="auto"&lt;?php echo $attrs; ?&gt;&gt;
+&lt;track class="subtitles" srclang="en" label="English" kind="subtitles" src=&lt;?php print('/feed/' . $tnodeid . '/datafeed.vtt');?&gt; default /&gt;
+&lt;?php foreach ($items as $item): ?&gt;
+  &lt;source src="&lt;?php print(file_create_url($item['uri'])) ?&gt;" type="&lt;?php print check_plain($item['videotype']) ?&gt;" /&gt;
+&lt;?php endforeach; ?&gt;
+&lt;/video&gt;
+&lt;?php endif;</code></pre><h3 id="s-check-your-test-content"><a class="toc-anchor" title="Permalink to this headline" href="#s-check-your-test-content"></a>Check your test content.</h3>
+<p>Go to the test content display you created earlier. When you click the play button on the video, or possibly even when you load the page, you should see your subtitles/captions display. Below is a screenshot (Figure 6) showing the final result.</p>
+<h3 id="s-conclusion"><a class="toc-anchor" title="Permalink to this headline" href="#s-conclusion"></a>Conclusion.</h3>
+<p>I hope this helps somebody out there! I realize there are probably much better ways to do this, so please feel free to update or edit this document, or post your methods. It would be great to see this functionality in a module if anyone would like to take that on.</p>
+<h3 id="s-appendix-html5-video-track-element-resources"><a class="toc-anchor" title="Permalink to this headline" href="#s-appendix-html5-video-track-element-resources"></a>Appendix: HTML5 Video Track Element Resources</h3>
+<ul>
+<li>W3C: <a href="http://www.w3.org/wiki/HTML/Elements/track" rel="nofollow">http://www.w3.org/wiki/HTML/Elements/track</a></li>
+<li>HTML5 Rocks: <a href="http://www.html5rocks.com/en/tutorials/track/basics/" rel="nofollow">http://www.html5rocks.com/en/tutorials/track/basics/</a></li>
+<li>Longtail Video: <a href="http://www.longtailvideo.com/blog/27621/whats-new-in-html5-the-track-element" rel="nofollow">http://www.longtailvideo.com/blog/27621/whats-new-in-html5-the-track-ele...</a></li>
+</ul></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-020e9207593089e6c564fffedea99140">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/1927080/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/1927080/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%281927080%29%20Build%20a%20Drupal%207%20HTML5%20Video%20Subtitling/Closed-captioning%20System">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"_lJWT8mWqd_u9ndRv0BUs0dt7HstEiNgwj3VE6MjsZA"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/howtos\/build-a-drupal-7-html5-video-subtitlingclosed-captioning-system":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2824060"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
