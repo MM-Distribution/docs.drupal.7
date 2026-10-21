@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="Here I present my recommended settings on Drupal in related to Single Site / Multisite of Drupal Installation by mapping Subdomains and URL" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/multisite-drupal/multisite-mapping-with-drupal" />
+<link rel="shortlink" href="https://www.drupal.org/node/2673236" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/multisite-drupal/multisite-mapping-with-drupal" />
+<meta property="og:title" content="Multisite Mapping with Drupal" />
+<meta property="og:description" content="Here I present my recommended settings on Drupal in related to Single Site / Multisite of Drupal Installation by mapping Subdomains and URL&#039;s Paths. To begin this documentation let&#039;s take a domain written pure html called www.example.com and a drupal instance as a subdomain called dev.example.com. The main domain example.com is placed directly at the root of public_html while the drupal instance is placed at public_html/drupal." />
+<meta property="og:updated_time" content="2018-04-27T01:31:58+00:00" />
+<meta property="article:published_time" content="2016-02-22T13:28:26+00:00" />
+<meta property="article:modified_time" content="2018-04-27T01:31:58+00:00" />
+  <title>Multisite Mapping with Drupal | Multisite Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-2673236 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2764165" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/multisite-drupal/multisite-mapping-with-drupal" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-xPWBqPMnktC-a1jkvsX36Dzmie0Pz9-wVO0JsbwgX_M" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/2673236" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/2673236" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/multisite-drupal/multisite-mapping-with-drupal" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-lMZvhlG1t13EVhfPbFrp31rVGQ7JLMVCkGwS8or5eaU" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/multisite">Multisite Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-2673236">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#single-drupal-site" class="toc-link active">Single Drupal Site (Default)</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-url-rewriting-on-roots-htaccess" class="toc-link toc-link-invalid-id active">URL-Rewriting on root&#039;s .htaccess</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-set-the-absolute-url-on-settingphp" class="toc-link toc-link-invalid-id active">Set the absolute URL on setting.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-public-file-system-path" class="toc-link toc-link-invalid-id active">Public file system path</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#multisite-drupal-by-subdomains" class="toc-link active">Multi Drupal Sites (By Subdomains)</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-url-rewriting-on-roots-htaccess--2" class="toc-link toc-link-invalid-id active">URL-Rewriting on root&#039;s .htaccess:</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-url-rewriting-on-drupals-htaccess" class="toc-link toc-link-invalid-id active">URL-Rewriting on drupal&#039;s .htaccess</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-set-the-absolute-url-on-settingphp--2" class="toc-link toc-link-invalid-id active">Set the absolute URL on setting.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-public-file-system-path--2" class="toc-link toc-link-invalid-id active">Public file system path</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#multisite-drupal-by-subdomains-and-url-path" class="toc-link active">Multi Drupal Sites (By Subdomain + URL&#039;s Paths)</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-symbolic-links" class="toc-link toc-link-invalid-id active">Symbolic Links</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-coding-on-roots-htaccess-settingphp" class="toc-link toc-link-invalid-id active">Coding on root&#039;s .htaccess &amp; setting.php</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-public-file-system-path--3" class="toc-link toc-link-invalid-id active">Public file system path</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-multi-drupal-sites-by-drupal-8" class="toc-link toc-link-invalid-id active">Multi Drupal Sites (By Drupal 8)</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-optional-settings" class="toc-link toc-link-invalid-id active">Optional Settings</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-clean-urls" class="toc-link toc-link-invalid-id active">Clean URLs</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-seo-urls" class="toc-link toc-link-invalid-id active">SEO URLs</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#copy-site" class="toc-link active">Copy Site</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-cache-clearing" class="toc-link toc-link-invalid-id active">Cache Clearing</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal#s-recommendation" class="toc-link toc-link-invalid-id active">Recommendation</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="multisite-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/multisite">Multisite Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/multisite/multi-site-sharing-the-same-code-base">Multi-site - Sharing the same code base</a></li>
+<li class="leaf"><a href="/docs/7/multisite/configuring-a-basic-multi-site-development-environment-in-linux">Configuring a basic multi-site development environment in Linux</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/local-multi-site-installation-of-drupal-7-on-linux">Local multi-site installation of Drupal 7 on Linux</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-in-subdirectories">Multi-site in subdirectories</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-linux-configuring-multi-site-for-a-local-user-userdir">Multi-site on Linux - Configuring multi-site for a local user (UserDir)</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-linux">Multi-site on Linux</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-mac">Multi-site on Mac</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-iis">Multi-site on Windows - using IIS</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver">Multi-site on Windows - using WampServer</a></li>
+<li class="leaf"><a href="/docs/7/multisite/multi-site-on-windows-using-xampp">Multi-site on Windows - using XAMPP</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-windows">Multi-site on Windows</a></li>
+<li class="leaf active-trail"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal" class="active-trail active">Multisite Mapping with Drupal</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/secure-multi-site-setup-using-shared-code-base">Secure multi-site setup using shared code-base</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/some-multi-site-considerations">Some multi-site considerations</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-1-mono-site-installation-of-drupal-7">Step 1: mono-site installation of Drupal 7</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-2-setting-the-databases">Step 2: setting the databases</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-3-setting-the-subdirectories">Step 3: setting the subdirectories</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-4-setting-the-hostnames">Step 4: setting the hostnames</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-5-troubleshooting">Step 5: troubleshooting</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-6-making-your-websites">Step 6: making your websites</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-7-backing-up-and-restoring">Step 7: backing up and restoring</a></li>
+<li class="last leaf"><a href="/docs/7/multisite/move-single-site-to-multisite-in-drupal-7">Move single site to multisite in Drupal 7</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Multisite Mapping with Drupal</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/2673236/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    27 April 2018  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Here I present my recommended settings on Drupal in related to Single Site / Multisite of <a href="https://www.drupal.org/documentation/install" title="Drupal Installation" rel="nofollow">Drupal Installation</a> by mapping <em><a href="https://simple.wikipedia.org/wiki/Subdomain" title="Subdomain" rel="nofollow">Subdomains</a></em> and <em><a href="https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax" title="Uniform Resource Locator" rel="nofollow">URL's Paths</a></em>.</p>
+<!--break--><p>To begin this documentation let's take a <a href="https://en.wikipedia.org/wiki/Domain_name" title="Domain name" rel="nofollow">domain</a> written pure html called <code class="language-php">www.example.com</code> and a drupal instance as a subdomain called <code class="language-php">dev.example.com</code>.</p>
+<p>The main domain <code class="language-php">example.com</code> is placed directly at the root of <code class="language-php">public_html</code> while the drupal instance is placed at <code class="language-php">public_html/drupal</code>.</p>
+<h2 id="single-drupal-site"><a class="toc-anchor" title="Permalink to this headline" href="#single-drupal-site"></a>Single Drupal Site (Default)</h2>
+<p>Figure out the structure of our discussed <code class="language-php">public_html</code> directory along with the domain / subdomain pointing and where the URLs are going as shown below:</p>
+<pre>
+<code class="language-php">/public_html  &lt;-- where example.com, www.example.com, dev.example.com are pointing
+    .htaccess         &lt;-- root's .htaccess
+    index.html        &lt;-- http://example.com, http://www.example.com
+    /drupal               &lt;-- drupal root folder
+        .htaccess         &lt;-- drupal's .htaccess
+        index.php         &lt;-- http://dev.example.com
+        /sites                &lt;-- drupal's file system folder
+            /default          &lt;-- drupal's default subfolder 
+            setting.php       &lt;-- drupal's default setting (dev.example.com)</code></pre><h3 id="s-url-rewriting-on-roots-htaccess"><a class="toc-anchor" title="Permalink to this headline" href="#s-url-rewriting-on-roots-htaccess"></a>URL-Rewriting on root's .htaccess</h3>
+<p>If the above configuration is the same as yours then I would like to endorse the most reliable code that I got so far for <em><a href="http://httpd.apache.org/docs/current/mod/mod_rewrite.html" title="Apache Module mod_rewrite" rel="nofollow">URL-Rewriting</a></em> on <code class="language-php">/public_html/.htaccess</code> as follow:</p>
+<pre>
+<code class="language-php">RewriteEngine On
+RewriteCond %{HTTP_HOST} ^dev
+RewriteCond %{REQUEST_URI} !^/drupal/
+RewriteRule ^(.*)$ drupal/$1 [L]</code></pre><h3 id="s-set-the-absolute-url-on-settingphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-set-the-absolute-url-on-settingphp"></a>Set the absolute URL on setting.php</h3>
+<p>To remove the trailing slash of <code class="language-php">/drupal/</code> on your URLs, find a line that has the following code:<br />
+<code class="language-php"># $base_url = 'http://www.example.com'; // NO trailing slash!</code></p>
+<p>Remove the leading hash sign and fill in the absolute URL to your Drupal installation as below:<br />
+<code class="language-php">$base_url = 'http://dev.example.com'; // NO trailing slash!</code></p>
+<h3 id="s-public-file-system-path"><a class="toc-anchor" title="Permalink to this headline" href="#s-public-file-system-path"></a>Public file system path</h3>
+<p>Open your site on your browser. Once you have login to your drupal sites as the admin, check or set the correct path for <em><a href="https://www.drupal.org/node/15368" title="File system settings" rel="nofollow">File system settings</a></em> under the following admin menu:<br />
+<code class="language-php">Home » Administration » Configuration » Media » File System</code></p>
+<p>Verify or correct the value of <em>Public file system path</em> to:<br />
+<code class="language-php">sites/dev.example.com/files</code>, for your site <code class="language-php">dev.example.com</code> via access URL:<br />
+<code class="language-php">http://dev.example.com/#overlay=%3Fq%3Dadmin%252Fconfig%252Fmedia%252Ffile-system </code></p>
+<h2 id="multisite-drupal-by-subdomains"><a class="toc-anchor" title="Permalink to this headline" href="#multisite-drupal-by-subdomains"></a>Multi Drupal Sites (By Subdomains)</h2>
+<p>Consider that you want to publish your site <code class="language-php">dev.example.com</code> under <code class="language-php">prod.example.com</code> and assign <code class="language-php">dev.example.com</code> for the futher development.</p>
+<p>Here you may simply install a new site, or copy the <em>default folder</em> and duplicate the database follow a guidance on how to <em><a href="#copy-site" rel="nofollow">copy site</a></em> that become like so:</p>
+<pre>
+<code class="language-php">/public_html  &lt;-- example.com, www.example.com, dev.example.com, prod.example.com
+    .htaccess         &lt;-- root's .htaccess
+    index.html        &lt;-- http://example.com, http://www.example.com
+    /drupal               &lt;-- drupal root folder
+        .htaccess         &lt;-- drupal's .htaccess
+        index.php         &lt;-- http://dev.example.com, http://prod.example.com
+        /sites                &lt;-- drupal's file system folder
+            /default              &lt;-- drupal's default subfolder 
+                setting.php       &lt;-- drupal's default setting (prod.example.com)
+            /dev.example.com      &lt;-- drupal's dev.example.com subfolder
+                setting.php       &lt;-- drupal's dev.example.com setting</code></pre><p>By this configuration, instead of <code class="language-php">/public_html/drupal/sites/default</code> (<em>default folder</em>) your site <code class="language-php">http://dev.example.com</code> will now follow to the <code class="language-php">setting.php</code> on folder <code class="language-php">dev.example.com</code>.</p>
+<h3 id="s-url-rewriting-on-roots-htaccess--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-url-rewriting-on-roots-htaccess--2"></a>URL-Rewriting on root's .htaccess:</h3>
+<p>Rewrite the new subdomain of <code class="language-php">prod</code> along with <code class="language-php">dev</code> so its URL goes also to drupal but end up automatically to the <code class="language-php">setting.php</code> on <em>default folder</em> since there is no folder by its name.</p>
+<pre>
+<code class="language-php">RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(dev|prod)
+RewriteCond %{REQUEST_URI} !^/drupal/
+RewriteRule ^(.*)$ drupal/$1 [L]</code></pre><h3 id="s-url-rewriting-on-drupals-htaccess"><a class="toc-anchor" title="Permalink to this headline" href="#s-url-rewriting-on-drupals-htaccess"></a>URL-Rewriting on drupal's .htaccess</h3>
+<p>Find a line that has the following code:<br />
+<code class="language-php">RewriteRule ^ index.php [L]</code></p>
+<p>Change the code as below:<br />
+<code class="language-php">RewriteRule ^(.*)$ /index.php?q=$1 [L,QSA]</code></p>
+<h3 id="s-set-the-absolute-url-on-settingphp--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-set-the-absolute-url-on-settingphp--2"></a>Set the absolute URL on setting.php</h3>
+<p>Then on each of <code class="language-php">setting.php</code> remove the leading hash sign <code class="language-php">$base_url </code>and fill in the absolute URL to your Drupal installation.</p>
+<h3 id="s-public-file-system-path--2"><a class="toc-anchor" title="Permalink to this headline" href="#s-public-file-system-path--2"></a>Public file system path</h3>
+<p>Verify or correct the value of <em>Public file system path</em> for every subdomains as below:</p>
+<ul>
+<li>sites/dev.example.com/files, for your site dev.example.com via access URL:<br />
+	<code class="language-php">http://dev.example.com/#overlay=%3Fq%3Dadmin%252Fconfig%252Fmedia%252Ffile-system </code></li>
+<li>sites/prod.example.com/files, for your site prod.example.com via access URL:<br />
+	<code class="language-php">http://prod.example.com/#overlay=%3Fq%3Dadmin%252Fconfig%252Fmedia%252Ffile-system</code></li>
+</ul>
+<h2 id="multisite-drupal-by-subdomains-and-url-path"><a class="toc-anchor" title="Permalink to this headline" href="#multisite-drupal-by-subdomains-and-url-path"></a>Multi Drupal Sites (By Subdomain + URL's Paths)</h2>
+<p>By <em><a href="https://www.drupal.org/documentation/install/multi-site" title="Multi-site - Sharing the same code base" rel="nofollow">sharing the same drupal code base</a></em> as above (<code class="language-php">/public_html/drupal</code>) , you may extend the <em><a href="#multisite-drupal-by-subdomains" title="Multi Drupal Sites (By Subdomains)" rel="nofollow">Subdomain Mapping</a></em> where you can set another drupal sites under URL's Paths like so:</p>
+<pre>
+<code class="language-php">http://dev.example.com/site1,
+http://dev.example.com/site2, etc..</code></pre><h3 id="s-symbolic-links"><a class="toc-anchor" title="Permalink to this headline" href="#s-symbolic-links"></a>Symbolic Links</h3>
+<p>First you will need to access your server <em><a href="https://en.wikipedia.org/wiki/Shell_(computing)" title="Shell (computing)" rel="nofollow">shell</a></em>. Then create the <em><a href="https://en.wikipedia.org/wiki/Symbolic_link" title="Symbolic link" rel="nofollow">symbolic links</a></em> to the drupal root folder named <code class="language-php">site1</code> and <code class="language-php">site2</code> by following command:</p>
+<pre>
+<code class="language-php">$ cd /path/to/your/public_html/drupal
+$ ln -s . site1
+$ ln -s . site2</code></pre><p>so the directory structure will be as below:</p>
+<pre>
+<code class="language-php">/public_html  &lt;-- example.com, www.example.com, dev.example.com, prod.example.com
+    .htaccess         &lt;-- root's .htaccess
+    index.html        &lt;-- http://example.com, http://www.example.com
+    /drupal               &lt;-- drupal root folder
+        .htaccess         &lt;-- drupal's .htaccess
+        index.php         &lt;-- http://dev.example.com, http://prod.example.com
+        /site1             &lt;-- http://dev.example.com/site1
+        /site2             &lt;-- http://dev.example.com/site2
+        /sites                &lt;-- drupal's file system folder
+            /default          &lt;-- drupal's default subfolder 
+                setting.php   &lt;-- drupal's default setting (prod.example.com)
+            /dev.example.com        &lt;-- drupal's dev.example.com subfolder
+                setting.php         &lt;-- drupal's dev.example.com setting
+            /dev.example.com.drupal.site1  &lt;-- drupal's site1 subfolder
+                setting.php                &lt;-- drupal's site1 setting
+            /dev.example.com.drupal.site2  &lt;-- drupal's site2 subfolder
+                setting.php                &lt;-- drupal's site2 setting</code></pre><h3 id="s-coding-on-roots-htaccess-settingphp"><a class="toc-anchor" title="Permalink to this headline" href="#s-coding-on-roots-htaccess-settingphp"></a>Coding on root's .htaccess &amp; setting.php</h3>
+<p>The code for the root's .htaccess is the same as above, also the step fill in the absolute URL to <code class="language-php">$base_url</code> in <code class="language-php">setting.php</code>.</p>
+<h3 id="s-public-file-system-path--3"><a class="toc-anchor" title="Permalink to this headline" href="#s-public-file-system-path--3"></a>Public file system path</h3>
+<p>Verify or correct the value of Public file system path for the new sites:</p>
+<ul>
+<li><code class="language-php">sites/dev.example.com.drupal.site1/files</code>, for <code class="language-php">site1</code> via access URL:<br />
+	<code class="language-php">http://dev.example.com/site1/#overlay=%3Fq%3Dadmin%252Fconfig%252Fmedia%252Ffile-system</code></li>
+<li><code class="language-php">sites/dev.example.com.drupal.site2/files</code>, for <code class="language-php">site2</code> via access URL:<br />
+	<code class="language-php">http://dev.example.com/site2/#overlay=%3Fq%3Dadmin%252Fconfig%252Fmedia%252Ffile-system</code></li>
+</ul>
+<h2 id="s-multi-drupal-sites-by-drupal-8"><a class="toc-anchor" title="Permalink to this headline" href="#s-multi-drupal-sites-by-drupal-8"></a>Multi Drupal Sites (By Drupal 8)</h2>
+<p>By <a href="https://www.drupal.org/8" title="Drupal-8" rel="nofollow">Drupal 8</a> the symbolic links are no more required, there even a flexibility to name the folders under <code class="language-php">/public_html/drupal/sites</code> as long you put them on the file <code class="language-php">sites.php</code> like:</p>
+<pre>
+<code class="language-php">$sites = array(
+   'dev.example.com' =&gt; 'dev',
+   'dev.example.com.site1' =&gt; 'dev.site1',
+   'dev.example.com.site2' =&gt; 'dev.site2',
+);</code></pre><p>so the directory structure will be as below:</p>
+<pre>
+<code class="language-php">/public_html  &lt;-- example.com, www.example.com, dev.example.com, prod.example.com
+    .htaccess         &lt;-- root's .htaccess
+    index.html        &lt;-- http://example.com, http://www.example.com
+    /drupal               &lt;-- drupal root folder
+        .htaccess         &lt;-- drupal's .htaccess
+        index.php         &lt;-- http://dev.example.com, http://prod.example.com
+        /sites                &lt;-- drupal's file system folder
+            sites.php         &lt;-- drupal's multisite setting
+            /default          &lt;-- drupal's default subfolder 
+                setting.php   &lt;-- drupal's default setting (prod.example.com)
+            /dev                  &lt;-- drupal's dev.example.com subfolder
+                setting.php       &lt;-- drupal's dev.example.com setting
+            /dev.site1            &lt;-- drupal's dev.example.com.site1 subfolder
+                setting.php       &lt;-- drupal's dev.example.com.site1 setting
+            /dev.site2            &lt;-- drupal's dev.example.com.site2 subfolder
+                setting.php       &lt;-- drupal's dev.example.com.site2 setting</code></pre><h2 id="s-optional-settings"><a class="toc-anchor" title="Permalink to this headline" href="#s-optional-settings"></a>Optional Settings</h2>
+<h3 id="s-clean-urls"><a class="toc-anchor" title="Permalink to this headline" href="#s-clean-urls"></a>Clean URLs</h3>
+<p>If you like to use URLs like <code class="language-php">dev.example.com/user</code> instead of <code class="language-php">dev.example.com/?q=user</code>, you will need to enable <em><a href="https://www.drupal.org/getting-started/clean-urls" title="Configure clean URLs" rel="nofollow">Clean URLs</a></em> for your site by accessing the following menu:<br />
+<code class="language-php">Home » Administration » Configuration » Search and metadata » Clean URLs</code></p>
+<p>Incase a trouble with Clean URLs, you may add the following at the end line of setting.php:<br />
+<code class="language-php">$GLOBALS['conf']['clean_url'] = 0;</code></p>
+<h3 id="s-seo-urls"><a class="toc-anchor" title="Permalink to this headline" href="#s-seo-urls"></a>SEO URLs</h3>
+<p>You may also set a <em><a href="https://moz.com/learn/seo/url" title="SEO Best Practice" rel="nofollow">SEO Friendly URLs</a></em> using <em><a href="https://www.drupal.org/node/120631" title="URL aliases" rel="nofollow">URL Aliases</a></em> by accessing the following menu:<br />
+<code class="language-php">Home » Administration » Configuration » Search and metadata » URL aliases</code></p>
+<p>Just remember to avoid the same URL path like the ones listed below when you set your <em><a href="#multisite-drupal-by-subdomains-and-url-path" title="Multi Drupal Site by Subdomain + URL's Paths" rel="nofollow">Multi-site by Subdomain + URL's Paths</a></em> otherwise it will mix up your Multisite setting.</p>
+<pre>
+<code class="language-php">http://dev.example.com/site1
+http://dev.example.com/site2</code></pre><h3 id="copy-site"><a class="toc-anchor" title="Permalink to this headline" href="#copy-site"></a>Copy Site</h3>
+<p>You may want to duplicate your site by a Multisite setup for testing or development purposes. Following are documentation you can follow:</p>
+<ul>
+<li><a href="https://www.drupal.org/creating-drupal-test-sites" rel="nofollow">Create a Test Site</a></li>
+<li><a href="https://www.drupal.org/node/2063713" rel="nofollow">Making a duplicate of a Drupal website</a></li>
+<li><a href="https://www.drupal.org/node/2365719" rel="nofollow">Easy method to create duplicate of production site for testing</a></li>
+</ul>
+<p>You may also use my method as below. The command is made with an assumption that you have already a backup folder and an existing production site. Please use it with caution.</p>
+<pre>
+<code class="language-php">#COPY FOLDER (sites/dev » sites/prod)
+$ cd /path-to-your/public_html/drupal/sites;
+$ sudo rm -rf backup/dev;
+$ sudo rsync -aczvAXHS --progress dev backup;
+$ sudo mv prod backup/;
+$ sudo mv backup/dev prod;
+$ find prod -type d -exec sudo chmod 2775 {} \;
+$ find prod -type f -exec sudo chmod 0664 {} \;
+$ cd prod;
+$ find settings.php -type f -exec sudo sed -i 's/db-dev/db-prod/g' {} \;
+$ find settings.php -type f -exec sudo sed -i 's/sites\/dev\/files/sites\/prod\/files/g' {} \;
+
+#COPY DATABASE (db-dev » db-prod)
+$ sudo rm -rf backup/prod.sql;
+$ mysqldump -uUSERNAME -pPASSWORD db-prod &gt; backup/prod.sql;
+$ sudo rm -rf backup/dev.sql;
+$ mysqldump -uUSERNAME -pPASSWORD db-dev &gt; backup/dev.sql;
+$ find backup/dev.sql -type f -exec sed -i 's/db-dev/db-prod/g' {} \;
+$ mysql -uADMINNAME -pPASSWORD;
+$ mysql&gt; SHOW DATABASES;
+$ mysql&gt; DROP DATABASE `db-prod`;
+$ mysql&gt; CREATE DATABASE `db-prod` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+$ mysql&gt; GRANT ALL PRIVILEGES ON `db-prod`.* TO "USERNAME"@"localhost";
+$ mysql&gt; FLUSH PRIVILEGES;
+$ mysql&gt; exit;
+$ mysql -uUSERNAME -pPASSWORD db-prod &lt; backup/dev.sql;
+$ rm -rf backup/dev.sql;</code></pre><h3 id="s-cache-clearing"><a class="toc-anchor" title="Permalink to this headline" href="#s-cache-clearing"></a>Cache Clearing</h3>
+<p>Last but not least, to make sure everything is set properly, it is recommended to do a <em><a href="https://www.drupal.org/documentation/clearing-rebuilding-cache" title="Clearing or rebuilding Drupal's cache" rel="nofollow">Cache Clearing</a></em> whenever you have put a new setting on your sites by accessing the following menu:<br />
+<code class="language-php">Home » Administration » Configuration » Development » Clear all Caches</code></p>
+<p>Using <em><a href="http://www.drush.org/" rel="nofollow">Drush</a></em> you can even do it for all of your Multisite with <em><a href="http://drushcommands.com/drush-8x/cache/cache-rebuild/" rel="nofollow">one time cache command</a></em>:</p>
+<pre>
+<code class="language-php">$ cd /path/to/your/public_html/drupal
+$ drush @sites cache-rebuild</code></pre><h3 id="s-recommendation"><a class="toc-anchor" title="Permalink to this headline" href="#s-recommendation"></a>Recommendation</h3>
+<p>You may setup <em>Drupal Multisite</em> grouped by the followings, hopefully you can find out on how it looks like.</p>
+<ul>
+<li>Sharing Drupal Core Base with Different Theme &amp; Database</li>
+<li>Sharing Drupal Database with Different Layout Themes</li>
+<li>Sharing Drupal Theme with Different Database</li>
+</ul></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-7739a832476ea911fbe20b674e327bb8">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/2673236/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/2673236/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%282673236%29%20Multisite%20Mapping%20with%20Drupal">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"IjQOlaTTwwxjgGPpdn015Xwqdc0qPaRfSabqHI0Ki3A"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/multisite-drupal\/multisite-mapping-with-drupal":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2764165"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="This page describes how to set up a multi-site Drupal install using Windows and Apache, via the WampServer package. The instructions cover" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver" />
+<link rel="shortlink" href="https://www.drupal.org/node/547860" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver" />
+<meta property="og:title" content="Multi-site on Windows - using WampServer" />
+<meta property="og:description" content="This page describes how to set up a multi-site Drupal install using Windows and Apache, via the WampServer package. The instructions cover how to set up live production sites as well as local development sites, and setting up new sites as well as making copies of existing sites. Topics covered include: Installing and configuring WAMPServer, configuring and troubleshooting Apache and MySQL, creating databases, users and permissions in PHPMyAdmin, creating DNS entries and/or hosts file entries, creating sites directories, and installing multiple Drupal instances." />
+<meta property="og:updated_time" content="2016-08-30T13:47:11+00:00" />
+<meta property="article:published_time" content="2009-08-13T03:58:22+00:00" />
+<meta property="article:modified_time" content="2016-08-30T13:47:11+00:00" />
+  <title>Multi-site on Windows - using WampServer | Multisite Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-547860 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2764165" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-VxoyqfA__YIfMcODfVsDasEvpX17xUc_l0lQYVAnlSE" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/547860" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/547860" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-wxs5ABDd2BGZcgO42jHy3X-Li3iVE0z9iJsaRF2vjvM" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/multisite">Multisite Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-547860">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h3-tag first"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-optional-adding-a-new-site-to-an-existing-drupal-wampserver-instance" class="toc-link toc-link-invalid-id active">(Optional) Adding a new site to an existing Drupal WAMPServer instance</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-optional-migrating-or-copying-existing-sites-instead-of-installing-new-ones" class="toc-link toc-link-invalid-id active">(Optional) Migrating or copying existing sites instead of installing new ones</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-first-step-installing-wampserver" class="toc-link toc-link-invalid-id active">First Step: Installing WAMPServer</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-create-a-database-for-each-of-your-sites" class="toc-link toc-link-invalid-id active">Create a database for each of your sites</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-optional-create-mysql-usernames-and-passwords-to-access-the-sites" class="toc-link toc-link-invalid-id active">Optional: Create MySQL usernames and passwords to access the sites</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-download-and-unpack-drupal" class="toc-link toc-link-invalid-id active">Download and unpack Drupal</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-enable-and-configure-apache-virtual-hosts" class="toc-link toc-link-invalid-id active">Enable and configure Apache Virtual Hosts</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-restart-wampserver-and-fix-any-problems" class="toc-link toc-link-invalid-id active">Restart WAMPServer and fix any problems</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-add-dns-entries-or-hosts-file-entries-for-each-site-address" class="toc-link toc-link-invalid-id active">Add DNS entries or hosts file entries for each site address</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-create-a-site-folder-for-each-drupal-site" class="toc-link toc-link-invalid-id active">Create a site folder for each Drupal site</a></li>
+<li class="anchor-list__item h2-tag last"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver#s-installing-drupal" class="toc-link toc-link-invalid-id active">Installing Drupal</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="multisite-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/multisite">Multisite Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/multisite/multi-site-sharing-the-same-code-base">Multi-site - Sharing the same code base</a></li>
+<li class="leaf"><a href="/docs/7/multisite/configuring-a-basic-multi-site-development-environment-in-linux">Configuring a basic multi-site development environment in Linux</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/local-multi-site-installation-of-drupal-7-on-linux">Local multi-site installation of Drupal 7 on Linux</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-in-subdirectories">Multi-site in subdirectories</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-linux-configuring-multi-site-for-a-local-user-userdir">Multi-site on Linux - Configuring multi-site for a local user (UserDir)</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-linux">Multi-site on Linux</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-mac">Multi-site on Mac</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-iis">Multi-site on Windows - using IIS</a></li>
+<li class="leaf active-trail"><a href="/docs/7/multisite-drupal/multi-site-on-windows-using-wampserver" class="active-trail active">Multi-site on Windows - using WampServer</a></li>
+<li class="leaf"><a href="/docs/7/multisite/multi-site-on-windows-using-xampp">Multi-site on Windows - using XAMPP</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multi-site-on-windows">Multi-site on Windows</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/multisite-mapping-with-drupal">Multisite Mapping with Drupal</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/secure-multi-site-setup-using-shared-code-base">Secure multi-site setup using shared code-base</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/some-multi-site-considerations">Some multi-site considerations</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-1-mono-site-installation-of-drupal-7">Step 1: mono-site installation of Drupal 7</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-2-setting-the-databases">Step 2: setting the databases</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-3-setting-the-subdirectories">Step 3: setting the subdirectories</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-4-setting-the-hostnames">Step 4: setting the hostnames</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-5-troubleshooting">Step 5: troubleshooting</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-6-making-your-websites">Step 6: making your websites</a></li>
+<li class="leaf"><a href="/docs/7/multisite-drupal/step-7-backing-up-and-restoring">Step 7: backing up and restoring</a></li>
+<li class="last leaf"><a href="/docs/7/multisite/move-single-site-to-multisite-in-drupal-7">Move single site to multisite in Drupal 7</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Multi-site on Windows - using WampServer</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/547860/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    30 August 2016  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>This page describes how to set up a multi-site Drupal install using Windows and Apache, via the <a href="http://www.wampserver.com/en/" rel="nofollow">WampServer</a> package.   The instructions cover how to set up live production sites as well as local development sites, and setting up new sites as well as making copies of existing sites.</p>
+<p>Topics covered include:  Installing and configuring WAMPServer, configuring and troubleshooting Apache and MySQL,  creating databases, users and permissions in PHPMyAdmin, creating DNS entries and/or hosts file entries, creating sites directories, and installing multiple Drupal instances.</p>
+<!--break--><p>Before we begin, here are some notes for two use cases where the instructions are slightly different.  If they do not apply to you, skip ahead to <em>First Step: Installing WAMPServer</em>.</p>
+<h3 id="s-optional-adding-a-new-site-to-an-existing-drupal-wampserver-instance"><a class="toc-anchor" title="Permalink to this headline" href="#s-optional-adding-a-new-site-to-an-existing-drupal-wampserver-instance"></a>(Optional) Adding a new site to an existing Drupal WAMPServer instance</h3>
+<p>You may use these instructions to add an additional site to an <em>existing</em> single site WAMPServer Drupal install.  In that case, follow along but skip any steps you've already done for your existing installation, like installing WAMPServer and configuring your first site.  You do still have to add a new database and database user, DNS/hosts entries, extra site directories and the Drupal install steps.  Depending on your Apache configuration, you may also have to turn on Virtual Hosting if you were not using it before, and configure the virtual hosts for localhost and your existing sites in the virtual host steps.</p>
+<h3 id="s-optional-migrating-or-copying-existing-sites-instead-of-installing-new-ones"><a class="toc-anchor" title="Permalink to this headline" href="#s-optional-migrating-or-copying-existing-sites-instead-of-installing-new-ones"></a>(Optional) Migrating or copying existing sites instead of installing new ones</h3>
+<p>These instructions will also help you migrate an existing site to a multi-site WAMPServer install.  A common use case for this is making a local development server on your Windows machine, where you can test changes to a copy of your production site hosted on a server somewhere.  In that case, follow the instructions here but instead of creating empty databases in PHPMyAdmin, you will be creating an empty database then loading in a SQL backup taken from your production server.  Instead of downloading a stock Drupal version from drupal.org and unpacking it, you will most likely use an existing copy of your Drupal files, copied from your existing server.  Or you might use source control software such as git or svn to get a copy of the files on your local machine.  In that case the location of the files should be substituted for<em>c:\wamp\www\drupal-7.0</em> in the examples here.</p>
+<h2 id="s-first-step-installing-wampserver"><a class="toc-anchor" title="Permalink to this headline" href="#s-first-step-installing-wampserver"></a>First Step: Installing WAMPServer</h2>
+<p>WAMPServer is a free Apache/PHP/MySQL stack for Windows. </p>
+<p>If you do not already have WAMPServer installed, you should download and install it from here:</p>
+<ul>
+<li><a href="http://www.wampserver.com/en/" rel="nofollow">WAMPServer</a> - includes Apache, PHP, and MySQL.</li>
+</ul>
+<p>WAMPServer comes in both 32-bit and 64-bit editions.  Choose the 32-bit or 64-bit version depending on whether you have the 32-bit or 64-bit edition of Windows.    If you are not sure which edition you have, check your <em>System Type</em> in  Start-&gt;Control Panel-&gt;System .   If you are still not sure, or if you are running Windows XP, just choose the 32-bit edition, which works on both types of Windows.</p>
+<p>The default install location for WAMPServer is <em>c:\wamp</em>.  If you install into another folder, substitute that for <em>c:\wamp</em> in the examples here!  </p>
+<p>If you are running a firewall or Internet security software, you will have to click <strong>Allow</strong> several times during installation.  At the end of the installation, make sure <strong>Launch WAMPServer</strong> is checked and click <strong>Finish</strong>.</p>
+<p>You should now have the WAMPServer Manager icon in your task bar (the icons kept at the bottom right, by the clock).  The icon may be hidden, in which case you must press the <em>Show hidden icons</em> button (which looks like an arrow) to see it.  The WAMPServer icon looks like the letter W, and is Green when the server is running, and Red when the server is stopped.  Clicking the WAMPServer icon will open a  menu with access to the WAMPServer web pages, information about your server, and the <em>PHPMyAdmin</em> database administration tool. </p>
+<p>While you are setting up WAMPServer, turn on The <em>rewrite</em> module.  You will need that enabled later for <a href="/getting-started/clean-urls" rel="nofollow">Clean URLs</a>.</p>
+<ol>
+<li>Click the WAMPServer Manager icon in your taskbar, and choose <strong>Apache - Modules - Rewrite Module</strong> so that it is checked.
+</li></ol>
+<h2 id="s-create-a-database-for-each-of-your-sites"><a class="toc-anchor" title="Permalink to this headline" href="#s-create-a-database-for-each-of-your-sites"></a>Create a database for each of your sites</h2>
+<p>You must create a new database for each of the sites you are installing in PHPMyAdmin.   While the sites share the Drupal codebase (PHP files), they each require their own MySQL database. (unless you  <a href="/node/2622" rel="nofollow">Share a database across multiple sites</a>).</p>
+<p>Follow these steps for each site's database:</p>
+<ol>
+<li>Click the WAMPServer Manager icon in your taskbar, and choose <strong>phpMyAdmin</strong> to open the PHPMyAdmin database administration tool.
+</li><li>(optional) If you set a password for your MySQL root user, log in with it now, otherwise PHPMyAdmin logs in with the default local root username, with no password, connecting from localhost.
+</li><li>Click on the <em>Databases</em> link at the top of the page.  A list of existing databases on your MySQL server is shown.    At the bottom of this page is a text box titled <em>Create New Database</em>.
+</li><li>Type the name of your first database into the text box (e.g.: <strong>site1</strong>).
+</li><li>From the <em>collation</em> dropdown, choose <strong>utf8</strong> - <strong>utf8-general-ci</strong>.
+</li><li>Click <strong>Create</strong>.  PHPMyAdmin will load a new page and should report success and show the SQL command that it ran.  For our <em>site1</em> example, PHPMyAdmin outputs something this:<br />
+<blockquote><p>
+<em>Database site1 has been created.</em></p>
+<pre class="codeblock"><code class="language-php">CREATE DATABASE `site1` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+</code></pre></blockquote>
+</li><li>If you wish to add more databases after this one, click the <strong>localhost</strong> link at the top of the page to get back to the PHPMyAdmin start page, then click <strong>Databases</strong> again and add the next database.
+</li></ol>
+<p>Use this procedure to set up a database for each site.  Each database must have a unique name, and ideally you would name the database after the site, so it's clear which site it belongs to.</p>
+<p>If you are migrating an existing site, you will want to use PHPMyAdmin's <em>Import</em> function to load the .sql or .sql.gz file that contains your existing site's database backup into place.   </p>
+<p>If you like, you can create a user or several users so that you can limit permissions to the database for each site, and ensure Drupal and contrib modules don't have super-user access to your MySQL database.  This is definitely a very good idea on production servers or production websites.  For local or development sites, you can also get away with using WAMPServer's default root user (username: root, no password, connecting from localhost only).  </p>
+<h2 id="s-optional-create-mysql-usernames-and-passwords-to-access-the-sites"><a class="toc-anchor" title="Permalink to this headline" href="#s-optional-create-mysql-usernames-and-passwords-to-access-the-sites"></a>Optional: Create MySQL usernames and passwords to access the sites</h2>
+<p>Create one or more MySQL users using the following steps:</p>
+<ol>
+<li>In PHPMyAdmin, click the <strong>Privileges</strong> link at the top of the page.
+</li><li>Click <strong>Add New User</strong>
+</li><li>Enter a <em>Username</em> (e.g.: <strong>site1_user</strong>)
+</li><li>Set the <em>Host</em> dropdown to be <strong>Local</strong>.
+</li><li>Click <strong>Generate</strong> to generate a strong random password, or type and confirm a password.  If you generate a random password, it is displayed - <strong>copy and paste it somewhere safe, you will need the username and the password to install Drupal!</strong>.
+</li><li>Leave everything else alone and click <strong>Go</strong> at the bottom of the page.  PHPMyAdmin should tell you the user is added, and display the SQL commands it used:<br />
+<blockquote><p>
+You have added a new user.</p>
+<pre class="codeblock"><code class="language-php">CREATE USER 'site1_user'@'localhost' IDENTIFIED BY '***';
+
+GRANT USAGE ON * . * TO 'site1_user'@'localhost' IDENTIFIED BY '***' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+</code></pre></blockquote>
+</li><li>Scroll down to the section <strong>Database-specific privileges</strong>.  From the dropdown, select the database name you wish to give permissions to.  (e.g.: site1).  As soon as you select the database, PHPMyAdmin will load a page titled something like: <em>Edit Privileges: User 'site1_user'@'localhost' - Database site1</em>.
+</li><li>Click <strong>Check All</strong> to check all the privilege checkboxes, and click <strong>Go</strong>.
+</li><li>PHPMyAdmin responds with:<br />
+<blockquote><p>
+You have updated the privileges for 'site1_user'@'localhost'.</p>
+<pre class="codeblock"><code class="language-php">GRANT ALL PRIVILEGES ON `site1` . * TO 'site1_user'@'localhost' WITH GRANT OPTION ;
+</code></pre></blockquote>
+</li></ol>
+<p>You can repeat the process for as many users as you like.  You may also assign permissions for more than one database to a user.  Remember to keep a note of each database name, username, and password for the installation!</p>
+<p>If your server is a production server, you should probably also set a password for MySQL's <em>root</em> user.  You can edit the user in the <strong>Privileges</strong> and change its password.   After you do so, PHPMyAdmin will ask you to re-authenticate using the password.</p>
+<h2 id="s-download-and-unpack-drupal"><a class="toc-anchor" title="Permalink to this headline" href="#s-download-and-unpack-drupal"></a>Download and unpack Drupal</h2>
+<p>Download Drupal core from <a href="http://drupal.org/project/drupal" target="_blank" rel="nofollow">http://drupal.org/project/drupal</a> and place the .zip or .tar.gz file into WAMPServer's <em>c:\wamp\www</em> folder. (You'll need a tool like <a href="http://www.7-zip.org" rel="nofollow">7-zip</a> to unpack the Drupal tar.gz or .zip file).  Once you unpack the file, you will have a Drupal folder with the version number in your c:\wamp\www folder (e.g. c:\wamp\www\drupal-7.0).  This Drupal codebase appears on your WAMPServer at <a href="http://localhost/drupal-7.0" rel="nofollow">http://localhost/drupal-7.0</a>, but because you are doing a multi-site install, you will not access it at this URL, but instead use Apache virtual hosts to add multiple URLs that point here, using other site names (e.g. <a href="http://site1.example.com" rel="nofollow">http://site1.example.com</a> and <a href="http://site2.example.com" rel="nofollow">http://site2.example.com</a>)</p>
+<p>If you are migrating an existing site from another server, you probably want to copy the Drupal files from that server, so you have a complete set of modules, themes, and site files.  You could do this by FTP, by making a .zip or .tar.gz backup file and transferring that, or by using source control such as Subversion or git.  If you place the existing Drupal files somewhere other than <em>c:\wamp\www\drupal7.0</em>, substitute the correct path in the rest of this page's examples. </p>
+<h2 id="s-enable-and-configure-apache-virtual-hosts"><a class="toc-anchor" title="Permalink to this headline" href="#s-enable-and-configure-apache-virtual-hosts"></a>Enable and configure Apache Virtual Hosts</h2>
+<p>A <em>Virtual Host</em> is an Apache configuration directive that describes a web site to host.  You can have as many Virtual Hosts on an Apache server as you like.   Based on what URL the web surfer asks for, Apache can figure out the correct web site to serve them.   With a multi-site install, you will always be setting up at least two distinct URLs for accessing your website.  For our example multi-site install with two sites, our two virtual hosts are going to be: <a href="http://site1.example.com" rel="nofollow">http://site1.example.com</a> and <a href="http://site2.example.com" rel="nofollow">http://site2.example.com</a>.    We also set up a virtual host that matches the default configuration, and load that on <a href="http://localhost" rel="nofollow">http://localhost</a>, so that WAMPServer's shortcuts will still work!</p>
+<p>First, enable Virtual Hosts in Apache's configuration file:</p>
+<ol>
+<li>click the WAMPServer administration tool in your taskbar, and choose <strong>Apache - httpd.conf</strong>.  The Apache configuration file (httpd.conf) will open in Notepad.
+</li><li>Scroll to the end of the file and you will find a section titled <em>Supplemental Configuration</em>.
+</li><li>Find the section:<br />
+<pre class="codeblock"><code class="language-php"># Virtual hosts
+#Include conf/extra/httpd-vhosts.conf
+</code></pre></li><li>remove the <strong>#</strong> (comment indicator) in front of the second line, so it now looks like this:
+<pre class="codeblock"><code class="language-php"># Virtual hosts
+Include conf/extra/httpd-vhosts.conf
+</code></pre></li><li>Save the file.
+</li></ol>
+<p>Next, locate and edit the <em>httpd-vhosts.conf</em> file.  It should be in a folder named <strong>C:\wamp\bin\apache\Apache2.2.17\conf\extra</strong>, but with the correct Apache version to match what was installed with your WAMPServer.  The best way to find this file is to just explore through c:\wamp\bin\apache until you find the <em>conf</em> folder, then look in the <em>extra</em> subfolder.</p>
+<p>Replace the example &lt;VirtualHost&gt;  examples with the following, adjusted to match your site names.  These examples use site1.example.com and site2.example.com, and you will need to adjust yours to match your site names</p>
+<pre class="codeblock"><code class="language-php">&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@site1.example.com
+    DocumentRoot "C:/wamp/www/drupal-7.0"
+    ServerName site1.example.com
+    ServerAlias www.site1.example.com
+    ErrorLog "c:/wamp/logs/site1.example.com-error.log"
+    CustomLog "c:/wamp/logs/site1.example.com-access.log" common
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@site2.example.com
+    DocumentRoot "C:/wamp/www/drupal-7.0"
+    ServerName site2.example.com
+    ServerAlias www.site2.example.com
+    ErrorLog "c:/wamp/logs/site2.example.com-error.log"
+    CustomLog "c:/wamp/logs/site2.example.com-access.log" common
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@site2.example.com
+    DocumentRoot "C:/wamp/www"
+    ServerName localhost
+    ErrorLog "c:/wamp/logs/error.log"
+    CustomLog "c:/wamp/logs/access.log" common
+&lt;/VirtualHost&gt;
+</code></pre><p>
+Save the file again.</p>
+<h2 id="s-restart-wampserver-and-fix-any-problems"><a class="toc-anchor" title="Permalink to this headline" href="#s-restart-wampserver-and-fix-any-problems"></a>Restart WAMPServer and fix any problems</h2>
+<p>You need to restart Apache so it will see your changes.   If anything is wrong, Apache will not start up again, or will not allow you to see the localhost page from the WAMPServer administrator.  You must then check Apache's error log and correct the problem, then restart WAMPServer again until it is able to start successfully:</p>
+<ol>
+<li>Click the WAMPServer icon in the taskbar  and choose <strong>Restart All Services</strong>.
+</li><li>You will notice the WAMPServer icon turn red (meaning the servers are stopped) and then it should turn green again.  If the icon stays red, something is wrong with one of the configuration files you changed, and Apache cannot start.  There may also be problems after Apache does start, even if the icon is green.
+</li><li>From the WAMPServer menu, choose <strong>Apache - Apache Error Log</strong> then look at the bottom of the log file for error messages.   These will usually start with the word:  <em>Warning -</em>
+</li><li>When everything is working properly, you should be able to see the WAMPServer status page by choosing <strong>localhost</strong> from the WAMPServer menu.  This should open your server's home page, showing version numbers and status.   If instead you see a white screen with a "Permission Denied" message, it means something is wrong with your configuration, and Apache stopped reading the configuration files (resulting in your localhost page not loading).
+</li><li>Fix any problems, restart Apache, and check the error log until you see no errors at the bottom and you can open the localhost web page successfully.
+</li></ol>
+<h2 id="s-add-dns-entries-or-hosts-file-entries-for-each-site-address"><a class="toc-anchor" title="Permalink to this headline" href="#s-add-dns-entries-or-hosts-file-entries-for-each-site-address"></a>Add DNS entries or hosts file entries for each site address</h2>
+<p>There are two ways to make <a href="http://site1.example.com" rel="nofollow">http://site1.example.com</a> and <a href="http://site2.example.com" rel="nofollow">http://site2.example.com</a> come up in your web browser:</p>
+<ol>
+<li>If this is a production site, or is going to be accessed by others on the Internet, you should add real DNS entries at your registrar, pointing to your computer's external IP address.   This is a good option if your computer is a server.  You may need to also configure your firewall or router to forward port 80 from the external IP to your computer.   (If you are not sure of your external IP address, visit <a href="http://www.whatismyipaddress.com" rel="nofollow">http://www.whatismyipaddress.com</a>.
+</li><li>If this is just a test or development site, and you only need to get to it from your local computer, then it is often easier to add fake DNS entries in your <em>hosts file</em>.   The hosts file is a text file where you can specify fake DNS entries that will work like real DNS entries, but only on your local computer.  This will allow you to point a browser at <a href="http://site1.example.com" rel="nofollow">http://site1.example.com</a> and have site1.example.com resolve to your computer's localhost address, 127.0.0.1, resulting in you seeing the web page.   Remember though that you will not be able to see the site on other computers with this technique.
+</li></ol>
+<p>To add hosts file entries, you can use Notepad.  But, the hosts file is a system file, so you have to run Notepad as administrator in Windows 2003 or later.   The location of the hosts file is usually <strong>c:\windows\system32\drivers\etc\hosts</strong>, unless your Windows directory is somewhere other than <em>c:\windows</em>:</p>
+<ol>
+<li>(Windows Vista and later, or Windows Server 2003 and later): Open Notepad as the administrator:  <strong>Start - All Programs - Accessories - <em>Right Click</em> Notepad</strong> and choose <strong>Run as Administrator</strong>.  A User Account Control dialog will appear, asking if you wish to allow Notepad to make changes to your computer.  Choose <strong>Yes</strong>.
+</li><li>(Windows XP and earlier):</li>
+<p> Run notepad with: <strong>Start - Programs - Accessories - Notepad</strong></p>
+<li>Choose <strong>Open</strong> from the File menu, and into the Filename box type: <strong>c:\windows\system32\drivers\etc\hosts</strong> and click <strong>Open</strong>.  The hosts file will open.
+</li><li>Below the last line <em>127.0.0.1 localhost</em>, add lines for each site name, pointing at the localhost IP.   The bottom of your hosts file should look like this, substituting <em>site1.example.com</em> and <em>site2.example.com</em> with your actual site names.<br />
+<pre class="codeblock"><code class="language-php">127.0.0.1     localhost
+127.0.0.1     site1.example.com www.site1.example.com
+127.0.0.1     site2.example.com www.site2.example.com
+</code></pre></li><li>Save the file.  If you get a Permission Denied error, it means you forgot to run Notepad as Administrator.  Open a new Notepad with the right click-"run as administrator" procedure as described above, then try again.
+</li></ol>
+<h2 id="s-create-a-site-folder-for-each-drupal-site"><a class="toc-anchor" title="Permalink to this headline" href="#s-create-a-site-folder-for-each-drupal-site"></a>Create a site folder for each Drupal site</h2>
+<p>For each site you are going to host from this Drupal codebase, you need to create a folder in <em>c:\wamp\www\drupal-7.0\sites\</em>.  The Drupal installer will create a settings.php file there pointing to each site's database.</p>
+<p>Repeat the following for each site:</p>
+<ol>
+<li>Create a folder named the same as the URL of the site in the sites folder, e.g. <em>c:\wamp\www\drupal-7.0\sites\site1.example.com</em>, with <strong>Right click - New Folder</strong>.  Leave the folder empty, because Drupal's installer will create and then write protect a settings.php file for you inside it in the installation step at the end.
+</li><li>A useful new feature in Drupal 7 is the ability to configure aliases for the sites folder using the <em>sites.php</em> file.  These aliases allow you to use a sites folder and settings.php that do not necessarily match the URL you will be using.   To do so, you copy the <em>default.sites.php</em> file to be named <em>sites.php</em>, and then add an alias to it.  You might want to do this if you are using a production Drupal codebase (from git or svn for instance) as a local test site.  For example, you might want to use sites directory and settings file <em>site1.example.com</em> but access it as a test site on your local machine using URL <em><a href="http://site1.local" rel="nofollow">http://site1.local</a></em>.  Rather than create a whole new settings directory for <em>site1.local</em> with its own settings.php, You could instead add an entry in sites.php that looks like so:<br />
+<code class="language-php">$sites['sites1.local'] = 'site1.example.com';</code>.   For more information on this feature, see the inline comments in <em>example.sites.php</em>.  
+</li><li>If you are moving or copying an existing site which already has a <em>settings.php</em> file, open it and confirm that the database name, database username, and database password are correct for your WAMPServer install.
+</li></ol>
+<p>Once you have created an empty folder for each site under c:\wamp\www\drupal-7.0\sites, you are ready to install Drupal!</p>
+<h2 id="s-installing-drupal"><a class="toc-anchor" title="Permalink to this headline" href="#s-installing-drupal"></a>Installing Drupal</h2>
+<p>For each site you have configured, install Drupal as follows:</p>
+<ol>
+<li>Point your web browser at the site URL (e.g. <a href="http://site1.example.com" title="http://site1.example.com" rel="nofollow">http://site1.example.com</a>).
+</li><li>You should see the Drupal installer page, asking you to select an installation profile.  If your site already had a settings.php file and it's got the correct database settings, you will see your site and you are finished.  Otherwise, continue in the Drupal installer:
+</li><li>Choose an Installation Profile, and then a language, on the first two screens.
+</li><li>The <em>Set up database</em> screen appears.  Enter the database name, database username, and database password that you made a note of earlier, while creating the database and database users.  (e.g.: database name: <strong>site1</strong>, database username: <strong>site1_user</strong>, database password: <strong>SITE1_DATABASE_PASSWORD</strong>).   If you did not create users and are just going to use the WAMPServer defaults, use database username of <strong>root</strong> and no password.
+</li><li>If the database is empty, Drupal will continue on with a fresh installation.
+</li><li>If the database contains an existing Drupal installation, the installer will save settings.php with the correct database information, then show an error message titled <em>Drupal already installed</em>.  If you click  <strong>View your existing site</strong> you will be taken to your site's homepage, which should now work correctly!
+</li></ol>
+<p>Repeating the above steps for each site you configured (e.g. site1.example.com, then site2.example.com, and so on) will install/configure the Drupal databases for each site, leaving you with separate sites hosted out from the same Drupal codebase.</p>
+<p>As each site's installation is completed, Drupal 7 creates  a  <em>settings.php</em> file and a <em>files</em> folder under the site directory (in our example site1.example.com site, this would be <em>c:\wamp\www\drupal-7.0\sites\site1.example.com</em>).  </p>
+<p>If you would like to have modules or themes that are for only one  site, then you will need to create "modules" and "themes" folders inside the sites directory and place the modules and themes in those. </p>
+<p>For modules and themes you are going to have shared between all the Drupal sites in this multi-site installation, place them in the <em>modules</em> and <em>themes</em> that already exist in the <em>c:\wamp\www\drupal-7.0\sites\all\</em> folder.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-e21aa5a2f158bd934dbaadc1279be343">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/547860/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/547860/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28547860%29%20Multi-site%20on%20Windows%20-%20using%20WampServer">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"Dl523118uZNAatcL1HLPqRj8kwnItS0f8Aak-9Fr9MU"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/multisite-drupal\/multi-site-on-windows-using-wampserver":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2764165"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
