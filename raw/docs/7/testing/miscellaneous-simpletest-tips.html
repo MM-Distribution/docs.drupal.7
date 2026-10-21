@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="This is a list of some general tips for writing tests, feel free to pitch in and add your own!" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/testing/miscellaneous-simpletest-tips" />
+<link rel="shortlink" href="https://www.drupal.org/node/30011" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/testing/miscellaneous-simpletest-tips" />
+<meta property="og:title" content="Miscellaneous SimpleTest tips" />
+<meta property="og:description" content="This is a list of some general tips for writing tests, feel free to pitch in and add your own! Posting to a multiple select field To select multiple options of a select field (e.g. testing taxonomy terms), in which case: Parent term: one two three we need to post an array for #name: $edit = array( &#039;parent[]&#039; =&gt; array(&#039;807&#039;, &#039;808&#039;), ); $this-&gt;drupalPost(&#039;taxonomy/term/123/edit&#039;, $edit, t(&#039;Save&#039;)); Testing the Uploading Functionality In the new version of Simpletest, there is an uploading feature. The example below best illustrates this." />
+<meta property="og:updated_time" content="2017-02-06T09:29:02+00:00" />
+<meta property="article:published_time" content="2005-08-30T12:37:38+00:00" />
+<meta property="article:modified_time" content="2017-02-06T09:29:02+00:00" />
+  <title>Miscellaneous SimpleTest tips | Automated testing for Drupal 7 | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-30011 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2819025" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/testing/miscellaneous-simpletest-tips" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-0SqxivoiGbXz0hq0jMhYLMUvss3P8nzu7twVkpbWLY4" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/30011" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/30011" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/testing/miscellaneous-simpletest-tips" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-Uf_oLUwcx8K4b5h6lh9dWxp3qeJQa6nAYYuVE0eSz6M" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/automated-testing-for-drupal-7">Automated testing for Drupal 7</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-30011">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h2-tag first"><a href="/docs/7/testing/miscellaneous-simpletest-tips#s-posting-to-a-multiple-select-field" class="toc-link toc-link-invalid-id active">Posting to a multiple select field</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/testing/miscellaneous-simpletest-tips#s-testing-the-uploading-functionality" class="toc-link toc-link-invalid-id active">Testing the Uploading Functionality</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/testing/miscellaneous-simpletest-tips#s-viewing-source-during-a-browser-test" class="toc-link toc-link-invalid-id active">Viewing Source during a Browser Test</a></li>
+<li class="anchor-list__item h2-tag"><a href="/docs/7/testing/miscellaneous-simpletest-tips#s-triggering-your-debugger-xdebug-client-from-a-browser-test" class="toc-link toc-link-invalid-id active">Triggering your debugger (xdebug client) from a Browser Test</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/testing/miscellaneous-simpletest-tips#s-drupal-8-cookies" class="toc-link toc-link-invalid-id active">Drupal 8 + cookies</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/testing/miscellaneous-simpletest-tips#s-drupal-7-or-sessions-without-cookies" class="toc-link toc-link-invalid-id active">Drupal 7, or sessions without cookies</a></li>
+<li class="anchor-list__item h2-tag last"><a href="/docs/7/testing/miscellaneous-simpletest-tips#s-simulate-external-api-calls" class="toc-link toc-link-invalid-id active">Simulate external API calls</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="automated-testing-for-drupal-7" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/automated-testing-for-drupal-7">Automated testing for Drupal 7</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/testing/simpletest-testing-overview-drupal-7">Testing overview</a></li>
+<li class="leaf"><a href="/docs/7/testing/testing-module">Testing module</a></li>
+<li class="leaf"><a href="/docs/7/testing/simpletest-testing-tutorial-drupal-7">Testing tutorial</a></li>
+<li class="leaf"><a href="/docs/7/testing/unit-testing-with-simpletest">Unit Testing with SimpleTest</a></li>
+<li class="leaf"><a href="/docs/7/testing/organizing-your-test-cases">Organizing your test cases</a></li>
+<li class="leaf"><a href="/docs/7/automated-testing-for-drupal-7/selenium-testing">Selenium testing</a></li>
+<li class="leaf"><a href="/docs/7/automated-testing-for-drupal-7/testing-setup-and-configuration">Testing setup and configuration</a></li>
+<li class="leaf"><a href="/docs/7/testing/writing-upgrade-path-tests">Writing upgrade path tests</a></li>
+<li class="leaf"><a href="/docs/7/testing/run-tests">Run tests</a></li>
+<li class="leaf"><a href="/docs/automated-testing/phpunit-in-drupal/running-tests-through-command-line-with-run-testssh">Running tests through command-line</a></li>
+<li class="leaf"><a href="/docs/7/testing/troubleshooting-tests">Troubleshooting tests</a></li>
+<li class="leaf"><a href="/docs/7/testing/simpletest-upload-tests-hanging">SimpleTest upload tests hanging</a></li>
+<li class="leaf"><a href="/docs/7/testing/simpletest-browser-on-vista">SimpleTest [Browser] on Vista</a></li>
+<li class="leaf"><a href="/docs/7/testing/improving-simpletest-performance">Improving SimpleTest performance</a></li>
+<li class="leaf"><a href="/docs/7/testing/testing-reference">Testing Reference</a></li>
+<li class="leaf"><a href="/docs/7/testing/api-functions">API functions</a></li>
+<li class="leaf"><a href="/docs/7/testing/assertions">Assertions</a></li>
+<li class="leaf"><a href="/docs/7/testing/why-test">Why test</a></li>
+<li class="leaf"><a href="/docs/7/testing/core-tests">Core tests</a></li>
+<li class="leaf"><a href="/docs/7/testing/hidden-modules-and-themes">Hidden modules and themes</a></li>
+<li class="leaf"><a href="/docs/7/testing/comprehensive-example">Comprehensive example</a></li>
+<li class="last leaf active-trail"><a href="/docs/7/testing/miscellaneous-simpletest-tips" class="active-trail active">Miscellaneous SimpleTest tips</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>Miscellaneous SimpleTest tips</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/30011/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    6 February 2017  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>This is a list of some general tips for writing tests, feel free to pitch in and add your own!</p>
+<h2 id="s-posting-to-a-multiple-select-field"><a class="toc-anchor" title="Permalink to this headline" href="#s-posting-to-a-multiple-select-field"></a>Posting to a multiple select field</h2>
+<p>To select multiple options of a select field (e.g. testing taxonomy terms), in which case:</p>
+<pre>
+<code class="language-php">&lt;div class="form-item"&gt;
+  &lt;label for="edit-parent"&gt;Parent term:&lt;/label&gt;
+  &lt;select name="parent[]" multiple="multiple" size="3" id="edit-parent"&gt;
+    &lt;option value="806" selected="selected"&gt;one&lt;/option&gt;
+    &lt;option value="807"&gt;two&lt;/option&gt;
+    &lt;option value="808"&gt;three&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+</code></pre><p>we need to post an array for #name:</p>
+<pre>
+<code class="language-php">  $edit = array(
+    'parent[]' =&gt; array('807', '808'),
+  );
+  $this-&gt;drupalPost('taxonomy/term/123/edit', $edit, t('Save'));
+</code></pre><h2 id="s-testing-the-uploading-functionality"><a class="toc-anchor" title="Permalink to this headline" href="#s-testing-the-uploading-functionality"></a>Testing the Uploading Functionality</h2>
+<p>In the new version of Simpletest, there is an uploading feature. The example below best illustrates this. You MUST first create the full path to the file and then pass it into the $edit parameter of the <a href="https://api.drupal.org/api/drupal/modules%21simpletest%21drupal_web_test_case.php/function/DrupalWebTestCase%3A%3AdrupalPost/7" rel="nofollow">drupalPost() method.</a> In the example (and in your tests), the path is relative to the root Drupal installation directory. The realpath() function resolves all symbolic links and references within a path string (more documentation <a href="http://us3.php.net/manual/en/function.realpath.php" rel="nofollow">here</a>).</p>
+<pre>
+<code class="language-php">$rpath = realpath('sites/all/modules/my_module/test-file.pdf');
+$this-&gt;drupalPost('form/upload', array('name-of-file-field-here' =&gt; $rpath), t('Upload file'));
+</code></pre><p>The first parameter is the path where the form is found. You don't need to do a $this-&gt;drupalGet to "visit" the page in the virtual browser in order to test form submissions. You can just do $this-&gt;drupalPost('path/to/my/form's/page', $edit, t('Submit')). You can also pass in NULL as this first parameter if you are already on the page where the form exists.</p>
+<p>Notice that the $edit parameter is a key-value array. Specifically for file upload testing, you'll want to replace the key "name-of-file-field-here" with the name of the file field as it appears in the final HTML output of a form. So if you've produced a form with a file field named "file_drop_point" as in this example...</p>
+<pre>
+<code class="language-php">$form['file_drop_point'] = array(
+'#type' =&gt; 'file',
+'#title' =&gt; t('Upload a file'),
+);
+</code></pre><p>... your subsequent test that tests this file field's uploading capability will actually look something like this:</p>
+<pre>
+<code class="language-php">$rpath = realpath('sites/all/modules/my_module/test-file.pdf');
+$this-&gt;drupalPost('form/upload', array('files[file_drop_point]' =&gt; $rpath), t('Upload file'));
+// There are no quotes around "file_drop_point" in the key, by the way.  It's valid the way it looks.
+</code></pre><p>Why? Go to the page where the form is, then look at the HTML code for the file upload field. It will resemble this:</p>
+<pre>
+<code class="language-php">&lt;input ... name="files[file_drop_point]" ... /&gt;
+</code></pre><p>Your tests should now run properly, though be sure to check mark "Provide verbose information when running tests" in the test settings (Administer &gt; Site Building &gt; Testing &gt; Settings tab). Verbose output will provide snapshots of the pages that the Drupal browser was seeing as the test ran.</p>
+<p>The 3rd parameter of drupalPost is the text of the submit button for the form.</p>
+<h2 id="s-viewing-source-during-a-browser-test"><a class="toc-anchor" title="Permalink to this headline" href="#s-viewing-source-during-a-browser-test"></a>Viewing Source during a Browser Test</h2>
+<p>Use <code class="language-php">$this-&gt;drupalGetContent()</code> (or Drupal 8: <code class="language-php">$this-&gt;getRawContent()</code>) to output the source that the simpletest browser is receiving. This is useful for debugging during development.</p>
+<h2 id="s-triggering-your-debugger-xdebug-client-from-a-browser-test"><a class="toc-anchor" title="Permalink to this headline" href="#s-triggering-your-debugger-xdebug-client-from-a-browser-test"></a>Triggering your debugger (xdebug client) from a Browser Test</h2>
+<p>Debugging errors in tests using xdebug is different from debugging other processes, because tests go through cURL rather than through your browser. The second PHP process started by the cURL request should be passed the correct session variables, get parameters, or cookies so that it will connect to the xdebug client. Also, your xdebug should accept multiple connections (at least 4).</p>
+<h3 id="s-drupal-8-cookies"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-8-cookies"></a>Drupal 8 + cookies</h3>
+<p>If a cookie is used to trigger xdebug connections, this cookie will propagate to the cURL session so no extra setup on the web server/PHP side should be necessary.</p>
+<p>You can use <a href="http://pollinimini.net/blog/xdebug-bookmarklet/" rel="nofollow">http://pollinimini.net/blog/xdebug-bookmarklet/</a> to set up your browser so that cookies will trigger xdebug. You can also try the "easy Xdebug" or "xdebug helper" plugins for Firefox and Chrome, which will set a cookie to make it so these requests automatically get sent to xdebug.</p>
+<h3 id="s-drupal-7-or-sessions-without-cookies"><a class="toc-anchor" title="Permalink to this headline" href="#s-drupal-7-or-sessions-without-cookies"></a>Drupal 7, or sessions without cookies</h3>
+<p>As of <span class="project-issue-issue-link project-issue-status-info project-issue-status-7"><a href="/project/drupal/issues/889338" title="Status: Closed (fixed)">#889338: Add support for xdebug in WebTestBase</a></span>, the same process as D8 should work in D7. If you are running an older version of D7, then read on.</p>
+<p>Cookies will trigger xdebug from simpletest (see above how to set this up in your browser) but the drupalGet() and drupalPost() calls in your tests which go through cURL, don't have the get parameters, (for D7) cookies or session variables set correctly.</p>
+<p>There are a few ways to fix this.</p>
+<ol>
+<li>Port issue <a href="https://drupal.org/node/889338" rel="nofollow">#889338</a> to Drupal 7.</li>
+<li>Edit the <code class="language-php">drupalGet()</code> and <code class="language-php">drupalPost()</code> methods in DrupalWebTestCase so that they have an<br />
+<pre>
+<code class="language-php">array('query' =&gt; 'XDEBUG_SESSION_START=mw')  // D6
+array('query' =&gt; array('XDEBUG_SESSION_START' =&gt; 'mw')) // D7
+</code></pre><p>added to their $options parameter.<br />
+	Substitute your own IDE key for <em>mw</em>. If you already know how to trigger debugging in your browser from your IDE, you can find the IDE key by looking at the URL that your IDE generates for debugging. Here's a code snippet for Drupal 7:</p>
+<pre>
+<code class="language-php">if (!isset($options['query'])) {
+  $options['query'] = array();
+}
+$options['query'] += array('XDEBUG_SESSION_START' =&gt; 'ECLIPSE_DPGP');
+</code></pre><p>This is if you are using the Eclipse IDE; again, substitute the correct IDE key if you are using something else.</p>
+</li>
+<li>Another alternative is to setup a VirtualHost on your Apache with the following xdebug related lines. This causes all pages on this domain to trigger the debugger. Just use this domain when you want to debug and use a different domain when you are browsing or developing bug free :).
+<p>More xdebug remote debugging params should be set in your php.ini or in this VirtualHost.</p>
+<pre>
+<code class="language-php">  #customize this path to point to your Xdebug extension 
+  zend_extension=/Applications/Komodo IDE.app/Contents/SharedSupport/php/debugging/5.2/xdebug.so
+   #customize this to match how you setup your xdebug client
+  xdebug.idekey=mw
+  xdebug.default_enable=1
+  xdebug.remote_handler=dbgp
+  php_admin_value xdebug.remote_enable 1
+  #the following line triggers the xdebug client automatically for every request. useful for simpletest.
+  php_admin_value xdebug.remote_autostart 1
+</code></pre></li>
+</ol>
+<p>Other notes:</p>
+<ul>
+<li>Make sure your IDE options are set up correctly so they will prompt you to accept remote debugging requests. Otherwise, even with the steps above, your request won't open up for debugging in your IDE.</li>
+<li>When using PHPStorm,
+<ul>
+<li>In your 'PHP &gt; Debug' preferences, set the "Max. simultaneous connections" to at least 4.</li>
+<li>Do <em>not</em> use the <a href="http://blog.jetbrains.com/webide/2011/03/configure-php-debugging-in-phpstorm-2-0/" rel="nofollow">‘PHP Web Application’ Run Configuration</a> to start a debug session from your IDE; instead use the ‘Listen PHP Debug Connections’ Mode/button. (The ‘PHP Web Application’ Run Configuration is fine for non-simpletest debugging. But the active xdebug connection from the browser's PHP process will block the cURL PHP-xdebug processes from connecting to PHPStorm. cURL requests will hang indefinitely -or until they time out- and only connect to PHPStorm <em>after</em> your browser request terminates.)</li>
+</ul>
+</li>
+</ul>
+<h2 id="s-simulate-external-api-calls"><a class="toc-anchor" title="Permalink to this headline" href="#s-simulate-external-api-calls"></a>Simulate external API calls</h2>
+<p>Some modules may interact with external APIs and it is desirable to avoid using them when running tests.</p>
+<p>A mock module that defines a few items in its <strong>hook_menu()</strong> implementation can impersonate an external API just by being enabled on the test set up stage.</p>
+<p>For example, the Twitter module has a sub-module within its tests directory called twitter_mock. This module changes the host that the module calls from api.twitter.com to the local website domain, so a request such as <strong><a href="http://api.twitter.com/user_timeline.json?user_id=100" rel="nofollow">http://api.twitter.com/user_timeline.json?user_id=100</a></strong> will actually be made to <strong><a href="http://yourlocalsite/user_timeline.json?user_id=100" rel="nofollow">http://yourlocalsite/user_timeline.json?user_id=100</a></strong>.</p>
+<p>Have a look at the <a href="http://drupalcode.org/project/twitter.git/blob/refs/heads/7.x-3.x:/tests/twitter_mock.module" target="_blank" title="twitter_mock" rel="nofollow">twitter_mock.module</a> implementation for more details.</p></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-e065836652ec996507ebf1d37b772112">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/30011/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/30011/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%2830011%29%20Miscellaneous%20SimpleTest%20tips">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"4SaMfkKMx4kjvi2hPWkZCxkV1DAiQ8H7mdxyaaiZKbE"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/testing\/miscellaneous-simpletest-tips":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2819025"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>

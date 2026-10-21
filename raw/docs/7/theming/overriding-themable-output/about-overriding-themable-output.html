@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:fb="http://ogp.me/ns/fb#"
+  xmlns:og="http://ogp.me/ns#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="MobileOptimized" content="width" />
+  <!--[if IE]><![endif]-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="description" content="The following only applies when the default markup needs changes. This section can be skipped if the presentation is handled only through" />
+<meta name="generator" content="Drupal 7 (https://www.drupal.org)" />
+<link rel="image_src" href="https://www.drupal.org/sites/all/themes/bluecheese/images/drupal_meta_image.png" />
+<link rel="canonical" href="https://www.drupal.org/docs/7/theming/overriding-themable-output/about-overriding-themable-output" />
+<link rel="shortlink" href="https://www.drupal.org/node/173880" />
+<meta property="og:site_name" content="Drupal.org" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.drupal.org/docs/7/theming/overriding-themable-output/about-overriding-themable-output" />
+<meta property="og:title" content="About overriding themable output" />
+<meta property="og:description" content="The following only applies when the default markup needs changes. This section can be skipped if the presentation is handled only through style sheets. There are three aspects to overriding the themed output. The first is knowing where the source originates, the second is providing the override, and the third is understanding its type. Note that Drupal maintains cached theming, data through the theme registry. It must be cleared when setting up overrides." />
+<meta property="og:updated_time" content="2023-05-07T12:52:46+00:00" />
+<meta property="article:published_time" content="2007-09-07T18:35:53+00:00" />
+<meta property="article:modified_time" content="2023-05-07T12:52:46+00:00" />
+  <title>About overriding themable output | Overriding themable output | Drupal Wiki guide on Drupal.org</title>
+  <link type="text/css" rel="stylesheet" href="/files/advagg_css/css__IGnvPR1nQd12eUWIitgZ6GDDyWxn9W82zUE-pgSt6Y8__Gh7RLUb1X-_kkfJcUW2xrjQQJCrbwuGgKr5Ix51cJYc__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Xi-PZpvKTY78w7l1WNsqwUA52MIupHJebCMiX34Ugt0__D_EUHDAfEQdxcLiSDY7hREUWkG1Ge56_h2z3Er8V188__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__WF0PRotZAhCcl0aJjY5W2LYj8UwiYuB2dZEFluOh3Tc__FviX13FUB-Ppa2XB29BUIJQZ1Wg-F5XiDE7XD5y7mjQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__Fx0_w1L9q3nwzXnALG7UfjLF34FGYgJTz636-GWbM6k__0jWLTEHP3h5U5RcXuZcFhf0DdvRdzP3_wzCVNT015Ls__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+<link type="text/css" rel="stylesheet" href="/files/advagg_css/css__71G6gao0TOuJxFfw9efqGV9HafmPRGSqQoYV4yqGUWc__A8USkojaBGKMmq3IfNDeSRCrUAr1-U_dT1PhsFVn-yw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.css" media="all" />
+  </head>
+<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-173880 node-type-documentation drupalorg-site-main panels-layout og-context og-context-node og-context-node-2792997" >
+  <div id="skip-link" tabindex="-1">
+    <a class="element-invisible element-focusable" href="#content">Skip to main content</a>
+    <a class="element-invisible element-focusable skip-link-search" href="#search-block-form">Skip to search</a>
+  </div>
+    <div class="region region-page-top">
+    <noscript aria-hidden="true"><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W36H8DW" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<div id="drupalorg-crosssite-gdpr">Can we use first and third party cookies and web beacons to <a href="https://www.drupal.org/terms">understand our audience, and to tailor promotions you see</a>?<br><button class="yes">Yes, please</button><button class="no">No, do not track me</button></div>  </div>
+      <div id="nav-header">
+          <div class="menu-nav">
+        <a class="nav-btn" id="nav-open-btn" href="#block-system-main-menu"><img src="/sites/all/themes/bluecheese/images/icon-w-menu.svg" alt="Main menu"></a>
+      </div>
+        <nav id="navigation-inner" class="container-12" role="navigation">
+        <div class="region region-navigation">
+    <div id="block-system-main-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/home" title="Drupal.org home page">Drupal.org home</a></li>
+<li class="expanded"><a href="https://www.drupal.org/about/overview/technical" title="">Discover Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/about/overview/technical" title="The open source framework behind millions of websites.">Drupal Core</a></li>
+<li class="leaf"><a href="https://new.drupal.org/drupal-cms" title="Drupal CMS puts the power of Drupal into the hands of marketers, designers and content creators.">Drupal CMS</a></li>
+<li class="leaf"><a href="https://new.drupal.org/ai" title="Open limitless possibilities with Drupal AI">Drupal AI</a></li>
+<li class="leaf"><a href="https://www.drupal.org/case-studies" title="Powerful stories that show Drupal solutions in the real world.">Case Studies</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/government" title="Drupal is the open-source CMS that enables digital transformation of government and increases citizen engagement.">Drupal for Government</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/education" title="See why 70% of the world&#039;s leading universities chose Drupal.">Drupal for Higher Education</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/nonprofit" title="See why Drupal is the open-source CMS choice for some of the world’s most influential nonprofits.">Drupal for Nonprofit</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/ecommerce" title="Natively integrate content and commerce.">Drupal for eCommerce</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/fintech" title="Secure and trustworth FinTech infrastructure.">Drupal for FinTech</a></li>
+<li class="leaf"><a href="https://www.drupal.org/industries/healthcare" title="Drupal powers systems that are secure, patient-centric and engaging.">Drupal for Healthcare</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/enterprise" title="Why enterprise organizations choose Drupal for multi-brand governance and global scale.">Drupal for Enterprise</a></li>
+<li class="leaf"><a href="https://new.drupal.org/industries/retail" title="See how Drupal delivers retail experiences across every channel and touchpoint.">Drupal for Retail</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/industries/travel" title="Discover how Drupal powers travel across websites, mobile, and onboard experiences.">Drupal for Travel &amp; Tourism</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Build with Drupal</a><div class="menu-block"><ul class="menu button"><li class="first collapsed"><a href="/download" title=" Download Drupal and the extensions you need">Download Drupal</a></li>
+<li class="leaf"><a href="/documentation" title="Full knowledge base including Drupal 7 resources">Documentation</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/getting-started" title="All documentation">Getting started</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/official_docs/local-development-guide" title="">Local Development Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/developers" title="">Developer Resources</a></li>
+<li class="leaf"><a href="https://new.drupal.org/docs/drupal-cms" title="Drupal CMS User Guide">Drupal CMS User Guide</a></li>
+<li class="leaf"><a href="https://www.drupal.org/docs/user_guide/en/index.html" title="Drupal User Guide">Drupal User Guide</a></li>
+<li class="leaf"><a href="https://api.drupal.org/api/drupal/11.x" title="Drupal API">API</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/modules" title="Drupal Modules">Modules</a></li>
+<li class="leaf"><a href="https://www.drupal.org/project/themes" title="Drupal themes">Themes</a></li>
+<li class="leaf"><a href="https://www.drupal.org/browse/recipes" title="">Recipes</a></li>
+<li class="leaf"><a href="https://new.drupal.org/browse/site-templates" title="">Site Templates</a></li>
+<li class="leaf"><a href="/project/issues" title="Report issues and contribute improvements">Issue queues</a></li>
+<li class="last leaf"><a href="/security" title="Stay on top of the latest security alerts and updates">Security Advisories</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/drupal-services" title="">Partners &amp; Services</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/drupal-services" title="Connect with the best Drupal agencies around the world.">Find a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://new.drupal.org/association/become-a-drupal-certified-partner" title="Join an elite network of agencies committed to Drupal excellence and innovation.
+">Become a Drupal Certified Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/hosting" title="Find a hosting provider for your Drupal project.">Find a Hosting Provider</a></li>
+<li class="leaf"><a href="https://www.drupal.org/about/drupal-7/d7eol/migration-resource-center/enterprise" title="Get help with your migration to the latest version of Drupal.">Find a Migration Partner</a></li>
+<li class="leaf"><a href="https://www.drupal.org/training" title="Upskill your Drupal team.">Find Training</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/steward" title="Ensure your website is protected with Drupal Steward.">Drupal Steward</a></li>
+</ul></div></li>
+<li class="expanded"><a href="https://www.drupal.org/community" title="">Community</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://www.drupal.org/community" title="Come for the code, stay for the community.">About the Community</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/contributor-guide" title="Get involved in growing and evolving Drupal.">How to Contribute</a></li>
+<li class="leaf"><a href="https://events.drupal.org/" title="DrupalCon unites experts from around the globe who create ambitious digital experiences. Network, learn, and be inspired.">DrupalCon</a></li>
+<li class="leaf"><a href="https://www.drupal.org/community/events" title="Discover local events, community meet-ups, and training.">Events</a></li>
+<li class="leaf"><a href="https://www.drupal.org/blog" title="News and stories about Drupal.">News &amp; Blogs</a></li>
+<li class="leaf"><a href="https://www.drupal.org/forum" title="Got a question about Drupal? Find answers on the Drupal forums.">Forum</a></li>
+<li class="leaf"><a href="/community/contributor-guide/reference-information/talk/tools/slack" title="Get support and comminicate with the global Drupal community.">Slack</a></li>
+<li class="leaf"><a href="https://www.drupal.org/subscribe" title="Sign up for Drupal news and manage your subscriptions.">Newsletters</a></li>
+<li class="leaf"><a href="https://www.drupal.org/swag" title="Get your Drupal branded merch!">Drupal Swag Shop</a></li>
+<li class="last leaf"><a href="https://new.drupal.org/advocacy" title="Help the world catch up to what Drupal can do.">Drupal Advocacy Program</a></li>
+</ul></div></li>
+<li class="expanded"><a href="/association" title="Support the Drupal Association - the non-profit that supports the Drupal project">Support Drupal</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="/association" title="Meet the non-profit accelerating Drupal innovation ">The Drupal Association</a></li>
+<li class="leaf"><a href="/association/donate" title="Donate to the non-profit that supports Drupal">Donate</a></li>
+<li class="leaf"><a href="/association/become-a-drupal-certified-partner" title="Join the network of official Drupal Certified Partners">Become a Partner</a></li>
+<li class="leaf"><a href="/association/RippleMakers" title="Become an individual member of the Drupal Association">Become a Ripple Maker</a></li>
+<li class="leaf"><a href="https://www.drupal.org/sustaining-members " title="">Become a Drupal Sustaining Member</a></li>
+<li class="last leaf"><a href="https://www.drupal.org/swag?utm_source=drupalorg&amp;utm_medium=banner&amp;utm_campaign=drupal_swag_shop_2020_09_17" title="Get your Drupal-branded bucket hats, hoodies, and more">Drupal Swag Shop</a></li>
+</ul></div></li>
+<li class="last expanded"><a href="/try-hosting" title="Try Drupal">Get Started</a><div class="menu-block"><ul class="menu button"><li class="first leaf"><a href="https://new.drupal.org/drupal-cms/trial" title="">Try Drupal CMS</a></li>
+<li class="last leaf"><a href="/try-hosting" title="">Try Hosting</a></li>
+</ul></div></li>
+</ul></div><a class="close-btn" href="#top">Return to content</a>  </div>
+  </div>
+</div>
+<div id="block-search-form" class="block block-search">
+<div class="block-inner">
+    
+  <div class="content">
+    <form action="/docs/7/theming/overriding-themable-output/about-overriding-themable-output" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input placeholder="Search…" type="text" id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"><input alt="Search" type="image" id="edit-submit" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div><input type="hidden" name="form_build_id" value="form-YgQJwlEoWli7mf1PbrWNbZrQPWBQvDZuHalYQEDDYpE" />
+<input type="hidden" name="form_id" value="search_block_form" />
+</div>
+</div></form>  </div>
+  </div>
+</div>
+<div id="block-system-user-menu" class="block block-system block-menu">
+<div class="block-inner">
+    
+  <div class="content">
+    <div class="menu-block"><ul class="menu"><li class="button default"><a href="#block-system-user-menu"><img src="https://www.drupal.org/sites/all/themes/bluecheese/images/icon-w-user.svg" alt="Log in, view profile, and more"></a><ul><li class="first leaf"><a href="/user/login?destination=node/173880" title="">Log in</a></li>
+<li class="last leaf"><a href="/user/register?destination=node/173880" title="">Create account</a></li>
+</ul></li></ul></div>  </div>
+  </div>
+</div>
+  </div>
+    </nav>
+  </div>
+
+    <div id="header" class="clearfix">
+    <div id="header-inner" class="container-12 clearfix">
+      <div id="header-left">
+        <div id="site-name"><a href="/documentation">Documentation</a></div>
+              </div>
+      <div id="header-right">
+          <div class="region region-header">
+    <div id="block-drupalorg-search-documentation" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    <form class="container-inline" action="/docs/7/theming/overriding-themable-output/about-overriding-themable-output" method="post" id="drupalorg-documentation-search-form" accept-charset="UTF-8"><div><input type="hidden" name="form_build_id" value="form-zztKfNl830IpMEI9Thmm3VQHXshPfxRNWONUVhyblhY" />
+<input type="hidden" name="form_id" value="drupalorg_documentation_search_form" />
+<div class="form-item form-type-textfield form-item-drupalorg-documentation-search-form">
+  <label class="element-invisible" for="edit-drupalorg-documentation-search-form--2">Search </label>
+ <input placeholder="Search documentation…" type="text" id="edit-drupalorg-documentation-search-form--2" name="drupalorg_documentation_search_form" value="" size="15" maxlength="128" class="form-text" />
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input alt="Search" type="image" id="edit-submit--2" name="submit" value="Search" src="/sites/all/themes/bluecheese/images/icon-w-search.svg" class="form-submit" /></div></div></form>  </div>
+  </div>
+</div>
+  </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div id="page" class="clearfix">
+    <div class="breadbox"><nav class="breadcrumb container-12"><span><a href="/docs/7">Drupal 7</a></span><span><a href="/docs/7/theming">Theming Drupal 7</a></span><span><a href="/docs/7/theming/overriding-themable-output">Overriding themable output</a></span></nav></div>
+
+    <div id="main" role="main">
+      
+      <div id="content" class="clearfix">
+                                <div id="content-inner" class="clearfix">
+
+          
+            <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+<div class="block-inner">
+    
+  <div class="content">
+    
+<div class="panelizer-view-mode node node-full node-documentation node-173880">
+        
+<div class="panel-display hydra panel-layout clearfix " >
+
+  <div class="container preface clearfix panel-panel">
+    <div class="container-inner preface-inner panel-panel-inner">
+          </div>
+  </div>
+
+  <div class="container content clearfix">
+    <div class="container-inner content-inner panel-panel-inner">
+      <div class="column-content-region top-right-content column panel-panel">
+        <div class="column-content-region-inner top-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-block pane-drupalorg-carbon-ad-sidebar"  >
+  
+      
+  
+  <div class="pane-content">
+    <script async type="text/javascript" src="//cdn.carbonads.com/carbon.js?serve=CKYIEKJI&placement=drupalorg" id="_carbonads_js"></script><div class="ad-explanation description">Advertising sustains the DA. Ads are hidden for members. <a href="/association/individual-membership">Join today</a></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-table-of-contents-toc-w-3y7froeoqmgrpcmgnphqwt4pi3"  id="on-this-page" >
+  
+        <h3 class="pane-title">
+      On this page    </h3>
+    
+  
+  <div class="pane-content">
+    <div class="item-list"><ul class="anchor-list"><li class="anchor-list__item h3-tag first"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-finding-the-source" class="toc-link toc-link-invalid-id active">Finding the source</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-system-of-overrides" class="toc-link toc-link-invalid-id active">System of overrides</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-functions-vs-templates" class="toc-link toc-link-invalid-id active">Functions vs. templates</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-overriding-functions" class="toc-link toc-link-invalid-id active">Overriding functions</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-overriding-templates" class="toc-link toc-link-invalid-id active">Overriding templates</a></li>
+<li class="anchor-list__item h4-tag"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-related-pages" class="toc-link toc-link-invalid-id active">Related pages</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-converting-from-functions-to-templates" class="toc-link toc-link-invalid-id active">Converting from functions to templates</a></li>
+<li class="anchor-list__item h3-tag"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-the-theme-registry" class="toc-link toc-link-invalid-id active">The theme registry</a></li>
+<li class="anchor-list__item h3-tag last"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output#s-dont-forget-to-clear-cache" class="toc-link toc-link-invalid-id active">Don&#039;t forget to clear cache</a></li>
+</ul></div>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-block pane-og-menu-og-single-menu-block"  id="overriding-themable-output" >
+  
+        <h2 class="pane-title">
+      <a href="/docs/7/theming/overriding-themable-output">Overriding themable output</a>    </h2>
+    
+  
+  <div class="pane-content">
+    <ul class="menu"><li class="first leaf"><a href="/docs/7/theming/overriding-themable-output/overriding-themable-output">Overriding themable output</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/beginners-guide-to-overriding-themable-output">Beginners guide to overriding themable output</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/introduction-to-php-for-theming">Introduction to PHP for theming</a></li>
+<li class="leaf active-trail"><a href="/docs/7/theming/overriding-themable-output/about-overriding-themable-output" class="active-trail active">About overriding themable output</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/setting-up-variables-for-use-in-a-template-preprocess-and">Setting up variables for use in a template (preprocess and process functions)</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/default-baseline-variables">Default baseline variables</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/customizing-and-overriding-user-login-page-register-and">Customizing and Overriding User Login page, Register, and Password Reset in Drupal 6 and 7</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/how-to-add-a-destinationurl-to-the-request-new-password">How to add a &quot;?destination=URL&quot; to the request new password link</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/useful-tutorials-links">Useful tutorials &amp; links</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/example-themable-output">Example: Themable output</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/identifying-core-components">Identifying Core Components</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/core-block-css-ids">Core Block CSS IDs</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/mission-statement-and-highlighted-region">Mission statement and highlighted region</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/primary-and-secondary-links-renamed-to-main-and-secondary">Primary and Secondary links renamed to Main and Secondary menu</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/taxonomy">Taxonomy</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/unrendered-taxonomy-links-no-longer-available-as-a">Unrendered taxonomy links no longer available as a separate variable in node.tpl.php files</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/menu-theming">Menu theming</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/overriding-a-menu-in-a-block-or-template-file">Overriding a menu in a block or template file</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/the-theme-registry-for-special-cases">The theme registry for special cases</a></li>
+<li class="leaf"><a href="/docs/7/theming/overriding-themable-output/working-with-template-suggestions">Working with template suggestions</a></li>
+<li class="last leaf"><a href="/docs/7/theming/overriding-themable-output/architectural-view-of-theming">Architectural view of theming</a></li>
+</ul>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-links"  >
+  
+      
+  
+  <div class="pane-content">
+      </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region left-content column panel-panel ">
+        <div class="column-content-region-inner left-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-node-title"  >
+  
+      
+  
+  <div class="pane-content">
+    <h1>About overriding themable output</h1>
+  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-node-updated"  id="last-updated-on" >
+  
+        <span class="pane-title">
+      Last <a href="/node/173880/discuss">updated</a> on    </span>
+    
+  
+  <div class="pane-content">
+    7 May 2023  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-documentation-notices"  >
+  
+      
+  
+  <div class="pane-content">
+    <p class="deprecated">This is documentation for Drupal 7, which is no longer supported. <a href="/about/drupal-7/d7eol/partners">Learn more and find resources for Drupal 7 sites</a></p>  </div>
+
+  
+  </div>
+<div class="panel-separator"></div><div class="panel-pane pane-entity-field pane-node-body"  >
+  
+      
+  
+  <div class="pane-content">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p><em>The following only applies when the default markup needs changes. This section can be skipped if the presentation is handled only through <a href="/node/171209" rel="nofollow">style sheets</a>.</em></p>
+<p>There are three aspects to overriding the themed output. The first is knowing where the <a href="#theming-source" rel="nofollow">source originates</a>, the second is providing the <a href="#theming-overrides" rel="nofollow">override</a>, and the third is understanding its <a href="#theme-type" rel="nofollow">type</a>.</p>
+<p><em>Note that Drupal maintains cached theming, data through the <a href="#theme-registry" rel="nofollow">theme registry</a>.</em> <em>It must be cleared when setting up overrides.</em></p>
+<dl>
+<dt id="theming-source">
+<h3 id="s-finding-the-source"><a class="toc-anchor" title="Permalink to this headline" href="#s-finding-the-source"></a>Finding the source</h3>
+</dt>
+<dd>
+<p>Finding the source can be difficult to track down due to the hierarchy of theming cells whose source can be spread throughout the whole system.</p>
+<p><a href="/files/theme_tree_1.pdf" rel="nofollow"><img alt="output overrides" src="/files/theme_tree.png" /></a><br />
+	<em>Links to 520KB PDF. Provided for illustration only.</em></p>
+<p>Most of the page elements are typically <a href="http://api.drupal.org/api/function/template_preprocess_page" rel="nofollow">pulled</a> with <em>theme</em>('<em>page</em>') and placed inside the <em>page.tpl.php</em> template after rendering navigation bits, the bits within the navigation bits, block regions, the blocks within the block regions, etc. Each chunk of themed data is often referred to as a theming "<em>hook</em>".</p>
+<p><em>Note: Theming functions and templates will now be referred to as theming hooks. There are many hooks unrelated to theming throughout the system. Any mention of it here only relates to theming.</em></p>
+<p>Getting to the source of a template can be easily done with the <a href="https://www.drupal.org/node/223440#theme-debug" rel="nofollow">theme debug mode</a> in Drupal 7.33 and higher – as long as the output comes from a template file. For more data on markup coming from templates, or for information about markup coming from theme functions, there is also the <a href="/project/devel_themer" rel="nofollow">theme developer module</a>. It includes a theming tool to easily visualize the source of any output, its type and tons of other theming data. See the <a href="/node/209561" rel="nofollow">screencast</a> for a demonstration.</p>
+</dd>
+<dt id="theming-overrides">
+<h3 id="s-system-of-overrides"><a class="toc-anchor" title="Permalink to this headline" href="#s-system-of-overrides"></a>System of overrides</h3>
+</dt>
+<dd>
+<p>The system of overrides has a specific cascading order with few exceptions. Drupal core and modules provide a reasonable default for its markup handled by the theming <em>hook</em>. If it does not suit the requirements of the theme, then an alternate can be provide to prevent the defaults from being used. This way, the defaults are left alone and all the theme specific changes are localized to the theme. You should never change code outside your theme to alter default output. (Here are some <a href="/node/144376" rel="nofollow">reasons why you should not "hack core."</a>)</p>
+<p><img alt="output overrides" src="/files/theme_overrides_0.png" /></p>
+<p>If you need more control beyond this convention of overrides, the <a href="/node/223463" rel="nofollow">theme registry can be manipulated</a> for more control.</p>
+<p><em>Note: Although it is still possible, PHPTemplate.engine in Drupal 6 no longer overrides theme functions. In 5, that is what allowed templates to be used for a handful of the theming hooks. It is no longer necessary.</em></p>
+</dd>
+<dt id="theme-type">
+<h3 id="s-functions-vs-templates"><a class="toc-anchor" title="Permalink to this headline" href="#s-functions-vs-templates"></a>Functions vs. templates</h3>
+</dt>
+<dd>
+<p>There are two ways of implementing a theming hook, either a <em>function</em> or a <em>template</em>. The type that is used should depend on what you're trying to achieve. Drupal core and modules can use either type to construct the output, and themes can use the same type or change it.</p>
+<p><a href="/files/theme_flow_6_1.pdf" rel="nofollow"><img alt="theme flow - function vs template" src="/files/theme_flow_6.png" /></a><br />
+	<em>Links to PDF. <a href="/files/theme_flow_5_1.pdf" rel="nofollow">Flow map for 5</a> also available for comparison.</em></p>
+<p>Functions are marginally faster than templates, but they can be difficult for designers who may be only familiar with XHTML. The speed depends on the nature of the hook multiplied by the number of times it is called on a page. For example, using templates for the <a href="http://api.drupal.org/api/function/theme_links/" rel="nofollow">theming hook "links"</a> could cause a noticeable performance hit for complex and busy sites due to its repeated use.</p>
+<p>Here are two examples on overriding with the help of devel themer.</p>
+<!-- FUNCTION OVERRIDE EXAMPLE --><dl>
+<dt id="function-override">
+<h4 id="s-overriding-functions"><a class="toc-anchor" title="Permalink to this headline" href="#s-overriding-functions"></a>Overriding functions</h4>
+</dt>
+<dd>
+<p>The theme function <a href="https://api.drupal.org/api/drupal/includes!menu.inc/function/theme_menu_local_tasks/6" rel="nofollow">theme_menu_local_tasks</a> is a simple function for outputting both primary and secondary tabs. The theming hook in this case is "<em>menu_local_tasks</em>". To override, the "theme" prefix in the function name needs to be changed to the name of your theme. (In Drupal 6 you could also use the name of the theme engine the theme is running under, but this was not a recommended practice. That option has been removed in Drupal 7.)</p>
+<p><img alt="search override" src="/files/function_override_example_2.png" /></p>
+<p><em>The example is from Drupal 6 and shows that Garland is using the name of the theme engine for the override. Again, in Drupal 6 it is recommended to use the theme name, and in Drupal 7 it is mandatory to use the theme name.</em></p>
+<p>Placing the following in the theme's template.php file will override the default after clearing the theme registry. <em>Change "mytheme" in the function name to the name of your theme.</em></p>
+<pre>
+<code class="language-php">function mytheme_menu_local_tasks() {
+  $output = '';
+
+  if (!empty($variables['primary'])) {
+    $variables['primary']['#prefix'] = '&lt;h2 class="element-invisible"&gt;' . t('Primary tabs') . '&lt;/h2&gt;';
+    $variables['primary']['#prefix'] .= '&lt;ol class="tabs primary"&gt;';
+    $variables['primary']['#suffix'] = '&lt;/ol&gt;';
+    $output .= drupal_render($variables['primary']);
+  }
+  if (!empty($variables['secondary'])) {
+    $variables['secondary']['#prefix'] = '&lt;h2 class="element-invisible"&gt;' . t('Secondary tabs') . '&lt;/h2&gt;';
+    $variables['secondary']['#prefix'] .= '&lt;ol class="tabs secondary"&gt;';
+    $variables['secondary']['#suffix'] = '&lt;/ol&gt;';
+    $output .= drupal_render($variables['secondary']);
+  }
+
+  return $output;
+}</code></pre><p>The only change here is the markup from an unordered list to an ordered list.</p>
+<p><em>A listing of all the <a href="https://api.drupal.org/api/drupal/modules!system!theme.api.php/group/themeable/7" rel="nofollow">theme functions</a> can be found on <a href="http://api.drupal.org/" rel="nofollow">api.drupal.org</a>.</em></p>
+</dd>
+<!-- TEMPLATE OVERRIDE EXAMPLE --><dt id="template-override">
+<h4 id="s-overriding-templates"><a class="toc-anchor" title="Permalink to this headline" href="#s-overriding-templates"></a>Overriding templates</h4>
+</dt>
+<dd>
+<p>If the default implementation is done as a template, then simply copying the source template file into the theme will automatically override it after clearing the theme registry. Here is an example for <a href="http://api.drupal.org/api/file/modules/search/search-theme-form.tpl.php/6/source" rel="nofollow">search-theme-form.tpl.php</a>. Note that the theming hook in this case is "<em>search_theme_form</em>" with the template using hyphens instead of underscores.</p>
+<p><img alt="search override" src="/files/template_override_example_2.png" /></p>
+<p>That is all you need to do. Open the copied template in your editor to make your alterations. All the core .tpl.php files are documented. It should give a good indication of what can be done with the output.</p>
+<div class="note">
+<p>Templates can be placed in any directory within the theme. This allows for better management and less clutter in the base level of the theme directory.</p>
+</div>
+<h4 id="s-related-pages"><a class="toc-anchor" title="Permalink to this headline" href="#s-related-pages"></a>Related pages</h4>
+<ul>
+<li>To customize the variables inside templates, see the sub-page on <a href="/node/223430" rel="nofollow">Preprocess functions</a>.</li>
+<li>A listing of all the theme templates can be found on the sub-page, <a href="/node/190815" rel="nofollow">Core templates and suggestions</a>.</li>
+</ul>
+</dd>
+<!-- HOOK CONVERSION --><dt id="convert-type">
+<h3 id="s-converting-from-functions-to-templates"><a class="toc-anchor" title="Permalink to this headline" href="#s-converting-from-functions-to-templates"></a>Converting from functions to templates</h3>
+</dt>
+<dd>
+<p>Converting a theme function into a template takes some initial work, but once it is done, it's easier to work with. If you are collaborating with a designer, the conversion will enable them to focus on designing, not coding. There are many templates already available in core and much more will be converted in future versions. Contributed modules that follow best practices should also have templates available. These instructions are provided for the theming hooks not already made available as templates.</p>
+<p>Getting Drupal to recognize the theming hook as a template is automated. These are the only requirements to trigger this change:</p>
+<ul>
+<li>Name of the template must match the theming hook.</li>
+<li>The underscores in the hook must be changed to hyphens.</li>
+<li>The template name must have an extension of ".tpl.php". <em>(It can vary based on the theme engine.)</em></li>
+</ul>
+<p>Consider the theming function <a href="http://api.drupal.org/api/function/theme_user_signature/6" rel="nofollow">theme_user_signature</a>. The theme hook here is "<em>user_signature</em>". Creating a file named "user-signature.tpl.php" will tell Drupal that the hook is now a template after clearing the registry. Any content in this file will now take the place of the function. The part that takes more work is setting up the variables to be used in this file and that is done through preprocess functions.</p>
+<p>A few notes:</p>
+<ul>
+<li>While it is possible to code directly inside the template, it is not considered good practice. All the complex logic should be separated from the .tpl.php file and placed within <a href="/node/223430" rel="nofollow">preprocess functions</a>. This keeps it clean and easy to manage.</li>
+<li>There is also the issue of security. The separation can minimize the chance of cross-site scripting attacks by cleaning out potentially malicious user generated content. When handing over template files to your designer, all the output should be clean so they do not have to concern themselves with security issues.</li>
+<li>If your theme implements both a theme function and a template for a given hook, the theme function will always be used.</li>
+<li>The auto discovery of theme overrides are done by PHPTemplate engine so make sure your theme has set the engine from the<a href="/node/171205#engine" rel="nofollow">.</a> <a href="/node/171205#engine" rel="nofollow">info file</a>.</li>
+<li>Compare the <a href="http://api.drupal.org/api/search/5/theme_forum" rel="nofollow">theming functions in 5</a> to the <a href="http://api.drupal.org/api/search/6/template_preprocess_forum" rel="nofollow">template conversions in 6</a> for forums. You can use that as an example for converting between the two types.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt id="theme-registry">
+<h3 id="s-the-theme-registry"><a class="toc-anchor" title="Permalink to this headline" href="#s-the-theme-registry"></a>The theme registry</h3>
+</dt>
+<dd>
+<p>Drupal's theme registry maintains cached data on the available theming hooks and how to handle them.</p>
+<p>For most theme developers, the registry does not have to be dealt with directly. Just remember to clear it when adding or removing theme functions and templates. Editing existing functions and templates does not require a registry rebuild.</p>
+<p>To clear the theme registry, do one of the following things:</p>
+<ul>
+<li>On the <em>Administration &gt; Configuration &gt; Development &gt; Performance</em> page, click on the <em>Clear all caches</em> button. In Drupal 6, navigate to the <em>Administer &gt; Site configuration &gt; Performance</em> page and click on the <em>Clear cached data</em> button.</li>
+<li>With the Devel block enabled, click the <em>Empty cache</em> link.</li>
+<li>Use <a href="http://api.drupal.org/api/function/drupal_rebuild_theme_registry/6" rel="nofollow">drupal_rebuild_theme_registry()</a> (Drupal 6) or <a href="http://api.drupal.org/api/drupal/includes--theme.inc/function/drupal_theme_rebuild/7" rel="nofollow">drupal_theme_rebuild</a>() (Drupal 7)<a href="http://api.drupal.org/api/drupal/includes--theme.inc/function/drupal_theme_rebuild/7" rel="nofollow">.</a></li>
+</ul>
+<p>The theme registry is cached data, instructing Drupal on the available theming hooks and how to handle it by indicating its type. In previous versions all theming calls were handled on the fly. Since a lot more work is being done under the hood, the cached instructions speed up the process, especially for templates. The theme engine your theme is running under should automatically register all the theming hooks for you.</p>
+<p>There are special cases where you may need to work with the theme registry directly. When your theme requires a new hook to be registered that was not already implemented on the layers below it <em>(core, modules, engine)</em>. This includes some forms when they are not explicitly themed by core or modules, but instead rely on the default form presentation.</p>
+<ul>
+<li>More details can be found in the sub-page, <a href="/node/223463" rel="nofollow">The theme registry for special cases</a>.</li>
+<li>Do not confuse the theme registry with the <a href="/node/171205" rel="nofollow">theme's .info</a> file which is also cached. Points 1 and 2 for clearing the registry will clear both.</li>
+<li>Your theme must be using phptemplate engine for its templates and functions to be discovered. Other engines should behave the same way. For engineless themes, it must be done manually. See <a href="http://api.drupal.org/api/function/phptemplate_theme/6" rel="nofollow">phptemplate_theme</a> to see how it is done.</li>
+</ul>
+</dd>
+</dl>
+<dl>
+<dt id="clean-cache">
+<h3 id="s-dont-forget-to-clear-cache"><a class="toc-anchor" title="Permalink to this headline" href="#s-dont-forget-to-clear-cache"></a>Don't forget to clear cache</h3>
+</dt>
+<dd>If you added new tpl.php files or override new theme functions or alter any theming related stuff you will need to <a href="https://drupal.org/node/337176" rel="nofollow">Clear theme cache </a> to get these changes active.</dd>
+</dl></div></div></div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+      <div class="column-content-region bottom-right-content column panel-panel">
+        <div class="column-content-region-inner bottom-right-content-inner column-inner panel-panel-inner">
+          <div class="panel-pane pane-views-panes pane-documentation-help-improve-pane"  id="help-improve-this-page" >
+  
+        <h2 class="pane-title">
+      Help improve this page    </h2>
+    
+  
+  <div class="pane-content">
+    <div class="view view-documentation-help view-id-documentation_help view-display-id-improve_pane view-dom-id-f9a7571114484aa9aad30b27587a94fd">
+        
+  
+  
+      <div class="view-content">
+        <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
+      
+  <span class="views-field views-field-field-documentation-status">    <strong class="views-label views-label-field-documentation-status">Page status: </strong>    <span class="field-content">No known problems</span>  </span>  
+  <div class="views-field views-field-nothing">        <span class="field-content"><br /><strong>You can:</strong><br />
+<ul>
+<li>Log in, click <a href="/node/173880/edit">Edit</a>, and edit this page</li>
+<li>Log in, click <a href="/node/173880/discuss">Discuss</a>, update the Page status value, and suggest an improvement</li>
+<li>Log in and <a href="/node/add/project-issue/documentation?title=Suggestion%20for%3A%20%28173880%29%20About%20overriding%20themable%20output">create a Documentation issue</a> with your suggestion</li>
+</ul></span>  </div>  </div>
+    </div>
+  
+  
+  
+  
+  
+  
+</div>  </div>
+
+  
+  </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer clearfix panel-panel">
+    <div class="container-inner footer-inner panel-panel-inner">
+          </div>
+  </div>
+
+</div><!-- /.sutro -->
+</div>
+  </div>
+  </div>
+</div>
+  </div>
+        </div>
+              </div> <!-- /#content -->
+
+    </div> <!-- /#column-left -->
+
+      </div> <!-- /#page -->
+
+  <div id="footer" role="contentinfo">
+            <div class="region region-footer">
+    <div id="block-drupalorg-documentation-license" class="block block-drupalorg">
+<div class="block-inner">
+    
+  <div class="content">
+    Drupal’s online documentation is © 2000-2026 by the individual contributors and can be used in accordance with the <a href="/terms">Creative Commons License, Attribution-ShareAlike 2.0</a>. PHP code is distributed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GNU General Public License</a>.  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-infra-partner" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <a href="https://www.tag1.com/?utm_source=DA&utm_medium=referral&utm_campaign=drupal-org-footer" >Infrastructure management for Drupal.org provided by <img src="/sites/all/modules/drupalorg/drupalorg/images/tag1-w.svg" alt="Tag1 logo" ></a>  </div>
+  </div>
+</div>
+<div id="block-drupalorg-crosssite-drupalorg-footer" class="block block-drupalorg-crosssite">
+<div class="block-inner">
+    
+  <div class="content">
+    <h4 class="element-invisible">News items</h4><ul class="drupal-news"><li class="0 first"><a href="https://www.drupal.org/news">News</a></li>
+<li class="1"><a href="https://www.drupal.org/planet" title="News from Drupal community members">Planet Drupal</a></li>
+<li class="2"><a href="https://www.drupal.org/about/media-kit/social-media" title="Drupal on social media">Social media</a></li>
+<li class="3"><a href="https://www.drupal.org/subscribe">Sign up for Drupal news</a></li>
+<li class="4 last"><a href="https://www.drupal.org/security" title="Announcements from the Drupal Security Team">Security advisories</a></li>
+</ul><h4 class="element-invisible">Our community</h4><ul class="community"><li class="0 first"><a href="https://www.drupal.org/community">Community</a></li>
+<li class="1"><span><a href="https://www.drupal.org/drupal-services" title="People and organizations offering Drupal services">Services</a>, <a href="https://www.drupal.org/training" title="People and organizations offering Drupal training">Training</a> & <a href="https://www.drupal.org/hosting" title="Organizations offering Drupal hosting">Hosting</a></span></li>
+<li class="2"><a href="https://www.drupal.org/community/contributor-guide">Contributor guide</a></li>
+<li class="3"><a href="https://groups.drupal.org/groups" title="groups.drupal.org">Groups &amp; meetups</a></li>
+<li class="4"><a href="https://events.drupal.org" title="Upcoming and past DrupalCons">DrupalCon</a></li>
+<li class="5 last"><a href="https://www.drupal.org/dcoc" title="Drupal code of conduct">Code of conduct</a></li>
+</ul><h4 class="element-invisible">Documentation</h4><ul class="get-started"><li class="0 first"><a href="https://www.drupal.org/documentation" title="Documentation for working with Drupal">Documentation</a></li>
+<li class="1"><a href="https://www.drupal.org/docs">Drupal Guide</a></li>
+<li class="2"><a href="https://www.drupal.org/docs/user_guide/en/index.html">Drupal User Guide</a></li>
+<li class="3"><a href="https://www.drupal.org/documentation/develop">Developer docs</a></li>
+<li class="4 last"><a href="https://api.drupal.org/" title="Drupal API reference">API.Drupal.org</a></li>
+</ul><h4 class="element-invisible">Drupal code base</h4><ul class="download-extend"><li class="0 first"><a href="https://www.drupal.org/download">Download &amp; Extend</a></li>
+<li class="1"><a href="https://www.drupal.org/project/drupal" title="Download the latest version of the Drupal software">Drupal core</a></li>
+<li class="2"><a href="https://www.drupal.org/project/project_module" title="Download add-on features and functionality">Modules</a></li>
+<li class="3"><a href="https://www.drupal.org/project/project_theme" title="Download pre-designed styles for Drupal">Themes</a></li>
+<li class="4 last"><a href="https://www.drupal.org/project/project_distribution" title="Download a pre-packaged Drupal site">Distributions</a></li>
+</ul><h4 class="element-invisible">Governance of community</h4><ul class="about"><li class="0 first"><a href="https://www.drupal.org/about">About</a></li>
+<li class="1"><a href="https://www.drupal.org/about/features/accessibility" title="Our committment to accessibility">Web accessibility</a></li>
+<li class="2"><a href="https://www.drupal.org/association" title="About the Drupal Association">Drupal Association</a></li>
+<li class="3"><a href="https://www.drupal.org/drupalorg" title="About Drupal.org">About Drupal.org</a></li>
+<li class="4"><a href="https://www.drupal.org/terms" title="Drupal.org terms of service">Terms of service</a></li>
+<li class="5 last"><a href="https://www.drupal.org/privacy" title="Drupal.org privacy policy">Privacy policy</a></li>
+</ul>  </div>
+  </div>
+</div>
+<div id="block-block-77" class="block block-block">
+<div class="block-inner">
+    
+  <div class="content">
+    <p>Drupal is a <a href="/about/trademark">registered trademark</a> of <a href="https://dri.es">Dries Buytaert</a>.</p>
+  </div>
+  </div>
+</div>
+  </div>
+      </div>
+  <script type="text/javascript" src="/files/advagg_js/js__B0FBwiP97ZnD38IFraZus4upS4KVkMXI3ou0fJ2ZXGA__pPDESRJz9GHsxqQIwQ_V8xnFYEH5jipG2eicsfrdWCs__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+
+<!--[if lte IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie9-" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if gt IE 9]>
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js#ie10+" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<![endif]-->
+
+<!--[if !IE]><!-->
+<script type="text/javascript" src="/files/advagg_js/js__79M6UrZjAw3oNGnUjsWip12JsvnUZmJGA3h9LI0kuzE__J0sbXAJNry2-C_ZL2xd0RdVuzwTLvwN-UisIv5RNCvU__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(true);}"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="/files/advagg_js/js__pqoYaVR8NVhof-vNXe50j2TKhFv__IihVag_h4G6kus__B4mbn4wICLQjWm1m3-z1kw8F1FtP0cDAHKp00Xy_-88__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__H5AFmq1RrXKsrazzPq_xPQPy4K0wUKqecPjczzRiTgQ__wor4r9P8YTtQ7p6fbywTetZ47Z_orumIfrrhgxrpLus__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer" onload="
+function advagg_mod_1() {
+  // Count how many times this function is called.
+  advagg_mod_1.count = ++advagg_mod_1.count || 1;
+  try {
+    if (advagg_mod_1.count <= 40) {
+      init_drupal_core_settings();
+
+      // Set this to 100 so that this function only runs once.
+      advagg_mod_1.count = 100;
+    }
+  }
+  catch(e) {
+    if (advagg_mod_1.count >= 40) {
+      // Throw the exception if this still fails after running 40 times.
+      throw e;
+    }
+    else {
+      // Try again in 1 ms.
+      window.setTimeout(advagg_mod_1, 1);
+    }
+  }
+}
+function advagg_mod_1_check() {
+  if (window.init_drupal_core_settings && window.jQuery && window.Drupal) {
+    advagg_mod_1();
+  }
+  else {
+    window.setTimeout(advagg_mod_1_check, 1);
+  }
+}
+advagg_mod_1_check();"></script>
+<script type="text/javascript" src="/files/advagg_js/js__Oc0wwB7MVRfxtYw6EQM7d9sXj9PAQePoWSzQJ0uTk6c__iXqOGoaPhZHCPEspUr5BC8BwOx5P8B11xv7VOhoUii8__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__YT6D1B_BKxvm6JCH_t9sZNI5L6yITa_DlU5QcSlOkAU__OXobH7d1IP1o3WABlniIrU_-pcJacVSIPUv9bpD-6pQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__06Uejkt2sN1AJAk3QcRQG9yrq-jCjZth0s-OymGOkVE__PYcTp7w1kQiorShjZof15sCaw_MRBOMJUwm2LrxqSiI__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__pLKQd4r7OrHglE7Qkqw53K2UXCqQdhqQ9v0cz7hMCQY__OErfYuQdGbFHcCoLoUW_ESSvaumApNojzjJit8-2xcw__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__hHUWFbMAa11eJtx5V0ym9o0YBsB1udk34qUT5wr1ihI__vSxsxbzmzuz4XPh--CL1BBciQpEQ_m8FfdQINCOAg14__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+function init_drupal_core_settings() {jQuery.extend(Drupal.settings,{"basePath":"\/","pathPrefix":"","setHasJsCookie":0,"ajaxPageState":{"theme":"bluecheese","theme_token":"A8IPcscT-i34fEhTcUvU5Xa0vKO2wuLhYkyLXgC-Puw"},"drupalorgGitlab":{"gitlab_base_url":"https:\/\/git.drupalcode.org","base_url":"https:\/\/www.drupal.org"},"better_exposed_filters":{"views":{"documentation_help":{"displays":{"improve_pane":{"filters":[]}}},"documentation_related_content":{"displays":{"related_content_pane":{"filters":[]}}},"drupalorg_issue_relations_blocks":{"displays":{"block_parent_issue":{"filters":[]},"block_related_issues":{"filters":[]}}}}},"urlIsAjaxTrusted":{"\/docs\/7\/theming\/overriding-themable-output\/about-overriding-themable-output":true},"drupalorgCrosssiteConsentNeeded":true,"ogContext":{"groupType":"node","gid":"2792997"}}); 
+if(jQuery.isFunction(jQuery.holdReady)){jQuery.holdReady(false);}} if(window.jQuery && window.Drupal){init_drupal_core_settings();}
+//--><!]]>
+</script>
+<script type="text/javascript" src="/files/advagg_js/js__2k0CJ3KAQNFTFab3y6ZvNtxs3HLons0Brq7VwvPSkKo__sQv8imhcZRev08LnyQ7OzwuHrZ3Jdwo5NmznAARX0ig__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__vj0LjvNwl-3K1P9LGT4BGuXCZcAovYsVlVmoJN3TMRg__J5VfNt0zvFqdwU_mGP8B0k0hD0AkEczVPmjbG_NWpEQ__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js" defer="defer"></script>
+<script type="text/javascript" src="/files/advagg_js/js__JcXBSJHj8Xne3o6itfImR6W_iKiyddBYCHy1Hlaswqc__zf3dHPQTUuo9_zw5jD1O3PNKp8Kihn16r3O2GTA4ahg__HddD2mqdPLNUUqlfNnKKNA9DPpynNDbKlIJTC991lLc.js"></script>
+</body>
+</html>
